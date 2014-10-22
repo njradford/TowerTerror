@@ -33,8 +33,7 @@ public class NetworkHandler {
     }
 
     //OPENS A SERVER SOCKET ON THE DESIGNATED PORT
-    public void openHosting(int openPort){
-        port = openPort;
+    public void openHosting(){
         try{
             System.out.println("NET: (HOST)PORT NUMBER?: ");
             port = userInput.nextInt();
@@ -48,7 +47,7 @@ public class NetworkHandler {
             hostSessionActive = true;
 
         } catch (IOException e){
-            System.err.println("NET:(HOST)Error when opening new Server Socket on port "+port);
+            System.err.println("NET:(HOST)Error when opening new Server Socket on port ");
         }
 
     }
@@ -100,16 +99,26 @@ public class NetworkHandler {
             returnState = (GameState) input.readObject();
             System.out.println("NET:(CLIENT)REPLY RECEIVED");
 
-
         }catch(Exception e){
             System.err.println("NET:FAILED TO RECEIVE gameState FROM CLIENT");
         }
 
 
         return returnState;
-    }
+    };
 
     public boolean isSessionActive(){
         return hostSessionActive;
     }
+
+    public void setLocalActive(boolean active){
+        this.localActive = active;
+
+    }
+
+    public boolean isLocalActive(){
+        return localActive;
+    }
+
+
 }

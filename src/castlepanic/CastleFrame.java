@@ -17,20 +17,30 @@ public class CastleFrame extends javax.swing.JFrame {
 
 
     static int startInt;
-    NetworkHandler netSession;
     boolean hosting;
-    boolean spectating;
+    boolean client;
+    NetworkHandler net;
     /**
      * Creates new form CastleFrame
      */
     public CastleFrame(int startCode) {
         initComponents();
-        netSession = new NetworkHandler();
 
-        if(startCode==1){
-            hosting=true;
-        } else if(startCode==2){
-            spectating=true;
+        //SETS APPROPRIATE BOOLEANS BASED ON START CODES
+        if(startCode == 1){
+            System.out.println("You are a host!");
+            hosting= true;
+            client = false;
+            net = new NetworkHandler();
+            net.setLocalActive(true);
+            net.openHosting();
+        } else if (startCode == 2){
+            System.out.println("You are a client!");
+            hosting= false;
+            client = true;
+            net = new NetworkHandler();
+            net.setLocalActive(false);
+            net.connectToHost();
         }
 
 
@@ -93,22 +103,29 @@ public class CastleFrame extends javax.swing.JFrame {
                     System.out.println("GUI: Player: - " + name);
                 }
 
-                if(spectating){
-                    netSession.connectToHost();
-                    gameState = netSession.listenForState();
-                    players = new String[gameState.getPlayers()];
-                    for(int i=0;i<gameState.getPlayers();i++){
-                        players[i]=gameState.getPlayerName(i);
-                    }
-                }else{
-                    gameState = new GameState(players);
 
-                }
 
                 if(hosting){
-                    netSession.openHosting(2020);
-                    netSession.transmitGameState(gameState);
+                    GameState clientState = net.listenForState();
+                    String clientName = clientState.getPlayerName(0);
+                    players[1] = clientName;
                 }
+
+                gameState = new GameState(players);
+
+                if(hosting){
+                    net.transmitGameState(gameState);
+                } else if(client){
+                    System.out.println("SENDING GAME STATE");
+                    net.transmitGameState(gameState);
+                    System.out.println("LISTENING FOR RETURN STATE FROM HOST");
+                    GameState hostState =  net.listenForState();
+                    System.out.println(hostState.getPlayerName(0)+", "+hostState.getPlayerName(1));
+
+                }
+
+
+
 
                 handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
                     handLabel3, handLabel4, handLabel5};
@@ -125,9 +142,6 @@ public class CastleFrame extends javax.swing.JFrame {
                 scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
                     handPointsLabel4, handPointsLabel5};
 
-                if(hosting){
-                    netSession.transmitGameState(gameState);
-                }
 
                 initializeGame();
                 updateGame();
@@ -167,29 +181,9 @@ public class CastleFrame extends javax.swing.JFrame {
         monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
         this.updateGame();
 
-        if(spectating){
-            updateGame();
-            revalidate();
-            paintComponents(this.getGraphics());
-            spectate();
-        }
     }
 
 
-    //SPECTATE FUNCTION
-    public void spectate(){
-        while(true){
-            gameState=netSession.listenForState();
-            System.out.println(gameState.getCardNameFromPlayerHand(0,0)+" is the card at player 0's 0 position");
-            System.out.println("The game is currently in phase: "+gameState.getCurrentPhase());
-            updateGame();
-
-            revalidate();
-            paintComponents(this.getGraphics());
-        }
-
-
-    }
 
     public void updateGame() {
         if (gameState.getDeadYet()) {
@@ -2652,9 +2646,7 @@ public class CastleFrame extends javax.swing.JFrame {
                 break;
 
         }
-        if (hosting){
-            netSession.transmitGameState(gameState);
-        }
+
     }//GEN-LAST:event_endPhaseClicked
 
     private void menuClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClicked
@@ -2839,7 +2831,7 @@ public class CastleFrame extends javax.swing.JFrame {
             }else{
                 if(args[0].equals("host")){
                     startInt=1;
-                } else if(args[0].equals("spectate")){
+                } else if(args[0].equals("client")){
                     startInt=2;
                 }
             }
