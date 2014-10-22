@@ -64,17 +64,33 @@ public class NetworkHandler {
             System.out.println("NET:(CLIENT)Connection successful");
             output = new ObjectOutputStream(remoteSocket.getOutputStream());
             input = new ObjectInputStream(remoteSocket.getInputStream());
-            try {
-                System.out.println((String) input.readObject());
-            }catch(Exception e){
 
-            }
 
         }catch(IOException e){
             System.err.println("NET:(CLIENT)Error connecting to host on "+hostAddress+" @ port: "+port);
         }
 
     }
+
+    public void transmitNames(String[] names){
+        try{
+            System.out.println("(NET) ATTEMPTING TO TRANSMIT NAMES . . .");
+            output.writeObject(names);
+        }catch(IOException e){
+            System.out.println("(NET) TRANSMISSION OF NAME FAILED");
+        }
+    }
+
+    public String[] listenForNames(){
+        String[] clientNames = new String[]{""};
+        try {
+            clientNames = (String[]) input.readObject();
+
+        }catch(IOException | ClassNotFoundException e){
+            System.out.println("(NET) ERROR TRYING TO RECEIVE NAME FROM CLIENT");
+        }
+        return clientNames;
+    };
 
     //SENDS A GAMESTATE INSTANCE TO THE CONNECTED CLIENT
     public void transmitGameState(GameState state){

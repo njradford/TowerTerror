@@ -105,25 +105,17 @@ public class CastleFrame extends javax.swing.JFrame {
 
 
 
-                if(hosting){
-                    GameState clientState = net.listenForState();
-                    String clientName = clientState.getPlayerName(0);
-                    players[1] = clientName;
-                }
-
                 gameState = new GameState(players);
 
                 if(hosting){
-                    net.transmitGameState(gameState);
+                    String[] clientNames = net.listenForNames();
+                    for(String current : clientNames){
+                        System.out.println("Name Recieved");
+                        System.out.println(current);
+                    }
                 } else if(client){
-                    System.out.println("SENDING GAME STATE");
-                    net.transmitGameState(gameState);
-                    System.out.println("LISTENING FOR RETURN STATE FROM HOST");
-                    GameState hostState =  net.listenForState();
-                    System.out.println(hostState.getPlayerName(0)+", "+hostState.getPlayerName(1));
-
+                    net.transmitNames(players);
                 }
-
 
 
 
