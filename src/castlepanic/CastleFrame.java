@@ -15,11 +15,12 @@ import javax.imageio.ImageIO;
  */
 public class CastleFrame extends javax.swing.JFrame {
 
-
+    boolean spectating;
     static int startInt;
     boolean hosting;
     boolean client;
     NetworkHandler net;
+
     /**
      * Creates new form CastleFrame
      */
@@ -103,18 +104,39 @@ public class CastleFrame extends javax.swing.JFrame {
                     System.out.println("GUI: Player: - " + name);
                 }
 
-
-
-                gameState = new GameState(players);
-
                 if(hosting){
                     String[] clientNames = net.listenForNames();
+                    //LISTENING FOR CLIENT NAMES SO THAT THEY CAN BE COMBINED
                     for(String current : clientNames){
                         System.out.println("Name Recieved");
                         System.out.println(current);
                     }
-                } else if(client){
+                    //PUTTING THE NAMES TOGETHER
+                    String localName = players[0];
+                    players  = new String[2];
+                    players[0] = localName;
+                    players[1] = clientNames[0];
+                    //SEND THE NEW NAME LISTBACK
                     net.transmitNames(players);
+
+                    players[0] = players[0]+" (HOST)";
+
+                } else if(client){
+                    //SEND LOCAL NAME
+                    net.transmitNames(players);
+                    //RECIEVE COMBINED NAME ARRAY
+                    players = net.listenForNames();
+                    //LISTEN FOR FINAL GAMESTATE
+                    players[1] = players[1]+" (CLIENT)";
+
+                }
+
+                gameState = new GameState(players);
+
+                if(hosting){
+                    net.transmitGameState(gameState);
+                }else if(client){
+                    gameState = net.listenForState();
                 }
 
 
@@ -136,8 +158,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
 
                 initializeGame();
+                if(net.isSessionActive()){
+                    net.updateLocalActive(gameState);
+                }
                 updateGame();
-
+                spectating = false;
 
             }
         });
@@ -146,8 +171,21 @@ public class CastleFrame extends javax.swing.JFrame {
             case ("Text"):
                 
                 TextUI textUI = new TextUI();
-
         }
+    }
+
+    public void spectate(){
+        while(!net.isLocalActive()){
+            spectating =true;
+            gameState= net.listenForState();
+            System.out.println(gameState.getCardNameFromPlayerHand(0,0)+" is the card at player 0's 0 position");
+            System.out.println("The game is currently in phase: "+gameState.getCurrentPhase());
+            updateGame();
+            revalidate();
+            paintComponents(this.getGraphics());
+        }
+        spectating =false;
+        System.out.println("Spectating is over!");
     }
 
     public void initializeGame() {
@@ -192,6 +230,18 @@ public class CastleFrame extends javax.swing.JFrame {
         updateCards();
         updateBoard();
         updateMisc();
+
+        //SWITCH BASED ON IF NETWORK SESSION IS ACTIVE
+        if(net.isSessionActive()){
+            if(net.isLocalActive() && !spectating){
+                spectate();
+            } else if(!net.isLocalActive()){
+                net.transmitGameState(gameState);
+            }
+
+            //UPDATE LOCAL ACTIVE STATE BASED ON THE CURRENT PLAYERS TURN
+            net.updateLocalActive(gameState);
+        }
 
     }
 

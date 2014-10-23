@@ -18,7 +18,9 @@ public class NetworkHandler {
     private ServerSocket localSocket;
     private int port;
     private boolean localActive;
+    private boolean sessionActive;
     private boolean hostSessionActive = false;
+    private boolean clientSessionActive =false;
     private final Scanner userInput = new Scanner(System.in);
     private String hostAddress;
 
@@ -45,6 +47,7 @@ public class NetworkHandler {
             output = new ObjectOutputStream(remoteSocket.getOutputStream());
             input = new ObjectInputStream(remoteSocket.getInputStream());
             hostSessionActive = true;
+            sessionActive =true;
 
         } catch (IOException e){
             System.err.println("NET:(HOST)Error when opening new Server Socket on port ");
@@ -64,7 +67,8 @@ public class NetworkHandler {
             System.out.println("NET:(CLIENT)Connection successful");
             output = new ObjectOutputStream(remoteSocket.getOutputStream());
             input = new ObjectInputStream(remoteSocket.getInputStream());
-
+            clientSessionActive = true;
+            sessionActive =true;
 
         }catch(IOException e){
             System.err.println("NET:(CLIENT)Error connecting to host on "+hostAddress+" @ port: "+port);
@@ -124,7 +128,7 @@ public class NetworkHandler {
     };
 
     public boolean isSessionActive(){
-        return hostSessionActive;
+        return sessionActive;
     }
 
     public void setLocalActive(boolean active){
@@ -132,8 +136,29 @@ public class NetworkHandler {
 
     }
 
-    public boolean isLocalActive(){
-        return localActive;
+    public boolean isLocalActive(){return localActive;}
+
+    public boolean isHostSessionActive(){return hostSessionActive;}
+
+    //UPDATES THE SESSION ACTIVE VARAIBLES ACCORDING TO CURRENT ACTIVE PLAYER.
+    public void updateLocalActive(GameState state){
+        int activePlayer = state.getCurrentPlayer();
+
+        if(hostSessionActive){
+            if(activePlayer == 0){
+                setLocalActive(true);
+            }else{
+                setLocalActive(false);
+            }
+        } else if(clientSessionActive){
+            if(activePlayer == 1){
+                setLocalActive(true);
+            } else{
+                setLocalActive(false);
+            }
+        }
+
+        System.out.println("IS THIS CURRENTLY ACTIVE?:" +isLocalActive());
     }
 
 
