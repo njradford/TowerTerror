@@ -162,7 +162,6 @@ public class CastleFrame extends javax.swing.JFrame {
                     net.updateLocalActive(gameState);
                 }
                 updateGame();
-                spectating = false;
 
             }
         });
@@ -172,20 +171,6 @@ public class CastleFrame extends javax.swing.JFrame {
                 
                 TextUI textUI = new TextUI();
         }
-    }
-
-    public void spectate(){
-        while(!net.isLocalActive()){
-            spectating =true;
-            gameState= net.listenForState();
-            System.out.println(gameState.getCardNameFromPlayerHand(0,0)+" is the card at player 0's 0 position");
-            System.out.println("The game is currently in phase: "+gameState.getCurrentPhase());
-            updateGame();
-            revalidate();
-            paintComponents(this.getGraphics());
-        }
-        spectating =false;
-        System.out.println("Spectating is over!");
     }
 
     public void initializeGame() {
@@ -231,17 +216,7 @@ public class CastleFrame extends javax.swing.JFrame {
         updateBoard();
         updateMisc();
 
-        //SWITCH BASED ON IF NETWORK SESSION IS ACTIVE
-        if(net.isSessionActive()){
-            if(net.isLocalActive() && !spectating){
-                spectate();
-            } else if(!net.isLocalActive()){
-                net.transmitGameState(gameState);
-            }
 
-            //UPDATE LOCAL ACTIVE STATE BASED ON THE CURRENT PLAYERS TURN
-            net.updateLocalActive(gameState);
-        }
 
     }
 
