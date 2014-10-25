@@ -127,6 +127,32 @@ public class NetworkHandler {
         return returnState;
     };
 
+    //LISTENS FOR A CALLBACK WHICH UNLOCKS THE LOCAL PROCESS.
+    public boolean listenForCallback(){
+        boolean callback = false;
+
+        try{
+            System.out.println("(NET) LISTENING FOR CALLBACK.");
+            callback = input.readBoolean();
+            System.out.println("(NET) CALLBACK RECEIVED.");
+        }catch(Exception e){
+            System.out.println("(NET) FAILED TO RECEIVE CALLBACK.");
+        }
+
+        return  callback;
+    };
+
+    public void sendCallback(boolean callback){
+
+        try{
+            System.out.println("(NET) ATTEMPTING TO TRANSMIT CALLBACK.");
+            output.writeBoolean(callback);
+            System.out.println("(NET) CALLBACK TRANSMITTED.");
+        }catch(Exception e){
+            System.out.println("(NET) FAILED TO TRANSMIT CALLBACK.");
+        }
+    };
+
     public boolean isSessionActive(){
         return sessionActive;
     }

@@ -19,6 +19,7 @@ public class CastleFrame extends javax.swing.JFrame {
     static int startInt;
     boolean hosting;
     boolean client;
+
     NetworkHandler net;
 
     /**
@@ -124,7 +125,7 @@ public class CastleFrame extends javax.swing.JFrame {
                 } else if(client){
                     //SEND LOCAL NAME
                     net.transmitNames(players);
-                    //RECIEVE COMBINED NAME ARRAY
+                    //RECEIVE COMBINED NAME ARRAY
                     players = net.listenForNames();
                     //LISTEN FOR FINAL GAMESTATE
                     players[1] = players[1]+" (CLIENT)";
@@ -133,6 +134,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
                 gameState = new GameState(players);
 
+                //SYNCHRONIZES THE STATES OF HOST AND CLIENT
                 if(hosting){
                     net.transmitGameState(gameState);
                 }else if(client){
@@ -158,9 +160,6 @@ public class CastleFrame extends javax.swing.JFrame {
 
 
                 initializeGame();
-                if(net.isSessionActive()){
-                    net.updateLocalActive(gameState);
-                }
                 updateGame();
 
             }
@@ -194,8 +193,17 @@ public class CastleFrame extends javax.swing.JFrame {
             handLabels[m].setText(players[m].substring(0, Math.min(8, players[m].length())).trim());
         }
         monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
+
+
         this.updateGame();
 
+        if(hosting||client){
+            net.updateLocalActive(gameState);
+
+            if(client){
+                netProcess();
+            }
+        }
     }
 
 
@@ -216,6 +224,35 @@ public class CastleFrame extends javax.swing.JFrame {
         updateBoard();
         updateMisc();
 
+        if(hosting || client){
+            if(net.isLocalActive()){
+                netProcess();
+            }
+        }
+    }
+
+    public void netProcess(){
+
+        if(net.isLocalActive()){
+            net.transmitGameState(gameState);
+            net.updateLocalActive(gameState);
+        }
+
+
+        if(!net.isLocalActive()){
+            updateGame();
+            revalidate();
+            System.out.println("(NET) BEGINNING SPECTATING . . .");
+            while(!net.isLocalActive()){
+                gameState = net.listenForState();
+                updateGame();
+                revalidate();
+                paintComponents(this.getGraphics());
+                net.updateLocalActive(gameState);
+            }
+            System.out.println("(NET) ENDING SPECTATING . . .");
+
+        }
 
 
     }
