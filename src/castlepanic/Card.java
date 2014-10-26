@@ -1,7 +1,5 @@
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  * The card class. This is a common superclass designed to be used by subclasses
  * of cards. It contains only a card name.
@@ -11,7 +9,7 @@ import java.io.Serializable;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class Card implements Serializable {
+public class Card {
 
     protected String name;
 

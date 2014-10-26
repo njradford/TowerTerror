@@ -10,19 +10,19 @@ import java.util.Scanner;
  *
  * @author Nick Radford
  *
- * The TextUI is called as an alternate form of interfacing with the Castle Panic GameState.
+ * The TextUI is called as an alternate form of interfacing with the Castle Panic GameState
  * Once instantiated it will bootstrap it's own processes, including creating a GameState instance
  * and simulate a game of CastlePanic until it's conclusion, at which point the session will self-terminate.
  */
 public class TextUI {
-    Scanner input = new Scanner(System.in);
-    Scanner textInput = new Scanner(System.in);
-    String[] players;
-    GameState state;
-    int pCount;
-
-    TextUI(){
-
+   Scanner input = new Scanner(System.in);
+   Scanner textInput = new Scanner(System.in);
+   String[] players;
+   GameState state;
+   int pCount;
+   
+   TextUI(){
+       
         System.out.println("--------------------------------");
         System.out.println("         Castle Panic           ");
         System.out.println("--------------------------------");
@@ -34,17 +34,17 @@ public class TextUI {
         System.out.println("         John Fenwick           ");
         System.out.println("--------------------------------");
         System.out.println("--------------------------------");
-
-
+        
+         
         System.out.println("Please Enter The Amount of Players:");
         pCount = input.nextInt();
         players = new String[pCount];
-
+        
         for(int i=0;i<pCount;i++){
             System.out.println("Player Number "+(i+1)+" Please enter your name");
             players[i]=textInput.nextLine();
         }
-
+        
         gameLoop();
     }//Constructor
 
@@ -55,108 +55,110 @@ public class TextUI {
      */
     public void gameLoop(){
         state = new GameState(players);
-
+        
         while(!state.getDeadYet()){
+        
+        System.out.println(state.getPlayerName(state.getCurrentPlayer())+"'s Turn!:");
 
-            System.out.println(state.getPlayerName(state.getCurrentPlayer())+"'s Turn!:");
+        printMonsters(state);
+        //Phase 1 (Draw Up)
+        state.fillCurrentPlayerHand();
 
+        
+        //Phase 2 (Discard and Draw)
+        printHand(state.getCurrentPlayer());
+        System.out.println("PHASE 2: ");
+        System.out.println("Would you like to discard a card? (y/n): ");
+        if(getUserConfirm()){
+            state.discardOption(true);
+            System.out.println("Which card would you like to discard? (INT): ");
+            int userInput = textInput.nextInt();
+            state.discardCurrentPlayersCard(userInput);
+            state.discardOption(false);
+            
+        } else {
+
+            System.out.println("User has elected not to discard");
+            //does this need to be inside else block above??
+            state.discardOption(false);
+            
+        }
+
+        printHand(state.getCurrentPlayer());
+        
+        //Phase 3 (Trade Cards) 
+        System.out.println("NOW ENTERING PHASE: "+state.getCurrentPhase());
+        //TODO: Fix phase advancement
+        
+        System.out.println("PHASE 3: ");
+        //PHASE 3 CODE
+        System.out.println("Would you like to trade a card? (y/n): ");
+
+        if(getUserConfirm()){
+            state.tradeOption(true);
+            for(int i =0; i<state.getPlayers();i++){
+                printHand(i);
+            }
+            
+            //Set Targets
+            while(state.getClearToTrade()){
+            System.out.println("Who would you like to trade with?");
+            int targetPlayer = textInput.nextInt();
+            System.out.println("What card would you like to trade?:");
+            int cardToTrade = textInput.nextInt();
+            System.out.println("What card would you like from the other player?:");
+            int targetCard = textInput.nextInt();
+            //Trade
+            state.tradeCurrentPlayerCards(targetPlayer, cardToTrade, targetCard);
+            
+            state.tradeOption(false);
+            }
+        } else{
+            state.tradeOption(false);
+        }
+        
+        printHand(state.getCurrentPlayer());
+
+        
+        //Phase 4 (Play Cards)
+        System.out.println("PHASE 4: ");
+        
+        printMonsters(state);
+        System.out.println("Would you like to play a card? (y/n): ");
+        
+        System.out.println("Phase number: "+state.getCurrentPhase());
+        if(getUserConfirm()){
+            boolean playingCards = true;
+            
+            while(playingCards){
+            //Get target info
+            System.out.println("Which monster would you like to hit? (int): ");
+            int targetMonster = textInput.nextInt();
+            
+            printHand(state.getCurrentPlayer());
+            System.out.println("Which card would you like to play? (int):");
+            int targetCard = textInput.nextInt();
+            
+            
+        //    state.playHitCard(targetMonster, targetCard);
             printMonsters(state);
-            //PHASE 1(Draw Up)
-            state.fillCurrentPlayerHand();
-
-
-            //PHASE 2 (Discard and Draw)
+            
             printHand(state.getCurrentPlayer());
-            System.out.println("PHASE 2: ");
-            System.out.println("Would you like to discard a card? (y/n): ");
-            if(getUserConfirm()){
-                state.discardOption(true);
-                System.out.println("Which card would you like to discard? (INT): ");
-                int userInput = textInput.nextInt();
-                state.discardCurrentPlayersCard(userInput);
-                state.discardOption(false);
-
-            } else {
-
-                System.out.println("User has elected not to discard");
-                state.discardOption(false);
-
-            }
-
-            printHand(state.getCurrentPlayer());
-
-            //PHASE 3 (Trade Cards)
-            System.out.println("NOW ENTERING PHASE: "+state.getCurrentPhase());
-
-            System.out.println("PHASE 3: ");
-            //PHASE 3 CODE
-            System.out.println("Would you like to trade a card? (y/n): ");
-
-            if(getUserConfirm()){
-                state.tradeOption(true);
-                for(int i =0; i<state.getPlayers();i++){
-                    printHand(i);
+            
+            System.out.println("Play another card? (y/n): ");
+            if(!getUserConfirm()){
+                playingCards=false;
                 }
-
-                //SET TARGETS
-                while(state.getClearToTrade()){
-                    System.out.println("Who would you like to trade with?");
-                    int targetPlayer = textInput.nextInt();
-                    System.out.println("What card would you like to trade?:");
-                    int cardToTrade = textInput.nextInt();
-                    System.out.println("What card would you like from the other player?:");
-                    int targetCard = textInput.nextInt();
-                    //Trade
-                    state.tradeCurrentPlayerCards(targetPlayer, cardToTrade, targetCard);
-
-                    state.tradeOption(false);
-                }
-            } else{
-                state.tradeOption(false);
-            }
-
-            printHand(state.getCurrentPlayer());
-
-
-            //PHASE 4 (PLAY CARDS)
-            System.out.println("PHASE 4: ");
-
-            printMonsters(state);
-            System.out.println("Would you like to play a card? (y/n): ");
-
-            System.out.println("Phase number: "+state.getCurrentPhase());
-            if(getUserConfirm()){
-                boolean playingCards = true;
-
-                while(playingCards){
-                    //GET TARGET INFO
-                    System.out.println("Which monster would you like to hit? (int): ");
-                    int targetMonster = textInput.nextInt();
-
-                    printHand(state.getCurrentPlayer());
-                    System.out.println("Which card would you like to play? (int):");
-                    int targetCard = textInput.nextInt();
-
-
-                    state.playHitCard(targetMonster, targetCard);
-                    printMonsters(state);
-
-                    printHand(state.getCurrentPlayer());
-
-                    System.out.println("Play another card? (y/n): ");
-                    if(!getUserConfirm()){
-                        playingCards=false;
-                    }
-                }//PLAYING LOOP
-            }
-
-            state.playAdvance();
-            //PHASE 5 (MOVE MONSTERS)
-            System.out.println("PHASE 5: ");
-
-            //PHASE 6 (ADD MONSTERS)
-            System.out.println("PHASE 6: ");
-            System.out.println("----------------------------------------------------");
+            }//Playing loop
+        } 
+        
+        state.playAdvance();
+        //Phase 5 (Move Monsters)
+        System.out.println("PHASE 5: ");
+        
+        //Phase 6 (Draw 2 new monsters)
+        System.out.println("PHASE 6: ");
+        System.out.println("----------------------------------------------------");
         }
 
         System.exit(0);
@@ -179,18 +181,15 @@ public class TextUI {
             monsters[i].horizontalLocation = gState.getMonsterX(i);
             monsters[i].verticalLocation = gState.getMonsterY(i);
             monsters[i].tokenName = state.getMonsterName(i);
-            monsters[i].serial = state.getMonsterSerialsInPlay()[i];
-        }
-
+        } 
+        
         for(int i =0; i<numMonsters; i++){
             int hL =monsters[i].horizontalLocation;
             int vL = monsters[i].verticalLocation;
             String name =monsters[i].tokenName;
             int hp = monsters[i].hitPoints;
-            int serial = monsters[i].serial;
-
-            System.out.println(i +": "+ name+ " @ X:"+hL+" Y:"+vL+" HP: "+hp+", Serial:"+serial);
-
+            
+            System.out.println(i +": "+ name+ " @ X:"+hL+" Y:"+vL+" HP: "+hp);
         }
     };
 
@@ -201,7 +200,7 @@ public class TextUI {
      */
     private void printHand(int player){
         String[] hand =state.getHand(player);
-
+        
         System.out.println(state.getPlayerName(player)+"'s hand!:");
         for(int i = 0; i<hand.length;i++){
             System.out.println((i)+". . .  "+hand[i]);
@@ -229,25 +228,13 @@ public class TextUI {
                 userResponse = false;
             } else {
                 if (!errorCounter) {
-                    System.out.println("Please enter a valid response!");
-                    errorCounter=true;
+                System.out.println("Please enter a valid response!");
+                errorCounter=true;
                 }
             }
-
+            
         }
         return userResponse;
     }
-
-
-    /**
-     *
-     *
-     * @param monsterPosition The position in the list of monsters spat out in the text UI that will be attacked.
-     * @param cardInHand The card position inside of the card list for player's hand.
-     */
-    private void playTextCard(int monsterPosition, int cardInHand){
-        state.setSelectedCard(cardInHand);
-        state.setSelectedMonster(state.getMonsterSerialsInPlay()[monsterPosition]);
-        state.playCard();
-    }
+    
 }

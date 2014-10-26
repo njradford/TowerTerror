@@ -1,7 +1,5 @@
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  * The Player class for handling each player's cards and points. Keeps track of
  * the cards in a player's hands with an array of cards and counts the player's
@@ -12,8 +10,8 @@ import java.io.Serializable;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class Player implements Serializable {
-
+public class Player {
+    private String archetype; 
     private String name;
     private Card[] cardsInHand;
     private int handSize;
@@ -26,11 +24,12 @@ public class Player implements Serializable {
      * @param sizeOfHand The size of the player's hand for this game.
      * @param gameDeck The deck used for this game.
      */
-    public Player(int sizeOfHand, Deck gameDeck, String name) {
+    public Player(int sizeOfHand, Deck gameDeck, String name, String archetype) {
         cardsInHand = new Card[sizeOfHand];
         handSize = sizeOfHand;
         topOfHand = sizeOfHand - 1;
         this.name = name;
+        this.archetype = archetype; 
         for (int i = 0; i < sizeOfHand; i++) {
             cardsInHand[i] = gameDeck.dealCard();
         }
@@ -43,6 +42,22 @@ public class Player implements Serializable {
      */
     public void awardPoints(int points) {
         this.points+= points;
+    }
+    
+    /**
+     * 
+     * @return The name of the player's archetype
+     */
+    public String getArchetype() {
+        return archetype; 
+    }
+    
+    /**
+     * 
+     * @param archetype The new name for the player's archetype
+     */
+    public void setArchetype(String archetype) {
+        this.archetype = archetype; 
     }
 
     /**

@@ -4,15 +4,13 @@
  */
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  *
  * @author James Morrow <jmorrow1@unca.edu>
  */
-public class ReinforceWallCard extends EffectCard implements Serializable {
-    ReinforceWallCard(String name) {
-        super(name); 
+public class ReinforceWallCard extends EffectCard {
+    ReinforceWallCard() {
+        super("reinforce wall"); 
     }
     
     public int takeEffect(BoardEffectInterface i) {

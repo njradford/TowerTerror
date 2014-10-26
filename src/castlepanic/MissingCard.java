@@ -4,16 +4,14 @@
  */
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  *
  * @author James Morrow <jmorrow1@unca.edu>
  */
-public class MissingCard extends EffectCard implements Serializable {
+public class MissingCard extends EffectCard {
     
-     MissingCard(String name) {
-         super(name); 
+     MissingCard() {
+         super("missing"); 
      }
     
      @Override

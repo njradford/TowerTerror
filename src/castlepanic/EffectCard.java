@@ -6,13 +6,11 @@
 
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  *
  * @author bmcdanie
  */
-public abstract class EffectCard  extends Card implements Serializable {
+public abstract class EffectCard extends Card {
     
     public EffectCard(String name) {
         super(name);

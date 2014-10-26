@@ -1,7 +1,5 @@
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  * The common token superclass. Encompasses all token types, monsters and
  * effects. Supplies only a token name, subclasses provide additional
@@ -12,7 +10,7 @@ import java.io.Serializable;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class Token implements Serializable {
+public class Token {
 
     protected String tokenName;
 

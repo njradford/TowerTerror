@@ -6,13 +6,11 @@
 
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  *
  * @author bmcdanie
  */
-public interface BoardEffectInterface extends Serializable {
+public interface BoardEffectInterface {
     /**
      * Needs javadoc
      * @return 
@@ -20,5 +18,9 @@ public interface BoardEffectInterface extends Serializable {
     public int noNewMonsters();
     public int reinforceWall(); 
     public int barbarian(); 
+    public int timeStop(); 
+    public int timeSlap(); 
+    public int rewind(); 
+    public int turret(); 
     
 }

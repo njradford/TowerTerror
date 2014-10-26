@@ -1,13 +1,12 @@
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
- * The Game State Interface contains all of the methods necessary for a User Interface to Castle Panic
+ * The Game State Interface contains all of the methods necessary for the User
+ * Interface to Castle Panic
  *
  * @author Nick
  */
-public interface GameStateInterface extends Serializable {
+public interface GameStateInterface {
 
     /**
      * Game State
@@ -169,12 +168,12 @@ public interface GameStateInterface extends Serializable {
      * Towers
      */
     /**
-     * Returns boolean for if a given tower is standing
+     * Returns int that represents the tower state
      *
      * @param pos position in the tower array [0-5] that you'd like to query.
      * @return
      */
-    public boolean getTowerStatus(int pos);
+    public int getTowerStatus(int pos);
 
     /**
      * Walls
@@ -272,20 +271,7 @@ public interface GameStateInterface extends Serializable {
      *
      * @return
      */
-    public int getTopOfDeck();
 
-    /**
-     * Returns the index of the top of the discard pile
-     *
-     * @return
-     */
-    public int getTopOfDiscard();
-
-    /**
-     * Returns the size of the deck
-     *
-     * @return
-     */
     public int getDeckSize();
 
     /**
@@ -334,31 +320,5 @@ public interface GameStateInterface extends Serializable {
      * @return
      */
     public int getCardColorFromDiscard(int index);
-
-
-    /**
-     * playHitCard method (text): Invoked to attack monsters with HitCards.
-     * After being given the index of a monster in the monstersInField ArrayList
-     * and the index of a HitCard in the current player's hand, checks to ensure
-     * that monster is in range, calls its takeHit method, and removes it from
-     * the monstersInField ArrayList if its HP reaches 0.
-     *
-     * @param targetMonsterIndex: Index of monster to attack in the
-     * monstersInField ArrayList.
-     * @param hitCardIndex: Index of a HitCard in the current player's hand.
-     * @return -1 if invoked incorrectly (with another type of card, out of
-     * range, out of phase), 0 if functioning correctly.
-     */
-    public int playHitCard(int targetMonsterIndex, int hitCardIndex);
-
-    /**
-     * playAdvance method: Should be invoked after the player has played all
-     * desired cards in the current turn. No argument method completes turn and
-     * moves to next player.
-     *
-     * @return: -1 if invoked out of phase, 1 if invoked correctly and moving to
-     * turn end, 3 if game is won.
-     */
-    public int playAdvance();
 
 }

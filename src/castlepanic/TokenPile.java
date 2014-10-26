@@ -1,6 +1,5 @@
 package castlepanic;
 
-import java.io.Serializable;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class TokenPile implements Serializable {
+public class TokenPile {
 
     private Token[] pileOfTokens;
     private int topOfPile;

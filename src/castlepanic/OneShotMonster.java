@@ -4,13 +4,11 @@
  */
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  *
  * @author jfenwic1
  */
-public class OneShotMonster extends Monster implements Serializable {
+public class OneShotMonster extends Monster {
     private int oneShotDistance; //this is the vertical location from any damage from a hit card
     private int immuneDistance; // this is the spot in the ring that is immune depending on the special monster that is being hit
     
@@ -103,7 +101,17 @@ public class OneShotMonster extends Monster implements Serializable {
             return (verticalLocation - 1);
         }
     }
-
+    
+    /**
+     * The altitude location that the monster will move to on the next turn.
+     * Basic monsters stay on the ground
+     *
+     * @return The next altitude location of the monster.
+     */
+    @Override
+    public int getNextAltitudeLocation() {
+         return altitudeLocation; 
+    }
     /**
      * The effects that happen when this monster enters the field. Basic
      * monsters do not have any effects upon entering the field.

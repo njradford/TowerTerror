@@ -1,7 +1,5 @@
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  * The basic monster class. Basic monsters are goblins, orcs, and trolls. They
  * are spawned in a random horizontal location in the forest ring and move one
@@ -12,7 +10,7 @@ import java.io.Serializable;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class BasicMonster extends Monster implements Serializable {
+public class BasicMonster extends Monster {
 
     /**
      * A two-argument constructor for a basic monster. Creates a basic monster
@@ -94,6 +92,16 @@ public class BasicMonster extends Monster implements Serializable {
         }
     }
 
+      /**
+     * The altitude location that the monster will move to on the next turn.
+     * Basic monsters stay on the ground
+     *
+     * @return The next altitude location of the monster.
+     */
+     @Override
+    public int getNextAltitudeLocation() {
+         return altitudeLocation; 
+    }
     /**
      * The effects that happen when this monster enters the field. Basic
      * monsters do not have any effects upon entering the field.

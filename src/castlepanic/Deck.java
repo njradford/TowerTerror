@@ -1,126 +1,119 @@
 package castlepanic;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * The Deck class that contains an array of all the cards that can be dealt to a
- * player's hand. It initializes an array of size DECK_SIZE and loads the proper
- * amount of cards into elements 0 through DECK_SIZE-1.
- *
- * @author Adam Whitley
- * @author Gregory Loftis
- * @author Dipesh Dave
- * @author John Fenwick
+ * @author James Morrow <jmorrow1@unca.edu>
  */
-public class Deck implements Serializable {
-
-    private Card[] deckOfCards;
-    private Card[] discardedCards;
-    private int topOfDeck;
-    private int topOfDiscard;
-    public static final int DECK_SIZE = 52;
-
+public class Deck {
+    private ArrayList<Card> deckPile; 
+    private ArrayList<Card> discardPile; 
+    private int initialDeckSize; 
+    
     /**
      * Constructs a new deck with an array of cards to be used in the game. For
      * the first iteration, there will be only basic 48 basic hit cards. Three
      * cards of each distance and color combination (Archer, knight, swordsman,
-     * hero. 0 = red, 1 = green, 2 = blue, 3 = any). Shuffles after
-     * construction.
-     *
+     * hero. 0 = red, 1 = green, 2 = blue, 3 = any). Does not shuffle itself. 
      */
-    public Deck() {
-        int currentIndex = 0;
-        deckOfCards = new Card[DECK_SIZE];
-        discardedCards = new Card[DECK_SIZE];
-        topOfDeck = DECK_SIZE - 1;
-        topOfDiscard = -1;
-
-        //This doubly-nested loop creates 3 cards of each type and color combination
-        //u = looping through the card types
-        //i = looping through the possible colors
-        for (int u = 0; u < 3; u++) {
+    Deck(String[] archetypes) {
+        deckPile = new ArrayList<Card>(initialDeckSize); 
+        discardPile = new ArrayList<Card>(); 
+              
+        //add hit cards
+        for (int u = 0; u < 3; u++) { 
             for (int i = 0; i < 4; i++) { //Looping through the colors
-
-                deckOfCards[currentIndex++] = new HitCard("swordsman", i);
-                deckOfCards[currentIndex++] = new HitCard("archer", i);
-                deckOfCards[currentIndex++] = new HitCard("knight", i);
-                deckOfCards[currentIndex++] = new HitCard("hero", i);
-
+                deckPile.add(new HitCard("swordsman", i));
+                deckPile.add(new HitCard("archer", i));
+                deckPile.add(new HitCard("knight", i));
+                deckPile.add(new HitCard("hero", i));
             }
         }
-        //add two missing cards to the deck
-        for (int i=0; i<2; i++) {   
-            deckOfCards[currentIndex++] = new MissingCard("missing"); 
+        initialDeckSize += 48; 
+        //add effect cards based on the player archetypes are in play
+        ArrayList<String>archetypesCopy = new ArrayList<String>(); 
+        int numPlayers = archetypes.length; 
+        int numDuplicatesToAdd = 0; 
+        
+        //try to balance the deck a little bit
+        //if there are more players, add less effect cards for each of them
+        //if there are less players, add more effect cards for each of them
+        if (numPlayers <= 3) {
+            numDuplicatesToAdd = 2; 
         }
-        //add two barbarian cards to the deck
-        for (int i=0; i<2; i++) {
-            deckOfCards[currentIndex++] = new BarbarianCard("barbarian"); 
+        else {
+            numDuplicatesToAdd = 1; 
         }
-        this.shuffle();
+        
+        for (int i=0; i<archetypes.length; i++) {
+            archetypesCopy.add(archetypes[i]); 
+        }
+        while (archetypesCopy.contains("Warleader")) {
+            for (int i=0; i<numDuplicatesToAdd; i++) {
+                deckPile.add(new BarbarianCard());
+            }
+            archetypesCopy.remove("Warleader"); 
+            initialDeckSize += 1*numDuplicatesToAdd; 
+        }
+        while (archetypesCopy.contains("Engineer")) {
+            for (int i=0; i<numDuplicatesToAdd; i++) {   
+                deckPile.add(new ReinforceWallCard()); 
+                deckPile.add(new TurretCard()); 
+            }
+            archetypesCopy.remove("Engineer");
+            initialDeckSize += 2*numDuplicatesToAdd; 
+        }
+        while (archetypesCopy.contains("Chronomancer")) {
+            for (int i=0; i<numDuplicatesToAdd; i++) {   
+                deckPile.add(new MissingCard()); 
+                deckPile.add(new TimeStopCard()); 
+                deckPile.add(new TimeSlapCard()); 
+                deckPile.add(new RewindCard()); 
+            }
+            archetypesCopy.remove("Chronomancer");
+            initialDeckSize += 4*numDuplicatesToAdd; 
+        }
+   
+        deckPile = shuffle(deckPile); 
+        
+        System.out.println("DECK SIZE IS " + initialDeckSize); 
     }
-
+    
     /**
-     * Shuffles the deck. Takes the deckOfCards array and shuffles them into a
-     * random order.
-     *
+     * Takes the ArrayList given as an argument and depletes it of all its cards in the process of 
+     * putting those cards in a new random order in a new ArrayList, which it returns. 
+     * @param cardsToShuffle : The cards that this method takes and shuffles into a new ArrayList. 
+     *                          cardsToShuffle will be removed of its cards in the process of shuffling
+     * @return The given cards in a new ArrayList in a new order
      */
-    private void shuffle() {
-
-        Card[] tempArray = new Card[DECK_SIZE];
-        Random r = new Random();
-
-        //if this is a deck made from discard pile
-        if (topOfDiscard != - 1) {
-            for (int i = topOfDiscard; i >= 0; i--) {
-                int index = r.nextInt(i + 1); // the index of a random card in the deck
-                tempArray[i] = discardedCards[index];
-                // swap cards[i] with cards[index]
-                Card tempCard = discardedCards[i];
-                discardedCards[i] = discardedCards[index];
-                discardedCards[index] = tempCard;
-            }
-            // at this point, tempArray has all the cards selected in random order
-            deckOfCards = tempArray;
-            topOfDeck = topOfDiscard;
-            discardedCards = new Card[DECK_SIZE];
-            topOfDiscard = -1;
-
-            //if this is a new deck
-        } else if (topOfDiscard == -1) {
-            for (int i = topOfDeck; i >= 0; i--) {
-                int index = r.nextInt(i + 1); // the index of a random card in the deck
-                tempArray[i] = deckOfCards[index];
-                // swap cards[i] with cards[index]
-                Card tempCard = deckOfCards[i];
-                deckOfCards[i] = deckOfCards[index];
-                deckOfCards[index] = tempCard;
-            }
-            // at this point, tempArray has all the cards selected in random order
-            deckOfCards = tempArray;
-
-            //if cards have been discarded, but the draw pile is still populated
-            //   } else {
-            //       System.out.println("Error Shuffling: Cards remain in deck");
+    private ArrayList<Card> shuffle(ArrayList<Card> cardsToShuffle) {
+        ArrayList<Card> shuffledCards = new ArrayList<Card>(initialDeckSize); 
+        Random r = new Random(); 
+        while (cardsToShuffle.size() > 0) {
+            int randomIndex = r.nextInt(cardsToShuffle.size()); 
+            Card randomCard = cardsToShuffle.get(randomIndex); 
+            shuffledCards.add(randomCard);
+            cardsToShuffle.remove(randomIndex);                
         }
-
+        return shuffledCards; 
     }
-
+    
     /**
      * Deals a card from the top of the deck and decrements the topOfDeck
      * variable to point to the next card in the deck. If there are no cards
      * left to be drawn in the deck, then the discard pile is reshuffled into
      * the draw pile before drawing.
      *
-     * @return The card at the top of the deck.
+     * @return The card at the top of the deck (the card that's last in the ArrayList)
      */
     public Card dealCard() {
-        if (topOfDeck == -1) {
-            shuffle();
+        if (deckPile.isEmpty()) {
+            deckPile = shuffle(discardPile);
         }
-        Card temp = deckOfCards[topOfDeck];
-        topOfDeck--;
-        return temp;
+        Card cardToDeal = deckPile.get(deckPile.size()-1);
+        deckPile.remove(deckPile.size()-1); 
+        return cardToDeal;
 
     }
 
@@ -132,9 +125,7 @@ public class Deck implements Serializable {
      * @param discarded The card you wish to discharge.
      */
     public void toDiscard(Card discarded) {
-        discardedCards[topOfDiscard + 1] = discarded;
-        topOfDiscard++;
-
+        discardPile.add(discarded); 
     }
 
     /**
@@ -143,7 +134,7 @@ public class Deck implements Serializable {
      * @return An integer representing the number of cards in the discard pile.
      */
     public int getNumDiscardedCards() {
-        return topOfDiscard + 1;
+        return discardPile.size(); 
     }
 
     /**
@@ -152,62 +143,106 @@ public class Deck implements Serializable {
      * the bottom up, that is, index 0 contains the card at the bottom of the
      * deck.
      *
-     * @return A string array detailing the cards in the deck. Element 0
-     * contains the card at the bottom of the deck and element DECK_SIZE-1
-     * contains the top most card.
+     * @return A string array detailing the cards in the deck. 
      */
-    public String[] getCardList() {
-        String[] listOfCards = new String[topOfDeck + 1];
-        for (int i = 0; i < topOfDeck + 1; i++) {
-            listOfCards[i] = deckOfCards[i].getName();
+    public String[] getCardList() {   
+        String[] listOfCards = new String[deckPile.size()];
+        for (int i = 0; i < deckPile.size(); i++) {
+            listOfCards[i] = deckPile.get(i).getName();
         }
         return listOfCards;
     }
 
     /**
-     * Gets the overall size of the deck.
-     *
      * @return The number of cards in the deck.
      */
-    public int getDeckSize() {
-        return deckOfCards.length;
+    public int getDeckPileSize() {
+        return deckPile.size(); 
+    }
+    
+    /**
+     * 
+     * @return The number of cards in the discardPile
+     */
+    public int getDiscardPileSize() {
+        return discardPile.size(); 
     }
 
     /**
-     * Gets the number of unplayed cards left in the deck.
-     *
+     * Gets the size of the discardPile
      * @return The number of cards left in the deck.
      */
     public int getNumOfUnplayedCards() {
-        return topOfDeck + 1;
+        return discardPile.size(); 
     }
 
     /**
-     * Gets a string detailing the card at a given location in the deck. Goes
-     * from the bottom up, that is, the bottom card of the deck is in
-     * deckOfCards[0] and the top card is in deckOfCards[DECK_SIZE-1].
-     *
-     * @param i The index location of the desired card.
-     * @return A string detailing information about the card at the given index
-     * location.
+     * 
+     * @param deckPileIndex
+     * @return name of card at given index to deck pile
      */
-    public String getUnplayedCardNameAt(int i) {
-        return deckOfCards[i].getName();
+    public String getUnplayedCardNameAt(int deckPileIndex) {
+        return deckPile.get(deckPileIndex).getName(); 
     }
-
-    //document
-    public String getDiscardedCardNameAt(int i) {
-        return discardedCards[i].getName();
+    
+    /**
+     * 
+     * @param discardPileIndex
+     * @return name of card at given index to discard pile
+     */
+    public String getDiscardedCardNameAt(int discardPileIndex) {
+        return discardPile.get(discardPileIndex).getName(); 
     }
-    //document
-    //return Card at specific unplayed index
-    public Card getUnplayedCard(int i) {
-        return deckOfCards[i];
+    
+    /**
+     * 
+     * @param deckPileIndex
+     * @return card at given index to deck pile
+     */
+    public Card getUnplayedCard(int deckPileIndex) {
+        return deckPile.get(deckPileIndex); 
     }
-    //document
-    //return Card at specific discarded index
-    public Card getDiscardedCard(int i) {
-        return discardedCards[i];
+    
+    /**
+     * 
+     * @param discardPileIndex
+     * @return card at given index to discard pile
+     */
+    public Card getDiscardedCard(int discardPileIndex) {
+        return discardPile.get(discardPileIndex); 
     }
-
+    
+    /**
+     * 
+     * @param card
+     * @return true if the given card is in the deck pile
+     */
+    public boolean isCardInDeckPile(Card card) {
+        return deckPile.contains(card);
+    }
+    
+    /**
+     * 
+     * @param card
+     * @return true if the given card is in the discard pile
+     */
+    public boolean isCardInDiscardPile(Card card) {
+        return discardPile.contains(card); 
+    }
+    
+    /**
+     * @param card : the card whose index you want to find
+     * @return The index of the given card in the deckPile. If the given card does not exist within the deckPile, the method returns -1. 
+     */
+    public int getLocationOfCardInDeckPile(Card card) {
+        return deckPile.indexOf(card);
+    }
+    
+    /**
+     * @param card : the card whose index you want to find
+     * @return The index of the given card in the discardPile. If the given card does not exist within the deckPile, the method returns -1. 
+     */
+    public int getLocationOfCardInDiscardPile(Card card) {
+        return discardPile.indexOf(card); 
+    }
 }

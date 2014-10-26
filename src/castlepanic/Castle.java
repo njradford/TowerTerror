@@ -1,7 +1,5 @@
 package castlepanic;
 
-import java.io.Serializable;
-
 /**
  * The current game's castle contained in one class. Walls are put into an
  * integer array of length 7 and loaded into elements 1-6. The integer
@@ -15,9 +13,11 @@ import java.io.Serializable;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class Castle implements Serializable {
-
-    private boolean[] towers = new boolean[7]; // True means the tower exists, false means the tower is missing.
+public class Castle {
+    public static int TOWER_STANDING = 1, TOWER_RUBBLE = -1, TOWER_DESTROYED = 0; 
+   
+    
+    private int[] towers = new int[7]; // True means the tower exists, false means the tower is missing.
     private int[] walls = new int[7]; // Walls start out with 1 hitpoint, and when reinforced it has 2 hitpoints.
 
     /**
@@ -29,7 +29,7 @@ public class Castle implements Serializable {
 
         for (int i = 1; i <= 6; i++) {
             walls[i] = 1;
-            towers[i] = true;
+            towers[i] = 1;
         }
     }
 
@@ -43,25 +43,44 @@ public class Castle implements Serializable {
     public void hitWall(int wallNumber) {
         if (wallNumber < 1 || wallNumber > 6) {
             System.err.println("Wall Number " + wallNumber + " does not exist. Only walls 1-6 exist.");
-        } else if (walls[wallNumber] == 1 || walls[wallNumber] == 2) {
+        } else if (walls[wallNumber] == 2) {
             walls[wallNumber]--;
+        } else if (walls[wallNumber] == 1) {
+            walls[wallNumber] =5;
         } else {
             System.err.println("Wall Number " + wallNumber + " has " + walls[wallNumber] + " hitpoints.");
         }
     }
-
+    /**
+     * 
+     */
+    public void clearRubble(){
+        for (int i =0; i<walls.length;i++) {
+            if (walls[i] == 5) {
+                walls[i] = 0;
+            }
+        }
+    }
+    
+    public void clearTowerRubble(){
+        for (int i =0; i<towers.length;i++) {
+            if (towers[i] == -1) {
+                towers[i] = 0;
+            }
+        }
+    }
     /**
      * Gets the current health of the given wall section.
      *
      * @param wallNumber The number representing which wall to get the health
      * of. Should be a number between 1 and 6.
-     * @return The number of HP this wall has left.
+     * @return The number of HP this wall has left, or 5 if in rubble state.
      */
     public int getWallHealth(int wallNumber) {
         if (wallNumber < 1 || wallNumber > 6) {
             System.err.println("Wall Number " + wallNumber + " does not exist. Only walls 1-6 exist.");
             return -1;
-        } else if (walls[wallNumber] == 0 || walls[wallNumber] == 1 || walls[wallNumber] == 2) {
+        } else if (walls[wallNumber] == 0 || walls[wallNumber] == 1 || walls[wallNumber] == 2 || walls[wallNumber]==5) {
             return walls[wallNumber];
         } else {
             System.err.println("Wall Number " + wallNumber + " has " + walls[wallNumber] + " hitpoints.");
@@ -113,8 +132,11 @@ public class Castle implements Serializable {
     public void hitTower(int towerNumber) {
         if (towerNumber < 1 || towerNumber > 6) {
             System.err.println("Tower Number " + towerNumber + " does not exist. Only tower 1-6 exist.");
-        } else if (towers[towerNumber] == true) {
-            towers[towerNumber] = false;
+        } else if (towers[towerNumber] == TOWER_STANDING) {
+            towers[towerNumber] = TOWER_RUBBLE;
+        } else if (towers[towerNumber] == TOWER_RUBBLE) {
+            //empty case
+            return;
         } else {
             System.err.println("Tower Number " + towerNumber + "already destroyed. He's dead, Jim....DEAD.");
         }
@@ -125,12 +147,12 @@ public class Castle implements Serializable {
      *
      * @param towerNumber The specific tower to check the status of. Should be a
      * number between 1 and 6.
-     * @return True if the tower is standing, false if the tower is destroyed.
+     * @return 0 if the tower is destroyed, 1 if the tower is standing, -1 if it's rubble
      */
-    public boolean isTowerStanding(int towerNumber) {
+    public int getTowerState(int towerNumber) {
         if (towerNumber < 1 || towerNumber > 6) {
             System.err.println("Tower Number " + towerNumber + " does not exist. Only tower 1-6 exist.");
-            return false;
+            return 0;
         } else {
             return towers[towerNumber];
         }
@@ -144,8 +166,8 @@ public class Castle implements Serializable {
      * least one tower standing.
      */
     public boolean areWeDeadYet() {
-        if (towers[1] == false && towers[2] == false && towers[3] == false && towers[4] == false && towers[5] == false && towers[6] == false) {
-            return true; //you suck
+        if (towers[1] != 1 && towers[2] != 1 && towers[3] != 1 && towers[4] != 1 && towers[5] != 1 && towers[6] != 1) {
+            return true; 
         } else {
             return false;
         }

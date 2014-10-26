@@ -1,20 +1,17 @@
 package castlepanic;
 
-import javax.naming.directory.SearchResult;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author gloftis
  */
-public class GameState implements GameStateInterface, BoardEffectInterface, Serializable {
+public class GameState implements GameStateInterface, BoardEffectInterface {
 
-    /**
-     * boardEffectFlags: boolean array to track special effects in current
-     * GameState Index 0: noNewMonsters ("Missing" card)
-     */
-    private boolean[] boardEffectFlags;
+    //variables for keeping track of card effects
+    private final static int DELAY = 0, TIME_STOP = 1;
+    private boolean[] tempBoardEffectFlags = new boolean[2];
+    private int[] turretAmmo = new int[6];
 
     private Castle gameCastle;
     private TokenPile gameTokenPile;
@@ -24,7 +21,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     private int numberOfDiscards;
     private int handSize;
     private int selectedCardIndex = -1;
-    private int selectedWallIndex = -1; 
+    private int selectedWallIndex = -1;
+    private int selectedTowerIndex = 1;
     private int otherPlayerIndex = -1;
     private int otherPlayerCardIndex = -1;
     private ArrayList<Monster> monstersInField;
@@ -49,25 +47,50 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     //Section of methods overriding BoardEffectInterface
     @Override
     public int noNewMonsters() {
-       boardEffectFlags[0] = true; 
-       return 0; 
+        tempBoardEffectFlags[DELAY] = true;
+        return 0;
     }
-    
+
+    @Override
+    public int turret() {
+        if (gameCastle.getTowerState(selectedTowerIndex) == Castle.TOWER_STANDING) {
+            turretAmmo[selectedTowerIndex] = 3;
+        }
+        return 0;
+    }
+
+    @Override
+    public int rewind() {
+        for (Monster m : monstersInField) {
+            if (m.getVerticalLocation() == 0) {
+                m.setVerticalLocation(1);
+            }
+        }
+        return 0;
+    }
+
+    @Override
+    public int timeSlap() {
+        Monster m = monstersInField.get(selectedMonsterIndex);
+        m.setVerticalLocation(4);
+        return 0;
+    }
+
     @Override
     public int reinforceWall() {
         gameCastle.reinforceWall(selectedWallIndex);
-        return 0; 
+        return 0;
     }
-    
+
     @Override
-    public int barbarian() {    
+    public int barbarian() {
         if (monstersInField.size() - 1 < selectedMonsterIndex || selectedMonsterIndex < 0) {
             System.err.println("Attempting to play barbarian card on an invalid monster index.");
             return -1;
-        } 
-        else {
-            Monster m = monstersInField.get(selectedMonsterIndex); 
+        } else {
+            Monster m = monstersInField.get(selectedMonsterIndex);
             m.takeHit(m.getHP()); //hit selected monster so to set its hp to 0   
+
             monstersInField.get(selectedMonsterIndex).deathEffects(this);
             monstersInField.remove(selectedMonsterIndex);
             //check to see if game is won?
@@ -75,17 +98,25 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             return 0;
         }
     }
-    
-    
+
+    @Override
+    public int timeStop() {
+        tempBoardEffectFlags[TIME_STOP] = true;
+        return 0;
+    }
+
     //Section of methods found in implemented interfaces
-
     public GameState(String[] listOfNames) {
-        boardEffectFlags = new boolean[1];
-
         gameCastle = new Castle();
         gameTokenPile = new TokenPile();
-        gameDeck = new Deck();
+        //dummy code
+        String[] archetypes = new String[listOfNames.length];
+        for (int i = 0; i < listOfNames.length; i++) {
+            archetypes[i] = "Chronomancer";
+        }
+
         players = new Player[listOfNames.length];
+        gameDeck = new Deck(archetypes);
         collisionDamage = 1; //monsters take this amount of damage upon hitting wall/tower.
         //Rules for number of trades and discards in the game, 1 player can't trade, 2-5 players get 1 trade.
         //2 discards per phase for 1 player, 1 discard per phase for more.
@@ -111,7 +142,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
         }
         //Create new players with the appropriate hand sizes, 
         for (int i = 0; i < listOfNames.length; i++) {
-            players[i] = new Player(handSize, gameDeck, listOfNames[i]);
+            players[i] = new Player(handSize, gameDeck, listOfNames[i], archetypes[i]);
         }
 
         monstersInField = new ArrayList(gameTokenPile.PILE_SIZE); //encap
@@ -311,6 +342,10 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             } else {
                 currentPhase++;
                 //initialize phase 4 data fields
+                //set all rubble walls to destroyed walls
+                gameCastle.clearRubble();
+                //set all tower rubble to destroyed towers
+                gameCastle.clearTowerRubble();
                 return 1;
             }
         }
@@ -381,19 +416,18 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             }
         }
     }
-    
+
     /*
      * @return result from the appropriate method (playHitCard() or playEffectCard()), if possible
      * otherwise, return -1
      */
     public int playCard() {
         if (players[currentPlayerNumber].getCardAt(selectedCardIndex) instanceof HitCard) {
-            return playHitCard();        
-        }
-        else if (players[currentPlayerNumber].getCardAt(selectedCardIndex) instanceof EffectCard) {
+            return playHitCard();
+        } else if (players[currentPlayerNumber].getCardAt(selectedCardIndex) instanceof EffectCard) {
             return playEffectCard();
         }
-        return -1; 
+        return -1;
     }
 
     /**
@@ -425,11 +459,11 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             return -1;
         } else {
             HitCard f = (HitCard) players[currentPlayerNumber].getCardAt(selectedCardIndex); //f is the current HitCard being played.
-            boolean[][] range = f.getHitLocations();
+            boolean[][][] range = f.getHitLocations();
 
             //add helper function - input: monster location output - boolean
             //if the current HitCard can hit the location the current monster resides in
-            if (range[monstersInField.get(selectedMonsterIndex).getHorizontalLocation()][monstersInField.get(selectedMonsterIndex).getVerticalLocation()]) {
+            if (range[monstersInField.get(selectedMonsterIndex).getHorizontalLocation()][monstersInField.get(selectedMonsterIndex).getVerticalLocation()][monstersInField.get(selectedMonsterIndex).getAltitudeLocation()]) {
                 monstersInField.get(selectedMonsterIndex).takeHit(f.getDamage()); //HitCard deals its damage to monster.
                 if (monstersInField.get(selectedMonsterIndex).getHP() <= 0) {
                     monstersInField.get(selectedMonsterIndex).deathEffects(this);
@@ -459,44 +493,46 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
      * @return -1 if invoked incorrectly (with another type of card, out of
      * range, out of phase), 0 if functioning correctly.
      */
-    public int playHitCard(int targetMonsterIndex, int hitCardIndex) {
-        if (currentPhase != 4) {
-            System.err.println("Incorrect Phase - playHitCard invoked out of phase");
-            return -1;
-        } else if (players[currentPlayerNumber].getHandSize() - 1 < hitCardIndex) {
-            System.err.println("Attempting to play hit card at invalid hand index.");
-            return -1;
-        } else if (monstersInField.size() - 1 < targetMonsterIndex) {
-            System.err.println("Attempting to play hit card on a monster whose index is invalid.");
-            return -1;
-        } else if (!(players[currentPlayerNumber].getCardAt(hitCardIndex) instanceof HitCard)) {
-            System.err.println("playHitCard invoked with a non-hit card selected!");
-            return -1;
-        } else {
-            HitCard f = (HitCard) players[currentPlayerNumber].getCardAt(hitCardIndex); //f is the current HitCard being played.
-            boolean[][] range = f.getHitLocations();
+    /*
+     public int playHitCard(int targetMonsterIndex, int hitCardIndex) {
+     if (currentPhase != 4) {
+     System.err.println("Incorrect Phase - playHitCard invoked out of phase");
+     return -1;
+     } else if (players[currentPlayerNumber].getHandSize() - 1 < hitCardIndex) {
+     System.err.println("Attempting to play hit card at invalid hand index.");
+     return -1;
+     } else if (monstersInField.size() - 1 < targetMonsterIndex) {
+     System.err.println("Attempting to play hit card on a monster whose index is invalid.");
+     return -1;
+     } else if (!(players[currentPlayerNumber].getCardAt(hitCardIndex) instanceof HitCard)) {
+     System.err.println("playHitCard invoked with a non-hit card selected!");
+     return -1;
+     } else {
+     HitCard f = (HitCard) players[currentPlayerNumber].getCardAt(hitCardIndex); //f is the current HitCard being played.
+     boolean[][] range = f.getHitLocations();
 
-            //add helper function - input: monster location output - boolean
-            //if the current HitCard can hit the location the current monster resides in
-            if (range[monstersInField.get(targetMonsterIndex).getHorizontalLocation()][monstersInField.get(targetMonsterIndex).getVerticalLocation()]) {
-                monstersInField.get(targetMonsterIndex).takeHit(f.getDamage()); //HitCard deals its damage to monster.
-                if (monstersInField.get(targetMonsterIndex).getHP() <= 0) {
-                    monstersInField.get(targetMonsterIndex).deathEffects(this);
-                    monstersInField.remove(targetMonsterIndex);
-                    //check to see if game is won?
-                    players[currentPlayerNumber].awardPoints(monstersInField.get(targetMonsterIndex).getPointValue()); //give player points based on monster value
-                }
-                gameDeck.toDiscard(players[currentPlayerNumber].removeCardAt(hitCardIndex)); //removes HitCard from hand and places in discard pile.
-                return 0;
-            } else {
-                System.err.println("Monster not in range of selected card!");
-                return -1;
-            }
-        }
-    }
-/**
- * needs javadoc 9/10 
- */
+     //add helper function - input: monster location output - boolean
+     //if the current HitCard can hit the location the current monster resides in
+     if (range[monstersInField.get(targetMonsterIndex).getHorizontalLocation()][monstersInField.get(targetMonsterIndex).getVerticalLocation()]) {
+     monstersInField.get(targetMonsterIndex).takeHit(f.getDamage()); //HitCard deals its damage to monster.
+     if (monstersInField.get(targetMonsterIndex).getHP() <= 0) {
+     monstersInField.get(targetMonsterIndex).deathEffects(this);
+     monstersInField.remove(targetMonsterIndex);
+     //check to see if game is won?
+     players[currentPlayerNumber].awardPoints(monstersInField.get(targetMonsterIndex).getPointValue()); //give player points based on monster value
+     }
+     gameDeck.toDiscard(players[currentPlayerNumber].removeCardAt(hitCardIndex)); //removes HitCard from hand and places in discard pile.
+     return 0;
+     } else {
+     System.err.println("Monster not in range of selected card!");
+     return -1;
+     }
+     }
+     }
+     */
+    /**
+     * needs javadoc 9/10
+     */
     private int playEffectCard() {
         if (currentPhase != 4) {
             System.err.println("Incorrect Phase - playEffectCard invoked out of phase");
@@ -530,23 +566,52 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             if (monstersInField.isEmpty() && gameTokenPile.getUnPlayedTokens() == 0) { //WE WON - ALL YOUR BASE ARE BELONG TO US
                 return 3;
             }
-            
-            monstersMove(); 
+            if (!tempBoardEffectFlags[TIME_STOP]) {
+                monstersMove();
+            }
             //as long as the missing flag is not set to true, draw tokens
-            if (!boardEffectFlags[0]) {
+            if (!tempBoardEffectFlags[DELAY]) {
                 drawTokens();
             }
 
             currentPhase = 1;
             currentPlayerNumber = (currentPlayerNumber + 1) % players.length; //cycle to next player.
-            
+
             //reset all the temporary flags at the end of turn
-            for (int i=0; i<boardEffectFlags.length; i++) {
-                boardEffectFlags[i] = false;
+            for (int i = 0; i < tempBoardEffectFlags.length; i++) {
+                tempBoardEffectFlags[i] = false;
             }
+            //update turret effect logic
+            for (int i = 0; i < turretAmmo.length; i++) {
+                int towerIndex = i;
+                //if the tower is gone, the turret goes with it
+                if (!(gameCastle.getTowerState(towerIndex) == Castle.TOWER_STANDING)) {
+                    turretAmmo[i] = 0;
+                }
+                //if the tower has a turret
+                if (turretAmmo[i] != 0) {
+                    final int anImpossiblyBigNumber = 100;
+                    int closestToTower = anImpossiblyBigNumber;
+                    Monster closestMonster = null;
+                    for (Monster m : monstersInField) {
+                        if (m.getHorizontalLocation() == towerIndex) {
+                            if (m.getVerticalLocation() < closestToTower) {
+                                closestToTower = m.getVerticalLocation();
+                                closestMonster = m;
+                            }
+                        }
+                    }
+                    if (closestMonster != null) {
+                        closestMonster.takeHit(1);
+                        if (closestMonster.getHP() <= 0) {
+                            closestMonster.deathEffects(this);
+                            monstersInField.remove(closestMonster);
+                        }
+                        turretAmmo[i]--;
+                    }
 
-            //SEND THE GAMESTATE THROUGH THE NETWORK SESSION
-
+                }
+            }
 
             return 1;
         }
@@ -571,9 +636,10 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
         } else {
             for (Monster monster : monstersInField.toArray(new Monster[monstersInField.size()])) {
                 if (monster.getNextVerticalLocation() > 0) { //if the monster's next location is not approaching castle.
+
                     monster.movement(this);
                 } else if (monster.getVerticalLocation() == 0) { //if the monster is already inside castle ring.
-                    if (gameCastle.isTowerStanding(monster.getNextHorizontalLocation())) { //if monster is moving into standing tower.
+                    if (gameCastle.getTowerState(monster.getNextHorizontalLocation()) != Castle.TOWER_DESTROYED) { //if monster is moving into standing tower.
                         gameCastle.hitTower(monster.getNextHorizontalLocation());
                         monster.takeHit(collisionDamage);
                         if (monster.getHP() <= 0) {
@@ -588,17 +654,21 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                         monster.movement(this);
                     }
                 } else if (monster.getNextVerticalLocation() == 0) { //if monster is moving through wall area.
-                    if (gameCastle.getWallHealth(monster.getHorizontalLocation()) <= 0) { //TO DO double check basilisk rules/calvalry
-                        if (gameCastle.isTowerStanding(monster.getNextHorizontalLocation())) { //if monster is moving into standing tower.
+                    if (gameCastle.getWallHealth(monster.getHorizontalLocation()) <= 0 && gameCastle.getWallHealth(monster.getHorizontalLocation()) < 5) { //TO DO double check basilisk rules/calvalry
+                        if (gameCastle.getTowerState(monster.getNextHorizontalLocation()) == Castle.TOWER_STANDING) { //if monster is moving into standing tower.
                             gameCastle.hitTower(monster.getNextHorizontalLocation());
                             monster.takeHit(collisionDamage);
                             if (monster.getHP() <= 0) {
                                 monster.deathEffects(this);
                                 monstersInField.remove(monster);
                             }
+                        } else if (gameCastle.getTowerState(monster.getNextHorizontalLocation()) == Castle.TOWER_RUBBLE) {
+                            //do nothing - don't go through the tower rubble
                         } else {
                             monster.movement(this);
                         }
+                    } else if (gameCastle.getWallHealth(monster.getHorizontalLocation()) == 5) {
+                        //don't move through rubble!
                     } else {
                         gameCastle.hitWall(monster.getHorizontalLocation()); //TO DO double check basilisk rules/calvalry
                         monster.takeHit(collisionDamage);
@@ -733,13 +803,12 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     public int getNumCards(int playerIndex) {
         return players[playerIndex].getHandSize();
     }
-    
+
     public void setSelectedWall(int horizontalLocation) {
         if (horizontalLocation < 1 || horizontalLocation > 6) {
-            System.err.println("Tried to reinforce wall number " + horizontalLocation + "but it's invalid"); 
-        }
-        else {
-            selectedWallIndex = horizontalLocation; 
+            System.err.println("Tried to reinforce wall number " + horizontalLocation + "but it's invalid");
+        } else {
+            selectedWallIndex = horizontalLocation;
         }
     }
 
@@ -818,8 +887,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     }
 
     @Override
-    public boolean getTowerStatus(int pos) {
-        return gameCastle.isTowerStanding(pos);
+    public int getTowerStatus(int pos) {
+        return gameCastle.getTowerState(pos);
     }
 
     @Override
@@ -923,18 +992,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     }
 
     @Override
-    public int getTopOfDeck() {
-        return gameDeck.getDeckSize() - 1;
-    }
-
-    @Override
-    public int getTopOfDiscard() {
-        return gameDeck.getNumDiscardedCards() - 1;
-    }
-
-    @Override
     public int getDeckSize() {
-        return gameDeck.getDeckSize();
+        return gameDeck.getDeckPileSize();
     }
 
     @Override
@@ -975,5 +1034,9 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
         } else {
             return -1;
         }
+    }
+
+    public String getPlayerArchetype(int playerIndex) {
+        return players[playerIndex].getArchetype();
     }
 }

@@ -7,10 +7,10 @@
       <Color blue="ff" green="ff" red="cc" type="rgb"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1200, 680]"/>
+      <Dimension value="[1280, 820]"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1280, 710]"/>
+      <Dimension value="[1280, 820]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -32,50 +32,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="vertLabelPanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="horzLabelPanel" max="-2" attributes="0"/>
-                          <Component id="boardLayeredPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="phasePanel" min="-2" max="-2" attributes="0"/>
+                  <Component id="handPanel" alignment="0" min="-2" pref="1178" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="boardLayeredPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="handPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="controlPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
+                      <Component id="phasePanel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="horzLabelPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="vertLabelPanel" max="32767" attributes="0"/>
-                          <Component id="boardLayeredPanel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="boardLayeredPanel" min="-2" max="-2" attributes="0"/>
                   <Component id="phasePanel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="controlPanel" min="-2" max="-2" attributes="0"/>
-                  <Component id="handPanel" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="handPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -93,625 +73,314 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="phaseTitleLabel" min="-2" pref="121" max="-2" attributes="0"/>
-                      <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="phaseLabel1" min="-2" pref="109" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="phaseCurrentLabel1" min="-2" pref="15" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="phaseLabel2" alignment="0" pref="109" max="32767" attributes="0"/>
-                              <Component id="phaseLabel3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="phaseLabel4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="phaseButton3" alignment="0" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="phaseButton4" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="skipButton3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="phaseCurrentLabel2" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="phaseCurrentLabel3" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="phaseCurrentLabel4" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="phaseButton1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="phaseTitleLabel" alignment="0" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="phaseButton2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="skipButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="skipButton1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="titleLabel" min="-2" pref="31" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                  <Component id="phaseTitleLabel" min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="phaseTitleLabel" min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="phaseButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Component id="phaseLabel1" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="phaseCurrentLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="phaseButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="skipButton1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="phaseLabel2" min="-2" pref="40" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                          <Component id="phaseCurrentLabel2" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="phaseButton3" min="-2" max="-2" attributes="0"/>
+                      <Component id="skipButton2" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="phaseLabel3" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="phaseCurrentLabel3" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="phaseButton4" min="-2" max="-2" attributes="0"/>
+                      <Component id="skipButton3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="phaseLabel4" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="phaseCurrentLabel4" min="-2" pref="20" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="phaseLabel1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Phase 1 - Draw"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="phaseLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Phase 2 - Discard"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="phaseLabel3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Phase 3 - Trade"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="phaseLabel4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Phase 4 - Attack"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="phaseTitleLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Copperplate Gothic Bold" size="12" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="PHASE GUIDE"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn.png"/>
+            </Property>
+            <Property name="alignmentX" type="float" value="0.5"/>
+            <Property name="autoscrolls" type="boolean" value="true"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
+              <Dimension value="[283, 57]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
+              <Dimension value="[283, 57]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[80, 14]"/>
+              <Dimension value="[283, 57]"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="titleLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tw Cen MT" size="12" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="BG Implementation v.0"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="phaseCurrentLabel2">
-        </Component>
-        <Component class="javax.swing.JLabel" name="phaseCurrentLabel1">
+        <Component class="javax.swing.JButton" name="phaseButton1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/turnSpot.png"/>
+              <Image iconType="3" name="/drawTurn.png"/>
+            </Property>
+            <Property name="actionCommand" type="java.lang.String" value="Draw"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[283, 81]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[283, 81]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[283, 81]"/>
+            </Property>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/drawTurn_rollOver.png"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/drawTurn_highlight.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dealClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="phaseCurrentLabel3">
-        </Component>
-        <Component class="javax.swing.JLabel" name="phaseCurrentLabel4">
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="controlPanel">
-      <Properties>
-        <Property name="focusable" type="boolean" value="false"/>
-        <Property name="opaque" type="boolean" value="false"/>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="commitButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="endPhaseButton" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="deckLabel" min="-2" pref="60" max="-2" attributes="0"/>
-                              <Component id="deckNameLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="discardLabel" min="-2" pref="60" max="-2" attributes="0"/>
-                              <Component id="discardNameLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="menuButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="rulesButton" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="monsterLabel" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="monsterProgLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="monsterCountLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="monsterProgBar" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="monsterLabel" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="monsterProgLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-                              <Component id="monsterCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="monsterProgBar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="discardNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="deckNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="discardLabel" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="deckLabel" min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="endPhaseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="commitButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="menuButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rulesButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="monsterLabel">
+        <Component class="javax.swing.JButton" name="phaseButton2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/troll3030.png"/>
+              <Image iconType="3" name="/discardTurn.png"/>
+            </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[253, 81]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[253, 81]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[253, 81]"/>
+            </Property>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/discardTurn_rollOver.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/discardTurn_highlight.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tradeDealerClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="deckLabel">
+        <Component class="javax.swing.JButton" name="phaseButton3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cardBack6080.png"/>
+              <Image iconType="3" name="/tradeTurn.png"/>
+            </Property>
+            <Property name="actionCommand" type="java.lang.String" value="tradeTo"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[253, 81]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[253, 81]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[253, 81]"/>
+            </Property>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/tradeTurn_rollOver.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/tradeTurn_highlight.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tradePlayerClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="discardLabel">
+        <Component class="javax.swing.JButton" name="phaseButton4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/cardBack6080.png"/>
+              <Image iconType="3" name="/attack_COMBO.png"/>
             </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="commitButton">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Bold" size="12" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="DEAL!"/>
+            <Property name="actionCommand" type="java.lang.String" value="attack"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[211, 81]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[211, 81]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[211, 81]"/>
             </Property>
-            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/attack_COMBO_rollOver.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/attack_COMBO_highlight.png"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="commitClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="attackClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="menuButton">
+        <Component class="javax.swing.JButton" name="skipButton1">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Bold" size="12" style="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn_SKIP.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Menu"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="10"/>
+            <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+              <Insets value="[0, 0, 0, 0]"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[30, 81]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[30, 81]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[30, 81]"/>
             </Property>
-            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn_SKIP_rollOver.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn_SKIP_highlight.png"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipButton1Clicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="endPhaseButton">
+        <Component class="javax.swing.JButton" name="skipButton2">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Bold" size="12" style="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn_SKIP.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="End Phase"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="10"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[30, 81]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[30, 81]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[30, 81]"/>
             </Property>
-            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn_SKIP_rollOver.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/orderOfTurn_SKIP_highlight.png"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endPhaseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipButton2Clicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="rulesButton">
+        <Component class="javax.swing.JButton" name="skipButton3">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Bold" size="12" style="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/endTurn_COMBO.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Rules"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="10"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[72, 81]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[72, 81]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[115, 40]"/>
+              <Dimension value="[72, 81]"/>
             </Property>
-            <Property name="requestFocusEnabled" type="boolean" value="false"/>
+            <Property name="rolloverSelectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/endTurn_COMBO_rollOver.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/endTurn_COMBO_highlight.png"/>
+            </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rulesClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="skipButton3Clicked"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="monsterProgLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Monsters Remaining:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="deckNameLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Deck"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="discardNameLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="10" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Discard"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="monsterCountLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Copperplate Gothic Light" size="10" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="42/42"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JProgressBar" name="monsterProgBar">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="maximum" type="int" value="0"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
-                <BevelBorder bevelType="1"/>
-              </Border>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 20]"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="vertLabelPanel">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="vertForestLabel" max="32767" attributes="0"/>
-                      <Component id="vertArcherLabel" max="32767" attributes="0"/>
-                      <Component id="vertKnightLabel" max="32767" attributes="0"/>
-                      <Component id="vertSwordLabel" max="32767" attributes="0"/>
-                      <Component id="vertWallLabel" max="32767" attributes="0"/>
-                      <Component id="vertCastleLabel" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="vertForestLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Component id="vertArcherLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Component id="vertKnightLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Component id="vertSwordLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="vertWallLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="vertCastleLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="vertForestLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Forest"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="vertArcherLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Archer"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="vertKnightLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Knight"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="vertSwordLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Swords."/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="vertWallLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Wall"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="vertCastleLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Castle"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="horzLabelPanel">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
-                  <Component id="horzLabel0" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                  <Component id="horzLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                  <Component id="horzLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                  <Component id="horzLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                  <Component id="horzLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
-                  <Component id="horzLabel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="horzLabel0" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="horzLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="horzLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="horzLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="horzLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="horzLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="horzLabel0">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="0"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="horzLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="horzLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="2"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="horzLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="3"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="horzLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="horzLabel5">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="5"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JLayeredPane" name="boardLayeredPanel">
       <Properties>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1020, 380]"/>
+          <Dimension value="[906, 500]"/>
         </Property>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="boardBottomLayer" alignment="0" max="32767" attributes="0"/>
+              <Component id="boardBottomLayer" alignment="0" max="-2" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="boardPaletteLayer" min="-2" max="-2" attributes="0"/>
+                      <Component id="boardPaletteLayer" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                  <Component id="boardShapeLayer" alignment="0" max="32767" attributes="0"/>
+                  <Component id="boardShapeLayer" alignment="0" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="boardBottomLayer" alignment="0" pref="391" max="32767" attributes="0"/>
+              <Component id="boardBottomLayer" alignment="0" max="-2" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="boardPaletteLayer" max="32767" attributes="0"/>
+                      <Component id="boardPaletteLayer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="boardShapeLayer" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="boardShapeLayer" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -721,8 +390,11 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="boardBottomLayer">
           <Properties>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[906, 494]"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1020, 380]"/>
+              <Dimension value="[906, 500]"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -732,21 +404,24 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1020" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="906" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="500" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
         </Container>
         <Container class="javax.swing.JPanel" name="boardPaletteLayer">
           <Properties>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[906, 494]"/>
+            </Property>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1020, 380]"/>
+              <Dimension value="[906, 500]"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -757,89 +432,95 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="castleButton0" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="wallButton0" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boardButton04" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="boardButton5" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton6" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton7" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boardButton8" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="boardButton9" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="boardButton10" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="boardButton11" alignment="1" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="castleButton1" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="wallButton1" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="wallButton2" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="wallButton3" min="-2" pref="170" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="castleButton2" min="-2" pref="170" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="castleButton3" min="-2" pref="170" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="wallButton0" max="-2" attributes="0"/>
+                                  <Component id="castleButton0" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="wallButton5" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="castleButton4" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="castleButton5" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="wallButton4" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                                  <Component id="castleButton1" alignment="0" max="-2" attributes="0"/>
+                                  <Component id="wallButton1" alignment="0" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="wallButton2" max="-2" attributes="0"/>
+                                  <Component id="castleButton2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="wallButton3" alignment="0" max="-2" attributes="0"/>
+                                  <Component id="castleButton3" alignment="0" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="wallButton5" alignment="0" max="-2" attributes="0"/>
+                                  <Component id="castleButton4" alignment="0" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="wallButton4" alignment="0" max="-2" attributes="0"/>
+                                  <Component id="castleButton5" alignment="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="boardButton24" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton25" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton30" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton31" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="boardButton26" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton27" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton29" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton28" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="boardButton32" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton33" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton34" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton35" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="boardButton36" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton37" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton38" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <Component id="boardButton39" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Component id="boardButton6" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton10" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton30" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton26" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton34" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton37" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="boardButton7" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton11" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton31" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton27" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton35" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton36" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="boardButton5" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton9" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton25" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton29" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton33" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton38" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="boardButton04" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton8" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton24" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton28" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton32" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton39" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -847,112 +528,75 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="boardButton28" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton29" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="boardButton24" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton25" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="boardButton30" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton31" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="boardButton26" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton27" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="boardButton28" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton24" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="boardButton04" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                                  <Component id="boardButton8" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="boardButton9" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton10" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton11" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="boardButton5" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton6" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton7" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="boardButton39" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton32" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="boardButton39" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton38" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="boardButton32" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton33" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="boardButton34" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton35" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="boardButton37" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="boardButton36" min="-2" pref="70" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
+                          <Component id="boardButton04" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="wallButton0" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="castleButton0" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="boardButton29" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton25" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="wallButton1" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="castleButton1" min="-2" pref="60" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="wallButton4" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="castleButton5" min="-2" pref="60" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="wallButton2" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="wallButton3" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="wallButton5" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="castleButton4" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="castleButton2" min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Component id="castleButton3" min="-2" pref="60" max="-2" attributes="0"/>
-                              </Group>
+                          <Component id="boardButton9" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton5" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="boardButton38" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton33" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="boardButton30" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton26" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton10" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="boardButton34" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton37" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="boardButton31" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton27" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton11" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="boardButton35" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton36" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="wallButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="wallButton0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Component id="wallButton3" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="wallButton5" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="wallButton4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="wallButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="castleButton0" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="castleButton4" min="-2" max="-2" attributes="0"/>
+                          <Component id="castleButton3" min="-2" max="-2" attributes="0"/>
+                          <Component id="castleButton5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="castleButton2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="castleButton1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -961,7 +605,7 @@
             <Component class="javax.swing.JButton" name="boardButton04">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonForestRed.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -970,16 +614,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -990,7 +635,7 @@
             <Component class="javax.swing.JButton" name="boardButton5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonArcherRed.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -999,16 +644,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1019,7 +665,7 @@
             <Component class="javax.swing.JButton" name="boardButton6">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonKnightRed.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1028,16 +674,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1048,8 +695,9 @@
             <Component class="javax.swing.JButton" name="boardButton7">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonSwordsmanRed.png"/>
                 </Property>
+                <Property name="autoscrolls" type="boolean" value="true"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
@@ -1057,16 +705,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1077,7 +726,7 @@
             <Component class="javax.swing.JButton" name="boardButton24">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonForestGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1086,15 +735,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1104,7 +754,7 @@
             <Component class="javax.swing.JButton" name="boardButton25">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonArcherGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1113,15 +763,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1131,7 +782,7 @@
             <Component class="javax.swing.JButton" name="boardButton26">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonKnightGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1140,15 +791,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1158,7 +810,7 @@
             <Component class="javax.swing.JButton" name="boardButton27">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonSwordsmanGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1167,15 +819,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1185,7 +838,7 @@
             <Component class="javax.swing.JButton" name="boardButton28">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonForestGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1194,15 +847,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1212,7 +866,7 @@
             <Component class="javax.swing.JButton" name="boardButton29">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonArcherGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1221,15 +875,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1239,7 +894,7 @@
             <Component class="javax.swing.JButton" name="boardButton30">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonKnightGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1248,15 +903,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1266,7 +922,7 @@
             <Component class="javax.swing.JButton" name="boardButton31">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/greenButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonSwordsmanGreen.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1275,15 +931,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1293,7 +950,7 @@
             <Component class="javax.swing.JButton" name="boardButton8">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonForestRed.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1302,16 +959,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1322,7 +980,7 @@
             <Component class="javax.swing.JButton" name="boardButton9">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonArcherRed.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1331,16 +989,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1351,7 +1010,7 @@
             <Component class="javax.swing.JButton" name="boardButton10">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonKnightRed.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1360,16 +1019,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1380,8 +1040,9 @@
             <Component class="javax.swing.JButton" name="boardButton11">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/redButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonSwordsmanRed.png"/>
                 </Property>
+                <Property name="autoscrolls" type="boolean" value="true"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                     <EtchetBorder>
@@ -1389,16 +1050,17 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
@@ -1409,7 +1071,7 @@
             <Component class="javax.swing.JButton" name="boardButton32">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonForestBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1418,17 +1080,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1438,7 +1101,7 @@
             <Component class="javax.swing.JButton" name="boardButton33">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonArcherBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1447,17 +1110,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1467,7 +1131,7 @@
             <Component class="javax.swing.JButton" name="boardButton34">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonKnightBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1476,17 +1140,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1496,7 +1161,7 @@
             <Component class="javax.swing.JButton" name="boardButton35">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonSwordsmanBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1505,17 +1170,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1525,7 +1191,7 @@
             <Component class="javax.swing.JButton" name="boardButton36">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonSwordsmanBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1534,17 +1200,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1554,7 +1221,7 @@
             <Component class="javax.swing.JButton" name="boardButton37">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonKnightBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1563,17 +1230,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1583,7 +1251,7 @@
             <Component class="javax.swing.JButton" name="boardButton38">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonArcherBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1592,17 +1260,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1612,7 +1281,7 @@
             <Component class="javax.swing.JButton" name="boardButton39">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/blueButtonTrans55.png"/>
+                  <Image iconType="3" name="/buttonForestBlue.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -1621,17 +1290,18 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 90]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1644,7 +1314,18 @@
                   <Image iconType="3" name="/wall17040.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="wall1"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wallButton0wallButtonClicked"/>
@@ -1653,7 +1334,7 @@
             <Component class="javax.swing.JButton" name="castleButton0">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/keep17070.png"/>
+                  <Image iconType="3" name="/castleRed.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="board00"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1663,15 +1344,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1684,7 +1366,18 @@
                   <Image iconType="3" name="/wall17040.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="wall1"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wallButton1wallButtonClicked"/>
@@ -1693,7 +1386,7 @@
             <Component class="javax.swing.JButton" name="castleButton1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/keep17070.png"/>
+                  <Image iconType="3" name="/castleRed.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="board00"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1703,15 +1396,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1724,7 +1418,18 @@
                   <Image iconType="3" name="/wall17040.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="wall1"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wallButton2wallButtonClicked"/>
@@ -1733,7 +1438,7 @@
             <Component class="javax.swing.JButton" name="castleButton2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/keep17070.png"/>
+                  <Image iconType="3" name="/castleGreen.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="board00"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1743,15 +1448,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1764,7 +1470,18 @@
                   <Image iconType="3" name="/wall17040.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="wall1"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wallButton3wallButtonClicked"/>
@@ -1773,7 +1490,7 @@
             <Component class="javax.swing.JButton" name="castleButton3">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/keep17070.png"/>
+                  <Image iconType="3" name="/castleGreen.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="board00"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1783,15 +1500,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1804,7 +1522,18 @@
                   <Image iconType="3" name="/wall17040.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="wall1"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wallButton4wallButtonClicked"/>
@@ -1813,7 +1542,7 @@
             <Component class="javax.swing.JButton" name="castleButton5">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/keep17070.png"/>
+                  <Image iconType="3" name="/castleBlue.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="board00"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1823,15 +1552,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1844,7 +1574,18 @@
                   <Image iconType="3" name="/wall17040.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="wall1"/>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 42]"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wallButton5wallButtonClicked"/>
@@ -1853,7 +1594,7 @@
             <Component class="javax.swing.JButton" name="castleButton4">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/keep17070.png"/>
+                  <Image iconType="3" name="/castleBlue.png"/>
                 </Property>
                 <Property name="actionCommand" type="java.lang.String" value="board00"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1863,15 +1604,16 @@
                     </EtchetBorder>
                   </Border>
                 </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[170, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[130, 70]"/>
+                  <Dimension value="[149, 80]"/>
                 </Property>
               </Properties>
               <Events>
@@ -1882,9 +1624,12 @@
         </Container>
         <Container class="javax.swing.JPanel" name="boardShapeLayer">
           <Properties>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[906, 494]"/>
+            </Property>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[1020, 380]"/>
+              <Dimension value="[906, 500]"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -1897,12 +1642,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="1020" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="906" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="390" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1915,48 +1660,55 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="handPanel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="handPanel2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="handPanel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="handPanel5" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="handPanel1" max="32767" attributes="0"/>
-                              <Component id="handPanel0" min="-2" max="-2" attributes="0"/>
+                              <Component id="handPanel1" max="-2" attributes="0"/>
+                              <Component id="handPanel0" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="handPanel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="handPanel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="handPanel3" max="-2" attributes="0"/>
+                              <Component id="handPanel4" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="controlPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="handPanel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="handPanel4" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="handPanel5" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="handPanel3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="handPanel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="handPanel5" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="handPanel0" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="handPanel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="handPanel2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="handPanel0" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="handPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="handPanel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="controlPanel" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               </Group>
@@ -1967,13 +1719,14 @@
         <Container class="javax.swing.JPanel" name="handPanel5">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
           </Properties>
 
@@ -1996,19 +1749,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="handLabel5" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="handTurnLabel5" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="handScoreLabel5" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="handPointsLabel5" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="handScoreLabel5" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="handPointsLabel5" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2219,9 +1970,15 @@
             </Component>
             <Component class="javax.swing.JLabel" name="handTurnLabel5">
               <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="turnLabel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[15, 20]"/>
+                  <Dimension value="[58, 24]"/>
                 </Property>
               </Properties>
             </Component>
@@ -2287,13 +2044,14 @@
         <Container class="javax.swing.JPanel" name="handPanel1">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
           </Properties>
 
@@ -2316,19 +2074,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="handLabel1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="handTurnLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="handScoreLabel1" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="handPointsLabel1" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="handScoreLabel1" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="handPointsLabel1" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2539,9 +2295,15 @@
             </Component>
             <Component class="javax.swing.JLabel" name="handTurnLabel1">
               <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="turnLabel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[15, 20]"/>
+                  <Dimension value="[58, 24]"/>
                 </Property>
               </Properties>
             </Component>
@@ -2607,13 +2369,14 @@
         <Container class="javax.swing.JPanel" name="handPanel4">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
           </Properties>
 
@@ -2636,47 +2399,49 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="handLabel4" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="handTurnLabel4" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="handScoreLabel4" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="handPointsLabel4" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="handScoreLabel4" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="handPointsLabel4" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cardButton40" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cardButton41" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="cardButton42" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cardButton43" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                          <Component id="cardButton44" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cardButton45" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="handLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="handTurnLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="handScoreLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="handPointsLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="handPointsLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="cardButton40" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cardButton41" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="cardButton42" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cardButton43" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="cardButton44" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cardButton45" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="1" max="-2" attributes="0"/>
+                              <Component id="handLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="handTurnLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="handScoreLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2858,9 +2623,15 @@
             </Component>
             <Component class="javax.swing.JLabel" name="handTurnLabel4">
               <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="turnLabel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[15, 20]"/>
+                  <Dimension value="[58, 24]"/>
                 </Property>
               </Properties>
             </Component>
@@ -2926,13 +2697,14 @@
         <Container class="javax.swing.JPanel" name="handPanel2">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
           </Properties>
 
@@ -2955,19 +2727,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="handLabel2" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="handTurnLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="handScoreLabel2" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="handPointsLabel2" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="handScoreLabel2" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="handPointsLabel2" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3199,9 +2969,15 @@
             </Component>
             <Component class="javax.swing.JLabel" name="handTurnLabel2">
               <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="turnLabel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[15, 20]"/>
+                  <Dimension value="[58, 24]"/>
                 </Property>
               </Properties>
             </Component>
@@ -3249,14 +3025,14 @@
         <Container class="javax.swing.JPanel" name="handPanel0">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
           </Properties>
 
@@ -3279,19 +3055,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="handLabel0" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="handTurnLabel0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="handScoreLabel0" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="handPointsLabel0" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="handScoreLabel0" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="handPointsLabel0" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3299,26 +3073,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="handPointsLabel0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="handLabel0" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="handTurnLabel0" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="handScoreLabel0" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="handPointsLabel0" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cardButton00" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cardbutton01" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="cardButton02" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cardbutton03" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="cardButton04" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cardButton05" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                      <Component id="handLabel0" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="handTurnLabel0" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="handScoreLabel0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="cardButton00" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cardbutton01" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="cardButton02" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cardbutton03" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <Component id="cardButton04" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cardButton05" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -3572,13 +3349,14 @@
         <Container class="javax.swing.JPanel" name="handPanel3">
           <Properties>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 100]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[460, 90]"/>
+              <Dimension value="[465, 90]"/>
             </Property>
           </Properties>
 
@@ -3601,19 +3379,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="handLabel3" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="handTurnLabel3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="handScoreLabel3" min="-2" pref="35" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="handPointsLabel3" min="-2" pref="16" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="handScoreLabel3" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="handTurnLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="handPointsLabel3" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -3844,9 +3620,15 @@
             </Component>
             <Component class="javax.swing.JLabel" name="handTurnLabel3">
               <Properties>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[58, 24]"/>
+                </Property>
                 <Property name="name" type="java.lang.String" value="turnLabel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[15, 20]"/>
+                  <Dimension value="[58, 24]"/>
                 </Property>
               </Properties>
             </Component>
@@ -3886,6 +3668,82 @@
                 <Property name="name" type="java.lang.String" value="playerLabel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[46, 20]"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="controlPanel">
+          <Properties>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="monsterProgLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="monsterCountLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="monsterProgBar" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="monsterProgLabel" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="monsterCountLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="monsterProgBar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="212" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="monsterProgLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Copperplate Gothic Light" size="10" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Monsters Remaining:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="monsterCountLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Copperplate Gothic Light" size="10" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="42/42"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JProgressBar" name="monsterProgBar">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="maximum" type="int" value="0"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder bevelType="1"/>
+                  </Border>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[200, 20]"/>
                 </Property>
               </Properties>
             </Component>

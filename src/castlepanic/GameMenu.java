@@ -47,15 +47,28 @@ public class GameMenu extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         p6NameField = new javax.swing.JTextField();
         p2NameField = new javax.swing.JTextField();
-        textUIButton = new javax.swing.JRadioButton();
-        gUIButton = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Player Names");
 
-        menuLayeredPane.setPreferredSize(new java.awt.Dimension(400, 400));
+        menuLayeredPane.setMaximumSize(new java.awt.Dimension(1280, 800));
+        menuLayeredPane.setMinimumSize(new java.awt.Dimension(1280, 800));
 
-        menuBottomLayer.setPreferredSize(new java.awt.Dimension(400, 400));
+        menuBottomLayer.setMaximumSize(new java.awt.Dimension(1280, 800));
+        menuBottomLayer.setMinimumSize(new java.awt.Dimension(1280, 800));
+        menuBottomLayer.setPreferredSize(new java.awt.Dimension(1280, 800));
 
         titleBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/titleScreen.png"))); // NOI18N
 
@@ -74,51 +87,74 @@ public class GameMenu extends javax.swing.JDialog {
         );
 
         menuTopLayer.setFocusable(false);
+        menuTopLayer.setMaximumSize(new java.awt.Dimension(1280, 800));
+        menuTopLayer.setMinimumSize(new java.awt.Dimension(1280, 800));
         menuTopLayer.setOpaque(false);
-        menuTopLayer.setPreferredSize(new java.awt.Dimension(400, 400));
+        menuTopLayer.setPreferredSize(new java.awt.Dimension(1280, 800));
 
         p3NameField.setColumns(8);
+        p3NameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p3NameFieldActionPerformed(evt);
+            }
+        });
 
         p1NameField.setColumns(8);
+        p1NameField.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
         p1NameField.setName(""); // NOI18N
+        p1NameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p1NameFieldActionPerformed(evt);
+            }
+        });
 
         p4NameField.setColumns(8);
 
         p5NameField.setColumns(8);
+        p5NameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p5NameFieldActionPerformed(evt);
+            }
+        });
 
-        p1Label.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        p1Label.setForeground(new java.awt.Color(153, 153, 153));
-        p1Label.setText("Player 1:");
+        p1Label.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        p1Label.setForeground(new java.awt.Color(255, 255, 255));
+        p1Label.setText("PLAYER 1");
         p1Label.setToolTipText("");
 
-        p2Label.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        p2Label.setForeground(new java.awt.Color(153, 153, 153));
-        p2Label.setText("Player 2:");
+        p2Label.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        p2Label.setForeground(new java.awt.Color(255, 255, 255));
+        p2Label.setText("PLAYER 2");
         p2Label.setToolTipText("");
 
-        p3Label.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        p3Label.setForeground(new java.awt.Color(153, 153, 153));
-        p3Label.setText("Player 3:");
+        p3Label.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        p3Label.setForeground(new java.awt.Color(255, 255, 255));
+        p3Label.setText("PLAYER 3");
         p3Label.setToolTipText("");
 
-        p4Label.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        p4Label.setForeground(new java.awt.Color(153, 153, 153));
-        p4Label.setText("Player 4:");
+        p4Label.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        p4Label.setForeground(new java.awt.Color(255, 255, 255));
+        p4Label.setText("PLAYER 4");
         p4Label.setToolTipText("");
 
-        p5Label.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        p5Label.setForeground(new java.awt.Color(153, 153, 153));
-        p5Label.setText("Player 5:");
+        p5Label.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        p5Label.setForeground(new java.awt.Color(255, 255, 255));
+        p5Label.setText("PLAYER 5");
         p5Label.setToolTipText("");
 
-        p6Label.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        p6Label.setForeground(new java.awt.Color(153, 153, 153));
-        p6Label.setText("Player 6:");
+        p6Label.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        p6Label.setForeground(new java.awt.Color(255, 255, 255));
+        p6Label.setText("PLAYER 6");
         p6Label.setToolTipText("");
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        jButton1.setText("Start!");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattle.png"))); // NOI18N
+        jButton1.setToolTipText("");
+        jButton1.setBorderPainted(false);
+        jButton1.setOpaque(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
+        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gameMenuStartClicked(evt);
@@ -126,8 +162,19 @@ public class GameMenu extends javax.swing.JDialog {
         });
 
         jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        jButton2.setText("Quit");
+        jButton2.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(6, 137, 185));
+        jButton2.setText("OR QUIT");
+        jButton2.setToolTipText("HIT HERE TO QUIT");
+        jButton2.setBorderPainted(false);
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jButton2.setMargin(new java.awt.Insets(0, 1, 0, 1));
+        jButton2.setOpaque(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         p6NameField.setColumns(8);
 
@@ -139,102 +186,173 @@ public class GameMenu extends javax.swing.JDialog {
             }
         });
 
-        textUIButton.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(textUIButton);
-        textUIButton.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        textUIButton.setForeground(new java.awt.Color(204, 204, 204));
-        textUIButton.setSelected(true);
-        textUIButton.setText("Graphical UI");
-        textUIButton.setActionCommand("Graphical");
-        textUIButton.setBorder(null);
-        textUIButton.setBorderPainted(true);
-        textUIButton.setContentAreaFilled(false);
-        textUIButton.setPreferredSize(new java.awt.Dimension(100, 21));
-        textUIButton.setRolloverEnabled(false);
+        jComboBox1.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox1.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        gUIButton.setBackground(new java.awt.Color(204, 204, 204));
-        buttonGroup1.add(gUIButton);
-        gUIButton.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 11)); // NOI18N
-        gUIButton.setForeground(new java.awt.Color(204, 204, 204));
-        gUIButton.setText("Text UI");
-        gUIButton.setActionCommand("Text");
-        gUIButton.setBorder(null);
-        gUIButton.setBorderPainted(true);
-        gUIButton.setContentAreaFilled(false);
-        gUIButton.setPreferredSize(new java.awt.Dimension(100, 21));
-        gUIButton.setRolloverEnabled(false);
+        jLabel1.setFont(new java.awt.Font("Seravek", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("ARCHTYPE?");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jLabel2.setFont(new java.awt.Font("Seravek", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ARCHTYPE?");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jComboBox2.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox2.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setFont(new java.awt.Font("Seravek", 1, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ARCHTYPE?");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jComboBox3.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox3.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox4.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox4.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel4.setFont(new java.awt.Font("Seravek", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ARCHTYPE?");
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jComboBox5.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox5.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setFont(new java.awt.Font("Seravek", 1, 13)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("ARCHTYPE?");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
+        jComboBox6.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBox6.setFont(new java.awt.Font("Seravek", 0, 13)); // NOI18N
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel6.setFont(new java.awt.Font("Seravek", 1, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("ARCHTYPE?");
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout menuTopLayerLayout = new javax.swing.GroupLayout(menuTopLayer);
         menuTopLayer.setLayout(menuTopLayerLayout);
         menuTopLayerLayout.setHorizontalGroup(
             menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuTopLayerLayout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(p6Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p5Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p4Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p3Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p2Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(p1Label, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(18, 18, 18)
-                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(p1NameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(p3NameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(p4NameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(p5NameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(p6NameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(p2NameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gUIButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textUIButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                        .addContainerGap(785, Short.MAX_VALUE)
+                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                        .addGap(325, 325, 325)
+                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(p3Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(p2Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(p1Label, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(p2NameField)
+                            .addComponent(p3NameField)
+                            .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(p1NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(p5Label)
+                            .addComponent(p4Label)
+                            .addComponent(p6Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(p6NameField)
+                            .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                .addComponent(p4NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(p5NameField)
+                            .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                .addGap(332, 332, 332))
         );
         menuTopLayerLayout.setVerticalGroup(
             menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuTopLayerLayout.createSequentialGroup()
-                .addGap(248, 248, 248)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuTopLayerLayout.createSequentialGroup()
+                .addGap(0, 447, Short.MAX_VALUE)
+                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(p1NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(p1Label)
+                    .addComponent(p4Label)
+                    .addComponent(p4NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuTopLayerLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(gUIButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textUIButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                    .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(p5NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(p5Label))
                     .addGroup(menuTopLayerLayout.createSequentialGroup()
                         .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(p1NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(p1Label))
-                        .addGap(3, 3, 3)
-                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(p2NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(p2NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(p2Label))
-                        .addGap(3, 3, 3)
+                        .addGap(0, 0, 0)
                         .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(p3NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(p3Label))
-                        .addGap(3, 3, 3)
+                            .addComponent(jLabel2)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
                         .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(p4NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(p4Label))
-                        .addGap(3, 3, 3)
+                            .addComponent(p3NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(p3Label)
+                            .addComponent(p6NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(p6Label, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, 0)
                         .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(p5NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(p5Label))
-                        .addGap(3, 3, 3)
-                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(p6NameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(p6Label, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
+                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(27, 27, 27)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
-
-        gUIButton.getAccessibleContext().setAccessibleDescription("");
 
         javax.swing.GroupLayout menuLayeredPaneLayout = new javax.swing.GroupLayout(menuLayeredPane);
         menuLayeredPane.setLayout(menuLayeredPaneLayout);
@@ -242,7 +360,7 @@ public class GameMenu extends javax.swing.JDialog {
             menuLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayeredPaneLayout.createSequentialGroup()
                 .addComponent(menuBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(2, 2, 2))
             .addGroup(menuLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(menuLayeredPaneLayout.createSequentialGroup()
                     .addComponent(menuTopLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,9 +383,7 @@ public class GameMenu extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(menuLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(menuLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,6 +453,22 @@ public class GameMenu extends javax.swing.JDialog {
     private void p2NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p2NameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_p2NameFieldActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void p1NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p1NameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p1NameFieldActionPerformed
+
+    private void p5NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p5NameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p5NameFieldActionPerformed
+
+    private void p3NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p3NameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p3NameFieldActionPerformed
     public String[] getPlayerNames() {
         return players;
     }
@@ -348,9 +480,20 @@ public class GameMenu extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton gUIButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
+    private javax.swing.JComboBox jComboBox5;
+    private javax.swing.JComboBox jComboBox6;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel menuBottomLayer;
     private javax.swing.JLayeredPane menuLayeredPane;
     private javax.swing.JPanel menuTopLayer;
@@ -366,7 +509,6 @@ public class GameMenu extends javax.swing.JDialog {
     private javax.swing.JTextField p5NameField;
     private javax.swing.JLabel p6Label;
     private javax.swing.JTextField p6NameField;
-    private javax.swing.JRadioButton textUIButton;
     private javax.swing.JLabel titleBackgroundLabel;
     // End of variables declaration//GEN-END:variables
     private String[] players;

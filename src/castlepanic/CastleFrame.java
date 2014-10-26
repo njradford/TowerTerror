@@ -1,12 +1,8 @@
 package castlepanic;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
-
+import java.awt.Color;
 import java.io.IOException;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.imageio.ImageIO;
 
 /**
@@ -15,37 +11,12 @@ import javax.imageio.ImageIO;
  */
 public class CastleFrame extends javax.swing.JFrame {
 
-    boolean spectating;
-    static int startInt;
-    boolean hosting;
-    boolean client;
-
-    NetworkHandler net;
-
     /**
      * Creates new form CastleFrame
      */
-    public CastleFrame(int startCode) {
+    public CastleFrame() {
+
         initComponents();
-
-        //SETS APPROPRIATE BOOLEANS BASED ON START CODES
-        if(startCode == 1){
-            System.out.println("You are a host!");
-            hosting= true;
-            client = false;
-            net = new NetworkHandler();
-            net.setLocalActive(true);
-            net.openHosting();
-        } else if (startCode == 2){
-            System.out.println("You are a client!");
-            hosting= false;
-            client = true;
-            net = new NetworkHandler();
-            net.setLocalActive(false);
-            net.connectToHost();
-        }
-
-
         try {
             blueKnight = new javax.swing.ImageIcon(getClass().getResource("/blueKnightMock.png"));
             redKnight = new javax.swing.ImageIcon(getClass().getResource("/redKnightMock.png"));
@@ -67,17 +38,28 @@ public class CastleFrame extends javax.swing.JFrame {
             turnInd = new javax.swing.ImageIcon(getClass().getResource("/turnSpot.png"));
             wall = new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"));
             deadWall = new javax.swing.ImageIcon(getClass().getResource("/deadWall.png"));
+            rubbleWall = new javax.swing.ImageIcon(getClass().getResource("/rubbleKeep.png"));
             keep = new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"));
             deadKeep = new javax.swing.ImageIcon(getClass().getResource("/deadKeep.png"));
-            missingCard = new javax.swing.ImageIcon(getClass().getResource("/missingCard.png")); 
-            barbarianCard = new javax.swing.ImageIcon(getClass().getResource("/barbarianCard.png")); 
+            rubbleKeep = new javax.swing.ImageIcon(getClass().getResource("/rubbleKeep.png"));
+            missingCard = new javax.swing.ImageIcon(getClass().getResource("/missingCard.png"));
+            barbarianCard = new javax.swing.ImageIcon(getClass().getResource("/barbarianCard.png"));
+            timeStopCard = new javax.swing.ImageIcon(getClass().getResource("/timeStopCard.png"));
+            timeSlapCard = new javax.swing.ImageIcon(getClass().getResource("/timeSlapCard.png"));
+            rewindCard = new javax.swing.ImageIcon(getClass().getResource("/rewindCard.png"));
+            turretCard = new javax.swing.ImageIcon(getClass().getResource("/turretCard.png"));
 
         } catch (NullPointerException e) {
             System.err.println("GUI: You dolt - The card image files are missing!");
         }
 
+        multiDialog = new MultiMenu(this, true);
         dialog = new GameMenu(this, true);
-        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+        dialog.setVisible(false);
+        userDialog = new UserMenu(this, true);
+        userDialog.setVisible(false);
+        multiDialog.addWindowListener(new java.awt.event.WindowAdapter() {
+
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 System.exit(0);
@@ -85,91 +67,228 @@ public class CastleFrame extends javax.swing.JFrame {
 
             @Override
             public void windowClosed(java.awt.event.WindowEvent e) {
+                switch (multiDialog.getDecision()) {
+                    case ("Text"):
+                        TextUI textUI = new TextUI();
+                        break;
+                    case ("Single"):
+                        networkGame = false;
 
-                int playerCount = 0;
-                int index = 0;
-                for (String name : dialog.getPlayerNames()) {
-                    if (!name.isEmpty()) {
-                        playerCount++;
-                    }
-                    players = new String[playerCount];
+                        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                            @Override
+                            public void windowClosing(java.awt.event.WindowEvent e) {
+                                System.exit(0);
+                            }
+
+                            @Override
+                            public void windowClosed(java.awt.event.WindowEvent e) {
+
+                                int playerCount = 0;
+                                int index = 0;
+                                for (String name : dialog.getPlayerNames()) {
+                                    if (!name.isEmpty()) {
+                                        playerCount++;
+                                    }
+                                    players = new String[playerCount];
+                                }
+                                for (String name : dialog.getPlayerNames()) {
+                                    if (!name.isEmpty()) {
+                                        players[index] = name;
+                                        index++;
+                                    }
+                                }
+                                System.out.println("GUI: players String [] set.");
+                                for (String name : players) {
+                                    System.out.println("GUI: Player: - " + name);
+                                }
+
+                                gameState = new GameState(players);
+
+                                handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
+                                    handLabel3, handLabel4, handLabel5};
+                                handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
+                                    handPanel3, handPanel4, handPanel5};
+                                cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
+                                wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
+                                    wallButton4, wallButton5};
+                                phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
+                                skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
+                                castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
+                                    castleButton3, castleButton4, castleButton5};
+                                currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
+                                    handTurnLabel3, handTurnLabel4, handTurnLabel5};
+                                scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
+                                    handPointsLabel4, handPointsLabel5};
+
+                                initializeGame();
+                                updateGame();
+
+                            }
+                        });
+                        dialog.setVisible(true);
+                        break;
+                    case ("Multi"):
+                        networkGame = true;
+                        userDialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                            //////////////////////////////////////////////////////////////////
+
+                            @Override
+                            public void windowClosing(java.awt.event.WindowEvent e) {
+                                System.exit(0);
+                            }
+
+                            @Override
+                            public void windowClosed(java.awt.event.WindowEvent e) {
+
+                                int playerCount = 0;
+
+                                String name = userDialog.getUsername();
+                                String port = userDialog.getPort();
+                                //net = new NetworkHandler();
+
+                                switch (userDialog.getDecision()) {
+                                    case "CLIENT":
+                                        isHost = false;
+                                        isActive = false;
+                                        String address = userDialog.getAddress();
+                                        // net.setLocalActive(isActive);
+                                        // net.connectToHost();
+                                        break;
+                                    case "HOST":
+                                        isHost = true;
+                                        isActive = true;
+                                        // net.setLocalActive(isActive);
+                                        // net.openHosting();
+                                        break;
+                                }
+
+                                playerCount++;
+                                players = new String[playerCount];
+                                players[0] = name;
+
+                                if (isHost) {
+                                    /*    String[] clientNames = net.listenForNames();
+                                     //LISTENING FOR CLIENT NAMES SO THAT THEY CAN BE COMBINED
+                                     for(String current : clientNames){
+                                     System.out.println("Name Recieved");
+                                     System.out.println(current);
+                                     }
+                                     //PUTTING THE NAMES TOGETHER
+                                     String localName = players[0];
+                                     players  = new String[2];
+                                     players[0] = localName;
+                                     players[1] = clientNames[0];
+                                     //SEND THE NEW NAME LISTBACK
+                                     net.transmitNames(players);
+
+                                     players[0] = players[0]+" (HOST)";
+                                     */
+                                } else {
+                                    /*  //SEND LOCAL NAME
+                                     net.transmitNames(players);
+                                     //RECEIVE COMBINED NAME ARRAY
+                                     players = net.listenForNames();
+                                     //LISTEN FOR FINAL GAMESTATE
+                                     players[1] = players[1]+" (CLIENT)";
+                                     */
+                                }
+
+                                gameState = new GameState(players);
+
+                                if (isHost) {
+                                    //net.transmitGameState(gameState);
+                                } else {
+                                    // gameState = net.listenForState();
+                                }
+
+                                handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
+                                    handLabel3, handLabel4, handLabel5};
+                                handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
+                                    handPanel3, handPanel4, handPanel5};
+                                cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
+                                wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
+                                    wallButton4, wallButton5};
+                                phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
+                                skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
+                                castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
+                                    castleButton3, castleButton4, castleButton5};
+                                currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
+                                    handTurnLabel3, handTurnLabel4, handTurnLabel5};
+                                scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
+                                    handPointsLabel4, handPointsLabel5};
+
+                                initializeGame();
+                                updateGame();
+
+                            }
+                        });
+                        userDialog.setVisible(true);
+                        break;
                 }
-                for (String name : dialog.getPlayerNames()) {
-                    if (!name.isEmpty()) {
-                        players[index] = name;
-                        index++;
-                    }
-                }
-                System.out.println("GUI: players String [] set.");
-                for (String name : players) {
-                    System.out.println("GUI: Player: - " + name);
-                }
-
-                if(hosting){
-                    String[] clientNames = net.listenForNames();
-                    //LISTENING FOR CLIENT NAMES SO THAT THEY CAN BE COMBINED
-                    for(String current : clientNames){
-                        System.out.println("Name Recieved");
-                        System.out.println(current);
-                    }
-                    //PUTTING THE NAMES TOGETHER
-                    String localName = players[0];
-                    players  = new String[2];
-                    players[0] = localName;
-                    players[1] = clientNames[0];
-                    //SEND THE NEW NAME LISTBACK
-                    net.transmitNames(players);
-
-                    players[0] = players[0]+" (HOST)";
-
-                } else if(client){
-                    //SEND LOCAL NAME
-                    net.transmitNames(players);
-                    //RECEIVE COMBINED NAME ARRAY
-                    players = net.listenForNames();
-                    //LISTEN FOR FINAL GAMESTATE
-                    players[1] = players[1]+" (CLIENT)";
-
-                }
-
-                gameState = new GameState(players);
-
-                //SYNCHRONIZES THE STATES OF HOST AND CLIENT
-                if(hosting){
-                    net.transmitGameState(gameState);
-                }else if(client){
-                    gameState = net.listenForState();
-                }
-
-
-
-                handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
-                    handLabel3, handLabel4, handLabel5};
-                handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
-                    handPanel3, handPanel4, handPanel5};
-                cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
-                wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
-                    wallButton4, wallButton5};
-                castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
-                    castleButton3, castleButton4, castleButton5};
-                phaseLabels = new javax.swing.JLabel[]{phaseCurrentLabel1, phaseCurrentLabel2, phaseCurrentLabel3, phaseCurrentLabel4};
-                currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
-                    handTurnLabel3, handTurnLabel4, handTurnLabel5};
-                scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
-                    handPointsLabel4, handPointsLabel5};
-
-
-                initializeGame();
-                updateGame();
-
             }
         });
-        dialog.setVisible(true);
-        switch (dialog.getDecision()) {
-            case ("Text"):
-                
-                TextUI textUI = new TextUI();
-        }
+        multiDialog.setVisible(true);
+    }
+    /*
+     public void startSingle() {
+
+     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+     @Override
+     public void windowClosing(java.awt.event.WindowEvent e) {
+     System.exit(0);
+     }
+
+     @Override
+     public void windowClosed(java.awt.event.WindowEvent e) {
+
+     int playerCount = 0;
+     int index = 0;
+     for (String name : dialog.getPlayerNames()) {
+     if (!name.isEmpty()) {
+     playerCount++;
+     }
+     players = new String[playerCount];
+     }
+     for (String name : dialog.getPlayerNames()) {
+     if (!name.isEmpty()) {
+     players[index] = name;
+     index++;
+     }
+     }
+     System.out.println("GUI: players String [] set.");
+     for (String name : players) {
+     System.out.println("GUI: Player: - " + name);
+     }
+
+     gameState = new GameState(players);
+
+     handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
+     handLabel3, handLabel4, handLabel5};
+     handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
+     handPanel3, handPanel4, handPanel5};
+     cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
+     wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
+     wallButton4, wallButton5};
+     phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
+     skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
+     castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
+     castleButton3, castleButton4, castleButton5};
+     currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
+     handTurnLabel3, handTurnLabel4, handTurnLabel5};
+     scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
+     handPointsLabel4, handPointsLabel5};
+
+     initializeGame();
+     updateGame();
+
+     }
+     });
+     dialog.setVisible(true);
+     }
+     */
+
+    public void startMulti() {
+
     }
 
     public void initializeGame() {
@@ -194,58 +313,51 @@ public class CastleFrame extends javax.swing.JFrame {
         }
         monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
 
-
         this.updateGame();
 
-        if(hosting||client){
-            net.updateLocalActive(gameState);
-
-            if(client){
-                netProcess();
+        if (networkGame) {
+            //net.updateLocalActive(gameState);
+            if (!isHost) {
+                //netProcess();
             }
         }
-
-        SpectateThread testThread = new SpectateThread(gameState);
-        testThread.run();
     }
-
-
 
     public void updateGame() {
         if (gameState.getDeadYet()) {
-        endScreen = new ItsCurtains (this, true);
-        endScreen.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                System.exit(0);
-            }
-        }); 
-        endScreen.setVisible(true);
+            System.out.println("GUI: End game");
+            endScreen = new ItsCurtains(this, true);
+            endScreen.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            endScreen.setVisible(true);
         }
-
         updateCards();
         updateBoard();
         updateMisc();
 
-        if(hosting || client){
-            if(net.isLocalActive()){
+        if (networkGame) {
+           // if (net.isLocalActive()) {
                 netProcess();
-            }
+           // }
         }
     }
 
-    public void netProcess(){
+    public void netProcess() {
 
-        if(net.isLocalActive()){
+       /* if (net.isLocalActive()) {
             net.transmitGameState(gameState);
             net.updateLocalActive(gameState);
-        }
+        }*/
 
-        if(!net.isLocalActive()){
+       /* if (!net.isLocalActive()) {
             updateGame();
             revalidate();
             System.out.println("(NET) BEGINNING SPECTATING . . .");
-            while(!net.isLocalActive()){
+            while (!net.isLocalActive()) {
                 gameState = net.listenForState();
                 updateGame();
                 revalidate();
@@ -254,8 +366,7 @@ public class CastleFrame extends javax.swing.JFrame {
             }
             System.out.println("(NET) ENDING SPECTATING . . .");
 
-        }
-
+        }*/
 
     }
 
@@ -330,11 +441,23 @@ public class CastleFrame extends javax.swing.JFrame {
                         System.out.println("GUI: Assigned AH to " + j + k);
                         break;
                     case ("Card: missing"):
-                        cardButtons[j][k].setIcon(missingCard); 
+                        cardButtons[j][k].setIcon(missingCard);
                         break;
                     case ("Card: barbarian"):
-                        cardButtons[j][k].setIcon(barbarianCard); 
-                        break; 
+                        cardButtons[j][k].setIcon(barbarianCard);
+                        break;
+                    case ("Card: time slap"):
+                        cardButtons[j][k].setIcon(timeSlapCard);
+                        break;
+                    case ("Card: time stop"):
+                        cardButtons[j][k].setIcon(timeStopCard);
+                        break;
+                    case ("Card: rewind"):
+                        cardButtons[j][k].setIcon(rewindCard);
+                        break;
+                    case ("Card: turret"):
+                        cardButtons[j][k].setIcon(turretCard);
+                        break;
                     default:
                         System.err.println("GUI: Problem initalizing hands - card type: " + gameState.getCardNameFromPlayerHand(j, k) + " was not recognized");
                 }
@@ -349,7 +472,7 @@ public class CastleFrame extends javax.swing.JFrame {
         } catch (NullPointerException e) {
             System.out.println("GUI: Current player card or other player card not selected yet");
         }
-
+        this.repaint();
     }
 
     public void updateBoard() {
@@ -362,17 +485,26 @@ public class CastleFrame extends javax.swing.JFrame {
                     wallButtons[i].setIcon(wall);
                     break;
                 case 2:
-                //add reinforced wall code here
+                    //add reinforced wall code here
+                    break;
+                case 5:
+                    wallButtons[i].setIcon(rubbleWall);
+                    break;
             }
-            if (gameState.getTowerStatus(i + 1)) { //FIX
-                castleButtons[i].setIcon(keep);
-            } else {
-                castleButtons[i].setIcon(deadKeep);
+            switch (gameState.getTowerStatus(i + 1)) { //FIX
+                case 1:
+                    castleButtons[i].setIcon(keep);
+                    break;
+                case 0:
+                    castleButtons[i].setIcon(deadKeep);
+                    break;
+                case -1:
+                    castleButtons[i].setIcon(rubbleKeep);
+                    break;
             }
         }
         boardShapeLayer.updateMonsters();
         this.repaint();
-
     }
 
     public void updateMisc() {
@@ -384,28 +516,37 @@ public class CastleFrame extends javax.swing.JFrame {
         }
         currentPlayerLabels[gameState.getCurrentPlayer()].setIcon(turnInd);
 
-        for (javax.swing.JLabel label : phaseLabels) {
-            label.setIcon(null);
-        }
-        phaseLabels[gameState.getCurrentPhase() - 1].setIcon(turnInd);
-
         for (int i = 0; i < gameState.getPlayers(); i++) {
             scoreLabels[i].setText(String.valueOf(gameState.getScore(i)));
         }
         switch (gameState.getCurrentPhase()) {
             case 1:
-                commitButton.setText("Deal!");
+                phaseButtons[0].setSelected(true);
+                for (int i = 1; i < phaseButtons.length; i++) {
+                    phaseButtons[i].setSelected(false);
+                }
+                for (int i = 1; i < skipButtons.length; i++) {
+                    skipButtons[i].setSelected(false);
+                }
                 break;
             case 2:
-                commitButton.setText("Discard!");
+                phaseButtons[0].setSelected(false);
+                phaseButtons[1].setSelected(true);
+                skipButtons[0].setSelected(true);
                 break;
             case 3:
-                commitButton.setText("Trade!");
+                phaseButtons[1].setSelected(false);
+                phaseButtons[2].setSelected(true);
+                skipButtons[0].setSelected(false);
+                skipButtons[1].setSelected(true);
                 break;
             case 4:
-                commitButton.setText("Attack!");
-        }
+                skipButtons[1].setSelected(false);
+                skipButtons[2].setSelected(true);
+                phaseButtons[2].setSelected(false);
+                phaseButtons[3].setSelected(true);
 
+        }
     }
 
     /**
@@ -418,43 +559,14 @@ public class CastleFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         phasePanel = new javax.swing.JPanel();
-        phaseLabel1 = new javax.swing.JLabel();
-        phaseLabel2 = new javax.swing.JLabel();
-        phaseLabel3 = new javax.swing.JLabel();
-        phaseLabel4 = new javax.swing.JLabel();
         phaseTitleLabel = new javax.swing.JLabel();
-        titleLabel = new javax.swing.JLabel();
-        phaseCurrentLabel2 = new javax.swing.JLabel();
-        phaseCurrentLabel1 = new javax.swing.JLabel();
-        phaseCurrentLabel3 = new javax.swing.JLabel();
-        phaseCurrentLabel4 = new javax.swing.JLabel();
-        controlPanel = new javax.swing.JPanel();
-        monsterLabel = new javax.swing.JLabel();
-        deckLabel = new javax.swing.JLabel();
-        discardLabel = new javax.swing.JLabel();
-        commitButton = new javax.swing.JButton();
-        menuButton = new javax.swing.JButton();
-        endPhaseButton = new javax.swing.JButton();
-        rulesButton = new javax.swing.JButton();
-        monsterProgLabel = new javax.swing.JLabel();
-        deckNameLabel = new javax.swing.JLabel();
-        discardNameLabel = new javax.swing.JLabel();
-        monsterCountLabel = new javax.swing.JLabel();
-        monsterProgBar = new javax.swing.JProgressBar();
-        vertLabelPanel = new javax.swing.JPanel();
-        vertForestLabel = new javax.swing.JLabel();
-        vertArcherLabel = new javax.swing.JLabel();
-        vertKnightLabel = new javax.swing.JLabel();
-        vertSwordLabel = new javax.swing.JLabel();
-        vertWallLabel = new javax.swing.JLabel();
-        vertCastleLabel = new javax.swing.JLabel();
-        horzLabelPanel = new javax.swing.JPanel();
-        horzLabel0 = new javax.swing.JLabel();
-        horzLabel1 = new javax.swing.JLabel();
-        horzLabel2 = new javax.swing.JLabel();
-        horzLabel3 = new javax.swing.JLabel();
-        horzLabel4 = new javax.swing.JLabel();
-        horzLabel5 = new javax.swing.JLabel();
+        phaseButton1 = new javax.swing.JButton();
+        phaseButton2 = new javax.swing.JButton();
+        phaseButton3 = new javax.swing.JButton();
+        phaseButton4 = new javax.swing.JButton();
+        skipButton1 = new javax.swing.JButton();
+        skipButton2 = new javax.swing.JButton();
+        skipButton3 = new javax.swing.JButton();
         boardLayeredPanel = new javax.swing.JLayeredPane();
         boardBottomLayer = new javax.swing.JPanel();
         boardPaletteLayer = new javax.swing.JPanel();
@@ -562,51 +674,133 @@ public class CastleFrame extends javax.swing.JFrame {
         handTurnLabel3 = new javax.swing.JLabel();
         handScoreLabel3 = new javax.swing.JLabel();
         handPointsLabel3 = new javax.swing.JLabel();
+        controlPanel = new javax.swing.JPanel();
+        monsterProgLabel = new javax.swing.JLabel();
+        monsterCountLabel = new javax.swing.JLabel();
+        monsterProgBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
-        setMinimumSize(new java.awt.Dimension(1200, 680));
-        setPreferredSize(new java.awt.Dimension(1280, 710));
+        setMinimumSize(new java.awt.Dimension(1280, 820));
+        setPreferredSize(new java.awt.Dimension(1280, 820));
 
         phasePanel.setFocusable(false);
         phasePanel.setOpaque(false);
 
-        phaseLabel1.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        phaseLabel1.setText("Phase 1 - Draw");
-        phaseLabel1.setToolTipText("");
-        phaseLabel1.setMaximumSize(new java.awt.Dimension(80, 14));
-        phaseLabel1.setMinimumSize(new java.awt.Dimension(80, 14));
-        phaseLabel1.setPreferredSize(new java.awt.Dimension(80, 14));
-
-        phaseLabel2.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        phaseLabel2.setText("Phase 2 - Discard");
-        phaseLabel2.setMaximumSize(new java.awt.Dimension(80, 14));
-        phaseLabel2.setMinimumSize(new java.awt.Dimension(80, 14));
-        phaseLabel2.setPreferredSize(new java.awt.Dimension(80, 14));
-
-        phaseLabel3.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        phaseLabel3.setText("Phase 3 - Trade");
-        phaseLabel3.setMaximumSize(new java.awt.Dimension(80, 14));
-        phaseLabel3.setMinimumSize(new java.awt.Dimension(80, 14));
-        phaseLabel3.setPreferredSize(new java.awt.Dimension(80, 14));
-
-        phaseLabel4.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 12)); // NOI18N
-        phaseLabel4.setText("Phase 4 - Attack");
-        phaseLabel4.setMaximumSize(new java.awt.Dimension(80, 14));
-        phaseLabel4.setMinimumSize(new java.awt.Dimension(80, 14));
-        phaseLabel4.setPreferredSize(new java.awt.Dimension(80, 14));
-
         phaseTitleLabel.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         phaseTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        phaseTitleLabel.setText("PHASE GUIDE");
-        phaseTitleLabel.setMaximumSize(new java.awt.Dimension(80, 14));
-        phaseTitleLabel.setMinimumSize(new java.awt.Dimension(80, 14));
-        phaseTitleLabel.setPreferredSize(new java.awt.Dimension(80, 14));
+        phaseTitleLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn.png"))); // NOI18N
+        phaseTitleLabel.setAlignmentX(0.5F);
+        phaseTitleLabel.setAutoscrolls(true);
+        phaseTitleLabel.setMaximumSize(new java.awt.Dimension(283, 57));
+        phaseTitleLabel.setMinimumSize(new java.awt.Dimension(283, 57));
+        phaseTitleLabel.setPreferredSize(new java.awt.Dimension(283, 57));
 
-        titleLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 12)); // NOI18N
-        titleLabel.setText("BG Implementation v.0");
+        phaseButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/drawTurn.png"))); // NOI18N
+        phaseButton1.setActionCommand("Draw");
+        phaseButton1.setBorderPainted(false);
+        phaseButton1.setMaximumSize(new java.awt.Dimension(283, 81));
+        phaseButton1.setMinimumSize(new java.awt.Dimension(283, 81));
+        phaseButton1.setPreferredSize(new java.awt.Dimension(283, 81));
+        phaseButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/drawTurn_rollOver.png"))); // NOI18N
+        phaseButton1.setSelected(true);
+        phaseButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/drawTurn_highlight.png"))); // NOI18N
+        phaseButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dealClicked(evt);
+            }
+        });
 
-        phaseCurrentLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/turnSpot.png"))); // NOI18N
+        phaseButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/discardTurn.png"))); // NOI18N
+        phaseButton2.setBorderPainted(false);
+        phaseButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        phaseButton2.setMaximumSize(new java.awt.Dimension(253, 81));
+        phaseButton2.setMinimumSize(new java.awt.Dimension(253, 81));
+        phaseButton2.setPreferredSize(new java.awt.Dimension(253, 81));
+        phaseButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/discardTurn_rollOver.png"))); // NOI18N
+        phaseButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/discardTurn_highlight.png"))); // NOI18N
+        phaseButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tradeDealerClicked(evt);
+            }
+        });
+
+        phaseButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tradeTurn.png"))); // NOI18N
+        phaseButton3.setActionCommand("tradeTo");
+        phaseButton3.setBorderPainted(false);
+        phaseButton3.setMaximumSize(new java.awt.Dimension(253, 81));
+        phaseButton3.setMinimumSize(new java.awt.Dimension(253, 81));
+        phaseButton3.setPreferredSize(new java.awt.Dimension(253, 81));
+        phaseButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/tradeTurn_rollOver.png"))); // NOI18N
+        phaseButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/tradeTurn_highlight.png"))); // NOI18N
+        phaseButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tradePlayerClicked(evt);
+            }
+        });
+
+        phaseButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/attack_COMBO.png"))); // NOI18N
+        phaseButton4.setActionCommand("attack");
+        phaseButton4.setBorderPainted(false);
+        phaseButton4.setMaximumSize(new java.awt.Dimension(211, 81));
+        phaseButton4.setMinimumSize(new java.awt.Dimension(211, 81));
+        phaseButton4.setPreferredSize(new java.awt.Dimension(211, 81));
+        phaseButton4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/attack_COMBO_rollOver.png"))); // NOI18N
+        phaseButton4.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/attack_COMBO_highlight.png"))); // NOI18N
+        phaseButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                attackClicked(evt);
+            }
+        });
+
+        skipButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn_SKIP.png"))); // NOI18N
+        skipButton1.setAlignmentY(0.0F);
+        skipButton1.setBorderPainted(false);
+        skipButton1.setFocusPainted(false);
+        skipButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        skipButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        skipButton1.setMaximumSize(new java.awt.Dimension(30, 81));
+        skipButton1.setMinimumSize(new java.awt.Dimension(30, 81));
+        skipButton1.setPreferredSize(new java.awt.Dimension(30, 81));
+        skipButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn_SKIP_rollOver.png"))); // NOI18N
+        skipButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn_SKIP_highlight.png"))); // NOI18N
+        skipButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton1Clicked(evt);
+            }
+        });
+
+        skipButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn_SKIP.png"))); // NOI18N
+        skipButton2.setAlignmentY(0.0F);
+        skipButton2.setBorderPainted(false);
+        skipButton2.setFocusPainted(false);
+        skipButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        skipButton2.setMaximumSize(new java.awt.Dimension(30, 81));
+        skipButton2.setMinimumSize(new java.awt.Dimension(30, 81));
+        skipButton2.setPreferredSize(new java.awt.Dimension(30, 81));
+        skipButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn_SKIP_rollOver.png"))); // NOI18N
+        skipButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/orderOfTurn_SKIP_highlight.png"))); // NOI18N
+        skipButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton2Clicked(evt);
+            }
+        });
+
+        skipButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/endTurn_COMBO.png"))); // NOI18N
+        skipButton3.setAlignmentY(0.0F);
+        skipButton3.setBorderPainted(false);
+        skipButton3.setFocusPainted(false);
+        skipButton3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        skipButton3.setMaximumSize(new java.awt.Dimension(72, 81));
+        skipButton3.setMinimumSize(new java.awt.Dimension(72, 81));
+        skipButton3.setPreferredSize(new java.awt.Dimension(72, 81));
+        skipButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/endTurn_COMBO_rollOver.png"))); // NOI18N
+        skipButton3.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/endTurn_COMBO_highlight.png"))); // NOI18N
+        skipButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipButton3Clicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout phasePanelLayout = new javax.swing.GroupLayout(phasePanel);
         phasePanel.setLayout(phasePanelLayout);
@@ -614,319 +808,72 @@ public class CastleFrame extends javax.swing.JFrame {
             phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(phasePanelLayout.createSequentialGroup()
                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(phaseTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleLabel))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(phasePanelLayout.createSequentialGroup()
-                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addComponent(phaseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(phaseCurrentLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(phaseLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                            .addComponent(phaseLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phaseLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(5, 5, 5)
-                        .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(phaseCurrentLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phaseCurrentLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(phaseCurrentLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                    .addComponent(phaseButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(phasePanelLayout.createSequentialGroup()
+                            .addComponent(phaseButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phaseButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(phaseTitleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
+                            .addComponent(phaseButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(skipButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(skipButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         phasePanelLayout.setVerticalGroup(
             phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(phasePanelLayout.createSequentialGroup()
-                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(phaseTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(phaseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(phaseCurrentLabel1)))
-                .addGap(10, 10, 10)
-                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(phaseLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(phaseCurrentLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(phaseLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(phaseCurrentLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(phaseLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(phasePanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(phaseCurrentLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        controlPanel.setFocusable(false);
-        controlPanel.setOpaque(false);
-
-        monsterLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/troll3030.png"))); // NOI18N
-
-        deckLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-
-        discardLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-
-        commitButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        commitButton.setForeground(new java.awt.Color(255, 0, 0));
-        commitButton.setText("DEAL!");
-        commitButton.setMaximumSize(new java.awt.Dimension(115, 40));
-        commitButton.setMinimumSize(new java.awt.Dimension(115, 40));
-        commitButton.setPreferredSize(new java.awt.Dimension(115, 40));
-        commitButton.setRequestFocusEnabled(false);
-        commitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                commitClicked(evt);
-            }
-        });
-
-        menuButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        menuButton.setText("Menu");
-        menuButton.setMaximumSize(new java.awt.Dimension(115, 40));
-        menuButton.setMinimumSize(new java.awt.Dimension(115, 40));
-        menuButton.setPreferredSize(new java.awt.Dimension(115, 40));
-        menuButton.setRequestFocusEnabled(false);
-        menuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuClicked(evt);
-            }
-        });
-
-        endPhaseButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        endPhaseButton.setText("End Phase");
-        endPhaseButton.setMaximumSize(new java.awt.Dimension(115, 40));
-        endPhaseButton.setMinimumSize(new java.awt.Dimension(115, 40));
-        endPhaseButton.setPreferredSize(new java.awt.Dimension(115, 40));
-        endPhaseButton.setRequestFocusEnabled(false);
-        endPhaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                endPhaseClicked(evt);
-            }
-        });
-
-        rulesButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
-        rulesButton.setText("Rules");
-        rulesButton.setMaximumSize(new java.awt.Dimension(115, 40));
-        rulesButton.setMinimumSize(new java.awt.Dimension(115, 40));
-        rulesButton.setPreferredSize(new java.awt.Dimension(115, 40));
-        rulesButton.setRequestFocusEnabled(false);
-        rulesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rulesClicked(evt);
-            }
-        });
-
-        monsterProgLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
-        monsterProgLabel.setText("Monsters Remaining:");
-
-        deckNameLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
-        deckNameLabel.setText("Deck");
-
-        discardNameLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
-        discardNameLabel.setText("Discard");
-
-        monsterCountLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
-        monsterCountLabel.setForeground(new java.awt.Color(255, 0, 0));
-        monsterCountLabel.setText("42/42");
-
-        monsterProgBar.setForeground(new java.awt.Color(255, 0, 0));
-        monsterProgBar.setMaximum(0);
-        monsterProgBar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        monsterProgBar.setPreferredSize(new java.awt.Dimension(200, 20));
-
-        javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
-        controlPanel.setLayout(controlPanelLayout);
-        controlPanelLayout.setHorizontalGroup(
-            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addComponent(commitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(endPhaseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deckLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deckNameLabel))
-                        .addGap(46, 46, 46)
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(discardLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(discardNameLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addComponent(menuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rulesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(monsterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(monsterProgLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(monsterCountLabel)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(monsterProgBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        controlPanelLayout.setVerticalGroup(
-            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(monsterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(monsterProgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(monsterCountLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(monsterProgBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(discardNameLabel)
-                    .addComponent(deckNameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(discardLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deckLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(endPhaseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(commitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rulesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        vertForestLabel.setText("Forest");
-
-        vertArcherLabel.setText("Archer");
-
-        vertKnightLabel.setText("Knight");
-
-        vertSwordLabel.setText("Swords.");
-
-        vertWallLabel.setText("Wall");
-
-        vertCastleLabel.setText("Castle");
-
-        javax.swing.GroupLayout vertLabelPanelLayout = new javax.swing.GroupLayout(vertLabelPanel);
-        vertLabelPanel.setLayout(vertLabelPanelLayout);
-        vertLabelPanelLayout.setHorizontalGroup(
-            vertLabelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(vertLabelPanelLayout.createSequentialGroup()
+                .addComponent(phaseTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addGroup(vertLabelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(vertForestLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vertArcherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vertKnightLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vertSwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vertWallLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(vertCastleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        vertLabelPanelLayout.setVerticalGroup(
-            vertLabelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(vertLabelPanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(vertForestLabel)
-                .addGap(56, 56, 56)
-                .addComponent(vertArcherLabel)
-                .addGap(56, 56, 56)
-                .addComponent(vertKnightLabel)
-                .addGap(56, 56, 56)
-                .addComponent(vertSwordLabel)
-                .addGap(41, 41, 41)
-                .addComponent(vertWallLabel)
-                .addGap(26, 26, 26)
-                .addComponent(vertCastleLabel)
-                .addContainerGap())
+                .addComponent(phaseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phaseButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(skipButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phaseButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(skipButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(phaseButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
 
-        horzLabel0.setText("0");
+        boardLayeredPanel.setPreferredSize(new java.awt.Dimension(906, 500));
 
-        horzLabel1.setText("1");
-
-        horzLabel2.setText("2");
-
-        horzLabel3.setText("3");
-
-        horzLabel4.setText("4");
-
-        horzLabel5.setText("5");
-
-        javax.swing.GroupLayout horzLabelPanelLayout = new javax.swing.GroupLayout(horzLabelPanel);
-        horzLabelPanel.setLayout(horzLabelPanelLayout);
-        horzLabelPanelLayout.setHorizontalGroup(
-            horzLabelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(horzLabelPanelLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(horzLabel0)
-                .addGap(171, 171, 171)
-                .addComponent(horzLabel1)
-                .addGap(171, 171, 171)
-                .addComponent(horzLabel2)
-                .addGap(171, 171, 171)
-                .addComponent(horzLabel3)
-                .addGap(171, 171, 171)
-                .addComponent(horzLabel4)
-                .addGap(171, 171, 171)
-                .addComponent(horzLabel5)
-                .addGap(78, 78, 78))
-        );
-        horzLabelPanelLayout.setVerticalGroup(
-            horzLabelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(horzLabelPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(horzLabel0)
-                .addComponent(horzLabel1)
-                .addComponent(horzLabel2)
-                .addComponent(horzLabel3)
-                .addComponent(horzLabel4)
-                .addComponent(horzLabel5))
-        );
-
-        boardLayeredPanel.setPreferredSize(new java.awt.Dimension(1020, 380));
-
-        boardBottomLayer.setPreferredSize(new java.awt.Dimension(1020, 380));
+        boardBottomLayer.setMinimumSize(new java.awt.Dimension(906, 494));
+        boardBottomLayer.setPreferredSize(new java.awt.Dimension(906, 500));
 
         javax.swing.GroupLayout boardBottomLayerLayout = new javax.swing.GroupLayout(boardBottomLayer);
         boardBottomLayer.setLayout(boardBottomLayerLayout);
         boardBottomLayerLayout.setHorizontalGroup(
             boardBottomLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addGap(0, 906, Short.MAX_VALUE)
         );
         boardBottomLayerLayout.setVerticalGroup(
             boardBottomLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
+        boardPaletteLayer.setMinimumSize(new java.awt.Dimension(906, 494));
         boardPaletteLayer.setOpaque(false);
-        boardPaletteLayer.setPreferredSize(new java.awt.Dimension(1020, 380));
+        boardPaletteLayer.setPreferredSize(new java.awt.Dimension(906, 500));
 
-        boardButton04.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton04.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
         boardButton04.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton04.setBorderPainted(false);
         boardButton04.setContentAreaFilled(false);
         boardButton04.setFocusPainted(false);
-        boardButton04.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton04.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton04.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton04.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton04.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton04.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton04.setRequestFocusEnabled(false);
         boardButton04.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -934,13 +881,14 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
         boardButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton5.setBorderPainted(false);
         boardButton5.setContentAreaFilled(false);
         boardButton5.setFocusPainted(false);
-        boardButton5.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton5.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton5.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton5.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton5.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton5.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton5.setRequestFocusEnabled(false);
         boardButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -948,13 +896,14 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
         boardButton6.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton6.setBorderPainted(false);
         boardButton6.setContentAreaFilled(false);
         boardButton6.setFocusPainted(false);
-        boardButton6.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton6.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton6.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton6.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton6.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton6.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton6.setRequestFocusEnabled(false);
         boardButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -962,13 +911,15 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
+        boardButton7.setAutoscrolls(true);
         boardButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton7.setBorderPainted(false);
         boardButton7.setContentAreaFilled(false);
         boardButton7.setFocusPainted(false);
-        boardButton7.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton7.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton7.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton7.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton7.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton7.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton7.setRequestFocusEnabled(false);
         boardButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -976,109 +927,118 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
         boardButton24.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton24.setBorderPainted(false);
         boardButton24.setContentAreaFilled(false);
-        boardButton24.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton24.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton24.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton24.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton24.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton24.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton24boardButtonClicked(evt);
             }
         });
 
-        boardButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
         boardButton25.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton25.setBorderPainted(false);
         boardButton25.setContentAreaFilled(false);
-        boardButton25.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton25.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton25.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton25.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton25.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton25.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton25boardButtonClicked(evt);
             }
         });
 
-        boardButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
         boardButton26.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton26.setBorderPainted(false);
         boardButton26.setContentAreaFilled(false);
-        boardButton26.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton26.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton26.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton26.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton26.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton26.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton26boardButtonClicked(evt);
             }
         });
 
-        boardButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
         boardButton27.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton27.setBorderPainted(false);
         boardButton27.setContentAreaFilled(false);
-        boardButton27.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton27.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton27.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton27.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton27.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton27.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton27boardButtonClicked(evt);
             }
         });
 
-        boardButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
         boardButton28.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton28.setBorderPainted(false);
         boardButton28.setContentAreaFilled(false);
-        boardButton28.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton28.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton28.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton28.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton28.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton28.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton28.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton28boardButtonClicked(evt);
             }
         });
 
-        boardButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
         boardButton29.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton29.setBorderPainted(false);
         boardButton29.setContentAreaFilled(false);
-        boardButton29.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton29.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton29.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton29.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton29.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton29.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton29.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton29boardButtonClicked(evt);
             }
         });
 
-        boardButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
         boardButton30.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton30.setBorderPainted(false);
         boardButton30.setContentAreaFilled(false);
-        boardButton30.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton30.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton30.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton30.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton30.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton30.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton30.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton30boardButtonClicked(evt);
             }
         });
 
-        boardButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/greenButtonTrans55.png"))); // NOI18N
+        boardButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
         boardButton31.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton31.setBorderPainted(false);
         boardButton31.setContentAreaFilled(false);
-        boardButton31.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton31.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton31.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton31.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton31.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton31.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton31.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton31boardButtonClicked(evt);
             }
         });
 
-        boardButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
         boardButton8.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton8.setBorderPainted(false);
         boardButton8.setContentAreaFilled(false);
         boardButton8.setFocusPainted(false);
-        boardButton8.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton8.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton8.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton8.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton8.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton8.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton8.setRequestFocusEnabled(false);
         boardButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1086,13 +1046,14 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
         boardButton9.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton9.setBorderPainted(false);
         boardButton9.setContentAreaFilled(false);
         boardButton9.setFocusPainted(false);
-        boardButton9.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton9.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton9.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton9.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton9.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton9.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton9.setRequestFocusEnabled(false);
         boardButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1100,13 +1061,14 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
         boardButton10.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton10.setBorderPainted(false);
         boardButton10.setContentAreaFilled(false);
         boardButton10.setFocusPainted(false);
-        boardButton10.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton10.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton10.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton10.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton10.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton10.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton10.setRequestFocusEnabled(false);
         boardButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1114,13 +1076,15 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/redButtonTrans55.png"))); // NOI18N
+        boardButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
+        boardButton11.setAutoscrolls(true);
         boardButton11.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton11.setBorderPainted(false);
         boardButton11.setContentAreaFilled(false);
         boardButton11.setFocusPainted(false);
-        boardButton11.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton11.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton11.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton11.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton11.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton11.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton11.setRequestFocusEnabled(false);
         boardButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1128,112 +1092,120 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
         boardButton32.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton32.setBorderPainted(false);
         boardButton32.setContentAreaFilled(false);
         boardButton32.setFocusPainted(false);
         boardButton32.setFocusable(false);
-        boardButton32.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton32.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton32.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton32.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton32.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton32.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton32boardButtonClicked(evt);
             }
         });
 
-        boardButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
         boardButton33.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton33.setBorderPainted(false);
         boardButton33.setContentAreaFilled(false);
         boardButton33.setFocusPainted(false);
         boardButton33.setFocusable(false);
-        boardButton33.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton33.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton33.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton33.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton33.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton33.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton33boardButtonClicked(evt);
             }
         });
 
-        boardButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
         boardButton34.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton34.setBorderPainted(false);
         boardButton34.setContentAreaFilled(false);
         boardButton34.setFocusPainted(false);
         boardButton34.setFocusable(false);
-        boardButton34.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton34.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton34.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton34.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton34.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton34.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton34boardButtonClicked(evt);
             }
         });
 
-        boardButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
         boardButton35.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton35.setBorderPainted(false);
         boardButton35.setContentAreaFilled(false);
         boardButton35.setFocusPainted(false);
         boardButton35.setFocusable(false);
-        boardButton35.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton35.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton35.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton35.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton35.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton35.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton35.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton35boardButtonClicked(evt);
             }
         });
 
-        boardButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
         boardButton36.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton36.setBorderPainted(false);
         boardButton36.setContentAreaFilled(false);
         boardButton36.setFocusPainted(false);
         boardButton36.setFocusable(false);
-        boardButton36.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton36.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton36.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton36.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton36.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton36.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButtonClicked(evt);
             }
         });
 
-        boardButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
         boardButton37.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton37.setBorderPainted(false);
         boardButton37.setContentAreaFilled(false);
         boardButton37.setFocusPainted(false);
         boardButton37.setFocusable(false);
-        boardButton37.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton37.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton37.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton37.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton37.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton37.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton37.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton37boardButtonClicked(evt);
             }
         });
 
-        boardButton38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
         boardButton38.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton38.setBorderPainted(false);
         boardButton38.setContentAreaFilled(false);
         boardButton38.setFocusPainted(false);
         boardButton38.setFocusable(false);
-        boardButton38.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton38.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton38.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton38.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton38.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton38.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton38.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton38boardButtonClicked(evt);
             }
         });
 
-        boardButton39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/blueButtonTrans55.png"))); // NOI18N
+        boardButton39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
         boardButton39.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton39.setBorderPainted(false);
         boardButton39.setContentAreaFilled(false);
         boardButton39.setFocusPainted(false);
         boardButton39.setFocusable(false);
-        boardButton39.setMaximumSize(new java.awt.Dimension(170, 70));
-        boardButton39.setMinimumSize(new java.awt.Dimension(170, 70));
-        boardButton39.setPreferredSize(new java.awt.Dimension(170, 70));
+        boardButton39.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton39.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton39.setPreferredSize(new java.awt.Dimension(149, 90));
         boardButton39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButton39boardButtonClicked(evt);
@@ -1242,20 +1214,26 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton0.setActionCommand("wall1");
+        wallButton0.setBorderPainted(false);
         wallButton0.setContentAreaFilled(false);
+        wallButton0.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton0.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton0.setOpaque(true);
+        wallButton0.setPreferredSize(new java.awt.Dimension(149, 42));
         wallButton0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wallButton0wallButtonClicked(evt);
             }
         });
 
-        castleButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"))); // NOI18N
+        castleButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleRed.png"))); // NOI18N
         castleButton0.setActionCommand("board00");
         castleButton0.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton0.setBorderPainted(false);
         castleButton0.setContentAreaFilled(false);
-        castleButton0.setMaximumSize(new java.awt.Dimension(170, 70));
-        castleButton0.setMinimumSize(new java.awt.Dimension(170, 70));
-        castleButton0.setPreferredSize(new java.awt.Dimension(130, 70));
+        castleButton0.setMaximumSize(new java.awt.Dimension(149, 80));
+        castleButton0.setMinimumSize(new java.awt.Dimension(149, 80));
+        castleButton0.setPreferredSize(new java.awt.Dimension(149, 80));
         castleButton0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButtonClicked(evt);
@@ -1264,20 +1242,26 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton1.setActionCommand("wall1");
+        wallButton1.setBorderPainted(false);
         wallButton1.setContentAreaFilled(false);
+        wallButton1.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton1.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton1.setOpaque(true);
+        wallButton1.setPreferredSize(new java.awt.Dimension(149, 42));
         wallButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wallButton1wallButtonClicked(evt);
             }
         });
 
-        castleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"))); // NOI18N
+        castleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleRed.png"))); // NOI18N
         castleButton1.setActionCommand("board00");
         castleButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton1.setBorderPainted(false);
         castleButton1.setContentAreaFilled(false);
-        castleButton1.setMaximumSize(new java.awt.Dimension(170, 70));
-        castleButton1.setMinimumSize(new java.awt.Dimension(170, 70));
-        castleButton1.setPreferredSize(new java.awt.Dimension(130, 70));
+        castleButton1.setMaximumSize(new java.awt.Dimension(149, 80));
+        castleButton1.setMinimumSize(new java.awt.Dimension(149, 80));
+        castleButton1.setPreferredSize(new java.awt.Dimension(149, 80));
         castleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButtonClicked(evt);
@@ -1286,20 +1270,26 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton2.setActionCommand("wall1");
+        wallButton2.setBorderPainted(false);
         wallButton2.setContentAreaFilled(false);
+        wallButton2.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton2.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton2.setOpaque(true);
+        wallButton2.setPreferredSize(new java.awt.Dimension(149, 42));
         wallButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wallButton2wallButtonClicked(evt);
             }
         });
 
-        castleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"))); // NOI18N
+        castleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleGreen.png"))); // NOI18N
         castleButton2.setActionCommand("board00");
         castleButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton2.setBorderPainted(false);
         castleButton2.setContentAreaFilled(false);
-        castleButton2.setMaximumSize(new java.awt.Dimension(170, 70));
-        castleButton2.setMinimumSize(new java.awt.Dimension(170, 70));
-        castleButton2.setPreferredSize(new java.awt.Dimension(130, 70));
+        castleButton2.setMaximumSize(new java.awt.Dimension(149, 80));
+        castleButton2.setMinimumSize(new java.awt.Dimension(149, 80));
+        castleButton2.setPreferredSize(new java.awt.Dimension(149, 80));
         castleButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButtonClicked(evt);
@@ -1308,20 +1298,26 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton3.setActionCommand("wall1");
+        wallButton3.setBorderPainted(false);
         wallButton3.setContentAreaFilled(false);
+        wallButton3.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton3.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton3.setOpaque(true);
+        wallButton3.setPreferredSize(new java.awt.Dimension(149, 42));
         wallButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wallButton3wallButtonClicked(evt);
             }
         });
 
-        castleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"))); // NOI18N
+        castleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleGreen.png"))); // NOI18N
         castleButton3.setActionCommand("board00");
         castleButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton3.setBorderPainted(false);
         castleButton3.setContentAreaFilled(false);
-        castleButton3.setMaximumSize(new java.awt.Dimension(170, 70));
-        castleButton3.setMinimumSize(new java.awt.Dimension(170, 70));
-        castleButton3.setPreferredSize(new java.awt.Dimension(130, 70));
+        castleButton3.setMaximumSize(new java.awt.Dimension(149, 80));
+        castleButton3.setMinimumSize(new java.awt.Dimension(149, 80));
+        castleButton3.setPreferredSize(new java.awt.Dimension(149, 80));
         castleButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButtonClicked(evt);
@@ -1330,20 +1326,26 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton4.setActionCommand("wall1");
+        wallButton4.setBorderPainted(false);
         wallButton4.setContentAreaFilled(false);
+        wallButton4.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton4.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton4.setOpaque(true);
+        wallButton4.setPreferredSize(new java.awt.Dimension(149, 42));
         wallButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wallButton4wallButtonClicked(evt);
             }
         });
 
-        castleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"))); // NOI18N
+        castleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleBlue.png"))); // NOI18N
         castleButton5.setActionCommand("board00");
         castleButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton5.setBorderPainted(false);
         castleButton5.setContentAreaFilled(false);
-        castleButton5.setMaximumSize(new java.awt.Dimension(170, 70));
-        castleButton5.setMinimumSize(new java.awt.Dimension(170, 70));
-        castleButton5.setPreferredSize(new java.awt.Dimension(130, 70));
+        castleButton5.setMaximumSize(new java.awt.Dimension(149, 80));
+        castleButton5.setMinimumSize(new java.awt.Dimension(149, 80));
+        castleButton5.setPreferredSize(new java.awt.Dimension(149, 80));
         castleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButton5boardButtonClicked(evt);
@@ -1352,20 +1354,26 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton5.setActionCommand("wall1");
+        wallButton5.setBorderPainted(false);
         wallButton5.setContentAreaFilled(false);
+        wallButton5.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton5.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton5.setOpaque(true);
+        wallButton5.setPreferredSize(new java.awt.Dimension(149, 42));
         wallButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 wallButton5wallButtonClicked(evt);
             }
         });
 
-        castleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"))); // NOI18N
+        castleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleBlue.png"))); // NOI18N
         castleButton4.setActionCommand("board00");
         castleButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton4.setBorderPainted(false);
         castleButton4.setContentAreaFilled(false);
-        castleButton4.setMaximumSize(new java.awt.Dimension(170, 70));
-        castleButton4.setMinimumSize(new java.awt.Dimension(170, 70));
-        castleButton4.setPreferredSize(new java.awt.Dimension(130, 70));
+        castleButton4.setMaximumSize(new java.awt.Dimension(149, 80));
+        castleButton4.setMinimumSize(new java.awt.Dimension(149, 80));
+        castleButton4.setPreferredSize(new java.awt.Dimension(149, 80));
         castleButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButton4boardButtonClicked(evt);
@@ -1377,201 +1385,192 @@ public class CastleFrame extends javax.swing.JFrame {
         boardPaletteLayerLayout.setHorizontalGroup(
             boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(castleButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(wallButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(boardButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(castleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(wallButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0)
+                .addGap(1, 1, 1)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(boardPaletteLayerLayout.createSequentialGroup()
+                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(wallButton0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(castleButton0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
                         .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(wallButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(wallButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(castleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(castleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, 0)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(wallButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(castleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(castleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(wallButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
                         .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(castleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(wallButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(wallButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(castleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(wallButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(castleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(wallButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(castleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(wallButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(castleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boardButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boardButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boardButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boardButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(1, 1, 1)
+                        .addComponent(boardButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPaletteLayerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(boardButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
+                        .addComponent(boardButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
+                        .addComponent(boardButton04, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         boardPaletteLayerLayout.setVerticalGroup(
             boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(boardPaletteLayerLayout.createSequentialGroup()
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton28, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton29, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(boardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton38, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                                .addComponent(boardButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(boardButton36, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(boardButton28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(boardButton39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addComponent(wallButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(castleButton0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addComponent(wallButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(castleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addComponent(wallButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(castleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(wallButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(wallButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(wallButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(castleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(castleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(castleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(boardButton29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boardButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(boardButton38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
+                .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boardButton30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(boardButton34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
+                .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boardButton31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(boardButton35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(2, 2, 2)
+                .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(wallButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(wallButton0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(wallButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(wallButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(wallButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wallButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(castleButton0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(castleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(castleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(castleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(castleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(castleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
+        boardShapeLayer.setMinimumSize(new java.awt.Dimension(906, 494));
         boardShapeLayer.setOpaque(false);
-        boardShapeLayer.setPreferredSize(new java.awt.Dimension(1020, 380));
+        boardShapeLayer.setPreferredSize(new java.awt.Dimension(906, 500));
 
         javax.swing.GroupLayout boardShapeLayerLayout = new javax.swing.GroupLayout(boardShapeLayer);
         boardShapeLayer.setLayout(boardShapeLayerLayout);
         boardShapeLayerLayout.setHorizontalGroup(
             boardShapeLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addGap(0, 906, Short.MAX_VALUE)
         );
         boardShapeLayerLayout.setVerticalGroup(
             boardShapeLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 494, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout boardLayeredPanelLayout = new javax.swing.GroupLayout(boardLayeredPanel);
         boardLayeredPanel.setLayout(boardLayeredPanelLayout);
         boardLayeredPanelLayout.setHorizontalGroup(
             boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boardBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(boardBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(boardLayeredPanelLayout.createSequentialGroup()
-                    .addComponent(boardPaletteLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardPaletteLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(boardShapeLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(boardShapeLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         boardLayeredPanelLayout.setVerticalGroup(
             boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boardBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+            .addComponent(boardBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(boardLayeredPanelLayout.createSequentialGroup()
-                    .addComponent(boardPaletteLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(boardPaletteLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(boardLayeredPanelLayout.createSequentialGroup()
-                    .addComponent(boardShapeLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardLayeredPanelLayout.createSequentialGroup()
+                    .addComponent(boardShapeLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
         boardLayeredPanel.setLayer(boardBottomLayer, 1);
         boardLayeredPanel.setLayer(boardPaletteLayer, 2);
         boardLayeredPanel.setLayer(boardShapeLayer, 3);
 
-        handPanel5.setMaximumSize(new java.awt.Dimension(460, 100));
-        handPanel5.setMinimumSize(new java.awt.Dimension(460, 100));
-        handPanel5.setPreferredSize(new java.awt.Dimension(460, 90));
+        handPanel5.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel5.setMinimumSize(new java.awt.Dimension(465, 90));
+        handPanel5.setName(""); // NOI18N
+        handPanel5.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton50.setActionCommand("card50");
@@ -1655,8 +1654,10 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
+        handTurnLabel5.setMaximumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel5.setMinimumSize(new java.awt.Dimension(58, 24));
         handTurnLabel5.setName("turnLabel"); // NOI18N
-        handTurnLabel5.setPreferredSize(new java.awt.Dimension(15, 20));
+        handTurnLabel5.setPreferredSize(new java.awt.Dimension(58, 24));
 
         handLabel5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handLabel5.setText("P6");
@@ -1703,12 +1704,11 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel5Layout.createSequentialGroup()
                         .addGroup(handPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(handPanel5Layout.createSequentialGroup()
-                                .addComponent(handScoreLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handPointsLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(handScoreLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPointsLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel5Layout.setVerticalGroup(
             handPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1735,9 +1735,10 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        handPanel1.setMaximumSize(new java.awt.Dimension(460, 100));
-        handPanel1.setMinimumSize(new java.awt.Dimension(460, 100));
-        handPanel1.setPreferredSize(new java.awt.Dimension(460, 90));
+        handPanel1.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel1.setMinimumSize(new java.awt.Dimension(465, 90));
+        handPanel1.setName(""); // NOI18N
+        handPanel1.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton10.setActionCommand("card10");
@@ -1823,8 +1824,10 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
+        handTurnLabel1.setMaximumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel1.setMinimumSize(new java.awt.Dimension(58, 24));
         handTurnLabel1.setName("turnLabel"); // NOI18N
-        handTurnLabel1.setPreferredSize(new java.awt.Dimension(15, 20));
+        handTurnLabel1.setPreferredSize(new java.awt.Dimension(58, 24));
 
         handLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handLabel1.setText("P2");
@@ -1871,12 +1874,11 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel1Layout.createSequentialGroup()
                         .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(handPanel1Layout.createSequentialGroup()
-                                .addComponent(handScoreLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handPointsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(handScoreLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPointsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel1Layout.setVerticalGroup(
             handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1902,9 +1904,10 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        handPanel4.setMaximumSize(new java.awt.Dimension(460, 100));
-        handPanel4.setMinimumSize(new java.awt.Dimension(460, 100));
-        handPanel4.setPreferredSize(new java.awt.Dimension(460, 90));
+        handPanel4.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel4.setMinimumSize(new java.awt.Dimension(465, 90));
+        handPanel4.setName(""); // NOI18N
+        handPanel4.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton40.setActionCommand("card40");
@@ -1990,8 +1993,10 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
+        handTurnLabel4.setMaximumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel4.setMinimumSize(new java.awt.Dimension(58, 24));
         handTurnLabel4.setName("turnLabel"); // NOI18N
-        handTurnLabel4.setPreferredSize(new java.awt.Dimension(15, 20));
+        handTurnLabel4.setPreferredSize(new java.awt.Dimension(58, 24));
 
         handLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handLabel4.setText("P5");
@@ -2038,40 +2043,43 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel4Layout.createSequentialGroup()
                         .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(handPanel4Layout.createSequentialGroup()
-                                .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel4Layout.setVerticalGroup(
             handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(handPanel4Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cardButton40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardButton44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, handPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(handLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
+            .addGroup(handPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cardButton40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, handPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(handLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
+                .addContainerGap())
         );
 
-        handPanel2.setMaximumSize(new java.awt.Dimension(460, 90));
-        handPanel2.setMinimumSize(new java.awt.Dimension(460, 90));
-        handPanel2.setPreferredSize(new java.awt.Dimension(460, 90));
+        handPanel2.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel2.setMinimumSize(new java.awt.Dimension(465, 90));
+        handPanel2.setName(""); // NOI18N
+        handPanel2.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton20.setActionCommand("card20");
@@ -2164,8 +2172,10 @@ public class CastleFrame extends javax.swing.JFrame {
         handLabel2.setName("playerLabel"); // NOI18N
         handLabel2.setPreferredSize(new java.awt.Dimension(46, 20));
 
+        handTurnLabel2.setMaximumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel2.setMinimumSize(new java.awt.Dimension(58, 24));
         handTurnLabel2.setName("turnLabel"); // NOI18N
-        handTurnLabel2.setPreferredSize(new java.awt.Dimension(15, 20));
+        handTurnLabel2.setPreferredSize(new java.awt.Dimension(58, 24));
 
         handScoreLabel2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handScoreLabel2.setText("Score:");
@@ -2205,12 +2215,11 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel2Layout.createSequentialGroup()
                         .addGroup(handPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(handPanel2Layout.createSequentialGroup()
-                                .addComponent(handScoreLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handPointsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(handScoreLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPointsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel2Layout.setVerticalGroup(
             handPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2238,10 +2247,10 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        handPanel0.setMaximumSize(new java.awt.Dimension(460, 100));
-        handPanel0.setMinimumSize(new java.awt.Dimension(460, 100));
+        handPanel0.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel0.setMinimumSize(new java.awt.Dimension(465, 90));
         handPanel0.setName(""); // NOI18N
-        handPanel0.setPreferredSize(new java.awt.Dimension(460, 90));
+        handPanel0.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton00.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton00.setActionCommand("card00");
@@ -2375,41 +2384,43 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel0Layout.createSequentialGroup()
                         .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel0)
-                            .addGroup(handPanel0Layout.createSequentialGroup()
-                                .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel0Layout.setVerticalGroup(
             handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(handPanel0Layout.createSequentialGroup()
                 .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(handPanel0Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(handLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handTurnLabel0)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(62, 62, 62)
+                        .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(handPanel0Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cardButton00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardbutton01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardButton02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardbutton03, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardButton05, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap()
+                        .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(handPanel0Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(handLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handTurnLabel0)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cardButton00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cardbutton01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cardButton02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cardbutton03, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cardButton05, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        handPanel3.setMaximumSize(new java.awt.Dimension(460, 100));
-        handPanel3.setMinimumSize(new java.awt.Dimension(460, 100));
-        handPanel3.setPreferredSize(new java.awt.Dimension(460, 90));
+        handPanel3.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel3.setMinimumSize(new java.awt.Dimension(465, 90));
+        handPanel3.setName(""); // NOI18N
+        handPanel3.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton30.setActionCommand("card30");
@@ -2502,8 +2513,10 @@ public class CastleFrame extends javax.swing.JFrame {
         handLabel3.setName("playerLabel"); // NOI18N
         handLabel3.setPreferredSize(new java.awt.Dimension(46, 20));
 
+        handTurnLabel3.setMaximumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel3.setMinimumSize(new java.awt.Dimension(58, 24));
         handTurnLabel3.setName("turnLabel"); // NOI18N
-        handTurnLabel3.setPreferredSize(new java.awt.Dimension(15, 20));
+        handTurnLabel3.setPreferredSize(new java.awt.Dimension(58, 24));
 
         handScoreLabel3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handScoreLabel3.setText("Score:");
@@ -2542,13 +2555,12 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addComponent(handLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(handPanel3Layout.createSequentialGroup()
                         .addGroup(handPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handTurnLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(handPanel3Layout.createSequentialGroup()
-                                .addComponent(handScoreLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handPointsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(handScoreLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(handTurnLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPointsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel3Layout.setVerticalGroup(
             handPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2575,44 +2587,90 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        controlPanel.setFocusable(false);
+        controlPanel.setOpaque(false);
+
+        monsterProgLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
+        monsterProgLabel.setText("Monsters Remaining:");
+
+        monsterCountLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
+        monsterCountLabel.setForeground(new java.awt.Color(255, 0, 0));
+        monsterCountLabel.setText("42/42");
+
+        monsterProgBar.setForeground(new java.awt.Color(255, 0, 0));
+        monsterProgBar.setMaximum(0);
+        monsterProgBar.setBorder(new javax.swing.border.SoftBevelBorder(1));
+        monsterProgBar.setPreferredSize(new java.awt.Dimension(200, 20));
+
+        javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
+        controlPanel.setLayout(controlPanelLayout);
+        controlPanelLayout.setHorizontalGroup(
+            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(monsterProgLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(monsterCountLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(monsterProgBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        controlPanelLayout.setVerticalGroup(
+            controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(monsterProgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monsterCountLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(monsterProgBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout handPanelLayout = new javax.swing.GroupLayout(handPanel);
         handPanel.setLayout(handPanelLayout);
         handPanelLayout.setHorizontalGroup(
             handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(handPanelLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, handPanelLayout.createSequentialGroup()
-                        .addComponent(handPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(handPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(handPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(handPanelLayout.createSequentialGroup()
                         .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(handPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(handPanel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(handPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(handPanel0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(5, 5, 5))
+                            .addComponent(handPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(handPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         handPanelLayout.setVerticalGroup(
             handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(handPanelLayout.createSequentialGroup()
-                .addGap(3, 3, 3)
                 .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(handPanelLayout.createSequentialGroup()
-                        .addComponent(handPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(handPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(handPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(handPanelLayout.createSequentialGroup()
-                        .addComponent(handPanel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(handPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(handPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(3, 3, 3)
+                        .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(handPanelLayout.createSequentialGroup()
+                                .addComponent(handPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(handPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(handPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(handPanelLayout.createSequentialGroup()
+                                .addComponent(handPanel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(handPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(handPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3))
         );
 
@@ -2620,40 +2678,25 @@ public class CastleFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(vertLabelPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(horzLabelPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 31, Short.MAX_VALUE))))
+                    .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(3, 3, 3)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(horzLabelPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vertLabelPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phasePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2661,7 +2704,7 @@ public class CastleFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardButtonClicked
-
+        //need to add functionality for deselecting IOT support new event handlers
         int handClicked = Character.getNumericValue(evt.getActionCommand().charAt(4));
         int cardClicked = Character.getNumericValue(evt.getActionCommand().charAt(5));
         System.out.println("GUI: Card " + String.valueOf(handClicked) + ", " + String.valueOf(cardClicked) + " was clicked.");
@@ -2675,71 +2718,6 @@ public class CastleFrame extends javax.swing.JFrame {
         updateCards();
 
     }//GEN-LAST:event_cardButtonClicked
-
-    private void endPhaseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endPhaseClicked
-
-        switch (gameState.getCurrentPhase()) {
-            case 1:
-                gameState.fillCurrentPlayerHand();
-                updateGame();
-                break;
-            case 2:
-                gameState.discardOption(false);
-                updateGame();
-                break;
-            case 3:
-                gameState.tradeOption(false);
-                gameState.setOtherCard(-1, -1);
-                otherCard = null;
-                updateGame();
-                break;
-            case 4:
-                gameState.playAdvance();
-                gameState.setSelectedCard(-1);
-                selectedCard = null;
-                updateGame();
-                this.repaint();
-                break;
-
-        }
-
-    }//GEN-LAST:event_endPhaseClicked
-
-    private void menuClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_menuClicked
-
-    private void commitClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_commitClicked
-        switch (gameState.getCurrentPhase()) {
-            case 1:
-                gameState.fillCurrentPlayerHand();
-                updateGame();
-                break;
-            case 2:
-                if (gameState.discardOption(true) == 0) {
-                    gameState.discardCurrentPlayersCard();
-                }
-                updateGame();
-                break;
-            case 3:
-                if (gameState.tradeOption(true) == 0) {
-                    gameState.tradeCurrentPlayerCards();
-                }
-                updateGame();
-                break;
-            case 4:
-                gameState.playCard();
-                selectedCard = null;
-                boardShapeLayer.clearSelected();
-                updateGame();
-                break;
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_commitClicked
-
-    private void rulesClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rulesClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rulesClicked
 
     private void boardButton04boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton04boardButtonClicked
         // TODO add your handling code here:
@@ -2873,32 +2851,74 @@ public class CastleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_castleButton4boardButtonClicked
 
+    private void dealClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealClicked
+        gameState.fillCurrentPlayerHand();
+        updateGame();
+    }//GEN-LAST:event_dealClicked
+
+    private void tradeDealerClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tradeDealerClicked
+        //add gameState phase check to new event handlers
+        if (selectedCard != null) {
+            if (gameState.discardOption(true) == 0) {
+                gameState.discardCurrentPlayersCard();
+                gameState.discardOption(false);
+                updateGame();
+            } else {
+                gameState.discardOption(false);
+                updateGame();
+            }
+        }
+
+    }//GEN-LAST:event_tradeDealerClicked
+
+    private void tradePlayerClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tradePlayerClicked
+        if (otherCard != null) {
+            if (gameState.tradeOption(true) == 0) {
+                gameState.tradeCurrentPlayerCards();
+                otherCard = null;
+                updateGame();
+            } else {
+                gameState.tradeOption(false);
+                updateGame();
+            }
+        }
+    }//GEN-LAST:event_tradePlayerClicked
+
+    private void attackClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attackClicked
+
+        gameState.playCard();
+        selectedCard = null;
+        boardShapeLayer.clearSelected();
+        updateGame();
+
+
+    }//GEN-LAST:event_attackClicked
+
+    private void skipButton1Clicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton1Clicked
+        gameState.discardOption(false);
+        updateGame();
+    }//GEN-LAST:event_skipButton1Clicked
+
+    private void skipButton2Clicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton2Clicked
+        gameState.tradeOption(false);
+        updateGame();
+    }//GEN-LAST:event_skipButton2Clicked
+
+    private void skipButton3Clicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton3Clicked
+        gameState.playAdvance();
+        updateGame();
+    }//GEN-LAST:event_skipButton3Clicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-
-
-        startInt=0;
-
-        if(args.length>0){
-            if(args.length>1){
-                System.out.println("I can't even have this argument right now.");
-            }else{
-                if(args[0].equals("host")){
-                    startInt=1;
-                } else if(args[0].equals("client")){
-                    startInt=2;
-                }
-            }
-
-        }
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
 
-
+        
         
         
         
@@ -2925,7 +2945,7 @@ public class CastleFrame extends javax.swing.JFrame {
          /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CastleFrame(startInt).setVisible(true);
+                new CastleFrame().setVisible(true);
 
             }
         });
@@ -3005,13 +3025,7 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JButton castleButton3;
     private javax.swing.JButton castleButton4;
     private javax.swing.JButton castleButton5;
-    private javax.swing.JButton commitButton;
     private javax.swing.JPanel controlPanel;
-    private javax.swing.JLabel deckLabel;
-    private javax.swing.JLabel deckNameLabel;
-    private javax.swing.JLabel discardLabel;
-    private javax.swing.JLabel discardNameLabel;
-    private javax.swing.JButton endPhaseButton;
     private javax.swing.JLabel handLabel0;
     private javax.swing.JLabel handLabel1;
     private javax.swing.JLabel handLabel2;
@@ -3043,37 +3057,18 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel handTurnLabel3;
     private javax.swing.JLabel handTurnLabel4;
     private javax.swing.JLabel handTurnLabel5;
-    private javax.swing.JLabel horzLabel0;
-    private javax.swing.JLabel horzLabel1;
-    private javax.swing.JLabel horzLabel2;
-    private javax.swing.JLabel horzLabel3;
-    private javax.swing.JLabel horzLabel4;
-    private javax.swing.JLabel horzLabel5;
-    private javax.swing.JPanel horzLabelPanel;
-    private javax.swing.JButton menuButton;
     private javax.swing.JLabel monsterCountLabel;
-    private javax.swing.JLabel monsterLabel;
     private javax.swing.JProgressBar monsterProgBar;
     private javax.swing.JLabel monsterProgLabel;
-    private javax.swing.JLabel phaseCurrentLabel1;
-    private javax.swing.JLabel phaseCurrentLabel2;
-    private javax.swing.JLabel phaseCurrentLabel3;
-    private javax.swing.JLabel phaseCurrentLabel4;
-    private javax.swing.JLabel phaseLabel1;
-    private javax.swing.JLabel phaseLabel2;
-    private javax.swing.JLabel phaseLabel3;
-    private javax.swing.JLabel phaseLabel4;
+    private javax.swing.JButton phaseButton1;
+    private javax.swing.JButton phaseButton2;
+    private javax.swing.JButton phaseButton3;
+    private javax.swing.JButton phaseButton4;
     private javax.swing.JPanel phasePanel;
     private javax.swing.JLabel phaseTitleLabel;
-    private javax.swing.JButton rulesButton;
-    private javax.swing.JLabel titleLabel;
-    private javax.swing.JLabel vertArcherLabel;
-    private javax.swing.JLabel vertCastleLabel;
-    private javax.swing.JLabel vertForestLabel;
-    private javax.swing.JLabel vertKnightLabel;
-    private javax.swing.JPanel vertLabelPanel;
-    private javax.swing.JLabel vertSwordLabel;
-    private javax.swing.JLabel vertWallLabel;
+    private javax.swing.JButton skipButton1;
+    private javax.swing.JButton skipButton2;
+    private javax.swing.JButton skipButton3;
     private javax.swing.JButton wallButton0;
     private javax.swing.JButton wallButton1;
     private javax.swing.JButton wallButton2;
@@ -3082,21 +3077,29 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JButton wallButton5;
     // End of variables declaration//GEN-END:variables
     private GameMenu dialog;
+    private UserMenu userDialog;
+    private MultiMenu multiDialog;
     private ItsCurtains endScreen;
     private String[] players;
+
+    private boolean networkGame;
+    private boolean isHost;
+    private boolean isActive;
+
     private javax.swing.JLabel[] handLabels;
     private javax.swing.JButton[][] cardButtons;
     private javax.swing.JPanel[] handPanels;
-    private javax.swing.JLabel[] phaseLabels;
     private javax.swing.JLabel[] currentPlayerLabels;
     private javax.swing.JButton[] wallButtons;
     private javax.swing.JButton[] castleButtons;
     private javax.swing.JLabel[] scoreLabels;
+    private javax.swing.JButton[] phaseButtons;
+    private javax.swing.JButton[] skipButtons;
 
     private GameState gameState;
     private javax.swing.JButton selectedCard;
     private javax.swing.JButton otherCard;
-       
+
     private javax.swing.ImageIcon blueArcher;
     private javax.swing.ImageIcon redArcher;
     private javax.swing.ImageIcon greenArcher;
@@ -3117,10 +3120,16 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.ImageIcon turnInd;
     private javax.swing.ImageIcon wall;
     private javax.swing.ImageIcon deadWall;
+    private javax.swing.ImageIcon rubbleWall;
     private javax.swing.ImageIcon keep;
     private javax.swing.ImageIcon deadKeep;
-    private javax.swing.ImageIcon missingCard; 
-    private javax.swing.ImageIcon barbarianCard; 
+    private javax.swing.ImageIcon rubbleKeep;
+    private javax.swing.ImageIcon missingCard;
+    private javax.swing.ImageIcon barbarianCard;
+    private javax.swing.ImageIcon timeStopCard;
+    private javax.swing.ImageIcon timeSlapCard;
+    private javax.swing.ImageIcon rewindCard;
+    private javax.swing.ImageIcon turretCard;
 
     public class ShapePanel extends javax.swing.JPanel implements java.awt.event.MouseListener {
 
@@ -3155,7 +3164,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
         @Override
         public java.awt.Dimension getPreferredSize() {
-            return new java.awt.Dimension(1020, 390);
+            return new java.awt.Dimension(906, 500);
         }
 
         @Override
@@ -3204,52 +3213,53 @@ public class CastleFrame extends javax.swing.JFrame {
         }
 
         public void updateMonsters() {
+            if (gameState != null) {
+                int[] monsterSerials = gameState.getMonsterSerialsInPlay();
 
-            int[] monsterSerials = gameState.getMonsterSerialsInPlay();
-
-            for (int serial : monsterSerials) {
-                if (serial == -1) {
-                    System.out.print("GUI: Caught -1 in monsterSerials");
-                    break;
-                }
-                boolean found = false;
-                java.util.Iterator<MonsterShape> shapeIterator = monstersDrawn.iterator();
-                while (shapeIterator.hasNext()) {
-                    MonsterShape shape = shapeIterator.next();
-                    found = false;
-                    if (serial == shape.getSerial()) {
-                        shape.setLocation(boardToPoint(gameState.getMonsterX(gameState.getMonsterIndex(serial)),
-                                gameState.getMonsterY(gameState.getMonsterIndex(serial)), 0, shape));
-                        found = true;
+                for (int serial : monsterSerials) {
+                    if (serial == -1) {
+                        System.out.print("GUI: Caught -1 in monsterSerials");
                         break;
+                    }
+                    boolean found = false;
+                    java.util.Iterator<MonsterShape> shapeIterator = monstersDrawn.iterator();
+                    while (shapeIterator.hasNext()) {
+                        MonsterShape shape = shapeIterator.next();
+                        found = false;
+                        if (serial == shape.getSerial()) {
+                            shape.setLocation(boardToPoint(gameState.getMonsterX(gameState.getMonsterIndex(serial)),
+                                    gameState.getMonsterY(gameState.getMonsterIndex(serial)), 0, shape));
+                            found = true;
+                            break;
 
+                        }
+                    }
+
+                    if (!found) {
+                        MonsterShape newShape = new MonsterShape(serial);
+                        newShape.setLocation(boardToPoint((gameState.getMonsterX(gameState.getMonsterIndex(serial))),
+                                gameState.getMonsterY(gameState.getMonsterIndex(serial)), 0, newShape));
+                        monstersDrawn.add(newShape);
+                        System.out.println("GUI ShapePanel: added shape." + String.valueOf(newShape.getSerial()) + " at: " + String.valueOf(newShape.x) + ", " + String.valueOf(newShape.y));
                     }
                 }
-
-                if (!found) {
-                    MonsterShape newShape = new MonsterShape(serial);
-                    newShape.setLocation(boardToPoint((gameState.getMonsterX(gameState.getMonsterIndex(serial))),
-                            gameState.getMonsterY(gameState.getMonsterIndex(serial)), 0, newShape));
-                    monstersDrawn.add(newShape);
-                    System.out.println("GUI ShapePanel: added shape." + String.valueOf(newShape.getSerial()) + " at: " + String.valueOf(newShape.x) + ", " + String.valueOf(newShape.y));
-                }
+                this.repaint();
             }
-            this.repaint();
         }
 
 //remove magic numbers
         public final java.awt.Point boardToPoint(int xBoard, int yBoard, int neighbors, MonsterShape shape) {
 
             int xCoord, yCoord;
-            xCoord = (((xBoard * (this.getWidth() / 6)) + MONSTER_BORDER_OFFSET + MONSTER_SPACER)) - 170;
+            xCoord = (((xBoard * (this.getWidth() / 6)) + MONSTER_BORDER_OFFSET + MONSTER_SPACER)) - 149;
             xCoord += (neighbors * MONSTER_WIDTH + MONSTER_SPACER);
             // if (shape.getNeighbors() <= 5) {
-            yCoord = ((-yBoard + 4) * (this.getHeight() / 5)) + MONSTER_BORDER_OFFSET;
+            yCoord = (-yBoard + 4) * 92 + MONSTER_BORDER_OFFSET;
             // } else { //rewrite
             //   yCoord = ((-yBoard + 4) * (this.getHeight() / 5)) + MONSTER_BORDER_OFFSET + MONSTER_ROW_SPACER;
             // }
             if (yBoard == 0) {
-                yCoord += 20; //Account for walls
+                yCoord += 42; //Account for walls
             }
             for (MonsterShape mShape : monstersDrawn) {
                 if (!(mShape.equals(shape))) {
@@ -3322,7 +3332,7 @@ public class CastleFrame extends javax.swing.JFrame {
                 }
 
                 for (int i = 0; i < gameState.getMonsterHP(gameState.getMonsterIndex(serial)); i++) {
-
+                    monsterGraphic.setColor(Color.WHITE);
                     monsterGraphic.fillOval((x + 6) + (6 * i), (y + 32), 5, 5);
                 }
 
