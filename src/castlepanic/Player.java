@@ -1,5 +1,7 @@
 package castlepanic;
 
+import java.io.Serializable;
+
 /**
  * The Player class for handling each player's cards and points. Keeps track of
  * the cards in a player's hands with an array of cards and counts the player's
@@ -10,7 +12,7 @@ package castlepanic;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class Player {
+public class Player implements Serializable {
     private String archetype; 
     private String name;
     private Card[] cardsInHand;

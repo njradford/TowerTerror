@@ -183,6 +183,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
                                      players[0] = players[0]+" (HOST)";
                                      gameState = new GameState(players);
+                                     System.out.println("ATTEMPTING TO SYNCHRONIZE STATES. . . ");
                                      net.transmitGameState(gameState);
 
 

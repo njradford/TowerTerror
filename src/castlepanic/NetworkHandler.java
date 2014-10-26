@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * @author Nick
+ * @author Nick Radford
  */
 public class NetworkHandler {
 
@@ -98,6 +98,7 @@ public class NetworkHandler {
 
         }catch(IOException e){
             System.err.println("NET:(HOST)FAILED TO TRANSMIT GAMESTATE TO CLIENT");
+            System.err.println(e.toString());
         }
 
     }

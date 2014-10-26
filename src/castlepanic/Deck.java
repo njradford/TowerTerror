@@ -1,12 +1,13 @@
 package castlepanic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
  * @author James Morrow <jmorrow1@unca.edu>
  */
-public class Deck {
+public class Deck implements Serializable {
     private ArrayList<Card> deckPile; 
     private ArrayList<Card> discardPile; 
     private int initialDeckSize; 

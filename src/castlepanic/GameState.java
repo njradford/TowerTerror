@@ -1,12 +1,13 @@
 package castlepanic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author gloftis
  */
-public class GameState implements GameStateInterface, BoardEffectInterface {
+public class GameState implements GameStateInterface, BoardEffectInterface, Serializable {
 
     //variables for keeping track of card effects
     private final static int DELAY = 0, TIME_STOP = 1;

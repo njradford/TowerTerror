@@ -1,5 +1,7 @@
 package castlepanic;
 
+import java.io.Serializable;
+
 /**
  * The current game's castle contained in one class. Walls are put into an
  * integer array of length 7 and loaded into elements 1-6. The integer
@@ -13,7 +15,7 @@ package castlepanic;
  * @author Dipesh Dave
  * @author John Fenwick
  */
-public class Castle {
+public class Castle implements Serializable {
     public static int TOWER_STANDING = 1, TOWER_RUBBLE = -1, TOWER_DESTROYED = 0; 
    
     

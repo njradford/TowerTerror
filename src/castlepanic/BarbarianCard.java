@@ -4,11 +4,13 @@
  */
 package castlepanic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author James Morrow <jmorrow1@unca.edu>
  */
-public class BarbarianCard extends EffectCard {
+public class BarbarianCard extends EffectCard implements Serializable {
     BarbarianCard() {
         super("barbarian"); 
     }
