@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 /**
  *
@@ -255,7 +256,24 @@ public class CastleFrame extends javax.swing.JFrame {
         if (networkGame) {
             if (!isHost) {
                 netProcess();
+
+                /*WORKER THREAD DRAW ALTERNATIVE
+                ///////////////////////////////////////////////////////////////////////
+                SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+                    @Override
+                    protected Boolean doInBackground() throws Exception {
+                        while(!net.isLocalActive()){
+                            gameState = net.listenForState();
+                            updateGame();
+                            revalidate();
+                        }
+
+                        return true;
+                    }
+                };
+                worker.execute();*/
             }
+
         }
     }
 

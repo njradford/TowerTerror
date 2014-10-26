@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92968b22-cdd2-4117-ae68-b01da5d68f14" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/BarbarianCard.java" afterPath="$PROJECT_DIR$/src/castlepanic/BarbarianCard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/Card.java" afterPath="$PROJECT_DIR$/src/castlepanic/Card.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/Castle.java" afterPath="$PROJECT_DIR$/src/castlepanic/Castle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/CastleFrame.java" afterPath="$PROJECT_DIR$/src/castlepanic/CastleFrame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/Deck.java" afterPath="$PROJECT_DIR$/src/castlepanic/Deck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/GameState.java" afterPath="$PROJECT_DIR$/src/castlepanic/GameState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/NetworkHandler.java" afterPath="$PROJECT_DIR$/src/castlepanic/NetworkHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/Player.java" afterPath="$PROJECT_DIR$/src/castlepanic/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/SpectateThread.java" afterPath="$PROJECT_DIR$/src/castlepanic/SpectateThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/Token.java" afterPath="$PROJECT_DIR$/src/castlepanic/Token.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/castlepanic/TokenPile.java" afterPath="$PROJECT_DIR$/src/castlepanic/TokenPile.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="castlepanic.iws" />
@@ -39,8 +29,8 @@
       <file leaf-file-name="CastleFrame.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/castlepanic/CastleFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3875598" vertical-offset="2898" max-vertical-offset="53100">
-              <caret line="179" column="17" selection-start-line="179" selection-start-column="17" selection-end-line="179" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.23136246" vertical-offset="4374" max-vertical-offset="53406">
+              <caret line="258" column="0" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -79,7 +69,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/castlepanic/CastleFrame.java" />
         <option value="$PROJECT_DIR$/src/castlepanic/BarbarianCard.java" />
         <option value="$PROJECT_DIR$/src/castlepanic/Token.java" />
         <option value="$PROJECT_DIR$/src/castlepanic/Card.java" />
@@ -90,6 +79,7 @@
         <option value="$PROJECT_DIR$/src/castlepanic/TokenPile.java" />
         <option value="$PROJECT_DIR$/src/castlepanic/SpectateThread.java" />
         <option value="$PROJECT_DIR$/src/castlepanic/NetworkHandler.java" />
+        <option value="$PROJECT_DIR$/src/castlepanic/CastleFrame.java" />
       </list>
     </option>
   </component>
@@ -511,22 +501,22 @@
       <workItem from="1414252193259" duration="1057000" />
       <workItem from="1414255380146" duration="10713000" />
       <workItem from="1414290209770" duration="62000" />
-      <workItem from="1414345123629" duration="1253000" />
+      <workItem from="1414345123629" duration="2196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24019000" />
+    <option name="totallyTimeSpent" value="24962000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1368" height="745" extended-state="7" />
+    <frame x="-1" y="24" width="1368" height="745" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35545024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24722663" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58795565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -541,8 +531,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27416798" sideWeight="0.78096676" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13519637" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32012677" sideWeight="0.78096676" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -892,8 +882,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/castlepanic/CastleFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3875598" vertical-offset="2898" max-vertical-offset="53100">
-          <caret line="179" column="17" selection-start-line="179" selection-start-column="17" selection-end-line="179" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.23136246" vertical-offset="4374" max-vertical-offset="53406">
+          <caret line="258" column="0" selection-start-line="258" selection-start-column="0" selection-end-line="258" selection-end-column="0" />
           <folding />
         </state>
       </provider>
