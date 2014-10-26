@@ -204,6 +204,9 @@ public class CastleFrame extends javax.swing.JFrame {
                 netProcess();
             }
         }
+
+        SpectateThread testThread = new SpectateThread(gameState);
+        testThread.run();
     }
 
 
@@ -237,7 +240,6 @@ public class CastleFrame extends javax.swing.JFrame {
             net.transmitGameState(gameState);
             net.updateLocalActive(gameState);
         }
-
 
         if(!net.isLocalActive()){
             updateGame();
