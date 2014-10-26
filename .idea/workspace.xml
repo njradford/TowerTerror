@@ -29,10 +29,9 @@
       <file leaf-file-name="CastleFrame.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/castlepanic/CastleFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18636364" vertical-offset="4423" max-vertical-offset="53460">
-              <caret line="258" column="13" selection-start-line="258" selection-start-column="13" selection-end-line="258" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.67201835" vertical-offset="4423" max-vertical-offset="53460">
+              <caret line="272" column="41" selection-start-line="272" selection-start-column="41" selection-end-line="272" selection-end-column="41" />
               <folding>
-                <element signature="e#14391#15140#0" expanded="true" />
                 <element signature="e#15129#15130#0" expanded="true" />
                 <element signature="e#24606#24636#0" expanded="true" />
               </folding>
@@ -95,6 +94,22 @@
     <option name="width" value="1366" />
     <option name="height" value="744" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -111,7 +126,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -122,62 +137,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="castlepanic" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToClass.includeLibraries" value="false" />
@@ -194,7 +154,7 @@
     <property name="dynamic.classpath" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.lastSelected" value="coverage" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -514,12 +474,12 @@
       <workItem from="1414255380146" duration="10713000" />
       <workItem from="1414290209770" duration="62000" />
       <workItem from="1414345123629" duration="2901000" />
-      <workItem from="1414360840381" duration="2854000" />
+      <workItem from="1414360840381" duration="3043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28521000" />
+    <option name="totallyTimeSpent" value="28710000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -529,10 +489,10 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24644549" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24564184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.58795565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6497623" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6164818" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -584,7 +544,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="54306">
           <caret line="267" column="32" selection-start-line="267" selection-start-column="32" selection-end-line="267" selection-end-column="32" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -612,7 +571,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="60156">
           <caret line="208" column="25" selection-start-line="208" selection-start-column="25" selection-end-line="208" selection-end-column="25" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -640,7 +598,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="60156">
           <caret line="208" column="25" selection-start-line="208" selection-start-column="25" selection-end-line="208" selection-end-column="25" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -668,7 +625,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2988" max-vertical-offset="56394">
           <caret line="175" column="57" selection-start-line="175" selection-start-column="57" selection-end-line="175" selection-end-column="57" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -688,7 +644,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="54414">
           <caret line="159" column="33" selection-start-line="159" selection-start-column="33" selection-end-line="159" selection-end-column="33" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -708,7 +663,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2916" max-vertical-offset="56898">
           <caret line="171" column="16" selection-start-line="171" selection-start-column="16" selection-end-line="171" selection-end-column="16" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -728,7 +682,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2790" max-vertical-offset="54936">
           <caret line="164" column="35" selection-start-line="164" selection-start-column="35" selection-end-line="164" selection-end-column="35" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -748,7 +701,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2736" max-vertical-offset="54936">
           <caret line="161" column="26" selection-start-line="161" selection-start-column="26" selection-end-line="161" selection-end-column="26" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -768,7 +720,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="54162">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
@@ -937,10 +888,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/castlepanic/CastleFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18636364" vertical-offset="4423" max-vertical-offset="53460">
-          <caret line="258" column="13" selection-start-line="258" selection-start-column="13" selection-end-line="258" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.67201835" vertical-offset="4423" max-vertical-offset="53460">
+          <caret line="272" column="41" selection-start-line="272" selection-start-column="41" selection-end-line="272" selection-end-column="41" />
           <folding>
-            <element signature="e#14391#15140#0" expanded="true" />
             <element signature="e#15129#15130#0" expanded="true" />
             <element signature="e#24606#24636#0" expanded="true" />
           </folding>
