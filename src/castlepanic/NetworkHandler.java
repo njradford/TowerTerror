@@ -35,12 +35,9 @@ public class NetworkHandler {
     }
 
     //OPENS A SERVER SOCKET ON THE DESIGNATED PORT
-    public void openHosting(){
+    public void openHosting(String port){
         try{
-            System.out.println("NET: (HOST)PORT NUMBER?: ");
-            port = userInput.nextInt();
-            userInput.nextLine();
-            localSocket = new ServerSocket(port);
+            localSocket = new ServerSocket(Integer.parseInt(port));
             System.out.println("NET:(HOST)Waiting for connection on port "+port+" . . .");
             remoteSocket = localSocket.accept();
             System.out.println("NET:(HOST). . .CONNECTED.");
@@ -56,14 +53,9 @@ public class NetworkHandler {
     }
 
     //CONNECTS TO THE DESIGNATED HOST
-    public void connectToHost(){
+    public void connectToHost(String address, String port){
         try{
-            System.out.println("NET:(CLIENT)HOST ADDRESS?: ");
-            hostAddress = userInput.nextLine();
-            System.out.println("NET:(CLIENT)PORT NUMBER?: ");
-            port = userInput.nextInt();
-            userInput.nextLine();
-            remoteSocket = new Socket(hostAddress,port);
+            remoteSocket = new Socket(address,Integer.parseInt(port));
             System.out.println("NET:(CLIENT)Connection successful");
             output = new ObjectOutputStream(remoteSocket.getOutputStream());
             input = new ObjectInputStream(remoteSocket.getInputStream());

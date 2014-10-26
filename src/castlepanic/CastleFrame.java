@@ -144,21 +144,21 @@ public class CastleFrame extends javax.swing.JFrame {
 
                                 String name = userDialog.getUsername();
                                 String port = userDialog.getPort();
-                                //net = new NetworkHandler();
+                                net = new NetworkHandler();
 
                                 switch (userDialog.getDecision()) {
                                     case "CLIENT":
                                         isHost = false;
                                         isActive = false;
                                         String address = userDialog.getAddress();
-                                        // net.setLocalActive(isActive);
-                                        // net.connectToHost();
+                                        net.setLocalActive(isActive);
+                                        net.connectToHost(address, port);
                                         break;
                                     case "HOST":
                                         isHost = true;
                                         isActive = true;
-                                        // net.setLocalActive(isActive);
-                                        // net.openHosting();
+                                        net.setLocalActive(isActive);
+                                        net.openHosting(port);
                                         break;
                                 }
 
@@ -167,7 +167,7 @@ public class CastleFrame extends javax.swing.JFrame {
                                 players[0] = name;
 
                                 if (isHost) {
-                                    /*    String[] clientNames = net.listenForNames();
+                                     String[] clientNames = net.listenForNames();
                                      //LISTENING FOR CLIENT NAMES SO THAT THEY CAN BE COMBINED
                                      for(String current : clientNames){
                                      System.out.println("Name Recieved");
@@ -182,23 +182,23 @@ public class CastleFrame extends javax.swing.JFrame {
                                      net.transmitNames(players);
 
                                      players[0] = players[0]+" (HOST)";
-                                     */
+                                     
                                 } else {
-                                    /*  //SEND LOCAL NAME
+                                      //SEND LOCAL NAME
                                      net.transmitNames(players);
                                      //RECEIVE COMBINED NAME ARRAY
                                      players = net.listenForNames();
                                      //LISTEN FOR FINAL GAMESTATE
                                      players[1] = players[1]+" (CLIENT)";
-                                     */
+                                     
                                 }
 
                                 gameState = new GameState(players);
 
                                 if (isHost) {
-                                    //net.transmitGameState(gameState);
+                                    net.transmitGameState(gameState);
                                 } else {
-                                    // gameState = net.listenForState();
+                                    gameState = net.listenForState();
                                 }
 
                                 handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
@@ -228,67 +228,6 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
         multiDialog.setVisible(true);
-    }
-    /*
-     public void startSingle() {
-
-     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-     @Override
-     public void windowClosing(java.awt.event.WindowEvent e) {
-     System.exit(0);
-     }
-
-     @Override
-     public void windowClosed(java.awt.event.WindowEvent e) {
-
-     int playerCount = 0;
-     int index = 0;
-     for (String name : dialog.getPlayerNames()) {
-     if (!name.isEmpty()) {
-     playerCount++;
-     }
-     players = new String[playerCount];
-     }
-     for (String name : dialog.getPlayerNames()) {
-     if (!name.isEmpty()) {
-     players[index] = name;
-     index++;
-     }
-     }
-     System.out.println("GUI: players String [] set.");
-     for (String name : players) {
-     System.out.println("GUI: Player: - " + name);
-     }
-
-     gameState = new GameState(players);
-
-     handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
-     handLabel3, handLabel4, handLabel5};
-     handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
-     handPanel3, handPanel4, handPanel5};
-     cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
-     wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
-     wallButton4, wallButton5};
-     phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
-     skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
-     castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
-     castleButton3, castleButton4, castleButton5};
-     currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
-     handTurnLabel3, handTurnLabel4, handTurnLabel5};
-     scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
-     handPointsLabel4, handPointsLabel5};
-
-     initializeGame();
-     updateGame();
-
-     }
-     });
-     dialog.setVisible(true);
-     }
-     */
-
-    public void startMulti() {
-
     }
 
     public void initializeGame() {
@@ -2599,7 +2538,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
         monsterProgBar.setForeground(new java.awt.Color(255, 0, 0));
         monsterProgBar.setMaximum(0);
-        monsterProgBar.setBorder(new javax.swing.border.SoftBevelBorder(1));
+        monsterProgBar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         monsterProgBar.setPreferredSize(new java.awt.Dimension(200, 20));
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
@@ -3083,6 +3022,7 @@ public class CastleFrame extends javax.swing.JFrame {
     private String[] players;
 
     private boolean networkGame;
+    private NetworkHandler net;
     private boolean isHost;
     private boolean isActive;
 
