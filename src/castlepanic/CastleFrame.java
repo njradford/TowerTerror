@@ -256,25 +256,36 @@ public class CastleFrame extends javax.swing.JFrame {
         if (networkGame) {
             if (!isHost) {
                 netProcess();
-
-                /*WORKER THREAD DRAW ALTERNATIVE
-                ///////////////////////////////////////////////////////////////////////
-                SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
-                    @Override
-                    protected Boolean doInBackground() throws Exception {
-                        while(!net.isLocalActive()){
-                            gameState = net.listenForState();
-                            updateGame();
-                            revalidate();
-                        }
-
-                        return true;
-                    }
-                };
-                worker.execute();*/
             }
 
         }
+    }
+
+    /*
+        Builds and executes a new instance of a Swing worker thread. That will listen for new gameStates until the end of a turn.
+     */
+    public void buildSpectateThread(){
+        /*WORKER THREAD DRAW ALTERNATIVE
+        ///////////////////////////////////////////////////////////////////////*/
+        System.out.println("(NET)[SPECTATOR THREAD SPUN]");
+        SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
+            @Override
+            protected Boolean doInBackground() throws Exception {
+                //TODO: TURN OFF THE ABILTY TO CLICK INTERFACE BUTTONS
+                System.out.println("(NET) BEGINNING SPECTATING . . .");
+                while(!net.isLocalActive()){
+                    gameState = net.listenForState();
+                    updateGame();
+                    revalidate();
+                    paintComponents(getGraphics());
+                    net.updateLocalActive(gameState);
+                }
+                //TODO: TURN ON THE ABILITY TO CLICK INTERFACE BUTTONS
+                System.out.println("(NET) ENDING SPECTATING . . .");
+                return true;
+            }
+        };
+        worker.execute();
     }
 
     public void updateGame() {
@@ -295,6 +306,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
         if (networkGame) {
            if (net.isLocalActive()) {
+                System.out.println("FIRING NET PROCESS");
                 netProcess();
             }
         }
@@ -310,16 +322,7 @@ public class CastleFrame extends javax.swing.JFrame {
         if (!net.isLocalActive()) {
             updateGame();
             revalidate();
-            System.out.println("(NET) BEGINNING SPECTATING . . .");
-            while (!net.isLocalActive()) {
-                gameState = net.listenForState();
-                updateGame();
-                revalidate();
-                paintComponents(this.getGraphics());
-                net.updateLocalActive(gameState);
-            }
-            System.out.println("(NET) ENDING SPECTATING . . .");
-
+            buildSpectateThread();
         }
 
     }
