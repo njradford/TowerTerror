@@ -182,7 +182,10 @@ public class CastleFrame extends javax.swing.JFrame {
                                      net.transmitNames(players);
 
                                      players[0] = players[0]+" (HOST)";
-                                     
+                                     gameState = new GameState(players);
+                                     net.transmitGameState(gameState);
+
+
                                 } else {
                                       //SEND LOCAL NAME
                                      net.transmitNames(players);
@@ -190,16 +193,10 @@ public class CastleFrame extends javax.swing.JFrame {
                                      players = net.listenForNames();
                                      //LISTEN FOR FINAL GAMESTATE
                                      players[1] = players[1]+" (CLIENT)";
-                                     
+                                     gameState = net.listenForState();
                                 }
 
-                                gameState = new GameState(players);
 
-                                if (isHost) {
-                                    net.transmitGameState(gameState);
-                                } else {
-                                    gameState = net.listenForState();
-                                }
 
                                 handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
                                     handLabel3, handLabel4, handLabel5};
@@ -255,9 +252,8 @@ public class CastleFrame extends javax.swing.JFrame {
         this.updateGame();
 
         if (networkGame) {
-            //net.updateLocalActive(gameState);
             if (!isHost) {
-                //netProcess();
+                netProcess();
             }
         }
     }
@@ -279,20 +275,20 @@ public class CastleFrame extends javax.swing.JFrame {
         updateMisc();
 
         if (networkGame) {
-           // if (net.isLocalActive()) {
+           if (net.isLocalActive()) {
                 netProcess();
-           // }
+            }
         }
     }
 
     public void netProcess() {
 
-       /* if (net.isLocalActive()) {
+        if (net.isLocalActive()) {
             net.transmitGameState(gameState);
             net.updateLocalActive(gameState);
-        }*/
+        }
 
-       /* if (!net.isLocalActive()) {
+        if (!net.isLocalActive()) {
             updateGame();
             revalidate();
             System.out.println("(NET) BEGINNING SPECTATING . . .");
@@ -305,7 +301,7 @@ public class CastleFrame extends javax.swing.JFrame {
             }
             System.out.println("(NET) ENDING SPECTATING . . .");
 
-        }*/
+        }
 
     }
 
