@@ -12,7 +12,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     //variables for keeping track of card effects
     private final static int DELAY = 0, TIME_STOP = 1;
     private boolean[] tempBoardEffectFlags = new boolean[2];
-    private int[] turretAmmo = new int[6];
+    private int[] turretAmmo = new int[7];
 
     private Castle gameCastle;
     private TokenPile gameTokenPile;
@@ -583,7 +583,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                 tempBoardEffectFlags[i] = false;
             }
             //update turret effect logic
-            for (int i = 0; i < turretAmmo.length; i++) {
+            for (int i = 1; i < turretAmmo.length; i++) {
                 int towerIndex = i;
                 //if the tower is gone, the turret goes with it
                 if (!(gameCastle.getTowerState(towerIndex) == Castle.TOWER_STANDING)) {
