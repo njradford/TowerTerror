@@ -168,37 +168,34 @@ public class CastleFrame extends javax.swing.JFrame {
                                 players[0] = name;
 
                                 if (isHost) {
-                                     String[] clientNames = net.listenForNames();
-                                     //LISTENING FOR CLIENT NAMES SO THAT THEY CAN BE COMBINED
-                                     for(String current : clientNames){
-                                     System.out.println("Name Recieved");
-                                     System.out.println(current);
-                                     }
-                                     //PUTTING THE NAMES TOGETHER
-                                     String localName = players[0];
-                                     players  = new String[2];
-                                     players[0] = localName;
-                                     players[1] = clientNames[0];
-                                     //SEND THE NEW NAME LISTBACK
-                                     net.transmitNames(players);
+                                    String[] clientNames = net.listenForNames();
+                                    //LISTENING FOR CLIENT NAMES SO THAT THEY CAN BE COMBINED
+                                    for (String current : clientNames) {
+                                        System.out.println("Name Recieved");
+                                        System.out.println(current);
+                                    }
+                                    //PUTTING THE NAMES TOGETHER
+                                    String localName = players[0];
+                                    players = new String[2];
+                                    players[0] = localName;
+                                    players[1] = clientNames[0];
+                                    //SEND THE NEW NAME LISTBACK
+                                    net.transmitNames(players);
 
-                                     players[0] = players[0]+" (HOST)";
-                                     gameState = new GameState(players);
-                                     System.out.println("ATTEMPTING TO SYNCHRONIZE STATES. . . ");
-                                     net.transmitGameState(gameState);
-
+                                    players[0] = players[0] + " (HOST)";
+                                    gameState = new GameState(players);
+                                    System.out.println("ATTEMPTING TO SYNCHRONIZE STATES. . . ");
+                                    net.transmitGameState(gameState);
 
                                 } else {
-                                      //SEND LOCAL NAME
-                                     net.transmitNames(players);
-                                     //RECEIVE COMBINED NAME ARRAY
-                                     players = net.listenForNames();
-                                     //LISTEN FOR FINAL GAMESTATE
-                                     players[1] = players[1]+" (CLIENT)";
-                                     gameState = net.listenForState();
+                                    //SEND LOCAL NAME
+                                    net.transmitNames(players);
+                                    //RECEIVE COMBINED NAME ARRAY
+                                    players = net.listenForNames();
+                                    //LISTEN FOR FINAL GAMESTATE
+                                    players[1] = players[1] + " (CLIENT)";
+                                    gameState = net.listenForState();
                                 }
-
-
 
                                 handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
                                     handLabel3, handLabel4, handLabel5};
@@ -257,30 +254,40 @@ public class CastleFrame extends javax.swing.JFrame {
             if (!isHost) {
                 netProcess();
             }
-
+        } else {
+            phaseTitleLabel1.setText("LOCAL GAME");
         }
     }
 
     /*
-        Builds and executes a new instance of a Swing worker thread. That will listen for new gameStates until the end of a turn.
+     Builds and executes a new instance of a Swing worker thread. That will listen for new gameStates until the end of a turn.
      */
-    public void buildSpectateThread(){
+    public void buildSpectateThread() {
         /*WORKER THREAD DRAW ALTERNATIVE
-        ///////////////////////////////////////////////////////////////////////*/
+         ///////////////////////////////////////////////////////////////////////*/
         System.out.println("(NET)[SPECTATOR THREAD SPUN]");
         SwingWorker<Boolean, Void> worker = new SwingWorker<Boolean, Void>() {
             @Override
             protected Boolean doInBackground() throws Exception {
-                //TODO: TURN OFF THE ABILTY TO CLICK INTERFACE BUTTONS
+                //deact buttons when not active
+                for (JButton button : phaseButtons) {
+                    button.setEnabled(net.isLocalActive());
+                }
+                //print not active to network label
+                phaseTitleLabel1.setText("NETWORK GAME - SPECTATING");
                 System.out.println("(NET) BEGINNING SPECTATING . . .");
-                while(!net.isLocalActive()){
+                while (!net.isLocalActive()) {
                     gameState = net.listenForState();
                     updateGame();
                     revalidate();
                     paintComponents(getGraphics());
                     net.updateLocalActive(gameState);
                 }
-                //TODO: TURN ON THE ABILITY TO CLICK INTERFACE BUTTONS
+                 //act buttons when active
+                for (JButton button : phaseButtons) {
+                    button.setEnabled(net.isLocalActive());
+                }
+                phaseTitleLabel1.setText("NETWORK GAME - ACTIVE");               
                 System.out.println("(NET) ENDING SPECTATING . . .");
                 return true;
             }
@@ -305,7 +312,7 @@ public class CastleFrame extends javax.swing.JFrame {
         updateMisc();
 
         if (networkGame) {
-           if (net.isLocalActive()) {
+            if (net.isLocalActive()) {
                 System.out.println("FIRING NET PROCESS");
                 netProcess();
             }
@@ -313,8 +320,8 @@ public class CastleFrame extends javax.swing.JFrame {
     }
 
     public void netProcess() {
-
         if (net.isLocalActive()) {
+            revalidate();
             net.transmitGameState(gameState);
             net.updateLocalActive(gameState);
         }
@@ -465,6 +472,7 @@ public class CastleFrame extends javax.swing.JFrame {
     }
 
     public void updateMisc() {
+
         monsterProgBar.setValue(gameState.getUnplayedMonsters());
         monsterCountLabel.setText(String.valueOf(gameState.getUnplayedMonsters()) + "/"
                 + String.valueOf(monsterProgBar.getMaximum()));
@@ -524,6 +532,7 @@ public class CastleFrame extends javax.swing.JFrame {
         skipButton1 = new javax.swing.JButton();
         skipButton2 = new javax.swing.JButton();
         skipButton3 = new javax.swing.JButton();
+        phaseTitleLabel1 = new javax.swing.JLabel();
         boardLayeredPanel = new javax.swing.JLayeredPane();
         boardBottomLayer = new javax.swing.JPanel();
         boardPaletteLayer = new javax.swing.JPanel();
@@ -587,17 +596,6 @@ public class CastleFrame extends javax.swing.JFrame {
         handLabel1 = new javax.swing.JLabel();
         handScoreLabel1 = new javax.swing.JLabel();
         handPointsLabel1 = new javax.swing.JLabel();
-        handPanel4 = new javax.swing.JPanel();
-        cardButton40 = new javax.swing.JButton();
-        cardButton41 = new javax.swing.JButton();
-        cardButton42 = new javax.swing.JButton();
-        cardButton43 = new javax.swing.JButton();
-        cardButton44 = new javax.swing.JButton();
-        cardButton45 = new javax.swing.JButton();
-        handTurnLabel4 = new javax.swing.JLabel();
-        handLabel4 = new javax.swing.JLabel();
-        handScoreLabel4 = new javax.swing.JLabel();
-        handPointsLabel4 = new javax.swing.JLabel();
         handPanel2 = new javax.swing.JPanel();
         cardButton20 = new javax.swing.JButton();
         cardButton21 = new javax.swing.JButton();
@@ -609,6 +607,17 @@ public class CastleFrame extends javax.swing.JFrame {
         handTurnLabel2 = new javax.swing.JLabel();
         handScoreLabel2 = new javax.swing.JLabel();
         handPointsLabel2 = new javax.swing.JLabel();
+        handPanel4 = new javax.swing.JPanel();
+        cardButton40 = new javax.swing.JButton();
+        cardButton41 = new javax.swing.JButton();
+        cardButton42 = new javax.swing.JButton();
+        cardButton43 = new javax.swing.JButton();
+        cardButton44 = new javax.swing.JButton();
+        cardButton45 = new javax.swing.JButton();
+        handTurnLabel4 = new javax.swing.JLabel();
+        handLabel4 = new javax.swing.JLabel();
+        handScoreLabel4 = new javax.swing.JLabel();
+        handPointsLabel4 = new javax.swing.JLabel();
         handPanel0 = new javax.swing.JPanel();
         cardButton00 = new javax.swing.JButton();
         cardbutton01 = new javax.swing.JButton();
@@ -638,8 +647,8 @@ public class CastleFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
-        setMinimumSize(new java.awt.Dimension(1280, 820));
-        setPreferredSize(new java.awt.Dimension(1280, 820));
+        setMinimumSize(new java.awt.Dimension(1280, 860));
+        setPreferredSize(new java.awt.Dimension(1280, 860));
 
         phasePanel.setFocusable(false);
         phasePanel.setOpaque(false);
@@ -759,6 +768,15 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
+        phaseTitleLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        phaseTitleLabel1.setForeground(new java.awt.Color(255, 0, 0));
+        phaseTitleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phaseTitleLabel1.setAlignmentX(0.5F);
+        phaseTitleLabel1.setAutoscrolls(true);
+        phaseTitleLabel1.setMaximumSize(new java.awt.Dimension(283, 57));
+        phaseTitleLabel1.setMinimumSize(new java.awt.Dimension(283, 57));
+        phaseTitleLabel1.setPreferredSize(new java.awt.Dimension(283, 57));
+
         javax.swing.GroupLayout phasePanelLayout = new javax.swing.GroupLayout(phasePanel);
         phasePanel.setLayout(phasePanelLayout);
         phasePanelLayout.setHorizontalGroup(
@@ -766,20 +784,22 @@ public class CastleFrame extends javax.swing.JFrame {
             .addGroup(phasePanelLayout.createSequentialGroup()
                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(phaseButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(phasePanelLayout.createSequentialGroup()
-                            .addComponent(phaseButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(phaseButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(phaseTitleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
-                            .addComponent(phaseButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(skipButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(skipButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(phasePanelLayout.createSequentialGroup()
+                                .addComponent(phaseButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(phaseButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(phaseTitleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
+                                .addComponent(phaseButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(skipButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(skipButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(0, 0, 0))
         );
         phasePanelLayout.setVerticalGroup(
             phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -800,6 +820,8 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(phaseButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -1527,7 +1549,6 @@ public class CastleFrame extends javax.swing.JFrame {
         handPanel5.setMaximumSize(new java.awt.Dimension(465, 90));
         handPanel5.setMinimumSize(new java.awt.Dimension(465, 90));
         handPanel5.setName(""); // NOI18N
-        handPanel5.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton50.setActionCommand("card50");
@@ -1611,10 +1632,11 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        handTurnLabel5.setMaximumSize(new java.awt.Dimension(58, 24));
-        handTurnLabel5.setMinimumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel5.setIconTextGap(0);
+        handTurnLabel5.setMaximumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel5.setMinimumSize(new java.awt.Dimension(60, 24));
         handTurnLabel5.setName("turnLabel"); // NOI18N
-        handTurnLabel5.setPreferredSize(new java.awt.Dimension(58, 24));
+        handTurnLabel5.setPreferredSize(new java.awt.Dimension(60, 24));
 
         handLabel5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handLabel5.setText("P6");
@@ -1661,11 +1683,11 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel5Layout.createSequentialGroup()
                         .addGroup(handPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handScoreLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(handPointsLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(handPanel5Layout.createSequentialGroup()
+                                .addComponent(handScoreLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handPointsLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         handPanel5Layout.setVerticalGroup(
             handPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1681,7 +1703,7 @@ public class CastleFrame extends javax.swing.JFrame {
                             .addComponent(cardButton54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cardButton55, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(handPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(6, 6, 6)
                         .addComponent(handLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(handTurnLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1695,7 +1717,6 @@ public class CastleFrame extends javax.swing.JFrame {
         handPanel1.setMaximumSize(new java.awt.Dimension(465, 90));
         handPanel1.setMinimumSize(new java.awt.Dimension(465, 90));
         handPanel1.setName(""); // NOI18N
-        handPanel1.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton10.setActionCommand("card10");
@@ -1781,10 +1802,11 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        handTurnLabel1.setMaximumSize(new java.awt.Dimension(58, 24));
-        handTurnLabel1.setMinimumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel1.setIconTextGap(0);
+        handTurnLabel1.setMaximumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel1.setMinimumSize(new java.awt.Dimension(60, 24));
         handTurnLabel1.setName("turnLabel"); // NOI18N
-        handTurnLabel1.setPreferredSize(new java.awt.Dimension(58, 24));
+        handTurnLabel1.setPreferredSize(new java.awt.Dimension(60, 24));
 
         handLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handLabel1.setText("P2");
@@ -1808,235 +1830,9 @@ public class CastleFrame extends javax.swing.JFrame {
         handPointsLabel1.setName("playerLabel"); // NOI18N
         handPointsLabel1.setPreferredSize(new java.awt.Dimension(46, 20));
 
-        javax.swing.GroupLayout handPanel1Layout = new javax.swing.GroupLayout(handPanel1);
-        handPanel1.setLayout(handPanel1Layout);
-        handPanel1Layout.setHorizontalGroup(
-            handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(handPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(handLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(handPanel1Layout.createSequentialGroup()
-                        .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handTurnLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handScoreLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(handPointsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        handPanel1Layout.setVerticalGroup(
-            handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(handPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cardButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(handPanel1Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(handLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handTurnLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(handScoreLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handPointsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        handPanel4.setMaximumSize(new java.awt.Dimension(465, 90));
-        handPanel4.setMinimumSize(new java.awt.Dimension(465, 90));
-        handPanel4.setName(""); // NOI18N
-        handPanel4.setPreferredSize(new java.awt.Dimension(465, 90));
-
-        cardButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-        cardButton40.setActionCommand("card40");
-        cardButton40.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
-        cardButton40.setBorderPainted(false);
-        cardButton40.setContentAreaFilled(false);
-        cardButton40.setMaximumSize(new java.awt.Dimension(60, 60));
-        cardButton40.setMinimumSize(new java.awt.Dimension(60, 60));
-        cardButton40.setPreferredSize(new java.awt.Dimension(60, 80));
-        cardButton40.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardButtonClicked(evt);
-            }
-        });
-
-        cardButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-        cardButton41.setActionCommand("card41");
-        cardButton41.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
-        cardButton41.setBorderPainted(false);
-        cardButton41.setContentAreaFilled(false);
-        cardButton41.setMaximumSize(new java.awt.Dimension(60, 100));
-        cardButton41.setMinimumSize(new java.awt.Dimension(60, 100));
-        cardButton41.setPreferredSize(new java.awt.Dimension(60, 100));
-        cardButton41.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardButtonClicked(evt);
-            }
-        });
-
-        cardButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-        cardButton42.setActionCommand("card42");
-        cardButton42.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
-        cardButton42.setBorderPainted(false);
-        cardButton42.setContentAreaFilled(false);
-        cardButton42.setMaximumSize(new java.awt.Dimension(60, 60));
-        cardButton42.setMinimumSize(new java.awt.Dimension(60, 60));
-        cardButton42.setPreferredSize(new java.awt.Dimension(60, 80));
-        cardButton42.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardButtonClicked(evt);
-            }
-        });
-
-        cardButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-        cardButton43.setActionCommand("card43");
-        cardButton43.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
-        cardButton43.setBorderPainted(false);
-        cardButton43.setContentAreaFilled(false);
-        cardButton43.setMaximumSize(new java.awt.Dimension(60, 100));
-        cardButton43.setMinimumSize(new java.awt.Dimension(60, 100));
-        cardButton43.setPreferredSize(new java.awt.Dimension(60, 100));
-        cardButton43.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardButtonClicked(evt);
-            }
-        });
-
-        cardButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-        cardButton44.setActionCommand("card44");
-        cardButton44.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
-        cardButton44.setBorderPainted(false);
-        cardButton44.setContentAreaFilled(false);
-        cardButton44.setMaximumSize(new java.awt.Dimension(60, 60));
-        cardButton44.setMinimumSize(new java.awt.Dimension(60, 60));
-        cardButton44.setPreferredSize(new java.awt.Dimension(60, 80));
-        cardButton44.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardButtonClicked(evt);
-            }
-        });
-
-        cardButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
-        cardButton45.setActionCommand("card45");
-        cardButton45.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
-        cardButton45.setBorderPainted(false);
-        cardButton45.setContentAreaFilled(false);
-        cardButton45.setMaximumSize(new java.awt.Dimension(60, 100));
-        cardButton45.setMinimumSize(new java.awt.Dimension(60, 100));
-        cardButton45.setPreferredSize(new java.awt.Dimension(60, 100));
-        cardButton45.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardButtonClicked(evt);
-            }
-        });
-
-        handTurnLabel4.setMaximumSize(new java.awt.Dimension(58, 24));
-        handTurnLabel4.setMinimumSize(new java.awt.Dimension(58, 24));
-        handTurnLabel4.setName("turnLabel"); // NOI18N
-        handTurnLabel4.setPreferredSize(new java.awt.Dimension(58, 24));
-
-        handLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        handLabel4.setText("P5");
-        handLabel4.setMaximumSize(new java.awt.Dimension(46, 20));
-        handLabel4.setMinimumSize(new java.awt.Dimension(46, 20));
-        handLabel4.setName("playerLabel"); // NOI18N
-        handLabel4.setPreferredSize(new java.awt.Dimension(46, 20));
-
-        handScoreLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        handScoreLabel4.setText("Score:");
-        handScoreLabel4.setMaximumSize(new java.awt.Dimension(46, 20));
-        handScoreLabel4.setMinimumSize(new java.awt.Dimension(46, 20));
-        handScoreLabel4.setName("playerLabel"); // NOI18N
-        handScoreLabel4.setPreferredSize(new java.awt.Dimension(46, 20));
-
-        handPointsLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        handPointsLabel4.setForeground(new java.awt.Color(255, 0, 0));
-        handPointsLabel4.setText("0");
-        handPointsLabel4.setMaximumSize(new java.awt.Dimension(46, 20));
-        handPointsLabel4.setMinimumSize(new java.awt.Dimension(46, 20));
-        handPointsLabel4.setName("playerLabel"); // NOI18N
-        handPointsLabel4.setPreferredSize(new java.awt.Dimension(46, 20));
-
-        javax.swing.GroupLayout handPanel4Layout = new javax.swing.GroupLayout(handPanel4);
-        handPanel4.setLayout(handPanel4Layout);
-        handPanel4Layout.setHorizontalGroup(
-            handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(handPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cardButton40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardButton45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(handLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(handPanel4Layout.createSequentialGroup()
-                        .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        handPanel4Layout.setVerticalGroup(
-            handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, handPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
-            .addGroup(handPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cardButton40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cardButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, handPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(handLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)))
-                .addContainerGap())
-        );
-
         handPanel2.setMaximumSize(new java.awt.Dimension(465, 90));
         handPanel2.setMinimumSize(new java.awt.Dimension(465, 90));
         handPanel2.setName(""); // NOI18N
-        handPanel2.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton20.setActionCommand("card20");
@@ -2129,10 +1925,11 @@ public class CastleFrame extends javax.swing.JFrame {
         handLabel2.setName("playerLabel"); // NOI18N
         handLabel2.setPreferredSize(new java.awt.Dimension(46, 20));
 
-        handTurnLabel2.setMaximumSize(new java.awt.Dimension(58, 24));
-        handTurnLabel2.setMinimumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel2.setIconTextGap(0);
+        handTurnLabel2.setMaximumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel2.setMinimumSize(new java.awt.Dimension(60, 24));
         handTurnLabel2.setName("turnLabel"); // NOI18N
-        handTurnLabel2.setPreferredSize(new java.awt.Dimension(58, 24));
+        handTurnLabel2.setPreferredSize(new java.awt.Dimension(60, 24));
 
         handScoreLabel2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handScoreLabel2.setText("Score:");
@@ -2172,10 +1969,11 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addGroup(handPanel2Layout.createSequentialGroup()
                         .addGroup(handPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(handTurnLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handScoreLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(handPanel2Layout.createSequentialGroup()
+                                .addComponent(handScoreLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handPointsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(handPointsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel2Layout.setVerticalGroup(
@@ -2183,7 +1981,7 @@ public class CastleFrame extends javax.swing.JFrame {
             .addGroup(handPanel2Layout.createSequentialGroup()
                 .addGroup(handPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(handPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
+                        .addContainerGap()
                         .addGroup(handPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cardButton20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cardButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2197,17 +1995,243 @@ public class CastleFrame extends javax.swing.JFrame {
                         .addComponent(handLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(handTurnLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(handPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(handScoreLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(handPointsLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout handPanel1Layout = new javax.swing.GroupLayout(handPanel1);
+        handPanel1.setLayout(handPanel1Layout);
+        handPanel1Layout.setHorizontalGroup(
+            handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(handPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(handLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(handPanel1Layout.createSequentialGroup()
+                        .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(handTurnLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(handPanel1Layout.createSequentialGroup()
+                                .addComponent(handScoreLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handPointsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, 0)))
+                .addGap(0, 0, 0))
+            .addGroup(handPanel1Layout.createSequentialGroup()
+                .addComponent(handPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        handPanel1Layout.setVerticalGroup(
+            handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(handPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(handPanel1Layout.createSequentialGroup()
+                        .addComponent(handLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(handTurnLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(handPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(handScoreLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(handPointsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(cardButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(handPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        handPanel4.setMaximumSize(new java.awt.Dimension(465, 90));
+        handPanel4.setMinimumSize(new java.awt.Dimension(465, 90));
+        handPanel4.setName(""); // NOI18N
+
+        cardButton40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
+        cardButton40.setActionCommand("card40");
+        cardButton40.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
+        cardButton40.setBorderPainted(false);
+        cardButton40.setContentAreaFilled(false);
+        cardButton40.setMaximumSize(new java.awt.Dimension(60, 60));
+        cardButton40.setMinimumSize(new java.awt.Dimension(60, 60));
+        cardButton40.setPreferredSize(new java.awt.Dimension(60, 80));
+        cardButton40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardButtonClicked(evt);
+            }
+        });
+
+        cardButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
+        cardButton41.setActionCommand("card41");
+        cardButton41.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
+        cardButton41.setBorderPainted(false);
+        cardButton41.setContentAreaFilled(false);
+        cardButton41.setMaximumSize(new java.awt.Dimension(60, 100));
+        cardButton41.setMinimumSize(new java.awt.Dimension(60, 100));
+        cardButton41.setPreferredSize(new java.awt.Dimension(60, 100));
+        cardButton41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardButtonClicked(evt);
+            }
+        });
+
+        cardButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
+        cardButton42.setActionCommand("card42");
+        cardButton42.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
+        cardButton42.setBorderPainted(false);
+        cardButton42.setContentAreaFilled(false);
+        cardButton42.setMaximumSize(new java.awt.Dimension(60, 60));
+        cardButton42.setMinimumSize(new java.awt.Dimension(60, 60));
+        cardButton42.setPreferredSize(new java.awt.Dimension(60, 80));
+        cardButton42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardButtonClicked(evt);
+            }
+        });
+
+        cardButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
+        cardButton43.setActionCommand("card43");
+        cardButton43.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
+        cardButton43.setBorderPainted(false);
+        cardButton43.setContentAreaFilled(false);
+        cardButton43.setMaximumSize(new java.awt.Dimension(60, 100));
+        cardButton43.setMinimumSize(new java.awt.Dimension(60, 100));
+        cardButton43.setPreferredSize(new java.awt.Dimension(60, 100));
+        cardButton43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardButtonClicked(evt);
+            }
+        });
+
+        cardButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
+        cardButton44.setActionCommand("card44");
+        cardButton44.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
+        cardButton44.setBorderPainted(false);
+        cardButton44.setContentAreaFilled(false);
+        cardButton44.setMaximumSize(new java.awt.Dimension(60, 60));
+        cardButton44.setMinimumSize(new java.awt.Dimension(60, 60));
+        cardButton44.setPreferredSize(new java.awt.Dimension(60, 80));
+        cardButton44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardButtonClicked(evt);
+            }
+        });
+
+        cardButton45.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
+        cardButton45.setActionCommand("card45");
+        cardButton45.setBorder(javax.swing.BorderFactory.createMatteBorder(4, 4, 4, 4, new java.awt.Color(255, 51, 51)));
+        cardButton45.setBorderPainted(false);
+        cardButton45.setContentAreaFilled(false);
+        cardButton45.setMaximumSize(new java.awt.Dimension(60, 100));
+        cardButton45.setMinimumSize(new java.awt.Dimension(60, 100));
+        cardButton45.setPreferredSize(new java.awt.Dimension(60, 100));
+        cardButton45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardButtonClicked(evt);
+            }
+        });
+
+        handTurnLabel4.setIconTextGap(0);
+        handTurnLabel4.setMaximumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel4.setMinimumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel4.setName("turnLabel"); // NOI18N
+        handTurnLabel4.setPreferredSize(new java.awt.Dimension(60, 24));
+
+        handLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        handLabel4.setText("P5");
+        handLabel4.setMaximumSize(new java.awt.Dimension(46, 20));
+        handLabel4.setMinimumSize(new java.awt.Dimension(46, 20));
+        handLabel4.setName("playerLabel"); // NOI18N
+        handLabel4.setPreferredSize(new java.awt.Dimension(46, 20));
+
+        handScoreLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        handScoreLabel4.setText("Score:");
+        handScoreLabel4.setMaximumSize(new java.awt.Dimension(46, 20));
+        handScoreLabel4.setMinimumSize(new java.awt.Dimension(46, 20));
+        handScoreLabel4.setName("playerLabel"); // NOI18N
+        handScoreLabel4.setPreferredSize(new java.awt.Dimension(46, 20));
+
+        handPointsLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        handPointsLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        handPointsLabel4.setText("0");
+        handPointsLabel4.setMaximumSize(new java.awt.Dimension(46, 20));
+        handPointsLabel4.setMinimumSize(new java.awt.Dimension(46, 20));
+        handPointsLabel4.setName("playerLabel"); // NOI18N
+        handPointsLabel4.setPreferredSize(new java.awt.Dimension(46, 20));
+
+        javax.swing.GroupLayout handPanel4Layout = new javax.swing.GroupLayout(handPanel4);
+        handPanel4.setLayout(handPanel4Layout);
+        handPanel4Layout.setHorizontalGroup(
+            handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(handPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cardButton40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardButton45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(handLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(handPanel4Layout.createSequentialGroup()
+                        .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(handPanel4Layout.createSequentialGroup()
+                                .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        handPanel4Layout.setVerticalGroup(
+            handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(handPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(handPanel4Layout.createSequentialGroup()
+                        .addComponent(handLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(handTurnLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(handScoreLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(handPointsLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(handPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cardButton40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton43, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         handPanel0.setMaximumSize(new java.awt.Dimension(465, 90));
         handPanel0.setMinimumSize(new java.awt.Dimension(465, 90));
         handPanel0.setName(""); // NOI18N
-        handPanel0.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton00.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton00.setActionCommand("card00");
@@ -2301,7 +2325,11 @@ public class CastleFrame extends javax.swing.JFrame {
         handLabel0.setPreferredSize(new java.awt.Dimension(46, 20));
 
         handTurnLabel0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/turnSpot.png"))); // NOI18N
+        handTurnLabel0.setIconTextGap(0);
+        handTurnLabel0.setMaximumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel0.setMinimumSize(new java.awt.Dimension(60, 24));
         handTurnLabel0.setName("turnLabel"); // NOI18N
+        handTurnLabel0.setPreferredSize(new java.awt.Dimension(60, 24));
 
         handScoreLabel0.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handScoreLabel0.setText("Score:");
@@ -2337,47 +2365,41 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addComponent(cardButton05, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(handLabel0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(handPanel0Layout.createSequentialGroup()
-                        .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handTurnLabel0)
-                            .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(handTurnLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(handPanel0Layout.createSequentialGroup()
+                            .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(handLabel0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         handPanel0Layout.setVerticalGroup(
             handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(handPanel0Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(handPanel0Layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(handPanel0Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(handPanel0Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(handLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handTurnLabel0)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cardButton00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cardbutton01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cardButton02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cardbutton03, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(cardButton05, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(1, 1, 1)
+                        .addComponent(handLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(handTurnLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(handPointsLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(handScoreLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(handPanel0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cardButton00, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardbutton01, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardbutton03, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cardButton05, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         handPanel3.setMaximumSize(new java.awt.Dimension(465, 90));
         handPanel3.setMinimumSize(new java.awt.Dimension(465, 90));
         handPanel3.setName(""); // NOI18N
-        handPanel3.setPreferredSize(new java.awt.Dimension(465, 90));
 
         cardButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cardBack6080.png"))); // NOI18N
         cardButton30.setActionCommand("card30");
@@ -2470,10 +2492,11 @@ public class CastleFrame extends javax.swing.JFrame {
         handLabel3.setName("playerLabel"); // NOI18N
         handLabel3.setPreferredSize(new java.awt.Dimension(46, 20));
 
-        handTurnLabel3.setMaximumSize(new java.awt.Dimension(58, 24));
-        handTurnLabel3.setMinimumSize(new java.awt.Dimension(58, 24));
+        handTurnLabel3.setIconTextGap(0);
+        handTurnLabel3.setMaximumSize(new java.awt.Dimension(60, 24));
+        handTurnLabel3.setMinimumSize(new java.awt.Dimension(60, 24));
         handTurnLabel3.setName("turnLabel"); // NOI18N
-        handTurnLabel3.setPreferredSize(new java.awt.Dimension(58, 24));
+        handTurnLabel3.setPreferredSize(new java.awt.Dimension(60, 24));
 
         handScoreLabel3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         handScoreLabel3.setText("Score:");
@@ -2512,11 +2535,12 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addComponent(handLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(handPanel3Layout.createSequentialGroup()
                         .addGroup(handPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handScoreLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(handPanel3Layout.createSequentialGroup()
+                                .addComponent(handScoreLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(handPointsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(handTurnLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(handPointsLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         handPanel3Layout.setVerticalGroup(
@@ -2524,7 +2548,7 @@ public class CastleFrame extends javax.swing.JFrame {
             .addGroup(handPanel3Layout.createSequentialGroup()
                 .addGroup(handPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(handPanel3Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
+                        .addContainerGap()
                         .addGroup(handPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cardButton30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cardButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2564,19 +2588,19 @@ public class CastleFrame extends javax.swing.JFrame {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addComponent(monsterProgLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(monsterCountLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(monsterProgBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(monsterProgLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(monsterCountLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(monsterProgBar, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addContainerGap())
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(12, 12, 12)
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(monsterProgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(monsterCountLabel))
@@ -2590,45 +2614,37 @@ public class CastleFrame extends javax.swing.JFrame {
         handPanelLayout.setHorizontalGroup(
             handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(handPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(handPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(handPanel0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, handPanelLayout.createSequentialGroup()
-                        .addComponent(handPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(handPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(handPanelLayout.createSequentialGroup()
-                        .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(handPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handPanel0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(handPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(handPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(handPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(handPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(handPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
                 .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         handPanelLayout.setVerticalGroup(
             handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(handPanelLayout.createSequentialGroup()
                 .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(handPanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(handPanelLayout.createSequentialGroup()
-                                .addComponent(handPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(handPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(handPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(handPanelLayout.createSequentialGroup()
-                                .addComponent(handPanel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(handPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(handPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3))
+                    .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(handPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(handPanelLayout.createSequentialGroup()
+                            .addGap(0, 0, 0)
+                            .addComponent(handPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(handPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(handPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(handPanelLayout.createSequentialGroup()
+                            .addGap(0, 0, 0)
+                            .addComponent(handPanel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addComponent(handPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2636,25 +2652,25 @@ public class CastleFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
                         .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phasePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
                 .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -2901,6 +2917,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
          /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new CastleFrame().setVisible(true);
 
@@ -3023,6 +3040,7 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JButton phaseButton4;
     private javax.swing.JPanel phasePanel;
     private javax.swing.JLabel phaseTitleLabel;
+    private javax.swing.JLabel phaseTitleLabel1;
     private javax.swing.JButton skipButton1;
     private javax.swing.JButton skipButton2;
     private javax.swing.JButton skipButton3;
