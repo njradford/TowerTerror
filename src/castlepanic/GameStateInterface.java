@@ -320,5 +320,12 @@ public interface GameStateInterface {
      * @return
      */
     public int getCardColorFromDiscard(int index);
+    
+    /**
+     * Returns the number of monsters that will the game will begin with; the
+     * num of monsters that must be slain before victory is achieved.
+     * @return 
+     */
+    public int getNumMonsterTokens();
 
 }

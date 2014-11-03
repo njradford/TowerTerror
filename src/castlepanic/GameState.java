@@ -1036,6 +1036,10 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             return -1;
         }
     }
+    @Override
+    public int getNumMonsterTokens() {
+        return gameTokenPile.getMaxMonsterTokens();
+    }
 
     public String getPlayerArchetype(int playerIndex) {
         return players[playerIndex].getArchetype();

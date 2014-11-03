@@ -19,7 +19,7 @@ public class TokenPile implements Serializable {
     private Token[] pileOfTokens;
     private int topOfPile;
     public static final int PILE_SIZE = 42;
-    public static final int MAX_SIZE = 48;
+    public static final int MAX_SIZE = PILE_SIZE + 6; //pile size plus six beginning monsters
     private int monstersDealt;
     private int monsterCount = 6;
     private int beginningMonsterCount = 0;
@@ -146,5 +146,12 @@ public class TokenPile implements Serializable {
  */
     public int assignMonsterSerial() {
         return beginningMonsterCount++;
-}
+} /**
+ * Getter that returns the total number of monsters that will be played;
+ * the number that must be killed to achieve victory.
+ * @return 
+ */
+    public int getMaxMonsterTokens() {
+        return MAX_SIZE;
+    }
 }
