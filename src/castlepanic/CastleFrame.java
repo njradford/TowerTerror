@@ -122,7 +122,12 @@ public class CastleFrame extends javax.swing.JFrame {
                                     handTurnLabel3, handTurnLabel4, handTurnLabel5};
                                 scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
                                     handPointsLabel4, handPointsLabel5};
-
+                                blipLabels = new javax.swing.JLabel[]{blipLabel0,blipLabel1,blipLabel2,blipLabel3,blipLabel4, blipLabel5,blipLabel6,blipLabel7,
+                                        blipLabel8,blipLabel9,blipLabel10,blipLabel11,blipLabel12,blipLabel13,blipLabel14,blipLabel15,blipLabel16,
+                                        blipLabel17,blipLabel18,blipLabel19,blipLabel20,blipLabel21,blipLabel22,blipLabel23,blipLabel24,blipLabel25,blipLabel26,
+                                        blipLabel27,blipLabel28,blipLabel29,blipLabel30,blipLabel31,blipLabel32,blipLabel33,blipLabel34,blipLabel35,blipLabel36,
+                                        blipLabel37,blipLabel38,blipLabel39,blipLabel40, blipLabel41,blipLabel42,blipLabel43,blipLabel44,blipLabel45,blipLabel46,
+                                        blipLabel47};
                                 initializeGame();
                                 updateGame();
 
@@ -252,7 +257,8 @@ public class CastleFrame extends javax.swing.JFrame {
         for (int m = 0; m < players.length; m++) {
             handLabels[m].setText(players[m].substring(0, Math.min(8, players[m].length())).trim());
         }
-        monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
+        //TODO: OLD PROGBAR - REMOVE?
+        //monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
         
         this.updateGame();
 
@@ -478,10 +484,12 @@ public class CastleFrame extends javax.swing.JFrame {
     }
 
     public void updateMisc() {
-
-        monsterProgBar.setValue(gameState.getUnplayedMonsters());
+     
+        //TODO OLD PROGRESS BAR - REMOVE?
+        /*   monsterProgBar.setValue(gameState.getUnplayedMonsters());
         monsterCountLabel.setText(String.valueOf(gameState.getUnplayedMonsters()) + "/"
-                + String.valueOf(monsterProgBar.getMaximum()));
+                + String.valueOf(monsterProgBar.getMaximum()));*/
+        
         for (javax.swing.JLabel label : currentPlayerLabels) {
             label.setIcon(null);
         }
@@ -491,10 +499,9 @@ public class CastleFrame extends javax.swing.JFrame {
             scoreLabels[i].setText(String.valueOf(gameState.getScore(i)));
             totalScore += gameState.getScore(i);
         }
+        int invert = gameState.getNumMonsterTokens()-1;
         for (int i = 0; i < totalScore; i++) {
-            System.out.println("____DEBUG___ i value is " + i);
-            System.out.println("____DEBUG___ totalScore value is " + totalScore);
-            blipLabels[i].setIcon(deadBlip);
+            blipLabels[invert-i].setIcon(deadBlip);
         }
         switch (gameState.getCurrentPhase()) {
             case 1:
@@ -654,8 +661,6 @@ public class CastleFrame extends javax.swing.JFrame {
         handPointsLabel3 = new javax.swing.JLabel();
         controlPanel = new javax.swing.JPanel();
         monsterProgLabel = new javax.swing.JLabel();
-        monsterCountLabel = new javax.swing.JLabel();
-        monsterProgBar = new javax.swing.JProgressBar();
         blipLabel0 = new javax.swing.JLabel();
         blipLabel1 = new javax.swing.JLabel();
         blipLabel2 = new javax.swing.JLabel();
@@ -2624,15 +2629,6 @@ public class CastleFrame extends javax.swing.JFrame {
         monsterProgLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
         monsterProgLabel.setText("Monsters Remaining:");
 
-        monsterCountLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
-        monsterCountLabel.setForeground(new java.awt.Color(255, 0, 0));
-        monsterCountLabel.setText("42/42");
-
-        monsterProgBar.setForeground(new java.awt.Color(255, 0, 0));
-        monsterProgBar.setMaximum(0);
-        monsterProgBar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        monsterProgBar.setPreferredSize(new java.awt.Dimension(200, 20));
-
         blipLabel0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_RED.png"))); // NOI18N
 
         blipLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_RED.png"))); // NOI18N
@@ -2735,10 +2731,7 @@ public class CastleFrame extends javax.swing.JFrame {
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addComponent(monsterProgLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(monsterCountLabel))
+                    .addComponent(monsterProgLabel)
                     .addGroup(controlPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2838,18 +2831,13 @@ public class CastleFrame extends javax.swing.JFrame {
                                 .addComponent(blipLabel46)
                                 .addGap(18, 18, 18)
                                 .addComponent(blipLabel47)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(monsterProgBar, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(monsterProgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(monsterCountLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(monsterProgBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(monsterProgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(blipLabel0)
@@ -2912,7 +2900,7 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addComponent(blipLabel45)
                     .addComponent(blipLabel46)
                     .addComponent(blipLabel47))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout handPanelLayout = new javax.swing.GroupLayout(handPanel);
@@ -3382,8 +3370,6 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel handTurnLabel3;
     private javax.swing.JLabel handTurnLabel4;
     private javax.swing.JLabel handTurnLabel5;
-    private javax.swing.JLabel monsterCountLabel;
-    private javax.swing.JProgressBar monsterProgBar;
     private javax.swing.JLabel monsterProgLabel;
     private javax.swing.JButton phaseButton1;
     private javax.swing.JButton phaseButton2;
