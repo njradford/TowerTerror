@@ -16,7 +16,7 @@ public class CastleFrame extends javax.swing.JFrame {
      * Creates new form CastleFrame
      */
     public CastleFrame() {
-
+        
         initComponents();
         try {
             blueKnight = new javax.swing.ImageIcon(getClass().getResource("/blueKnightMock.png"));
@@ -38,11 +38,11 @@ public class CastleFrame extends javax.swing.JFrame {
             blankCard = new javax.swing.ImageIcon(getClass().getResource("/blankCard.png"));
             turnInd = new javax.swing.ImageIcon(getClass().getResource("/turnSpot.png"));
             wall = new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"));
-            deadWall = new javax.swing.ImageIcon(getClass().getResource("/deadWall.png"));
-            rubbleWall = new javax.swing.ImageIcon(getClass().getResource("/rubbleKeep.png"));
+            deadWall = new javax.swing.ImageIcon(getClass().getResource("/wallRubbleCleared.png"));
+            rubbleWall = new javax.swing.ImageIcon(getClass().getResource("/deadWall.png"));
             keep = new javax.swing.ImageIcon(getClass().getResource("/keep17070.png"));
-            deadKeep = new javax.swing.ImageIcon(getClass().getResource("/deadKeep.png"));
-            rubbleKeep = new javax.swing.ImageIcon(getClass().getResource("/rubbleKeep.png"));
+            deadKeep = new javax.swing.ImageIcon(getClass().getResource("/keepRubbleCleared.jpg"));
+            rubbleKeep = new javax.swing.ImageIcon(getClass().getResource("/deadKeep.png"));
             missingCard = new javax.swing.ImageIcon(getClass().getResource("/missingCard.png"));
             barbarianCard = new javax.swing.ImageIcon(getClass().getResource("/barbarianCard.png"));
             timeStopCard = new javax.swing.ImageIcon(getClass().getResource("/timeStopCard.png"));
@@ -51,7 +51,7 @@ public class CastleFrame extends javax.swing.JFrame {
             turretCard = new javax.swing.ImageIcon(getClass().getResource("/turretCard.png"));
             liveBlip = new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_RED.png"));
             deadBlip = new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_GRAY.png"));
-            
+
         } catch (NullPointerException e) {
             System.err.println("GUI: You dolt - The card image files are missing!");
         }
@@ -70,6 +70,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
             @Override
             public void windowClosed(java.awt.event.WindowEvent e) {
+                
                 switch (multiDialog.getDecision()) {
                     case ("Text"):
                         TextUI textUI = new TextUI();
@@ -122,12 +123,12 @@ public class CastleFrame extends javax.swing.JFrame {
                                     handTurnLabel3, handTurnLabel4, handTurnLabel5};
                                 scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
                                     handPointsLabel4, handPointsLabel5};
-                                blipLabels = new javax.swing.JLabel[]{blipLabel0,blipLabel1,blipLabel2,blipLabel3,blipLabel4, blipLabel5,blipLabel6,blipLabel7,
-                                        blipLabel8,blipLabel9,blipLabel10,blipLabel11,blipLabel12,blipLabel13,blipLabel14,blipLabel15,blipLabel16,
-                                        blipLabel17,blipLabel18,blipLabel19,blipLabel20,blipLabel21,blipLabel22,blipLabel23,blipLabel24,blipLabel25,blipLabel26,
-                                        blipLabel27,blipLabel28,blipLabel29,blipLabel30,blipLabel31,blipLabel32,blipLabel33,blipLabel34,blipLabel35,blipLabel36,
-                                        blipLabel37,blipLabel38,blipLabel39,blipLabel40, blipLabel41,blipLabel42,blipLabel43,blipLabel44,blipLabel45,blipLabel46,
-                                        blipLabel47};
+                                blipLabels = new javax.swing.JLabel[]{blipLabel0, blipLabel1, blipLabel2, blipLabel3, blipLabel4, blipLabel5, blipLabel6, blipLabel7,
+                                    blipLabel8, blipLabel9, blipLabel10, blipLabel11, blipLabel12, blipLabel13, blipLabel14, blipLabel15, blipLabel16,
+                                    blipLabel17, blipLabel18, blipLabel19, blipLabel20, blipLabel21, blipLabel22, blipLabel23, blipLabel24, blipLabel25, blipLabel26,
+                                    blipLabel27, blipLabel28, blipLabel29, blipLabel30, blipLabel31, blipLabel32, blipLabel33, blipLabel34, blipLabel35, blipLabel36,
+                                    blipLabel37, blipLabel38, blipLabel39, blipLabel40, blipLabel41, blipLabel42, blipLabel43, blipLabel44, blipLabel45, blipLabel46,
+                                    blipLabel47};
                                 initializeGame();
                                 updateGame();
 
@@ -219,15 +220,15 @@ public class CastleFrame extends javax.swing.JFrame {
                                     handTurnLabel3, handTurnLabel4, handTurnLabel5};
                                 scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
                                     handPointsLabel4, handPointsLabel5};
-                                blipLabels = new javax.swing.JLabel[]{blipLabel0,blipLabel1,blipLabel2,blipLabel3,blipLabel4, blipLabel5,blipLabel6,blipLabel7,
-                                        blipLabel8,blipLabel9,blipLabel10,blipLabel11,blipLabel12,blipLabel13,blipLabel14,blipLabel15,blipLabel16,
-                                        blipLabel17,blipLabel18,blipLabel19,blipLabel20,blipLabel21,blipLabel22,blipLabel23,blipLabel24,blipLabel25,blipLabel26,
-                                        blipLabel27,blipLabel28,blipLabel29,blipLabel30,blipLabel31,blipLabel32,blipLabel33,blipLabel34,blipLabel35,blipLabel36,
-                                        blipLabel37,blipLabel38,blipLabel39,blipLabel40, blipLabel41,blipLabel42,blipLabel43,blipLabel44,blipLabel45,blipLabel46,
-                                        blipLabel47};
+                                blipLabels = new javax.swing.JLabel[]{blipLabel0, blipLabel1, blipLabel2, blipLabel3, blipLabel4, blipLabel5, blipLabel6, blipLabel7,
+                                    blipLabel8, blipLabel9, blipLabel10, blipLabel11, blipLabel12, blipLabel13, blipLabel14, blipLabel15, blipLabel16,
+                                    blipLabel17, blipLabel18, blipLabel19, blipLabel20, blipLabel21, blipLabel22, blipLabel23, blipLabel24, blipLabel25, blipLabel26,
+                                    blipLabel27, blipLabel28, blipLabel29, blipLabel30, blipLabel31, blipLabel32, blipLabel33, blipLabel34, blipLabel35, blipLabel36,
+                                    blipLabel37, blipLabel38, blipLabel39, blipLabel40, blipLabel41, blipLabel42, blipLabel43, blipLabel44, blipLabel45, blipLabel46,
+                                    blipLabel47};
                                 initializeGame();
                                 updateGame();
-                            }                         
+                            }
                         });
                         userDialog.setVisible(true);
                         break;
@@ -259,16 +260,19 @@ public class CastleFrame extends javax.swing.JFrame {
         }
         //TODO: OLD PROGBAR - REMOVE?
         //monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
-        
+
         this.updateGame();
 
         if (networkGame) {
             if (!isHost) {
                 netProcess();
+            } else {
+                phaseTitleLabel1.setText("NETWORK GAME - ACTIVE");
             }
         } else {
             phaseTitleLabel1.setText("LOCAL GAME");
         }
+      
     }
 
     /*
@@ -285,6 +289,9 @@ public class CastleFrame extends javax.swing.JFrame {
                 for (JButton button : phaseButtons) {
                     button.setEnabled(net.isLocalActive());
                 }
+                for (JButton button : skipButtons) {
+                    button.setEnabled(net.isLocalActive());
+                }
                 //print not active to network label
                 phaseTitleLabel1.setText("NETWORK GAME - SPECTATING");
                 System.out.println("(NET) BEGINNING SPECTATING . . .");
@@ -295,11 +302,14 @@ public class CastleFrame extends javax.swing.JFrame {
                     paintComponents(getGraphics());
                     net.updateLocalActive(gameState);
                 }
-                 //act buttons when active
+                //act buttons when active
                 for (JButton button : phaseButtons) {
                     button.setEnabled(net.isLocalActive());
                 }
-                phaseTitleLabel1.setText("NETWORK GAME - ACTIVE");               
+                for (JButton button : skipButtons) {
+                    button.setEnabled(net.isLocalActive());
+                }
+                phaseTitleLabel1.setText("NETWORK GAME - ACTIVE");
                 System.out.println("(NET) ENDING SPECTATING . . .");
                 return true;
             }
@@ -308,6 +318,7 @@ public class CastleFrame extends javax.swing.JFrame {
     }
 
     public void updateGame() {
+        this.setVisible(true);
         if (gameState.getDeadYet()) {
             System.out.println("GUI: End game");
             endScreen = new ItsCurtains(this, true);
@@ -484,12 +495,11 @@ public class CastleFrame extends javax.swing.JFrame {
     }
 
     public void updateMisc() {
-     
+
         //TODO OLD PROGRESS BAR - REMOVE?
         /*   monsterProgBar.setValue(gameState.getUnplayedMonsters());
-        monsterCountLabel.setText(String.valueOf(gameState.getUnplayedMonsters()) + "/"
-                + String.valueOf(monsterProgBar.getMaximum()));*/
-        
+         monsterCountLabel.setText(String.valueOf(gameState.getUnplayedMonsters()) + "/"
+         + String.valueOf(monsterProgBar.getMaximum()));*/
         for (javax.swing.JLabel label : currentPlayerLabels) {
             label.setIcon(null);
         }
@@ -499,9 +509,9 @@ public class CastleFrame extends javax.swing.JFrame {
             scoreLabels[i].setText(String.valueOf(gameState.getScore(i)));
             totalScore += gameState.getScore(i);
         }
-        int invert = gameState.getNumMonsterTokens()-1;
+        int invert = gameState.getNumMonsterTokens() - 1;
         for (int i = 0; i < totalScore; i++) {
-            blipLabels[invert-i].setIcon(deadBlip);
+            blipLabels[invert - i].setIcon(deadBlip);
         }
         switch (gameState.getCurrentPhase()) {
             case 1:
@@ -887,7 +897,7 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(45, 45, 45))
         );
 
         boardLayeredPanel.setPreferredSize(new java.awt.Dimension(906, 500));
@@ -2626,7 +2636,8 @@ public class CastleFrame extends javax.swing.JFrame {
         controlPanel.setFocusable(false);
         controlPanel.setOpaque(false);
 
-        monsterProgLabel.setFont(new java.awt.Font("Copperplate Gothic Light", 0, 10)); // NOI18N
+        monsterProgLabel.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        monsterProgLabel.setForeground(new java.awt.Color(255, 0, 0));
         monsterProgLabel.setText("Monsters Remaining:");
 
         blipLabel0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_RED.png"))); // NOI18N
@@ -2943,14 +2954,13 @@ public class CastleFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, 0))
+                        .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3210,7 +3220,8 @@ public class CastleFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new CastleFrame().setVisible(true);
+                new CastleFrame().setVisible(false);
+                
 
             }
         });
