@@ -14,6 +14,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     private boolean[] tempBoardEffectFlags = new boolean[2];
     private int[] turretAmmo = new int[7];
 
+    private int collisionKills;
+
     private Castle gameCastle;
     private TokenPile gameTokenPile;
     private Deck gameDeck;
@@ -607,6 +609,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                         if (closestMonster.getHP() <= 0) {
                             closestMonster.deathEffects(this);
                             monstersInField.remove(closestMonster);
+                            collisionKills++;
+                            //counter for non-player kills
                         }
                         turretAmmo[i]--;
                     }
@@ -647,6 +651,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                             monster.deathEffects(this);
                             monstersInField.remove(monster);
                             //no points awarded - monster killed by tower.
+                            collisionKills++;
+                            //counter for non-player kills
                         }
                         if (gameCastle.areWeDeadYet()) { //GAME OVER.
                             return 2;
@@ -662,6 +668,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                             if (monster.getHP() <= 0) {
                                 monster.deathEffects(this);
                                 monstersInField.remove(monster);
+                                collisionKills++;
+                                //counter for non-player kills
                             }
                         } else if (gameCastle.getTowerState(monster.getNextHorizontalLocation()) == Castle.TOWER_RUBBLE) {
                             //do nothing - don't go through the tower rubble
@@ -677,6 +685,8 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                             monster.deathEffects(this);
                             monstersInField.remove(monster);
                             //no points awarded - monster killed by wall, not by player action.
+                            collisionKills++;
+                            //counter for non-player kills
                         }
                     }
                 } else {
@@ -989,7 +999,13 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
     @Override
     public int getMonstersKilled() {
-        return gameTokenPile.getNumTokensPlayed() - monstersInField.size();
+        //fixed for wall/turret kills
+        int bodyCount = 0;
+        for (Player player : players) {
+            bodyCount = bodyCount+player.getScore();
+        }
+        bodyCount+=collisionKills;
+        return bodyCount;
     }
 
     @Override
@@ -1036,6 +1052,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             return -1;
         }
     }
+
     @Override
     public int getNumMonsterTokens() {
         return gameTokenPile.getMaxMonsterTokens();

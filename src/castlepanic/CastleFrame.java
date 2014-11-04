@@ -509,10 +509,11 @@ public class CastleFrame extends javax.swing.JFrame {
             scoreLabels[i].setText(String.valueOf(gameState.getScore(i)));
             totalScore += gameState.getScore(i);
         }
-        int invert = gameState.getNumMonsterTokens() - 1;
-        for (int i = 0; i < totalScore; i++) {
-            blipLabels[invert - i].setIcon(deadBlip);
+        
+        for (int i = gameState.getNumMonsterTokens()-1; i > gameState.getNumMonsterTokens()-1-gameState.getMonstersKilled(); i--) {
+            blipLabels[i].setIcon(deadBlip);
         }
+        
         switch (gameState.getCurrentPhase()) {
             case 1:
                 phaseButtons[0].setSelected(true);
