@@ -16,7 +16,7 @@ public class CastleFrame extends javax.swing.JFrame {
      * Creates new form CastleFrame
      */
     public CastleFrame() {
-        
+
         initComponents();
         try {
             blueKnight = new javax.swing.ImageIcon(getClass().getResource("/blueKnightMock.png"));
@@ -70,12 +70,10 @@ public class CastleFrame extends javax.swing.JFrame {
 
             @Override
             public void windowClosed(java.awt.event.WindowEvent e) {
-                
+
                 switch (multiDialog.getDecision()) {
-                    case ("Text"):
-                        TextUI textUI = new TextUI();
-                        break;
                     case ("Single"):
+
                         networkGame = false;
 
                         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -86,58 +84,62 @@ public class CastleFrame extends javax.swing.JFrame {
 
                             @Override
                             public void windowClosed(java.awt.event.WindowEvent e) {
-
-                                int playerCount = 0;
-                                int index = 0;
-                                for (String name : dialog.getPlayerNames()) {
-                                    if (!name.isEmpty()) {
-                                        playerCount++;
+                                if (dialog.getDecision().equals("GRAPHICAL")) {
+                                    int playerCount = 0;
+                                    int index = 0;
+                                    for (String name : dialog.getPlayerNames()) {
+                                        if (!name.isEmpty()) {
+                                            playerCount++;
+                                        }
+                                        players = new String[playerCount];
                                     }
-                                    players = new String[playerCount];
-                                }
-                                for (String name : dialog.getPlayerNames()) {
-                                    if (!name.isEmpty()) {
-                                        players[index] = name;
-                                        index++;
+                                    for (String name : dialog.getPlayerNames()) {
+                                        if (!name.isEmpty()) {
+                                            players[index] = name;
+                                            index++;
+                                        }
                                     }
+                                    System.out.println("GUI: players String [] set.");
+                                    for (String name : players) {
+                                        System.out.println("GUI: Player: - " + name);
+                                    }
+
+                                    gameState = new GameState(players);
+
+                                    handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
+                                        handLabel3, handLabel4, handLabel5};
+                                    handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
+                                        handPanel3, handPanel4, handPanel5};
+                                    cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
+                                    wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
+                                        wallButton5, wallButton4};
+                                    phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
+                                    skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
+                                    castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
+                                        castleButton3, castleButton4, castleButton5};
+                                    currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
+                                        handTurnLabel3, handTurnLabel4, handTurnLabel5};
+                                    scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
+                                        handPointsLabel4, handPointsLabel5};
+                                    blipLabels = new javax.swing.JLabel[]{blipLabel0, blipLabel1, blipLabel2, blipLabel3, blipLabel4, blipLabel5, blipLabel6, blipLabel7,
+                                        blipLabel8, blipLabel9, blipLabel10, blipLabel11, blipLabel12, blipLabel13, blipLabel14, blipLabel15, blipLabel16,
+                                        blipLabel17, blipLabel18, blipLabel19, blipLabel20, blipLabel21, blipLabel22, blipLabel23, blipLabel24, blipLabel25, blipLabel26,
+                                        blipLabel27, blipLabel28, blipLabel29, blipLabel30, blipLabel31, blipLabel32, blipLabel33, blipLabel34, blipLabel35, blipLabel36,
+                                        blipLabel37, blipLabel38, blipLabel39, blipLabel40, blipLabel41, blipLabel42, blipLabel43, blipLabel44, blipLabel45, blipLabel46,
+                                        blipLabel47};
+                                    initializeGame();
+                                    updateGame();
                                 }
-                                System.out.println("GUI: players String [] set.");
-                                for (String name : players) {
-                                    System.out.println("GUI: Player: - " + name);
-                                }
-
-                                gameState = new GameState(players);
-
-                                handLabels = new javax.swing.JLabel[]{handLabel0, handLabel1, handLabel2,
-                                    handLabel3, handLabel4, handLabel5};
-                                handPanels = new javax.swing.JPanel[]{handPanel0, handPanel1, handPanel2,
-                                    handPanel3, handPanel4, handPanel5};
-                                cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
-                                wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
-                                    wallButton4, wallButton5};
-                                phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
-                                skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
-                                castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
-                                    castleButton3, castleButton4, castleButton5};
-                                currentPlayerLabels = new javax.swing.JLabel[]{handTurnLabel0, handTurnLabel1, handTurnLabel2,
-                                    handTurnLabel3, handTurnLabel4, handTurnLabel5};
-                                scoreLabels = new javax.swing.JLabel[]{handPointsLabel0, handPointsLabel1, handPointsLabel2, handPointsLabel3,
-                                    handPointsLabel4, handPointsLabel5};
-                                blipLabels = new javax.swing.JLabel[]{blipLabel0, blipLabel1, blipLabel2, blipLabel3, blipLabel4, blipLabel5, blipLabel6, blipLabel7,
-                                    blipLabel8, blipLabel9, blipLabel10, blipLabel11, blipLabel12, blipLabel13, blipLabel14, blipLabel15, blipLabel16,
-                                    blipLabel17, blipLabel18, blipLabel19, blipLabel20, blipLabel21, blipLabel22, blipLabel23, blipLabel24, blipLabel25, blipLabel26,
-                                    blipLabel27, blipLabel28, blipLabel29, blipLabel30, blipLabel31, blipLabel32, blipLabel33, blipLabel34, blipLabel35, blipLabel36,
-                                    blipLabel37, blipLabel38, blipLabel39, blipLabel40, blipLabel41, blipLabel42, blipLabel43, blipLabel44, blipLabel45, blipLabel46,
-                                    blipLabel47};
-                                initializeGame();
-                                updateGame();
-
                             }
                         });
                         dialog.setVisible(true);
+                        if (dialog.getDecision().equals("TEXT")) {
+                            TextUI text = new TextUI();
+                        }
                         break;
                     case ("Multi"):
                         networkGame = true;
+                        userDialog.setHosting(multiDialog.getHosting());
                         userDialog.addWindowListener(new java.awt.event.WindowAdapter() {
                             //////////////////////////////////////////////////////////////////
 
@@ -155,7 +157,7 @@ public class CastleFrame extends javax.swing.JFrame {
                                 String port = userDialog.getPort();
                                 net = new NetworkHandler();
 
-                                switch (userDialog.getDecision()) {
+                                switch (multiDialog.getHosting()) {
                                     case "CLIENT":
                                         isHost = false;
                                         isActive = false;
@@ -211,7 +213,7 @@ public class CastleFrame extends javax.swing.JFrame {
                                     handPanel3, handPanel4, handPanel5};
                                 cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
                                 wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
-                                    wallButton4, wallButton5};
+                                    wallButton5, wallButton4};
                                 phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
                                 skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
                                 castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
@@ -264,15 +266,16 @@ public class CastleFrame extends javax.swing.JFrame {
         this.updateGame();
 
         if (networkGame) {
+            phaseTitleLabel1.setIcon(p2pGame);
             if (!isHost) {
                 netProcess();
             } else {
-                phaseTitleLabel1.setText("NETWORK GAME - ACTIVE");
+                phaseTitleLabel1.setIcon(activeNow);
             }
         } else {
-            phaseTitleLabel1.setText("LOCAL GAME");
+         
         }
-      
+
     }
 
     /*
@@ -293,7 +296,7 @@ public class CastleFrame extends javax.swing.JFrame {
                     button.setEnabled(net.isLocalActive());
                 }
                 //print not active to network label
-                phaseTitleLabel1.setText("NETWORK GAME - SPECTATING");
+                phaseTitleLabel2.setIcon(spectator);
                 System.out.println("(NET) BEGINNING SPECTATING . . .");
                 while (!net.isLocalActive()) {
                     gameState = net.listenForState();
@@ -309,7 +312,7 @@ public class CastleFrame extends javax.swing.JFrame {
                 for (JButton button : skipButtons) {
                     button.setEnabled(net.isLocalActive());
                 }
-                phaseTitleLabel1.setText("NETWORK GAME - ACTIVE");
+                phaseTitleLabel1.setIcon(activeNow);
                 System.out.println("(NET) ENDING SPECTATING . . .");
                 return true;
             }
@@ -465,6 +468,7 @@ public class CastleFrame extends javax.swing.JFrame {
     public void updateBoard() {
         for (int i = 0; i < wallButtons.length; i++) {
             switch (gameState.getWallHP(i + 1)) {
+
                 case 0:
                     wallButtons[i].setIcon(deadWall);
                     break;
@@ -509,11 +513,11 @@ public class CastleFrame extends javax.swing.JFrame {
             scoreLabels[i].setText(String.valueOf(gameState.getScore(i)));
             totalScore += gameState.getScore(i);
         }
-        
-        for (int i = gameState.getNumMonsterTokens()-1; i > gameState.getNumMonsterTokens()-1-gameState.getMonstersKilled(); i--) {
+
+        for (int i = gameState.getNumMonsterTokens() - 1; i > gameState.getNumMonsterTokens() - 1 - gameState.getMonstersKilled(); i--) {
             blipLabels[i].setIcon(deadBlip);
         }
-        
+
         switch (gameState.getCurrentPhase()) {
             case 1:
                 phaseButtons[0].setSelected(true);
@@ -563,6 +567,7 @@ public class CastleFrame extends javax.swing.JFrame {
         skipButton2 = new javax.swing.JButton();
         skipButton3 = new javax.swing.JButton();
         phaseTitleLabel1 = new javax.swing.JLabel();
+        phaseTitleLabel2 = new javax.swing.JLabel();
         boardLayeredPanel = new javax.swing.JLayeredPane();
         boardBottomLayer = new javax.swing.JPanel();
         boardPaletteLayer = new javax.swing.JPanel();
@@ -598,9 +603,9 @@ public class CastleFrame extends javax.swing.JFrame {
         castleButton2 = new javax.swing.JButton();
         wallButton3 = new javax.swing.JButton();
         castleButton3 = new javax.swing.JButton();
-        wallButton4 = new javax.swing.JButton();
-        castleButton5 = new javax.swing.JButton();
         wallButton5 = new javax.swing.JButton();
+        castleButton5 = new javax.swing.JButton();
+        wallButton4 = new javax.swing.JButton();
         castleButton4 = new javax.swing.JButton();
         boardShapeLayer = new ShapePanel();
         handPanel = new javax.swing.JPanel();
@@ -723,8 +728,8 @@ public class CastleFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
-        setMinimumSize(new java.awt.Dimension(1280, 860));
-        setPreferredSize(new java.awt.Dimension(1280, 860));
+        setMinimumSize(new java.awt.Dimension(1230, 860));
+        setPreferredSize(new java.awt.Dimension(1230, 860));
 
         phasePanel.setFocusable(false);
         phasePanel.setOpaque(false);
@@ -847,11 +852,23 @@ public class CastleFrame extends javax.swing.JFrame {
         phaseTitleLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         phaseTitleLabel1.setForeground(new java.awt.Color(255, 0, 0));
         phaseTitleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phaseTitleLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/localGame.png"))); // NOI18N
         phaseTitleLabel1.setAlignmentX(0.5F);
         phaseTitleLabel1.setAutoscrolls(true);
-        phaseTitleLabel1.setMaximumSize(new java.awt.Dimension(283, 57));
-        phaseTitleLabel1.setMinimumSize(new java.awt.Dimension(283, 57));
-        phaseTitleLabel1.setPreferredSize(new java.awt.Dimension(283, 57));
+        phaseTitleLabel1.setFocusable(false);
+        phaseTitleLabel1.setMaximumSize(new java.awt.Dimension(161, 33));
+        phaseTitleLabel1.setMinimumSize(new java.awt.Dimension(161, 33));
+        phaseTitleLabel1.setPreferredSize(new java.awt.Dimension(161, 33));
+
+        phaseTitleLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        phaseTitleLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        phaseTitleLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        phaseTitleLabel2.setAlignmentX(0.5F);
+        phaseTitleLabel2.setAutoscrolls(true);
+        phaseTitleLabel2.setFocusable(false);
+        phaseTitleLabel2.setMaximumSize(new java.awt.Dimension(161, 33));
+        phaseTitleLabel2.setMinimumSize(new java.awt.Dimension(161, 33));
+        phaseTitleLabel2.setPreferredSize(new java.awt.Dimension(161, 33));
 
         javax.swing.GroupLayout phasePanelLayout = new javax.swing.GroupLayout(phasePanel);
         phasePanel.setLayout(phasePanelLayout);
@@ -860,22 +877,24 @@ public class CastleFrame extends javax.swing.JFrame {
             .addGroup(phasePanelLayout.createSequentialGroup()
                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(phaseButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(phasePanelLayout.createSequentialGroup()
-                                .addComponent(phaseButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(phaseButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phaseTitleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
-                                .addComponent(phaseButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
+                    .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(phaseButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(phaseTitleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
+                            .addComponent(phaseButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, 0)
+                            .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(skipButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(skipButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
+                            .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(skipButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(skipButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(0, 0, 0))
+                                    .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phaseTitleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(phaseButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         phasePanelLayout.setVerticalGroup(
             phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -896,9 +915,11 @@ public class CastleFrame extends javax.swing.JFrame {
                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(phaseButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addComponent(phaseTitleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         boardLayeredPanel.setPreferredSize(new java.awt.Dimension(906, 500));
@@ -1379,17 +1400,17 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton4.setActionCommand("wall1");
-        wallButton4.setBorderPainted(false);
-        wallButton4.setContentAreaFilled(false);
-        wallButton4.setMaximumSize(new java.awt.Dimension(149, 42));
-        wallButton4.setMinimumSize(new java.awt.Dimension(149, 42));
-        wallButton4.setOpaque(true);
-        wallButton4.setPreferredSize(new java.awt.Dimension(149, 42));
-        wallButton4.addActionListener(new java.awt.event.ActionListener() {
+        wallButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
+        wallButton5.setActionCommand("wall1");
+        wallButton5.setBorderPainted(false);
+        wallButton5.setContentAreaFilled(false);
+        wallButton5.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton5.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton5.setOpaque(true);
+        wallButton5.setPreferredSize(new java.awt.Dimension(149, 42));
+        wallButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wallButton4wallButtonClicked(evt);
+                wallButton5wallButtonClicked(evt);
             }
         });
 
@@ -1407,17 +1428,17 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        wallButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton5.setActionCommand("wall1");
-        wallButton5.setBorderPainted(false);
-        wallButton5.setContentAreaFilled(false);
-        wallButton5.setMaximumSize(new java.awt.Dimension(149, 42));
-        wallButton5.setMinimumSize(new java.awt.Dimension(149, 42));
-        wallButton5.setOpaque(true);
-        wallButton5.setPreferredSize(new java.awt.Dimension(149, 42));
-        wallButton5.addActionListener(new java.awt.event.ActionListener() {
+        wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
+        wallButton4.setActionCommand("wall1");
+        wallButton4.setBorderPainted(false);
+        wallButton4.setContentAreaFilled(false);
+        wallButton4.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton4.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton4.setOpaque(true);
+        wallButton4.setPreferredSize(new java.awt.Dimension(149, 42));
+        wallButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wallButton5wallButtonClicked(evt);
+                wallButton4wallButtonClicked(evt);
             }
         });
 
@@ -1460,11 +1481,11 @@ public class CastleFrame extends javax.swing.JFrame {
                             .addComponent(castleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(wallButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(wallButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(castleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(wallButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(wallButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(castleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(boardPaletteLayerLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -1565,8 +1586,8 @@ public class CastleFrame extends javax.swing.JFrame {
                         .addComponent(wallButton0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(wallButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(wallButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(wallButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(wallButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(wallButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(wallButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2639,7 +2660,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
         monsterProgLabel.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         monsterProgLabel.setForeground(new java.awt.Color(255, 0, 0));
-        monsterProgLabel.setText("Monsters Remaining:");
+        monsterProgLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/monstersRemaining.png"))); // NOI18N
 
         blipLabel0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_RED.png"))); // NOI18N
 
@@ -2742,115 +2763,115 @@ public class CastleFrame extends javax.swing.JFrame {
         controlPanelLayout.setHorizontalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(monsterProgLabel)
                     .addGroup(controlPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel12)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel13))
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel0)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel6))
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel14)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel15)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel16)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel17)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel18)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel19)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel20))
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel21)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel22)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel23)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel24)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel25)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel26)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel27))
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel28)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel29)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel30)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel31)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel32)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel33)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel34))
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel35)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel36)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel37)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel38)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel39)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel40)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel41))
-                            .addGroup(controlPanelLayout.createSequentialGroup()
-                                .addComponent(blipLabel42)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel43)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel44)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel45)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel46)
-                                .addGap(18, 18, 18)
-                                .addComponent(blipLabel47)))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addComponent(blipLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel13))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(blipLabel0)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel6))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(blipLabel14)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel15)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel18)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel19)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel20))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(blipLabel21)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel22)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel23)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel24)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel25)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel26)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel27))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(blipLabel28)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel29)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel30)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel31)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel32)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel33)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel34))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(blipLabel35)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel36)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel37)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel38)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel39)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel40)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel41))
+                    .addGroup(controlPanelLayout.createSequentialGroup()
+                        .addComponent(blipLabel42)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel43)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel44)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel45)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel46)
+                        .addGap(18, 18, 18)
+                        .addComponent(blipLabel47)))
+                .addContainerGap(56, Short.MAX_VALUE))
+            .addGroup(controlPanelLayout.createSequentialGroup()
+                .addComponent(monsterProgLabel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(monsterProgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(blipLabel0)
                     .addComponent(blipLabel1)
@@ -2955,13 +2976,14 @@ public class CastleFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(handPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(boardLayeredPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)
-                        .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(phasePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3110,17 +3132,17 @@ public class CastleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_wallButton3wallButtonClicked
 
-    private void wallButton4wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton4wallButtonClicked
+    private void wallButton5wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton5wallButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton4wallButtonClicked
+    }//GEN-LAST:event_wallButton5wallButtonClicked
 
     private void castleButton5boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButton5boardButtonClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_castleButton5boardButtonClicked
 
-    private void wallButton5wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton5wallButtonClicked
+    private void wallButton4wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton4wallButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton5wallButtonClicked
+    }//GEN-LAST:event_wallButton4wallButtonClicked
 
     private void castleButton4boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButton4boardButtonClicked
         // TODO add your handling code here:
@@ -3181,6 +3203,8 @@ public class CastleFrame extends javax.swing.JFrame {
 
     private void skipButton3Clicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipButton3Clicked
         gameState.playAdvance();
+        selectedCard = null;
+        otherCard = null;
         updateGame();
     }//GEN-LAST:event_skipButton3Clicked
 
@@ -3222,7 +3246,6 @@ public class CastleFrame extends javax.swing.JFrame {
             @Override
             public void run() {
                 new CastleFrame().setVisible(false);
-                
 
             }
         });
@@ -3390,6 +3413,7 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JPanel phasePanel;
     private javax.swing.JLabel phaseTitleLabel;
     private javax.swing.JLabel phaseTitleLabel1;
+    private javax.swing.JLabel phaseTitleLabel2;
     private javax.swing.JButton skipButton1;
     private javax.swing.JButton skipButton2;
     private javax.swing.JButton skipButton3;
@@ -3458,6 +3482,10 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.ImageIcon turretCard;
     private javax.swing.ImageIcon deadBlip;
     private javax.swing.ImageIcon liveBlip;
+    private javax.swing.ImageIcon activeNow;
+    private javax.swing.ImageIcon p2pGame;
+    private javax.swing.ImageIcon localGame;
+    private javax.swing.ImageIcon spectator;
 
     public class ShapePanel extends javax.swing.JPanel implements java.awt.event.MouseListener {
 

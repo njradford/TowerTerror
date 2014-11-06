@@ -617,7 +617,10 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
                 }
             }
-
+            selectedCardIndex = -1;
+            otherPlayerCardIndex=-1;
+            otherPlayerIndex=-1;
+            
             return 1;
         }
     }

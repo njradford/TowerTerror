@@ -17,6 +17,7 @@ public class UserMenu extends javax.swing.JDialog {
     public UserMenu(CastleFrame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+          
     }
 
     /**
@@ -42,8 +43,6 @@ public class UserMenu extends javax.swing.JDialog {
         addressLabel = new javax.swing.JLabel();
         clientOnlyLabel = new javax.swing.JLabel();
         portLabel = new javax.swing.JLabel();
-        hostButton = new javax.swing.JRadioButton();
-        clientButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Player Names");
@@ -96,7 +95,7 @@ public class UserMenu extends javax.swing.JDialog {
         startButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattle.png"))); // NOI18N
         startButton.setToolTipText("");
         startButton.setBorderPainted(false);
-        startButton.setOpaque(false);
+        startButton.setContentAreaFilled(false);
         startButton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
         startButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
         startButton.addActionListener(new java.awt.event.ActionListener() {
@@ -111,9 +110,9 @@ public class UserMenu extends javax.swing.JDialog {
         quitButton.setText("OR QUIT");
         quitButton.setToolTipText("HIT HERE TO QUIT");
         quitButton.setBorderPainted(false);
+        quitButton.setContentAreaFilled(false);
         quitButton.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         quitButton.setMargin(new java.awt.Insets(0, 1, 0, 1));
-        quitButton.setOpaque(false);
         quitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quitButtonActionPerformed(evt);
@@ -153,14 +152,6 @@ public class UserMenu extends javax.swing.JDialog {
         portLabel.setText("PORT");
         portLabel.setToolTipText("");
 
-        buttonGroup1.add(hostButton);
-        hostButton.setFont(hostButton.getFont());
-        hostButton.setSelected(true);
-        hostButton.setText("HOST");
-
-        buttonGroup1.add(clientButton);
-        clientButton.setText("CLIENT");
-
         javax.swing.GroupLayout menuTopLayerLayout = new javax.swing.GroupLayout(menuTopLayer);
         menuTopLayer.setLayout(menuTopLayerLayout);
         menuTopLayerLayout.setHorizontalGroup(
@@ -185,11 +176,7 @@ public class UserMenu extends javax.swing.JDialog {
                 .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(quitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hostButton)
-                    .addComponent(clientButton))
-                .addGap(184, 184, 184))
+                .addGap(251, 251, 251))
         );
         menuTopLayerLayout.setVerticalGroup(
             menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,11 +191,6 @@ public class UserMenu extends javax.swing.JDialog {
                     .addComponent(portLabel))
                 .addGap(13, 13, 13)
                 .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menuTopLayerLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(hostButton)
-                        .addGap(7, 7, 7)
-                        .addComponent(clientButton))
                     .addGroup(menuTopLayerLayout.createSequentialGroup()
                         .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,11 +246,8 @@ public class UserMenu extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userMenuStartClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userMenuStartClicked
-        //THIS IS A WORKAROUND - EDITOR BUG
-        hostButton.setActionCommand("HOST");
-        clientButton.setActionCommand("CLIENT");
-        
-        
+     
+            
         if (userField.getText().equals("")) {
             System.out.println("UserMenu: Enter a user name.");
             return;
@@ -277,8 +256,8 @@ public class UserMenu extends javax.swing.JDialog {
             System.out.println("UserMenu: Must enter a port.");
             return;
         }
-        System.out.println(this.getDecision());
-        if (this.getDecision().equals("CLIENT") && addressField.getText().equals("")) {
+       
+        if (hosting.equals("CLIENT") && addressField.getText().equals("")) {
             System.out.println("UserMenu: Client must enter an address.");
         }
 
@@ -313,20 +292,19 @@ public class UserMenu extends javax.swing.JDialog {
         return portField.getText();
     }
 
-    public String getDecision() {
-        String selected;
-        selected = this.buttonGroup1.getSelection().getActionCommand();
-        return selected;
+    public void setHosting(String hosting) {
+       this.hosting = hosting;
+       if (hosting.equals("HOST")) {
+           addressField.setEditable(false);
+       }
     }
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JRadioButton clientButton;
     private javax.swing.JLabel clientOnlyLabel;
-    private javax.swing.JRadioButton hostButton;
     private javax.swing.JPanel menuBottomLayer;
     private javax.swing.JLayeredPane menuLayeredPane;
     private javax.swing.JPanel menuTopLayer;
@@ -339,4 +317,5 @@ public class UserMenu extends javax.swing.JDialog {
     private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
     private String[] players;
+    private String hosting;
 }

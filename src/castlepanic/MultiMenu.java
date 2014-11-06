@@ -34,8 +34,8 @@ public class MultiMenu extends javax.swing.JDialog {
         titleBackgroundLabel = new javax.swing.JLabel();
         menuTopLayer = new javax.swing.JPanel();
         singlePlayerButton = new javax.swing.JButton();
-        multiplayerButton = new javax.swing.JButton();
-        textButton = new javax.swing.JButton();
+        hostButton = new javax.swing.JButton();
+        clientButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Player Names");
@@ -47,7 +47,7 @@ public class MultiMenu extends javax.swing.JDialog {
         menuBottomLayer.setMinimumSize(new java.awt.Dimension(1280, 800));
         menuBottomLayer.setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        titleBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/titleScreen.png"))); // NOI18N
+        titleBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mainMenuScreen.png"))); // NOI18N
 
         javax.swing.GroupLayout menuBottomLayerLayout = new javax.swing.GroupLayout(menuBottomLayer);
         menuBottomLayer.setLayout(menuBottomLayerLayout);
@@ -69,25 +69,47 @@ public class MultiMenu extends javax.swing.JDialog {
         menuTopLayer.setOpaque(false);
         menuTopLayer.setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        singlePlayerButton.setText("Single");
+        singlePlayerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonStart.png"))); // NOI18N
+        singlePlayerButton.setBorderPainted(false);
+        singlePlayerButton.setContentAreaFilled(false);
+        singlePlayerButton.setFocusPainted(false);
+        singlePlayerButton.setMaximumSize(new java.awt.Dimension(170, 45));
+        singlePlayerButton.setMinimumSize(new java.awt.Dimension(170, 45));
+        singlePlayerButton.setOpaque(false);
+        singlePlayerButton.setPreferredSize(new java.awt.Dimension(170, 45));
         singlePlayerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choiceClicked(evt);
+                singleClicked(evt);
             }
         });
 
-        multiplayerButton.setText("Multiplayer");
-        multiplayerButton.setActionCommand("Multi");
-        multiplayerButton.addActionListener(new java.awt.event.ActionListener() {
+        hostButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonHost.png"))); // NOI18N
+        hostButton.setActionCommand("HOST");
+        hostButton.setBorderPainted(false);
+        hostButton.setContentAreaFilled(false);
+        hostButton.setFocusPainted(false);
+        hostButton.setMaximumSize(new java.awt.Dimension(91, 45));
+        hostButton.setMinimumSize(new java.awt.Dimension(91, 45));
+        hostButton.setOpaque(false);
+        hostButton.setPreferredSize(new java.awt.Dimension(91, 45));
+        hostButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choiceClicked(evt);
+                networkClicked(evt);
             }
         });
 
-        textButton.setText("Text");
-        textButton.addActionListener(new java.awt.event.ActionListener() {
+        clientButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonClient.png"))); // NOI18N
+        clientButton.setActionCommand("CLIENT");
+        clientButton.setBorderPainted(false);
+        clientButton.setContentAreaFilled(false);
+        clientButton.setFocusPainted(false);
+        clientButton.setMaximumSize(new java.awt.Dimension(91, 45));
+        clientButton.setMinimumSize(new java.awt.Dimension(91, 45));
+        clientButton.setOpaque(false);
+        clientButton.setPreferredSize(new java.awt.Dimension(91, 45));
+        clientButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                choiceClicked(evt);
+                networkClicked(evt);
             }
         });
 
@@ -97,22 +119,22 @@ public class MultiMenu extends javax.swing.JDialog {
             menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuTopLayerLayout.createSequentialGroup()
                 .addGap(407, 407, 407)
-                .addComponent(textButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(singlePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(multiplayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addComponent(singlePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121)
+                .addComponent(hostButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(clientButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(400, Short.MAX_VALUE))
         );
         menuTopLayerLayout.setVerticalGroup(
             menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuTopLayerLayout.createSequentialGroup()
-                .addContainerGap(593, Short.MAX_VALUE)
-                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(singlePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(multiplayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(121, 121, 121))
+                .addContainerGap(512, Short.MAX_VALUE)
+                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clientButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hostButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(singlePlayerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(243, 243, 243))
         );
 
         javax.swing.GroupLayout menuLayeredPaneLayout = new javax.swing.GroupLayout(menuLayeredPane);
@@ -156,27 +178,38 @@ public class MultiMenu extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void choiceClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choiceClicked
-        this.selected = evt.getActionCommand();
+    private void singleClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleClicked
+        this.selected = "Single";
         this.setModal(false);
         this.dispose();
-    }//GEN-LAST:event_choiceClicked
+    }//GEN-LAST:event_singleClicked
+
+    private void networkClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkClicked
+        this.selected = "Multi";
+        this.hosting=evt.getActionCommand();
+        this.setModal(false);
+        this.dispose();
+    }//GEN-LAST:event_networkClicked
 
     public String getDecision() {
         return selected;
+    }
+    public String getHosting() {
+        return hosting;
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton clientButton;
+    private javax.swing.JButton hostButton;
     private javax.swing.JPanel menuBottomLayer;
     private javax.swing.JLayeredPane menuLayeredPane;
     private javax.swing.JPanel menuTopLayer;
-    private javax.swing.JButton multiplayerButton;
     private javax.swing.JButton singlePlayerButton;
-    private javax.swing.JButton textButton;
     private javax.swing.JLabel titleBackgroundLabel;
     // End of variables declaration//GEN-END:variables
     private String[] players;
     private String selected;
+    private String hosting;
 }

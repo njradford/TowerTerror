@@ -59,6 +59,8 @@ public class GameMenu extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jComboBox6 = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Player Names");
@@ -152,7 +154,11 @@ public class GameMenu extends javax.swing.JDialog {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattle.png"))); // NOI18N
         jButton1.setToolTipText("");
         jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setMaximumSize(new java.awt.Dimension(170, 45));
+        jButton1.setMinimumSize(new java.awt.Dimension(170, 45));
         jButton1.setOpaque(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(170, 45));
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
         jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +173,7 @@ public class GameMenu extends javax.swing.JDialog {
         jButton2.setText("OR QUIT");
         jButton2.setToolTipText("HIT HERE TO QUIT");
         jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jButton2.setMargin(new java.awt.Insets(0, 1, 0, 1));
         jButton2.setOpaque(false);
@@ -240,6 +247,23 @@ public class GameMenu extends javax.swing.JDialog {
         jLabel6.setText("ARCHTYPE?");
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setText("TEXT UI");
+        jRadioButton1.setActionCommand("TEXT");
+        jRadioButton1.setContentAreaFilled(false);
+        jRadioButton1.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setSelected(true);
+        jRadioButton2.setText("GRAPHICAL UI");
+        jRadioButton2.setActionCommand("GRAPHICAL");
+        jRadioButton2.setContentAreaFilled(false);
+        jRadioButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+
         javax.swing.GroupLayout menuTopLayerLayout = new javax.swing.GroupLayout(menuTopLayer);
         menuTopLayer.setLayout(menuTopLayerLayout);
         menuTopLayerLayout.setHorizontalGroup(
@@ -247,10 +271,15 @@ public class GameMenu extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuTopLayerLayout.createSequentialGroup()
                 .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(menuTopLayerLayout.createSequentialGroup()
+                        .addGap(0, 707, Short.MAX_VALUE)
+                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jRadioButton2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuTopLayerLayout.createSequentialGroup()
                         .addContainerGap(785, Short.MAX_VALUE)
-                        .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuTopLayerLayout.createSequentialGroup()
                         .addGap(325, 325, 325)
                         .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -309,7 +338,7 @@ public class GameMenu extends javax.swing.JDialog {
         menuTopLayerLayout.setVerticalGroup(
             menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuTopLayerLayout.createSequentialGroup()
-                .addGap(0, 447, Short.MAX_VALUE)
+                .addGap(0, 455, Short.MAX_VALUE)
                 .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p1NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(p1Label)
@@ -347,9 +376,14 @@ public class GameMenu extends javax.swing.JDialog {
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(27, 27, 27)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
+                .addGroup(menuTopLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(menuTopLayerLayout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
@@ -494,6 +528,8 @@ public class GameMenu extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel menuBottomLayer;
     private javax.swing.JLayeredPane menuLayeredPane;
     private javax.swing.JPanel menuTopLayer;
