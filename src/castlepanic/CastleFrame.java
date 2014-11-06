@@ -112,7 +112,7 @@ public class CastleFrame extends javax.swing.JFrame {
                                         handPanel3, handPanel4, handPanel5};
                                     cardButtons = new javax.swing.JButton[gameState.getPlayers()][gameState.getMaxHandSize()];
                                     wallButtons = new javax.swing.JButton[]{wallButton0, wallButton1, wallButton2, wallButton3,
-                                        wallButton5, wallButton4};
+                                        wallButton4, wallButton5};
                                     phaseButtons = new javax.swing.JButton[]{phaseButton1, phaseButton2, phaseButton3, phaseButton4};
                                     skipButtons = new javax.swing.JButton[]{skipButton1, skipButton2, skipButton3};
                                     castleButtons = new javax.swing.JButton[]{castleButton0, castleButton1, castleButton2,
@@ -603,9 +603,9 @@ public class CastleFrame extends javax.swing.JFrame {
         castleButton2 = new javax.swing.JButton();
         wallButton3 = new javax.swing.JButton();
         castleButton3 = new javax.swing.JButton();
+        wallButton4 = new javax.swing.JButton();
         wallButton5 = new javax.swing.JButton();
         castleButton5 = new javax.swing.JButton();
-        wallButton4 = new javax.swing.JButton();
         castleButton4 = new javax.swing.JButton();
         boardShapeLayer = new ShapePanel();
         handPanel = new javax.swing.JPanel();
@@ -1400,6 +1400,20 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
+        wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
+        wallButton4.setActionCommand("wall1");
+        wallButton4.setBorderPainted(false);
+        wallButton4.setContentAreaFilled(false);
+        wallButton4.setMaximumSize(new java.awt.Dimension(149, 42));
+        wallButton4.setMinimumSize(new java.awt.Dimension(149, 42));
+        wallButton4.setOpaque(true);
+        wallButton4.setPreferredSize(new java.awt.Dimension(149, 42));
+        wallButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wallButton4wallButtonClicked(evt);
+            }
+        });
+
         wallButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton5.setActionCommand("wall1");
         wallButton5.setBorderPainted(false);
@@ -1425,20 +1439,6 @@ public class CastleFrame extends javax.swing.JFrame {
         castleButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 castleButton5boardButtonClicked(evt);
-            }
-        });
-
-        wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton4.setActionCommand("wall1");
-        wallButton4.setBorderPainted(false);
-        wallButton4.setContentAreaFilled(false);
-        wallButton4.setMaximumSize(new java.awt.Dimension(149, 42));
-        wallButton4.setMinimumSize(new java.awt.Dimension(149, 42));
-        wallButton4.setOpaque(true);
-        wallButton4.setPreferredSize(new java.awt.Dimension(149, 42));
-        wallButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                wallButton4wallButtonClicked(evt);
             }
         });
 
@@ -3574,7 +3574,6 @@ public class CastleFrame extends javax.swing.JFrame {
 
                 for (int serial : monsterSerials) {
                     if (serial == -1) {
-                        System.out.print("GUI: Caught -1 in monsterSerials");
                         break;
                     }
                     boolean found = false;
