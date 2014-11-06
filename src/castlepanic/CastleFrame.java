@@ -51,7 +51,11 @@ public class CastleFrame extends javax.swing.JFrame {
             turretCard = new javax.swing.ImageIcon(getClass().getResource("/turretCard.png"));
             liveBlip = new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_RED.png"));
             deadBlip = new javax.swing.ImageIcon(getClass().getResource("/remainingMonstersBlip_GRAY.png"));
-
+            activeNow = new javax.swing.ImageIcon(getClass().getResource("/active.png"));
+            spectator = new javax.swing.ImageIcon(getClass().getResource("/spectator.png"));
+            p2pGame = new javax.swing.ImageIcon(getClass().getResource("/networkGame.png"));
+            localGame = new javax.swing.ImageIcon(getClass().getResource("/localGame.png"));
+            
         } catch (NullPointerException e) {
             System.err.println("GUI: You dolt - The card image files are missing!");
         }
@@ -856,9 +860,6 @@ public class CastleFrame extends javax.swing.JFrame {
         phaseTitleLabel1.setAlignmentX(0.5F);
         phaseTitleLabel1.setAutoscrolls(true);
         phaseTitleLabel1.setFocusable(false);
-        phaseTitleLabel1.setMaximumSize(new java.awt.Dimension(161, 33));
-        phaseTitleLabel1.setMinimumSize(new java.awt.Dimension(161, 33));
-        phaseTitleLabel1.setPreferredSize(new java.awt.Dimension(161, 33));
 
         phaseTitleLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         phaseTitleLabel2.setForeground(new java.awt.Color(255, 0, 0));
@@ -889,7 +890,7 @@ public class CastleFrame extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, phasePanelLayout.createSequentialGroup()
                             .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(phasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phaseTitleLabel1)
                                     .addComponent(phaseTitleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(phaseButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(0, 0, Short.MAX_VALUE)
@@ -916,7 +917,7 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addComponent(phaseButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(skipButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(phaseTitleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(phaseTitleLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(phaseTitleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
