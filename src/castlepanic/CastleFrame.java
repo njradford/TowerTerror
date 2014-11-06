@@ -274,7 +274,7 @@ public class CastleFrame extends javax.swing.JFrame {
             if (!isHost) {
                 netProcess();
             } else {
-                phaseTitleLabel1.setIcon(activeNow);
+                phaseTitleLabel2.setIcon(activeNow);
             }
         } else {
          
@@ -316,7 +316,7 @@ public class CastleFrame extends javax.swing.JFrame {
                 for (JButton button : skipButtons) {
                     button.setEnabled(net.isLocalActive());
                 }
-                phaseTitleLabel1.setIcon(activeNow);
+                phaseTitleLabel2.setIcon(activeNow);
                 System.out.println("(NET) ENDING SPECTATING . . .");
                 return true;
             }
