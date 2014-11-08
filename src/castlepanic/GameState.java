@@ -2,7 +2,6 @@ package castlepanic;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
 /**
  *
  * @author gloftis
@@ -682,6 +681,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                     } else if (gameCastle.getWallHealth(monster.getHorizontalLocation()) == 5) {
                         //don't move through rubble!
                     } else {
+                        System.out.println("GS DEBUG: MONSTER HIT WALL # --------" + monster.getHorizontalLocation());
                         gameCastle.hitWall(monster.getHorizontalLocation()); //TO DO double check basilisk rules/calvalry
                         monster.takeHit(collisionDamage);
                         if (monster.getHP() <= 0) {

@@ -32,47 +32,34 @@ public class ItsCurtains extends javax.swing.JDialog {
         menuLayeredPane = new javax.swing.JLayeredPane();
         menuBottomLayer = new javax.swing.JPanel();
         titleBackgroundLabel = new javax.swing.JLabel();
-        menuBottomLayer1 = new javax.swing.JPanel();
-        titleBackgroundLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Player Names");
+        setMaximumSize(new java.awt.Dimension(1280, 800));
+        setMinimumSize(new java.awt.Dimension(1280, 800));
+        setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        menuLayeredPane.setPreferredSize(new java.awt.Dimension(400, 400));
+        menuLayeredPane.setMaximumSize(new java.awt.Dimension(1280, 800));
+        menuLayeredPane.setMinimumSize(new java.awt.Dimension(1280, 800));
+        menuLayeredPane.setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        menuBottomLayer.setPreferredSize(new java.awt.Dimension(400, 400));
+        menuBottomLayer.setMaximumSize(new java.awt.Dimension(1280, 800));
+        menuBottomLayer.setMinimumSize(new java.awt.Dimension(1280, 800));
+        menuBottomLayer.setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        titleBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/titleScreen.png"))); // NOI18N
+        titleBackgroundLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/towerTerrorYouLose.png"))); // NOI18N
 
         javax.swing.GroupLayout menuBottomLayerLayout = new javax.swing.GroupLayout(menuBottomLayer);
         menuBottomLayer.setLayout(menuBottomLayerLayout);
         menuBottomLayerLayout.setHorizontalGroup(
             menuBottomLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleBackgroundLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(titleBackgroundLabel)
         );
         menuBottomLayerLayout.setVerticalGroup(
             menuBottomLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBottomLayerLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(titleBackgroundLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        menuBottomLayer1.setPreferredSize(new java.awt.Dimension(400, 400));
-
-        titleBackgroundLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/titleScreen.png"))); // NOI18N
-
-        javax.swing.GroupLayout menuBottomLayer1Layout = new javax.swing.GroupLayout(menuBottomLayer1);
-        menuBottomLayer1.setLayout(menuBottomLayer1Layout);
-        menuBottomLayer1Layout.setHorizontalGroup(
-            menuBottomLayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleBackgroundLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        menuBottomLayer1Layout.setVerticalGroup(
-            menuBottomLayer1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuBottomLayer1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(titleBackgroundLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(titleBackgroundLabel)
                 .addContainerGap())
         );
 
@@ -81,9 +68,7 @@ public class ItsCurtains extends javax.swing.JDialog {
         menuLayeredPaneLayout.setHorizontalGroup(
             menuLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuLayeredPaneLayout.createSequentialGroup()
-                .addGroup(menuLayeredPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuBottomLayer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(menuBottomLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         menuLayeredPaneLayout.setVerticalGroup(
@@ -91,11 +76,9 @@ public class ItsCurtains extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menuLayeredPaneLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(menuBottomLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(menuBottomLayer1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(800, 800, 800))
         );
         menuLayeredPane.setLayer(menuBottomLayer, 1);
-        menuLayeredPane.setLayer(menuBottomLayer1, 2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +86,7 @@ public class ItsCurtains extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menuLayeredPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 880, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,10 +109,8 @@ public class ItsCurtains extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel menuBottomLayer;
-    private javax.swing.JPanel menuBottomLayer1;
     private javax.swing.JLayeredPane menuLayeredPane;
     private javax.swing.JLabel titleBackgroundLabel;
-    private javax.swing.JLabel titleBackgroundLabel1;
     // End of variables declaration//GEN-END:variables
     private String[] players;
 }

@@ -67,6 +67,7 @@ public class GameMenu extends javax.swing.JDialog {
 
         menuLayeredPane.setMaximumSize(new java.awt.Dimension(1280, 800));
         menuLayeredPane.setMinimumSize(new java.awt.Dimension(1280, 800));
+        menuLayeredPane.setPreferredSize(new java.awt.Dimension(1280, 800));
 
         menuBottomLayer.setMaximumSize(new java.awt.Dimension(1280, 800));
         menuBottomLayer.setMinimumSize(new java.awt.Dimension(1280, 800));
@@ -157,7 +158,6 @@ public class GameMenu extends javax.swing.JDialog {
         jButton1.setContentAreaFilled(false);
         jButton1.setMaximumSize(new java.awt.Dimension(170, 45));
         jButton1.setMinimumSize(new java.awt.Dimension(170, 45));
-        jButton1.setOpaque(false);
         jButton1.setPreferredSize(new java.awt.Dimension(170, 45));
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
         jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonBeginBattleROLLOVER.png"))); // NOI18N
@@ -176,7 +176,6 @@ public class GameMenu extends javax.swing.JDialog {
         jButton2.setContentAreaFilled(false);
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jButton2.setMargin(new java.awt.Insets(0, 1, 0, 1));
-        jButton2.setOpaque(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -278,7 +277,7 @@ public class GameMenu extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuTopLayerLayout.createSequentialGroup()
-                        .addContainerGap(785, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menuTopLayerLayout.createSequentialGroup()
                         .addGap(325, 325, 325)
@@ -417,7 +416,7 @@ public class GameMenu extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menuLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(menuLayeredPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
