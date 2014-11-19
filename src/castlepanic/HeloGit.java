@@ -19,7 +19,10 @@ public class HeloGit {
     ArrayList<String> names = new ArrayList<String>();
 
     HeloGit(){
+
         names.add("Lorem Ipsum Holla");
+        names.add("Lorem Isum DOlor PT 2");
+
 
     }
 
