@@ -102,16 +102,20 @@ public class TextUI {
             
             //Set Targets
             while(state.getClearToTrade()){
-            System.out.println("Who would you like to trade with?");
-            int targetPlayer = textInput.nextInt();
-            System.out.println("What card would you like to trade?:");
-            int cardToTrade = textInput.nextInt();
-            System.out.println("What card would you like from the other player?:");
-            int targetCard = textInput.nextInt();
-            //Trade
-            state.tradeCurrentPlayerCards(targetPlayer, cardToTrade, targetCard);
-            
-            state.tradeOption(false);
+                System.out.println("Who would you like to trade with?");
+                int targetPlayer = textInput.nextInt();
+                System.out.println("What card would you like to trade?:");
+                int cardToTrade = textInput.nextInt();
+                System.out.println("What card would you like from the other player?:");
+                int targetCard = textInput.nextInt();
+                //Trade
+
+                state.setSelectedCard(cardToTrade);
+                state.setOtherCard(targetPlayer, targetCard);
+
+                state.tradeCurrentPlayerCards();
+
+                state.tradeOption(false);
             }
         } else{
             state.tradeOption(false);
@@ -131,23 +135,25 @@ public class TextUI {
             boolean playingCards = true;
             
             while(playingCards){
-            //Get target info
-            System.out.println("Which monster would you like to hit? (int): ");
-            int targetMonster = textInput.nextInt();
-            
-            printHand(state.getCurrentPlayer());
-            System.out.println("Which card would you like to play? (int):");
-            int targetCard = textInput.nextInt();
-            
-            
-        //    state.playHitCard(targetMonster, targetCard);
-            printMonsters(state);
-            
-            printHand(state.getCurrentPlayer());
-            
-            System.out.println("Play another card? (y/n): ");
-            if(!getUserConfirm()){
-                playingCards=false;
+                //Get target info
+                System.out.println("Which monster would you like to hit? (int): ");
+                int targetMonster = textInput.nextInt();
+
+                printHand(state.getCurrentPlayer());
+                System.out.println("Which card would you like to play? (int):");
+                int targetCard = textInput.nextInt();
+
+                state.playCard();
+                state.setSelectedMonster(targetMonster);
+                state.setSelectedCard(targetCard);
+
+                printMonsters(state);
+
+                printHand(state.getCurrentPlayer());
+
+                System.out.println("Play another card? (y/n): ");
+                if(!getUserConfirm()){
+                    playingCards=false;
                 }
             }//Playing loop
         } 
@@ -181,6 +187,8 @@ public class TextUI {
             monsters[i].horizontalLocation = gState.getMonsterX(i);
             monsters[i].verticalLocation = gState.getMonsterY(i);
             monsters[i].tokenName = state.getMonsterName(i);
+            monsters[i].serial = state.getMonsterSerialsInPlay()[i];
+
         } 
         
         for(int i =0; i<numMonsters; i++){
@@ -188,8 +196,10 @@ public class TextUI {
             int vL = monsters[i].verticalLocation;
             String name =monsters[i].tokenName;
             int hp = monsters[i].hitPoints;
+            int ser = monsters[i].serial;
+
+            System.out.println(i +": "+ name+ " @ X:"+hL+" Y:"+vL+" HP: "+hp+" SERIAL: "+ser);
             
-            System.out.println(i +": "+ name+ " @ X:"+hL+" Y:"+vL+" HP: "+hp);
         }
     };
 
