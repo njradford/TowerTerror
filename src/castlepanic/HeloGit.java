@@ -20,7 +20,7 @@ public class HeloGit {
 
     HeloGit(){
         names.add("Lorem Ipsum Dolor");
-
+        names.add("Lorem Isum DOlor PT 2");
     }
 
 }

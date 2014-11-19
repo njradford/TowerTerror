@@ -69,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/src/castlepanic/HeloGit.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.69711536" vertical-offset="106" max-vertical-offset="576">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
               <folding>
                 <element signature="e#283#291#0" expanded="true" />
               </folding>
@@ -580,12 +580,12 @@
       <workItem from="1415991237962" duration="55000" />
       <workItem from="1416282850746" duration="1195000" />
       <workItem from="1416417329193" duration="3560000" />
-      <workItem from="1416436673329" duration="1314000" />
+      <workItem from="1416436673329" duration="1515000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38872000" />
+    <option name="totallyTimeSpent" value="39073000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="0" />
@@ -1068,7 +1068,7 @@
     <entry file="file://$PROJECT_DIR$/src/castlepanic/HeloGit.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.69711536" vertical-offset="106" max-vertical-offset="576">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <caret line="22" column="40" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
           <folding>
             <element signature="e#283#291#0" expanded="true" />
           </folding>
