@@ -6,7 +6,7 @@ package castlepanic;
 public class HeloGit {
 
     /**
-     *
+     *@author Carole
      * @author  Nick
      */
 }
