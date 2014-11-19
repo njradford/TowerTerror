@@ -6,9 +6,10 @@ package castlepanic;
 public class HeloGit {
 
     /**
-     *@author Carole
-     * @author  Nick
+     * @author Carole
+     * @author Nick
      * @author Time
      * @author James
+     * @author Adam
      */
 }
