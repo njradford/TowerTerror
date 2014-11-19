@@ -1,5 +1,7 @@
 package castlepanic;
 
+import java.util.ArrayList;
+
 /**
  * Created by nicholas on 11/19/14.
  */
@@ -12,4 +14,13 @@ public class HeloGit {
      * @author James
      * @author Adam
      */
+
+
+    ArrayList<String> names = new ArrayList<String>();
+
+    HeloGit(){
+        names.add("Lorem Ipsum Dolor");
+
+    }
+
 }
