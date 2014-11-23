@@ -327,5 +327,38 @@ public interface GameStateInterface {
      * @return 
      */
     public int getNumMonsterTokens();
+    
+    
+    /**
+     * Simple setter to set a selected wall, for repair, reinforce, etc.
+     * DESELECTS THE CURRENTLY SELECTED TOWER AND BOARD SQUARE!!
+     * @param horizontalLocation Value between 1 and 6, inclusive; wall index
+     */
+    public void setSelectedWall(int horizontalLocation);
+    
+    /**
+     * Setter for tower, for repair, placement of artillery, etc.
+     * DESELECTS THE CURRENTLY SELECTED WALL AND BOARD SQUARE!!
+     * @param horizontalLocation Value between 1 and 6, inclusive; wall index
+     */
+    public void setSelectedTower(int horizontalLocation);
+    
+    /**
+     * Setter for board square for area attacks, etc.
+     * DESELECTS THE CURRENTLY SELECTED WALL AND TOWER!!
+     * @param horizontalLocation Value between 1 and 6, inclusive: 1-2 red, 3-4 green, 5-6 blue
+     * @param verticalLocation Value between 1 and 4, inclusive: 4 forest, 3 arch, 2 knight, 1 swords
+     */
+    public void setSelectedBoard(int horizontalLocation, int verticalLocation);
+
+    /**
+     * Public helper method which invokes methods to select wall, keep, or square 
+     * DESELECTS CURRENTLY SELECTED SQUARES!
+     * @param x Value between 1 and 6, inclusive: 1-2 red, 3-4 green, 5-6 blue
+     * @param y Value between 0 and 4, inclusive, plus -1: -1 wall, 0 keep, 4 forest, 3 arch, 2 knight, 1 swords
+     */
+    public void setSelectedSquare(int x, int y);
+    
+
 
 }

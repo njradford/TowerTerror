@@ -925,6 +925,7 @@ public class CastleFrame extends javax.swing.JFrame {
         boardPaletteLayer.setPreferredSize(new java.awt.Dimension(906, 500));
 
         boardButton04.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
+        boardButton04.setActionCommand("0:4");
         boardButton04.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton04.setBorderPainted(false);
         boardButton04.setContentAreaFilled(false);
@@ -941,6 +942,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton03.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
+        boardButton03.setActionCommand("0:3");
         boardButton03.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton03.setBorderPainted(false);
         boardButton03.setContentAreaFilled(false);
@@ -957,6 +959,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
+        boardButton02.setActionCommand("0:2");
         boardButton02.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton02.setBorderPainted(false);
         boardButton02.setContentAreaFilled(false);
@@ -973,6 +976,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
+        boardButton01.setActionCommand("0:1");
         boardButton01.setAutoscrolls(true);
         boardButton01.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton01.setBorderPainted(false);
@@ -990,6 +994,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
+        boardButton24.setActionCommand("2:4");
         boardButton24.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton24.setBorderPainted(false);
         boardButton24.setContentAreaFilled(false);
@@ -1005,6 +1010,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
+        boardButton23.setActionCommand("2:3");
         boardButton23.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton23.setBorderPainted(false);
         boardButton23.setContentAreaFilled(false);
@@ -1020,6 +1026,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
+        boardButton32.setActionCommand("3:2");
         boardButton32.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton32.setBorderPainted(false);
         boardButton32.setContentAreaFilled(false);
@@ -1035,6 +1042,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
+        boardButton31.setActionCommand("3:1");
         boardButton31.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton31.setBorderPainted(false);
         boardButton31.setContentAreaFilled(false);
@@ -1050,6 +1058,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
+        boardButton34.setActionCommand("3:4");
         boardButton34.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton34.setBorderPainted(false);
         boardButton34.setContentAreaFilled(false);
@@ -1065,6 +1074,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
+        boardButton33.setActionCommand("3:3");
         boardButton33.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton33.setBorderPainted(false);
         boardButton33.setContentAreaFilled(false);
@@ -1080,6 +1090,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
+        boardButton22.setActionCommand("2:2");
         boardButton22.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton22.setBorderPainted(false);
         boardButton22.setContentAreaFilled(false);
@@ -1095,6 +1106,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
+        boardButton21.setActionCommand("2:1");
         boardButton21.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton21.setBorderPainted(false);
         boardButton21.setContentAreaFilled(false);
@@ -1110,6 +1122,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
+        boardButton14.setActionCommand("1:4");
         boardButton14.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton14.setBorderPainted(false);
         boardButton14.setContentAreaFilled(false);
@@ -1126,6 +1139,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
+        boardButton13.setActionCommand("1:3");
         boardButton13.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton13.setBorderPainted(false);
         boardButton13.setContentAreaFilled(false);
@@ -1142,6 +1156,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
+        boardButton12.setActionCommand("1:2");
         boardButton12.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton12.setBorderPainted(false);
         boardButton12.setContentAreaFilled(false);
@@ -1158,6 +1173,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
+        boardButton11.setActionCommand("1:1");
         boardButton11.setAutoscrolls(true);
         boardButton11.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton11.setBorderPainted(false);
@@ -1175,6 +1191,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
+        boardButton44.setActionCommand("4:4");
         boardButton44.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton44.setBorderPainted(false);
         boardButton44.setContentAreaFilled(false);
@@ -1190,6 +1207,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
+        boardButton43.setActionCommand("4:3");
         boardButton43.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton43.setBorderPainted(false);
         boardButton43.setContentAreaFilled(false);
@@ -1205,6 +1223,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
+        boardButton42.setActionCommand("4:2");
         boardButton42.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton42.setBorderPainted(false);
         boardButton42.setContentAreaFilled(false);
@@ -1220,6 +1239,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
+        boardButton41.setActionCommand("4:1");
         boardButton41.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton41.setBorderPainted(false);
         boardButton41.setContentAreaFilled(false);
@@ -1235,6 +1255,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
+        boardButton51.setActionCommand("5:1");
         boardButton51.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton51.setBorderPainted(false);
         boardButton51.setContentAreaFilled(false);
@@ -1250,6 +1271,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
+        boardButton52.setActionCommand("5:2");
         boardButton52.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton52.setBorderPainted(false);
         boardButton52.setContentAreaFilled(false);
@@ -1265,6 +1287,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
+        boardButton53.setActionCommand("5:3");
         boardButton53.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton53.setBorderPainted(false);
         boardButton53.setContentAreaFilled(false);
@@ -1280,6 +1303,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
+        boardButton54.setActionCommand("5:4");
         boardButton54.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton54.setBorderPainted(false);
         boardButton54.setContentAreaFilled(false);
@@ -1295,7 +1319,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         wallButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton0.setActionCommand("wall1");
+        wallButton0.setActionCommand("0:-1");
         wallButton0.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton0.setBorderPainted(false);
         wallButton0.setContentAreaFilled(false);
@@ -1312,7 +1336,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         castleButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleRed.png"))); // NOI18N
-        castleButton0.setActionCommand("board00");
+        castleButton0.setActionCommand("0:0");
         castleButton0.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton0.setBorderPainted(false);
         castleButton0.setContentAreaFilled(false);
@@ -1328,7 +1352,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         wallButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton1.setActionCommand("wall1");
+        wallButton1.setActionCommand("1:-1");
         wallButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton1.setBorderPainted(false);
         wallButton1.setContentAreaFilled(false);
@@ -1345,7 +1369,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         castleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleRed.png"))); // NOI18N
-        castleButton1.setActionCommand("board00");
+        castleButton1.setActionCommand("1:0");
         castleButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton1.setBorderPainted(false);
         castleButton1.setContentAreaFilled(false);
@@ -1361,7 +1385,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         wallButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton2.setActionCommand("wall1");
+        wallButton2.setActionCommand("2:-1");
         wallButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton2.setBorderPainted(false);
         wallButton2.setContentAreaFilled(false);
@@ -1378,7 +1402,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         castleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleGreen.png"))); // NOI18N
-        castleButton2.setActionCommand("board00");
+        castleButton2.setActionCommand("2:0");
         castleButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton2.setBorderPainted(false);
         castleButton2.setContentAreaFilled(false);
@@ -1394,7 +1418,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         wallButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton3.setActionCommand("wall1");
+        wallButton3.setActionCommand("3:-1");
         wallButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton3.setBorderPainted(false);
         wallButton3.setContentAreaFilled(false);
@@ -1411,7 +1435,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         castleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleGreen.png"))); // NOI18N
-        castleButton3.setActionCommand("board00");
+        castleButton3.setActionCommand("3:0");
         castleButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton3.setBorderPainted(false);
         castleButton3.setContentAreaFilled(false);
@@ -1427,7 +1451,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton4.setActionCommand("wall1");
+        wallButton4.setActionCommand("4:-1");
         wallButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton4.setBorderPainted(false);
         wallButton4.setContentAreaFilled(false);
@@ -1444,7 +1468,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         wallButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
-        wallButton5.setActionCommand("wall1");
+        wallButton5.setActionCommand("5:-1");
         wallButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton5.setBorderPainted(false);
         wallButton5.setContentAreaFilled(false);
@@ -1461,7 +1485,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         castleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleBlue.png"))); // NOI18N
-        castleButton5.setActionCommand("board00");
+        castleButton5.setActionCommand("5:0");
         castleButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton5.setBorderPainted(false);
         castleButton5.setContentAreaFilled(false);
@@ -1477,7 +1501,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         castleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleBlue.png"))); // NOI18N
-        castleButton4.setActionCommand("board00");
+        castleButton4.setActionCommand("4:0");
         castleButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton4.setBorderPainted(false);
         castleButton4.setContentAreaFilled(false);
@@ -1648,7 +1672,7 @@ public class CastleFrame extends javax.swing.JFrame {
         );
         boardShapeLayerLayout.setVerticalGroup(
             boardShapeLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout boardLayeredPanelLayout = new javax.swing.GroupLayout(boardLayeredPanel);
@@ -3053,138 +3077,6 @@ public class CastleFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cardButtonClicked
 
-    private void boardButton04boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton04boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton04boardButtonClicked
-
-    private void boardButton03boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton03boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton03boardButtonClicked
-
-    private void boardButton02boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton02boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton02boardButtonClicked
-
-    private void boardButton01boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton01boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton01boardButtonClicked
-
-    private void boardButton24boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton24boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton24boardButtonClicked
-
-    private void boardButton23boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton23boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton23boardButtonClicked
-
-    private void boardButton32boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton32boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton32boardButtonClicked
-
-    private void boardButton31boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton31boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton31boardButtonClicked
-
-    private void boardButton34boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton34boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton34boardButtonClicked
-
-    private void boardButton33boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton33boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton33boardButtonClicked
-
-    private void boardButton22boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton22boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton22boardButtonClicked
-
-    private void boardButton21boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton21boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton21boardButtonClicked
-
-    private void boardButton14boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton14boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton14boardButtonClicked
-
-    private void boardButton13boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton13boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton13boardButtonClicked
-
-    private void boardButton12boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton12boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton12boardButtonClicked
-
-    private void boardButton11boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton11boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton11boardButtonClicked
-
-    private void boardButton44boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton44boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton44boardButtonClicked
-
-    private void boardButton43boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton43boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton43boardButtonClicked
-
-    private void boardButton42boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton42boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton42boardButtonClicked
-
-    private void boardButton41boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton41boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton41boardButtonClicked
-
-    private void boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButtonClicked
-
-    private void boardButton52boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton52boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton52boardButtonClicked
-
-    private void boardButton53boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton53boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton53boardButtonClicked
-
-    private void boardButton54boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton54boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton54boardButtonClicked
-
-    private void wallButton0wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton0wallButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton0wallButtonClicked
-
-    private void castleButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_castleButtonClicked
-
-    private void wallButton1wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton1wallButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton1wallButtonClicked
-
-    private void wallButton2wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton2wallButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton2wallButtonClicked
-
-    private void wallButton3wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton3wallButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton3wallButtonClicked
-
-    private void wallButton5wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton5wallButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton5wallButtonClicked
-
-    private void castleButton5boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButton5boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_castleButton5boardButtonClicked
-
-    private void wallButton4wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton4wallButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wallButton4wallButtonClicked
-
-    private void castleButton4boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButton4boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_castleButton4boardButtonClicked
-
     private void dealClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dealClicked
         gameState.fillCurrentPlayerHand();
         updateGame();
@@ -3242,8 +3134,141 @@ public class CastleFrame extends javax.swing.JFrame {
         gameState.playAdvance();
         selectedCard = null;
         otherCard = null;
+        boardShapeLayer.clearSelected();
         updateGame();
     }//GEN-LAST:event_skipButton3Clicked
+
+    private void castleButton4boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButton4boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_castleButton4boardButtonClicked
+
+    private void castleButton5boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButton5boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_castleButton5boardButtonClicked
+
+    private void wallButton5wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton5wallButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wallButton5wallButtonClicked
+
+    private void wallButton4wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton4wallButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wallButton4wallButtonClicked
+
+    private void castleButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_castleButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_castleButtonClicked
+
+    private void wallButton3wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton3wallButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wallButton3wallButtonClicked
+
+    private void wallButton2wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton2wallButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wallButton2wallButtonClicked
+
+    private void wallButton1wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton1wallButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wallButton1wallButtonClicked
+
+    private void wallButton0wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton0wallButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_wallButton0wallButtonClicked
+
+    private void boardButton54boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton54boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton54boardButtonClicked
+
+    private void boardButton53boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton53boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton53boardButtonClicked
+
+    private void boardButton52boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton52boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton52boardButtonClicked
+
+    private void boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButtonClicked
+
+    private void boardButton41boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton41boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton41boardButtonClicked
+
+    private void boardButton42boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton42boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton42boardButtonClicked
+
+    private void boardButton43boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton43boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton43boardButtonClicked
+
+    private void boardButton44boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton44boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton44boardButtonClicked
+
+    private void boardButton12boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton12boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton12boardButtonClicked
+
+    private void boardButton13boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton13boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton13boardButtonClicked
+
+    private void boardButton14boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton14boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton14boardButtonClicked
+
+    private void boardButton21boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton21boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton21boardButtonClicked
+
+    private void boardButton22boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton22boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton22boardButtonClicked
+
+    private void boardButton33boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton33boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton33boardButtonClicked
+
+    private void boardButton34boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton34boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton34boardButtonClicked
+
+    private void boardButton31boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton31boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton31boardButtonClicked
+
+    private void boardButton32boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton32boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton32boardButtonClicked
+
+    private void boardButton23boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton23boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton23boardButtonClicked
+
+    private void boardButton24boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton24boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton24boardButtonClicked
+
+    private void boardButton01boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton01boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton01boardButtonClicked
+
+    private void boardButton02boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton02boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton02boardButtonClicked
+
+    private void boardButton03boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton03boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton03boardButtonClicked
+
+    private void boardButton04boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton04boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton04boardButtonClicked
+
+    private void boardButton11boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton11boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton11boardButtonClicked
 
     /**
      * @param args the command line arguments
@@ -3597,6 +3622,11 @@ public class CastleFrame extends javax.swing.JFrame {
                     JButton button = (JButton) comp;
                     button.setBorderPainted(true);
                     
+                    String actCmd = button.getActionCommand();
+                    String [] coords = actCmd.split(":");
+                    int x = Integer.parseInt(coords[0]);
+                    int y = Integer.parseInt(coords[1]);
+                    gameState.setSelectedSquare(x,y);
                 }
             }
         }
@@ -3605,6 +3635,17 @@ public class CastleFrame extends javax.swing.JFrame {
             for (MonsterShape shape : monstersDrawn) {
                 shape.setSelected(false);
             }
+                        java.awt.Component[] comps = this.getParent().getComponents();
+            if (comps[comps.length - 1] instanceof JPanel) {
+                JPanel paletteLayer = (JPanel) comps[comps.length - 1];
+                java.awt.Component[] squares = paletteLayer.getComponents();
+                for (java.awt.Component square : squares) {
+                    if (square instanceof JButton) {
+                        JButton button = (JButton) square;
+                        button.setBorderPainted(false);
+                    }
+                }
+        }
         }
 
         @Override

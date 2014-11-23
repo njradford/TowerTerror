@@ -2,6 +2,7 @@ package castlepanic;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  *
  * @author gloftis
@@ -22,13 +23,17 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     private int numberOfTrades;
     private int numberOfDiscards;
     private int handSize;
+
     private int selectedCardIndex = -1;
     private int selectedWallIndex = -1;
-    private int selectedTowerIndex = 1;
+    private int selectedTowerIndex = -1;
+    private int selectedBoardX = -1;
+    private int selectedBoardY = -1;
     private int otherPlayerIndex = -1;
     private int otherPlayerCardIndex = -1;
     private ArrayList<Monster> monstersInField;
     private int selectedMonsterIndex;
+
     private int currentPhase; // Current Phase is 1 through 6
     private int currentPlayerNumber; //Player numbers cycles from 0 to numberOfPlayers - 1
 
@@ -80,8 +85,11 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
     @Override
     public int reinforceWall() {
-        gameCastle.reinforceWall(selectedWallIndex);
-        return 0;
+        if (selectedWallIndex > 0) {
+            gameCastle.reinforceWall(selectedWallIndex);
+            return 0;
+        }
+        return -1;
     }
 
     @Override
@@ -616,10 +624,15 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
                 }
             }
+            //clear selected cards, monsters, towers, walls, etc.
             selectedCardIndex = -1;
-            otherPlayerCardIndex=-1;
-            otherPlayerIndex=-1;
-            
+            otherPlayerCardIndex = -1;
+            otherPlayerIndex = -1;
+            selectedTowerIndex = -1;
+            selectedWallIndex = -1;
+            selectedBoardX = -1;
+            selectedBoardY = -1;
+            selectedMonsterIndex = -1;
             return 1;
         }
     }
@@ -817,12 +830,50 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     public int getNumCards(int playerIndex) {
         return players[playerIndex].getHandSize();
     }
-
+@Override
     public void setSelectedWall(int horizontalLocation) {
         if (horizontalLocation < 1 || horizontalLocation > 6) {
-            System.err.println("Tried to reinforce wall number " + horizontalLocation + "but it's invalid");
+            System.err.println("GS: Tried to select wall number " + horizontalLocation + ": invalid index");
         } else {
             selectedWallIndex = horizontalLocation;
+        }
+    }
+@Override
+    public void setSelectedTower(int horizontalLocation) {
+        if (horizontalLocation < 1 || horizontalLocation > 6) {
+            System.err.println("GS: Tried to select tower number " + horizontalLocation + ": invalid index");
+        } else {
+            selectedTowerIndex = horizontalLocation;
+        }
+    }
+@Override
+    public void setSelectedBoard(int horizontalLocation, int verticalLocation) {
+        if (horizontalLocation < 1 || horizontalLocation > 6) {
+            System.err.println("GS: Tried to select square at x = " + horizontalLocation + ": invalid index");
+            return;
+        }
+        if (verticalLocation < 1 || verticalLocation > 4) {
+            System.err.println("GS: Tried to select square at y = " + verticalLocation + ": invalid index");
+        } else {
+            selectedBoardX = horizontalLocation;
+            selectedBoardY = verticalLocation;
+            
+        }
+    }
+@Override
+    public void setSelectedSquare(int x, int y) {
+        selectedBoardX=-1;
+        selectedBoardY=-1;
+        selectedWallIndex=-1;
+        selectedTowerIndex=-1;
+        if (y == -1) {
+            setSelectedWall(x + 1);   //user selected a wall; add 1 to account for 1 indexing
+        }
+        if (y == 0) {
+            setSelectedTower(x + 1);  //user selected a tower; add 1 to account for 1 indexing
+        }
+        if (y > 0) {
+            setSelectedBoard(x + 1, y);//user selected a board sq; add 1 to account for 1 indexing
         }
     }
 
@@ -936,7 +987,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                 return i;
             }
         }
-        return -1; 
+        return -1;
     }
 //additional method
 
@@ -1004,9 +1055,9 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
         //fixed for wall/turret kills
         int bodyCount = 0;
         for (Player player : players) {
-            bodyCount = bodyCount+player.getScore();
+            bodyCount = bodyCount + player.getScore();
         }
-        bodyCount+=collisionKills;
+        bodyCount += collisionKills;
         return bodyCount;
     }
 
