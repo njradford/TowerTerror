@@ -925,10 +925,11 @@ public class CastleFrame extends javax.swing.JFrame {
         boardPaletteLayer.setPreferredSize(new java.awt.Dimension(906, 500));
 
         boardButton04.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
-        boardButton04.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton04.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton04.setBorderPainted(false);
         boardButton04.setContentAreaFilled(false);
         boardButton04.setFocusPainted(false);
+        boardButton04.setFocusable(false);
         boardButton04.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton04.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton04.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -940,10 +941,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton03.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
-        boardButton03.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton03.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton03.setBorderPainted(false);
         boardButton03.setContentAreaFilled(false);
         boardButton03.setFocusPainted(false);
+        boardButton03.setFocusable(false);
         boardButton03.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton03.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton03.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -955,10 +957,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
-        boardButton02.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton02.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton02.setBorderPainted(false);
         boardButton02.setContentAreaFilled(false);
         boardButton02.setFocusPainted(false);
+        boardButton02.setFocusable(false);
         boardButton02.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton02.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton02.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -971,10 +974,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         boardButton01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
         boardButton01.setAutoscrolls(true);
-        boardButton01.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton01.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton01.setBorderPainted(false);
         boardButton01.setContentAreaFilled(false);
         boardButton01.setFocusPainted(false);
+        boardButton01.setFocusable(false);
         boardButton01.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton01.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton01.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -986,9 +990,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
-        boardButton24.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton24.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton24.setBorderPainted(false);
         boardButton24.setContentAreaFilled(false);
+        boardButton24.setFocusPainted(false);
+        boardButton24.setFocusable(false);
         boardButton24.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton24.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton24.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -999,9 +1005,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
-        boardButton23.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton23.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton23.setBorderPainted(false);
         boardButton23.setContentAreaFilled(false);
+        boardButton23.setFocusPainted(false);
+        boardButton23.setFocusable(false);
         boardButton23.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton23.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton23.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1012,9 +1020,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
-        boardButton32.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton32.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton32.setBorderPainted(false);
         boardButton32.setContentAreaFilled(false);
+        boardButton32.setFocusPainted(false);
+        boardButton32.setFocusable(false);
         boardButton32.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton32.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton32.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1025,9 +1035,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
-        boardButton31.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton31.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton31.setBorderPainted(false);
         boardButton31.setContentAreaFilled(false);
+        boardButton31.setFocusPainted(false);
+        boardButton31.setFocusable(false);
         boardButton31.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton31.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton31.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1038,9 +1050,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
-        boardButton34.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton34.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton34.setBorderPainted(false);
         boardButton34.setContentAreaFilled(false);
+        boardButton34.setFocusPainted(false);
+        boardButton34.setFocusable(false);
         boardButton34.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton34.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton34.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1051,9 +1065,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
-        boardButton33.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton33.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton33.setBorderPainted(false);
         boardButton33.setContentAreaFilled(false);
+        boardButton33.setFocusPainted(false);
+        boardButton33.setFocusable(false);
         boardButton33.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton33.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton33.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1064,9 +1080,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
-        boardButton22.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton22.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton22.setBorderPainted(false);
         boardButton22.setContentAreaFilled(false);
+        boardButton22.setFocusPainted(false);
+        boardButton22.setFocusable(false);
         boardButton22.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton22.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton22.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1077,9 +1095,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
-        boardButton21.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton21.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 204, 51)));
         boardButton21.setBorderPainted(false);
         boardButton21.setContentAreaFilled(false);
+        boardButton21.setFocusPainted(false);
+        boardButton21.setFocusable(false);
         boardButton21.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton21.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton21.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1090,10 +1110,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
-        boardButton14.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton14.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton14.setBorderPainted(false);
         boardButton14.setContentAreaFilled(false);
         boardButton14.setFocusPainted(false);
+        boardButton14.setFocusable(false);
         boardButton14.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton14.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton14.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1105,10 +1126,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
-        boardButton13.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton13.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton13.setBorderPainted(false);
         boardButton13.setContentAreaFilled(false);
         boardButton13.setFocusPainted(false);
+        boardButton13.setFocusable(false);
         boardButton13.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton13.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton13.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1120,10 +1142,11 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
-        boardButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton12.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton12.setBorderPainted(false);
         boardButton12.setContentAreaFilled(false);
         boardButton12.setFocusPainted(false);
+        boardButton12.setFocusable(false);
         boardButton12.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton12.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton12.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1136,10 +1159,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         boardButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
         boardButton11.setAutoscrolls(true);
-        boardButton11.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton11.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(204, 0, 0)));
         boardButton11.setBorderPainted(false);
         boardButton11.setContentAreaFilled(false);
         boardButton11.setFocusPainted(false);
+        boardButton11.setFocusable(false);
         boardButton11.setMaximumSize(new java.awt.Dimension(149, 90));
         boardButton11.setMinimumSize(new java.awt.Dimension(149, 90));
         boardButton11.setPreferredSize(new java.awt.Dimension(149, 90));
@@ -1151,7 +1175,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
-        boardButton44.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton44.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton44.setBorderPainted(false);
         boardButton44.setContentAreaFilled(false);
         boardButton44.setFocusPainted(false);
@@ -1166,7 +1190,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
-        boardButton43.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton43.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton43.setBorderPainted(false);
         boardButton43.setContentAreaFilled(false);
         boardButton43.setFocusPainted(false);
@@ -1181,7 +1205,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
-        boardButton42.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton42.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton42.setBorderPainted(false);
         boardButton42.setContentAreaFilled(false);
         boardButton42.setFocusPainted(false);
@@ -1196,7 +1220,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
-        boardButton41.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton41.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton41.setBorderPainted(false);
         boardButton41.setContentAreaFilled(false);
         boardButton41.setFocusPainted(false);
@@ -1211,7 +1235,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
-        boardButton51.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton51.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton51.setBorderPainted(false);
         boardButton51.setContentAreaFilled(false);
         boardButton51.setFocusPainted(false);
@@ -1226,7 +1250,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
-        boardButton52.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton52.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton52.setBorderPainted(false);
         boardButton52.setContentAreaFilled(false);
         boardButton52.setFocusPainted(false);
@@ -1241,7 +1265,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
-        boardButton53.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton53.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton53.setBorderPainted(false);
         boardButton53.setContentAreaFilled(false);
         boardButton53.setFocusPainted(false);
@@ -1256,7 +1280,7 @@ public class CastleFrame extends javax.swing.JFrame {
         });
 
         boardButton54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
-        boardButton54.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton54.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 51, 255)));
         boardButton54.setBorderPainted(false);
         boardButton54.setContentAreaFilled(false);
         boardButton54.setFocusPainted(false);
@@ -1272,8 +1296,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton0.setActionCommand("wall1");
+        wallButton0.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton0.setBorderPainted(false);
         wallButton0.setContentAreaFilled(false);
+        wallButton0.setFocusPainted(false);
+        wallButton0.setFocusable(false);
         wallButton0.setMaximumSize(new java.awt.Dimension(149, 42));
         wallButton0.setMinimumSize(new java.awt.Dimension(149, 42));
         wallButton0.setOpaque(true);
@@ -1286,9 +1313,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         castleButton0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleRed.png"))); // NOI18N
         castleButton0.setActionCommand("board00");
-        castleButton0.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton0.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton0.setBorderPainted(false);
         castleButton0.setContentAreaFilled(false);
+        castleButton0.setFocusPainted(false);
+        castleButton0.setFocusable(false);
         castleButton0.setMaximumSize(new java.awt.Dimension(149, 80));
         castleButton0.setMinimumSize(new java.awt.Dimension(149, 80));
         castleButton0.setPreferredSize(new java.awt.Dimension(149, 80));
@@ -1300,8 +1329,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton1.setActionCommand("wall1");
+        wallButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton1.setBorderPainted(false);
         wallButton1.setContentAreaFilled(false);
+        wallButton1.setFocusPainted(false);
+        wallButton1.setFocusable(false);
         wallButton1.setMaximumSize(new java.awt.Dimension(149, 42));
         wallButton1.setMinimumSize(new java.awt.Dimension(149, 42));
         wallButton1.setOpaque(true);
@@ -1314,9 +1346,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         castleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleRed.png"))); // NOI18N
         castleButton1.setActionCommand("board00");
-        castleButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton1.setBorderPainted(false);
         castleButton1.setContentAreaFilled(false);
+        castleButton1.setFocusPainted(false);
+        castleButton1.setFocusable(false);
         castleButton1.setMaximumSize(new java.awt.Dimension(149, 80));
         castleButton1.setMinimumSize(new java.awt.Dimension(149, 80));
         castleButton1.setPreferredSize(new java.awt.Dimension(149, 80));
@@ -1328,8 +1362,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton2.setActionCommand("wall1");
+        wallButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton2.setBorderPainted(false);
         wallButton2.setContentAreaFilled(false);
+        wallButton2.setFocusPainted(false);
+        wallButton2.setFocusable(false);
         wallButton2.setMaximumSize(new java.awt.Dimension(149, 42));
         wallButton2.setMinimumSize(new java.awt.Dimension(149, 42));
         wallButton2.setOpaque(true);
@@ -1342,9 +1379,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         castleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleGreen.png"))); // NOI18N
         castleButton2.setActionCommand("board00");
-        castleButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton2.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton2.setBorderPainted(false);
         castleButton2.setContentAreaFilled(false);
+        castleButton2.setFocusPainted(false);
+        castleButton2.setFocusable(false);
         castleButton2.setMaximumSize(new java.awt.Dimension(149, 80));
         castleButton2.setMinimumSize(new java.awt.Dimension(149, 80));
         castleButton2.setPreferredSize(new java.awt.Dimension(149, 80));
@@ -1356,8 +1395,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton3.setActionCommand("wall1");
+        wallButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton3.setBorderPainted(false);
         wallButton3.setContentAreaFilled(false);
+        wallButton3.setFocusPainted(false);
+        wallButton3.setFocusable(false);
         wallButton3.setMaximumSize(new java.awt.Dimension(149, 42));
         wallButton3.setMinimumSize(new java.awt.Dimension(149, 42));
         wallButton3.setOpaque(true);
@@ -1370,9 +1412,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         castleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleGreen.png"))); // NOI18N
         castleButton3.setActionCommand("board00");
-        castleButton3.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton3.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton3.setBorderPainted(false);
         castleButton3.setContentAreaFilled(false);
+        castleButton3.setFocusPainted(false);
+        castleButton3.setFocusable(false);
         castleButton3.setMaximumSize(new java.awt.Dimension(149, 80));
         castleButton3.setMinimumSize(new java.awt.Dimension(149, 80));
         castleButton3.setPreferredSize(new java.awt.Dimension(149, 80));
@@ -1384,8 +1428,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton4.setActionCommand("wall1");
+        wallButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton4.setBorderPainted(false);
         wallButton4.setContentAreaFilled(false);
+        wallButton4.setFocusPainted(false);
+        wallButton4.setFocusable(false);
         wallButton4.setMaximumSize(new java.awt.Dimension(149, 42));
         wallButton4.setMinimumSize(new java.awt.Dimension(149, 42));
         wallButton4.setOpaque(true);
@@ -1398,8 +1445,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         wallButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wall17040.png"))); // NOI18N
         wallButton5.setActionCommand("wall1");
+        wallButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         wallButton5.setBorderPainted(false);
         wallButton5.setContentAreaFilled(false);
+        wallButton5.setFocusPainted(false);
+        wallButton5.setFocusable(false);
         wallButton5.setMaximumSize(new java.awt.Dimension(149, 42));
         wallButton5.setMinimumSize(new java.awt.Dimension(149, 42));
         wallButton5.setOpaque(true);
@@ -1412,9 +1462,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         castleButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleBlue.png"))); // NOI18N
         castleButton5.setActionCommand("board00");
-        castleButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton5.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton5.setBorderPainted(false);
         castleButton5.setContentAreaFilled(false);
+        castleButton5.setFocusPainted(false);
+        castleButton5.setFocusable(false);
         castleButton5.setMaximumSize(new java.awt.Dimension(149, 80));
         castleButton5.setMinimumSize(new java.awt.Dimension(149, 80));
         castleButton5.setPreferredSize(new java.awt.Dimension(149, 80));
@@ -1426,9 +1478,11 @@ public class CastleFrame extends javax.swing.JFrame {
 
         castleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/castleBlue.png"))); // NOI18N
         castleButton4.setActionCommand("board00");
-        castleButton4.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.black, null));
+        castleButton4.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         castleButton4.setBorderPainted(false);
         castleButton4.setContentAreaFilled(false);
+        castleButton4.setFocusPainted(false);
+        castleButton4.setFocusable(false);
         castleButton4.setMaximumSize(new java.awt.Dimension(149, 80));
         castleButton4.setMinimumSize(new java.awt.Dimension(149, 80));
         castleButton4.setPreferredSize(new java.awt.Dimension(149, 80));
@@ -1611,7 +1665,7 @@ public class CastleFrame extends javax.swing.JFrame {
         );
         boardLayeredPanelLayout.setVerticalGroup(
             boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(boardLayeredPanelLayout.createSequentialGroup()
                     .addComponent(boardPaletteLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
