@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-/**
- *
- * @author Benjamin
- */
 public class CastleFrame extends javax.swing.JFrame {
 
     /**
@@ -55,7 +51,7 @@ public class CastleFrame extends javax.swing.JFrame {
             spectator = new javax.swing.ImageIcon(getClass().getResource("/spectator.png"));
             p2pGame = new javax.swing.ImageIcon(getClass().getResource("/networkGame.png"));
             localGame = new javax.swing.ImageIcon(getClass().getResource("/localGame.png"));
-            
+
         } catch (NullPointerException e) {
             System.err.println("GUI: You dolt - The card image files are missing!");
         }
@@ -277,7 +273,7 @@ public class CastleFrame extends javax.swing.JFrame {
                 phaseTitleLabel2.setIcon(activeNow);
             }
         } else {
-         
+
         }
 
     }
@@ -573,32 +569,31 @@ public class CastleFrame extends javax.swing.JFrame {
         phaseTitleLabel1 = new javax.swing.JLabel();
         phaseTitleLabel2 = new javax.swing.JLabel();
         boardLayeredPanel = new javax.swing.JLayeredPane();
-        boardBottomLayer = new javax.swing.JPanel();
         boardPaletteLayer = new javax.swing.JPanel();
         boardButton04 = new javax.swing.JButton();
-        boardButton5 = new javax.swing.JButton();
-        boardButton6 = new javax.swing.JButton();
-        boardButton7 = new javax.swing.JButton();
+        boardButton03 = new javax.swing.JButton();
+        boardButton02 = new javax.swing.JButton();
+        boardButton01 = new javax.swing.JButton();
         boardButton24 = new javax.swing.JButton();
-        boardButton25 = new javax.swing.JButton();
-        boardButton26 = new javax.swing.JButton();
-        boardButton27 = new javax.swing.JButton();
-        boardButton28 = new javax.swing.JButton();
-        boardButton29 = new javax.swing.JButton();
-        boardButton30 = new javax.swing.JButton();
-        boardButton31 = new javax.swing.JButton();
-        boardButton8 = new javax.swing.JButton();
-        boardButton9 = new javax.swing.JButton();
-        boardButton10 = new javax.swing.JButton();
-        boardButton11 = new javax.swing.JButton();
+        boardButton23 = new javax.swing.JButton();
         boardButton32 = new javax.swing.JButton();
-        boardButton33 = new javax.swing.JButton();
+        boardButton31 = new javax.swing.JButton();
         boardButton34 = new javax.swing.JButton();
-        boardButton35 = new javax.swing.JButton();
-        boardButton36 = new javax.swing.JButton();
-        boardButton37 = new javax.swing.JButton();
-        boardButton38 = new javax.swing.JButton();
-        boardButton39 = new javax.swing.JButton();
+        boardButton33 = new javax.swing.JButton();
+        boardButton22 = new javax.swing.JButton();
+        boardButton21 = new javax.swing.JButton();
+        boardButton14 = new javax.swing.JButton();
+        boardButton13 = new javax.swing.JButton();
+        boardButton12 = new javax.swing.JButton();
+        boardButton11 = new javax.swing.JButton();
+        boardButton44 = new javax.swing.JButton();
+        boardButton43 = new javax.swing.JButton();
+        boardButton42 = new javax.swing.JButton();
+        boardButton41 = new javax.swing.JButton();
+        boardButton51 = new javax.swing.JButton();
+        boardButton52 = new javax.swing.JButton();
+        boardButton53 = new javax.swing.JButton();
+        boardButton54 = new javax.swing.JButton();
         wallButton0 = new javax.swing.JButton();
         castleButton0 = new javax.swing.JButton();
         wallButton1 = new javax.swing.JButton();
@@ -925,21 +920,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
         boardLayeredPanel.setPreferredSize(new java.awt.Dimension(906, 500));
 
-        boardBottomLayer.setMinimumSize(new java.awt.Dimension(906, 494));
-        boardBottomLayer.setPreferredSize(new java.awt.Dimension(906, 500));
-
-        javax.swing.GroupLayout boardBottomLayerLayout = new javax.swing.GroupLayout(boardBottomLayer);
-        boardBottomLayer.setLayout(boardBottomLayerLayout);
-        boardBottomLayerLayout.setHorizontalGroup(
-            boardBottomLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 906, Short.MAX_VALUE)
-        );
-        boardBottomLayerLayout.setVerticalGroup(
-            boardBottomLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-
-        boardPaletteLayer.setMinimumSize(new java.awt.Dimension(906, 494));
+        boardPaletteLayer.setMinimumSize(new java.awt.Dimension(906, 444));
         boardPaletteLayer.setOpaque(false);
         boardPaletteLayer.setPreferredSize(new java.awt.Dimension(906, 500));
 
@@ -958,49 +939,49 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
-        boardButton5.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
-        boardButton5.setBorderPainted(false);
-        boardButton5.setContentAreaFilled(false);
-        boardButton5.setFocusPainted(false);
-        boardButton5.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton5.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton5.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton5.setRequestFocusEnabled(false);
-        boardButton5.addActionListener(new java.awt.event.ActionListener() {
+        boardButton03.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
+        boardButton03.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton03.setBorderPainted(false);
+        boardButton03.setContentAreaFilled(false);
+        boardButton03.setFocusPainted(false);
+        boardButton03.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton03.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton03.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton03.setRequestFocusEnabled(false);
+        boardButton03.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton5boardButtonClicked(evt);
+                boardButton03boardButtonClicked(evt);
             }
         });
 
-        boardButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
-        boardButton6.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
-        boardButton6.setBorderPainted(false);
-        boardButton6.setContentAreaFilled(false);
-        boardButton6.setFocusPainted(false);
-        boardButton6.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton6.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton6.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton6.setRequestFocusEnabled(false);
-        boardButton6.addActionListener(new java.awt.event.ActionListener() {
+        boardButton02.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
+        boardButton02.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton02.setBorderPainted(false);
+        boardButton02.setContentAreaFilled(false);
+        boardButton02.setFocusPainted(false);
+        boardButton02.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton02.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton02.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton02.setRequestFocusEnabled(false);
+        boardButton02.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton6boardButtonClicked(evt);
+                boardButton02boardButtonClicked(evt);
             }
         });
 
-        boardButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
-        boardButton7.setAutoscrolls(true);
-        boardButton7.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
-        boardButton7.setBorderPainted(false);
-        boardButton7.setContentAreaFilled(false);
-        boardButton7.setFocusPainted(false);
-        boardButton7.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton7.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton7.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton7.setRequestFocusEnabled(false);
-        boardButton7.addActionListener(new java.awt.event.ActionListener() {
+        boardButton01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanRed.png"))); // NOI18N
+        boardButton01.setAutoscrolls(true);
+        boardButton01.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton01.setBorderPainted(false);
+        boardButton01.setContentAreaFilled(false);
+        boardButton01.setFocusPainted(false);
+        boardButton01.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton01.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton01.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton01.setRequestFocusEnabled(false);
+        boardButton01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton7boardButtonClicked(evt);
+                boardButton01boardButtonClicked(evt);
             }
         });
 
@@ -1017,81 +998,29 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
-        boardButton25.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
-        boardButton25.setBorderPainted(false);
-        boardButton25.setContentAreaFilled(false);
-        boardButton25.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton25.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton25.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton25.addActionListener(new java.awt.event.ActionListener() {
+        boardButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
+        boardButton23.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton23.setBorderPainted(false);
+        boardButton23.setContentAreaFilled(false);
+        boardButton23.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton23.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton23.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton23.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton25boardButtonClicked(evt);
+                boardButton23boardButtonClicked(evt);
             }
         });
 
-        boardButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
-        boardButton26.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
-        boardButton26.setBorderPainted(false);
-        boardButton26.setContentAreaFilled(false);
-        boardButton26.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton26.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton26.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton26.addActionListener(new java.awt.event.ActionListener() {
+        boardButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
+        boardButton32.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton32.setBorderPainted(false);
+        boardButton32.setContentAreaFilled(false);
+        boardButton32.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton32.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton32.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton32.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton26boardButtonClicked(evt);
-            }
-        });
-
-        boardButton27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
-        boardButton27.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
-        boardButton27.setBorderPainted(false);
-        boardButton27.setContentAreaFilled(false);
-        boardButton27.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton27.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton27.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton27.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton27boardButtonClicked(evt);
-            }
-        });
-
-        boardButton28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
-        boardButton28.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
-        boardButton28.setBorderPainted(false);
-        boardButton28.setContentAreaFilled(false);
-        boardButton28.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton28.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton28.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton28.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton28boardButtonClicked(evt);
-            }
-        });
-
-        boardButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
-        boardButton29.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
-        boardButton29.setBorderPainted(false);
-        boardButton29.setContentAreaFilled(false);
-        boardButton29.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton29.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton29.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton29boardButtonClicked(evt);
-            }
-        });
-
-        boardButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
-        boardButton30.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
-        boardButton30.setBorderPainted(false);
-        boardButton30.setContentAreaFilled(false);
-        boardButton30.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton30.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton30.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton30.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton30boardButtonClicked(evt);
+                boardButton32boardButtonClicked(evt);
             }
         });
 
@@ -1108,48 +1037,100 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
-        boardButton8.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
-        boardButton8.setBorderPainted(false);
-        boardButton8.setContentAreaFilled(false);
-        boardButton8.setFocusPainted(false);
-        boardButton8.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton8.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton8.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton8.setRequestFocusEnabled(false);
-        boardButton8.addActionListener(new java.awt.event.ActionListener() {
+        boardButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestGreen.png"))); // NOI18N
+        boardButton34.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton34.setBorderPainted(false);
+        boardButton34.setContentAreaFilled(false);
+        boardButton34.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton34.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton34.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton34.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton8boardButtonClicked(evt);
+                boardButton34boardButtonClicked(evt);
             }
         });
 
-        boardButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
-        boardButton9.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
-        boardButton9.setBorderPainted(false);
-        boardButton9.setContentAreaFilled(false);
-        boardButton9.setFocusPainted(false);
-        boardButton9.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton9.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton9.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton9.setRequestFocusEnabled(false);
-        boardButton9.addActionListener(new java.awt.event.ActionListener() {
+        boardButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherGreen.png"))); // NOI18N
+        boardButton33.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton33.setBorderPainted(false);
+        boardButton33.setContentAreaFilled(false);
+        boardButton33.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton33.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton33.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton33.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton9boardButtonClicked(evt);
+                boardButton33boardButtonClicked(evt);
             }
         });
 
-        boardButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
-        boardButton10.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
-        boardButton10.setBorderPainted(false);
-        boardButton10.setContentAreaFilled(false);
-        boardButton10.setFocusPainted(false);
-        boardButton10.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton10.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton10.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton10.setRequestFocusEnabled(false);
-        boardButton10.addActionListener(new java.awt.event.ActionListener() {
+        boardButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightGreen.png"))); // NOI18N
+        boardButton22.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton22.setBorderPainted(false);
+        boardButton22.setContentAreaFilled(false);
+        boardButton22.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton22.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton22.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton10boardButtonClicked(evt);
+                boardButton22boardButtonClicked(evt);
+            }
+        });
+
+        boardButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanGreen.png"))); // NOI18N
+        boardButton21.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.green, null));
+        boardButton21.setBorderPainted(false);
+        boardButton21.setContentAreaFilled(false);
+        boardButton21.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton21.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton21.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boardButton21boardButtonClicked(evt);
+            }
+        });
+
+        boardButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestRed.png"))); // NOI18N
+        boardButton14.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton14.setBorderPainted(false);
+        boardButton14.setContentAreaFilled(false);
+        boardButton14.setFocusPainted(false);
+        boardButton14.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton14.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton14.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton14.setRequestFocusEnabled(false);
+        boardButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boardButton14boardButtonClicked(evt);
+            }
+        });
+
+        boardButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherRed.png"))); // NOI18N
+        boardButton13.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton13.setBorderPainted(false);
+        boardButton13.setContentAreaFilled(false);
+        boardButton13.setFocusPainted(false);
+        boardButton13.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton13.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton13.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton13.setRequestFocusEnabled(false);
+        boardButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boardButton13boardButtonClicked(evt);
+            }
+        });
+
+        boardButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightRed.png"))); // NOI18N
+        boardButton12.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.red, null));
+        boardButton12.setBorderPainted(false);
+        boardButton12.setContentAreaFilled(false);
+        boardButton12.setFocusPainted(false);
+        boardButton12.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton12.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton12.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton12.setRequestFocusEnabled(false);
+        boardButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boardButton12boardButtonClicked(evt);
             }
         });
 
@@ -1169,123 +1150,123 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         });
 
-        boardButton32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
-        boardButton32.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton32.setBorderPainted(false);
-        boardButton32.setContentAreaFilled(false);
-        boardButton32.setFocusPainted(false);
-        boardButton32.setFocusable(false);
-        boardButton32.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton32.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton32.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton32.addActionListener(new java.awt.event.ActionListener() {
+        boardButton44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
+        boardButton44.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton44.setBorderPainted(false);
+        boardButton44.setContentAreaFilled(false);
+        boardButton44.setFocusPainted(false);
+        boardButton44.setFocusable(false);
+        boardButton44.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton44.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton44.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton32boardButtonClicked(evt);
+                boardButton44boardButtonClicked(evt);
             }
         });
 
-        boardButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
-        boardButton33.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton33.setBorderPainted(false);
-        boardButton33.setContentAreaFilled(false);
-        boardButton33.setFocusPainted(false);
-        boardButton33.setFocusable(false);
-        boardButton33.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton33.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton33.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton33.addActionListener(new java.awt.event.ActionListener() {
+        boardButton43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
+        boardButton43.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton43.setBorderPainted(false);
+        boardButton43.setContentAreaFilled(false);
+        boardButton43.setFocusPainted(false);
+        boardButton43.setFocusable(false);
+        boardButton43.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton43.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton43.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton33boardButtonClicked(evt);
+                boardButton43boardButtonClicked(evt);
             }
         });
 
-        boardButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
-        boardButton34.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton34.setBorderPainted(false);
-        boardButton34.setContentAreaFilled(false);
-        boardButton34.setFocusPainted(false);
-        boardButton34.setFocusable(false);
-        boardButton34.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton34.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton34.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton34.addActionListener(new java.awt.event.ActionListener() {
+        boardButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
+        boardButton42.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton42.setBorderPainted(false);
+        boardButton42.setContentAreaFilled(false);
+        boardButton42.setFocusPainted(false);
+        boardButton42.setFocusable(false);
+        boardButton42.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton42.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton42.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton34boardButtonClicked(evt);
+                boardButton42boardButtonClicked(evt);
             }
         });
 
-        boardButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
-        boardButton35.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton35.setBorderPainted(false);
-        boardButton35.setContentAreaFilled(false);
-        boardButton35.setFocusPainted(false);
-        boardButton35.setFocusable(false);
-        boardButton35.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton35.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton35.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton35.addActionListener(new java.awt.event.ActionListener() {
+        boardButton41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
+        boardButton41.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton41.setBorderPainted(false);
+        boardButton41.setContentAreaFilled(false);
+        boardButton41.setFocusPainted(false);
+        boardButton41.setFocusable(false);
+        boardButton41.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton41.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton41.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton35boardButtonClicked(evt);
+                boardButton41boardButtonClicked(evt);
             }
         });
 
-        boardButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
-        boardButton36.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton36.setBorderPainted(false);
-        boardButton36.setContentAreaFilled(false);
-        boardButton36.setFocusPainted(false);
-        boardButton36.setFocusable(false);
-        boardButton36.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton36.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton36.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton36.addActionListener(new java.awt.event.ActionListener() {
+        boardButton51.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonSwordsmanBlue.png"))); // NOI18N
+        boardButton51.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton51.setBorderPainted(false);
+        boardButton51.setContentAreaFilled(false);
+        boardButton51.setFocusPainted(false);
+        boardButton51.setFocusable(false);
+        boardButton51.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton51.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton51.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boardButtonClicked(evt);
             }
         });
 
-        boardButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
-        boardButton37.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton37.setBorderPainted(false);
-        boardButton37.setContentAreaFilled(false);
-        boardButton37.setFocusPainted(false);
-        boardButton37.setFocusable(false);
-        boardButton37.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton37.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton37.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton37.addActionListener(new java.awt.event.ActionListener() {
+        boardButton52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonKnightBlue.png"))); // NOI18N
+        boardButton52.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton52.setBorderPainted(false);
+        boardButton52.setContentAreaFilled(false);
+        boardButton52.setFocusPainted(false);
+        boardButton52.setFocusable(false);
+        boardButton52.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton52.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton52.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton52.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton37boardButtonClicked(evt);
+                boardButton52boardButtonClicked(evt);
             }
         });
 
-        boardButton38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
-        boardButton38.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton38.setBorderPainted(false);
-        boardButton38.setContentAreaFilled(false);
-        boardButton38.setFocusPainted(false);
-        boardButton38.setFocusable(false);
-        boardButton38.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton38.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton38.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton38.addActionListener(new java.awt.event.ActionListener() {
+        boardButton53.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonArcherBlue.png"))); // NOI18N
+        boardButton53.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton53.setBorderPainted(false);
+        boardButton53.setContentAreaFilled(false);
+        boardButton53.setFocusPainted(false);
+        boardButton53.setFocusable(false);
+        boardButton53.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton53.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton53.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton53.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton38boardButtonClicked(evt);
+                boardButton53boardButtonClicked(evt);
             }
         });
 
-        boardButton39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
-        boardButton39.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
-        boardButton39.setBorderPainted(false);
-        boardButton39.setContentAreaFilled(false);
-        boardButton39.setFocusPainted(false);
-        boardButton39.setFocusable(false);
-        boardButton39.setMaximumSize(new java.awt.Dimension(149, 90));
-        boardButton39.setMinimumSize(new java.awt.Dimension(149, 90));
-        boardButton39.setPreferredSize(new java.awt.Dimension(149, 90));
-        boardButton39.addActionListener(new java.awt.event.ActionListener() {
+        boardButton54.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttonForestBlue.png"))); // NOI18N
+        boardButton54.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.blue, null));
+        boardButton54.setBorderPainted(false);
+        boardButton54.setContentAreaFilled(false);
+        boardButton54.setFocusPainted(false);
+        boardButton54.setFocusable(false);
+        boardButton54.setMaximumSize(new java.awt.Dimension(149, 90));
+        boardButton54.setMinimumSize(new java.awt.Dimension(149, 90));
+        boardButton54.setPreferredSize(new java.awt.Dimension(149, 90));
+        boardButton54.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boardButton39boardButtonClicked(evt);
+                boardButton54boardButtonClicked(evt);
             }
         });
 
@@ -1490,54 +1471,54 @@ public class CastleFrame extends javax.swing.JFrame {
                             .addComponent(castleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(boardPaletteLayerLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(boardButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton02, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(boardButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(boardButton30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPaletteLayerLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(boardButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton36, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addComponent(boardButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
-                        .addComponent(boardButton04, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(boardButton28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
                         .addComponent(boardButton32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(boardButton39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boardButton42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton52, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPaletteLayerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(boardButton01, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
+                        .addComponent(boardButton03, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPaletteLayerLayout.createSequentialGroup()
+                        .addComponent(boardButton04, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(boardButton54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         boardPaletteLayerLayout.setVerticalGroup(
@@ -1545,41 +1526,41 @@ public class CastleFrame extends javax.swing.JFrame {
             .addGroup(boardPaletteLayerLayout.createSequentialGroup()
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(boardButton24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(boardButton54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(boardButton04, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boardButton14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(boardButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boardButton13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton03, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boardButton53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boardButton30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boardButton42, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(boardButton21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boardButton31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boardButton11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boardButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(boardButton01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(boardButton35, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(boardButton36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(boardButton41, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(boardButton51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2)
                 .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(boardPaletteLayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1620,7 +1601,7 @@ public class CastleFrame extends javax.swing.JFrame {
         boardLayeredPanel.setLayout(boardLayeredPanelLayout);
         boardLayeredPanelLayout.setHorizontalGroup(
             boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boardBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 906, Short.MAX_VALUE)
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(boardLayeredPanelLayout.createSequentialGroup()
                     .addComponent(boardPaletteLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1630,7 +1611,7 @@ public class CastleFrame extends javax.swing.JFrame {
         );
         boardLayeredPanelLayout.setVerticalGroup(
             boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(boardBottomLayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 511, Short.MAX_VALUE)
             .addGroup(boardLayeredPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(boardLayeredPanelLayout.createSequentialGroup()
                     .addComponent(boardPaletteLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1640,9 +1621,10 @@ public class CastleFrame extends javax.swing.JFrame {
                     .addComponent(boardShapeLayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
         );
-        boardLayeredPanel.setLayer(boardBottomLayer, 1);
         boardLayeredPanel.setLayer(boardPaletteLayer, 2);
         boardLayeredPanel.setLayer(boardShapeLayer, 3);
+
+        boardShapeLayer.getAccessibleContext().setAccessibleParent(boardPaletteLayer);
 
         handPanel5.setMaximumSize(new java.awt.Dimension(465, 90));
         handPanel5.setMinimumSize(new java.awt.Dimension(465, 90));
@@ -3021,97 +3003,97 @@ public class CastleFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boardButton04boardButtonClicked
 
-    private void boardButton5boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton5boardButtonClicked
+    private void boardButton03boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton03boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton5boardButtonClicked
+    }//GEN-LAST:event_boardButton03boardButtonClicked
 
-    private void boardButton6boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton6boardButtonClicked
+    private void boardButton02boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton02boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton6boardButtonClicked
+    }//GEN-LAST:event_boardButton02boardButtonClicked
 
-    private void boardButton7boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton7boardButtonClicked
+    private void boardButton01boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton01boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton7boardButtonClicked
+    }//GEN-LAST:event_boardButton01boardButtonClicked
 
     private void boardButton24boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton24boardButtonClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boardButton24boardButtonClicked
 
-    private void boardButton25boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton25boardButtonClicked
+    private void boardButton23boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton23boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton25boardButtonClicked
-
-    private void boardButton26boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton26boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton26boardButtonClicked
-
-    private void boardButton27boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton27boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton27boardButtonClicked
-
-    private void boardButton28boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton28boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton28boardButtonClicked
-
-    private void boardButton29boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton29boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton29boardButtonClicked
-
-    private void boardButton30boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton30boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton30boardButtonClicked
-
-    private void boardButton31boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton31boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton31boardButtonClicked
-
-    private void boardButton8boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton8boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton8boardButtonClicked
-
-    private void boardButton9boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton9boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton9boardButtonClicked
-
-    private void boardButton10boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton10boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton10boardButtonClicked
-
-    private void boardButton11boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton11boardButtonClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton11boardButtonClicked
+    }//GEN-LAST:event_boardButton23boardButtonClicked
 
     private void boardButton32boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton32boardButtonClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boardButton32boardButtonClicked
 
-    private void boardButton33boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton33boardButtonClicked
+    private void boardButton31boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton31boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton33boardButtonClicked
+    }//GEN-LAST:event_boardButton31boardButtonClicked
 
     private void boardButton34boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton34boardButtonClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boardButton34boardButtonClicked
 
-    private void boardButton35boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton35boardButtonClicked
+    private void boardButton33boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton33boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton35boardButtonClicked
+    }//GEN-LAST:event_boardButton33boardButtonClicked
+
+    private void boardButton22boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton22boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton22boardButtonClicked
+
+    private void boardButton21boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton21boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton21boardButtonClicked
+
+    private void boardButton14boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton14boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton14boardButtonClicked
+
+    private void boardButton13boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton13boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton13boardButtonClicked
+
+    private void boardButton12boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton12boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton12boardButtonClicked
+
+    private void boardButton11boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton11boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton11boardButtonClicked
+
+    private void boardButton44boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton44boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton44boardButtonClicked
+
+    private void boardButton43boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton43boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton43boardButtonClicked
+
+    private void boardButton42boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton42boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton42boardButtonClicked
+
+    private void boardButton41boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton41boardButtonClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boardButton41boardButtonClicked
 
     private void boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButtonClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boardButtonClicked
 
-    private void boardButton37boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton37boardButtonClicked
+    private void boardButton52boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton52boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton37boardButtonClicked
+    }//GEN-LAST:event_boardButton52boardButtonClicked
 
-    private void boardButton38boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton38boardButtonClicked
+    private void boardButton53boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton53boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton38boardButtonClicked
+    }//GEN-LAST:event_boardButton53boardButtonClicked
 
-    private void boardButton39boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton39boardButtonClicked
+    private void boardButton54boardButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boardButton54boardButtonClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_boardButton39boardButtonClicked
+    }//GEN-LAST:event_boardButton54boardButtonClicked
 
     private void wallButton0wallButtonClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wallButton0wallButtonClicked
         // TODO add your handling code here:
@@ -3301,31 +3283,30 @@ public class CastleFrame extends javax.swing.JFrame {
     private javax.swing.JLabel blipLabel7;
     private javax.swing.JLabel blipLabel8;
     private javax.swing.JLabel blipLabel9;
-    private javax.swing.JPanel boardBottomLayer;
+    private javax.swing.JButton boardButton01;
+    private javax.swing.JButton boardButton02;
+    private javax.swing.JButton boardButton03;
     private javax.swing.JButton boardButton04;
-    private javax.swing.JButton boardButton10;
     private javax.swing.JButton boardButton11;
+    private javax.swing.JButton boardButton12;
+    private javax.swing.JButton boardButton13;
+    private javax.swing.JButton boardButton14;
+    private javax.swing.JButton boardButton21;
+    private javax.swing.JButton boardButton22;
+    private javax.swing.JButton boardButton23;
     private javax.swing.JButton boardButton24;
-    private javax.swing.JButton boardButton25;
-    private javax.swing.JButton boardButton26;
-    private javax.swing.JButton boardButton27;
-    private javax.swing.JButton boardButton28;
-    private javax.swing.JButton boardButton29;
-    private javax.swing.JButton boardButton30;
     private javax.swing.JButton boardButton31;
     private javax.swing.JButton boardButton32;
     private javax.swing.JButton boardButton33;
     private javax.swing.JButton boardButton34;
-    private javax.swing.JButton boardButton35;
-    private javax.swing.JButton boardButton36;
-    private javax.swing.JButton boardButton37;
-    private javax.swing.JButton boardButton38;
-    private javax.swing.JButton boardButton39;
-    private javax.swing.JButton boardButton5;
-    private javax.swing.JButton boardButton6;
-    private javax.swing.JButton boardButton7;
-    private javax.swing.JButton boardButton8;
-    private javax.swing.JButton boardButton9;
+    private javax.swing.JButton boardButton41;
+    private javax.swing.JButton boardButton42;
+    private javax.swing.JButton boardButton43;
+    private javax.swing.JButton boardButton44;
+    private javax.swing.JButton boardButton51;
+    private javax.swing.JButton boardButton52;
+    private javax.swing.JButton boardButton53;
+    private javax.swing.JButton boardButton54;
     private javax.swing.JLayeredPane boardLayeredPanel;
     private javax.swing.JPanel boardPaletteLayer;
     /**
@@ -3503,7 +3484,9 @@ public class CastleFrame extends javax.swing.JFrame {
         private java.awt.Graphics2D monsterGraphic;
         private ArrayList<MonsterShape> monstersDrawn;
 
+        //private JPanel paletteLayer = null;
         ShapePanel() {
+
             super();
             this.addMouseListener(this);
             try {
@@ -3516,6 +3499,7 @@ public class CastleFrame extends javax.swing.JFrame {
             } finally {
                 //
             }
+
             monstersDrawn = new ArrayList();
         }
 
@@ -3526,6 +3510,7 @@ public class CastleFrame extends javax.swing.JFrame {
 
         @Override
         public void mouseClicked(java.awt.event.MouseEvent e) {
+
             for (MonsterShape shape : monstersDrawn) {
                 shape.setSelected(false);
                 gameState.setSelectedMonster(-1);
@@ -3540,6 +3525,24 @@ public class CastleFrame extends javax.swing.JFrame {
                     System.out.println("GUI: mouseClicked shape selected.");
                     this.repaint();
                     return;
+                }
+            }
+            /* Don't read this - just let it work...just let it happen */
+            java.awt.Component[] comps = this.getParent().getComponents();
+            if (comps[comps.length - 1] instanceof JPanel) {
+                JPanel paletteLayer = (JPanel) comps[comps.length - 1];
+                java.awt.Component[] squares = paletteLayer.getComponents();
+                for (java.awt.Component square : squares) {
+                    if (square instanceof JButton) {
+                        JButton button = (JButton) square;
+                        button.setBorderPainted(false);
+                    }
+                }
+                java.awt.Component comp = SwingUtilities.getDeepestComponentAt(paletteLayer, e.getX(), e.getY());
+                if (comp instanceof JButton) {
+                    JButton button = (JButton) comp;
+                    button.setBorderPainted(true);
+                    
                 }
             }
         }
@@ -3587,7 +3590,6 @@ public class CastleFrame extends javax.swing.JFrame {
                                     gameState.getMonsterY(gameState.getMonsterIndex(serial)), 0, shape));
                             found = true;
                             break;
-
                         }
                     }
 
@@ -3603,7 +3605,7 @@ public class CastleFrame extends javax.swing.JFrame {
             }
         }
 
-//remove magic numbers
+        //remove magic numbers
         public final java.awt.Point boardToPoint(int xBoard, int yBoard, int neighbors, MonsterShape shape) {
 
             int xCoord, yCoord;

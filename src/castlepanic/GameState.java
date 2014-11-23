@@ -936,8 +936,7 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
                 return i;
             }
         }
-        System.err.println("getMonsterIndex cannot find that serial!");
-        return -1; //didn't find that serial ??
+        return -1; 
     }
 //additional method
 

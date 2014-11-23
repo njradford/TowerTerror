@@ -407,7 +407,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="boardBottomLayer" alignment="0" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="906" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="boardPaletteLayer" max="-2" attributes="0"/>
@@ -421,7 +421,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="boardBottomLayer" alignment="0" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="511" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="boardPaletteLayer" min="-2" max="-2" attributes="0"/>
@@ -438,36 +438,10 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="boardBottomLayer">
-          <Properties>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[906, 494]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[906, 500]"/>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JLayeredPane.layer" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="906" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="500" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
         <Container class="javax.swing.JPanel" name="boardPaletteLayer">
           <Properties>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[906, 494]"/>
+              <Dimension value="[906, 444]"/>
             </Property>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -517,57 +491,57 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                              <Component id="boardButton6" max="-2" attributes="0"/>
+                              <Component id="boardButton02" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton10" max="-2" attributes="0"/>
+                              <Component id="boardButton12" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton30" max="-2" attributes="0"/>
+                              <Component id="boardButton22" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton26" max="-2" attributes="0"/>
+                              <Component id="boardButton32" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton34" max="-2" attributes="0"/>
+                              <Component id="boardButton42" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton37" max="-2" attributes="0"/>
+                              <Component id="boardButton52" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="boardButton7" max="-2" attributes="0"/>
+                              <Component id="boardButton01" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="boardButton11" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton21" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="boardButton31" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton27" max="-2" attributes="0"/>
+                              <Component id="boardButton41" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton35" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton36" max="-2" attributes="0"/>
+                              <Component id="boardButton51" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="boardButton5" max="-2" attributes="0"/>
+                              <Component id="boardButton03" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton9" max="-2" attributes="0"/>
+                              <Component id="boardButton13" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton25" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton29" max="-2" attributes="0"/>
+                              <Component id="boardButton23" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="boardButton33" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton38" max="-2" attributes="0"/>
+                              <Component id="boardButton43" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Component id="boardButton53" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="boardButton04" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton8" max="-2" attributes="0"/>
+                              <Component id="boardButton14" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                               <Component id="boardButton24" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton28" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton34" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton32" max="-2" attributes="0"/>
+                              <Component id="boardButton44" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Component id="boardButton39" max="-2" attributes="0"/>
+                              <Component id="boardButton54" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -579,49 +553,49 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boardButton28" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton34" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="boardButton24" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="boardButton39" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="boardButton32" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton54" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton44" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="boardButton04" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton14" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="boardButton29" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="boardButton25" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton33" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton23" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="boardButton9" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton5" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton13" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton03" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="boardButton38" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="boardButton33" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton53" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton43" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="boardButton30" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton26" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton22" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton32" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton12" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton02" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="boardButton34" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="boardButton37" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton42" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton52" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="boardButton21" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="boardButton31" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton27" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="boardButton11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="boardButton7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="boardButton01" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Component id="boardButton35" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="boardButton36" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton41" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="boardButton51" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -682,7 +656,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton04boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton5">
+            <Component class="javax.swing.JButton" name="boardButton03">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonArcherRed.png"/>
@@ -709,10 +683,10 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton5boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton03boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton6">
+            <Component class="javax.swing.JButton" name="boardButton02">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonKnightRed.png"/>
@@ -739,10 +713,10 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton6boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton02boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton7">
+            <Component class="javax.swing.JButton" name="boardButton01">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonSwordsmanRed.png"/>
@@ -770,7 +744,7 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton7boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton01boardButtonClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="boardButton24">
@@ -801,7 +775,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton24boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton25">
+            <Component class="javax.swing.JButton" name="boardButton23">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonArcherGreen.png"/>
@@ -826,10 +800,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton25boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton23boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton26">
+            <Component class="javax.swing.JButton" name="boardButton32">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonKnightGreen.png"/>
@@ -854,119 +828,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton26boardButtonClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="boardButton27">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/buttonSwordsmanGreen.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                    <EtchetBorder>
-                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
-                    </EtchetBorder>
-                  </Border>
-                </Property>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton27boardButtonClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="boardButton28">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/buttonForestGreen.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                    <EtchetBorder>
-                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
-                    </EtchetBorder>
-                  </Border>
-                </Property>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton28boardButtonClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="boardButton29">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/buttonArcherGreen.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                    <EtchetBorder>
-                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
-                    </EtchetBorder>
-                  </Border>
-                </Property>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton29boardButtonClicked"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="boardButton30">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/buttonKnightGreen.png"/>
-                </Property>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                    <EtchetBorder>
-                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
-                    </EtchetBorder>
-                  </Border>
-                </Property>
-                <Property name="borderPainted" type="boolean" value="false"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[149, 90]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton30boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton32boardButtonClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="boardButton31">
@@ -997,7 +859,119 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton31boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton8">
+            <Component class="javax.swing.JButton" name="boardButton34">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/buttonForestGreen.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder>
+                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                    </EtchetBorder>
+                  </Border>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton34boardButtonClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="boardButton33">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/buttonArcherGreen.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder>
+                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                    </EtchetBorder>
+                  </Border>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton33boardButtonClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="boardButton22">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/buttonKnightGreen.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder>
+                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                    </EtchetBorder>
+                  </Border>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton22boardButtonClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="boardButton21">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/buttonSwordsmanGreen.png"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder>
+                      <Color PropertyName="highlight" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                    </EtchetBorder>
+                  </Border>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[149, 90]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton21boardButtonClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="boardButton14">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonForestRed.png"/>
@@ -1024,10 +998,10 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton8boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton14boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton9">
+            <Component class="javax.swing.JButton" name="boardButton13">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonArcherRed.png"/>
@@ -1054,10 +1028,10 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton9boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton13boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton10">
+            <Component class="javax.swing.JButton" name="boardButton12">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonKnightRed.png"/>
@@ -1084,7 +1058,7 @@
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton10boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton12boardButtonClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="boardButton11">
@@ -1118,7 +1092,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton11boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton32">
+            <Component class="javax.swing.JButton" name="boardButton44">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonForestBlue.png"/>
@@ -1145,10 +1119,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton32boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton44boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton33">
+            <Component class="javax.swing.JButton" name="boardButton43">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonArcherBlue.png"/>
@@ -1175,10 +1149,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton33boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton43boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton34">
+            <Component class="javax.swing.JButton" name="boardButton42">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonKnightBlue.png"/>
@@ -1205,10 +1179,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton34boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton42boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton35">
+            <Component class="javax.swing.JButton" name="boardButton41">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonSwordsmanBlue.png"/>
@@ -1235,10 +1209,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton35boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton41boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton36">
+            <Component class="javax.swing.JButton" name="boardButton51">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonSwordsmanBlue.png"/>
@@ -1268,7 +1242,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton37">
+            <Component class="javax.swing.JButton" name="boardButton52">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonKnightBlue.png"/>
@@ -1295,10 +1269,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton37boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton52boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton38">
+            <Component class="javax.swing.JButton" name="boardButton53">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonArcherBlue.png"/>
@@ -1325,10 +1299,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton38boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton53boardButtonClicked"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="boardButton39">
+            <Component class="javax.swing.JButton" name="boardButton54">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/buttonForestBlue.png"/>
@@ -1355,7 +1329,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton39boardButtonClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boardButton54boardButtonClicked"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="wallButton0">
@@ -1682,6 +1656,11 @@
               <Dimension value="[906, 500]"/>
             </Property>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleParent" type="javax.accessibility.Accessible" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="boardPaletteLayer"/>
+            </Property>
+          </AccessibilityProperties>
           <AuxValues>
             <AuxValue name="JLayeredPane.layer" type="java.lang.Integer" value="3"/>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ShapePanel()"/>
