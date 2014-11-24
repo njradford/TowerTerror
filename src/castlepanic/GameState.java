@@ -60,10 +60,16 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
     @Override
     public int turret() {
-        if (gameCastle.getTowerState(selectedTowerIndex) == Castle.TOWER_STANDING) {
-            turretAmmo[selectedTowerIndex] = 3;
+        //if selected tower index is valid
+        if (selectedTowerIndex != -1) {
+            if (gameCastle.getTowerState(selectedTowerIndex) == Castle.TOWER_STANDING) {
+                turretAmmo[selectedTowerIndex] = 3;
+            }
+            return 0;
         }
-        return 0;
+        else {
+            return -1; 
+        }
     }
 
     @Override
@@ -78,18 +84,27 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
     @Override
     public int timeSlap() {
-        Monster m = monstersInField.get(selectedMonsterIndex);
-        m.setVerticalLocation(4);
-        return 0;
+        //if selected monster index is valid
+        if (selectedMonsterIndex != -1) {        
+            Monster m = monstersInField.get(selectedMonsterIndex);
+            m.setVerticalLocation(4);
+            return 0; 
+        }
+        else {
+            return -1;
+        }
     }
 
     @Override
     public int reinforceWall() {
+        //if selected wall index is valid
         if (selectedWallIndex > 0) {
             gameCastle.reinforceWall(selectedWallIndex);
             return 0;
         }
-        return -1;
+        else {
+            return -1;
+        }
     }
 
     @Override
@@ -555,9 +570,17 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
             return -1;
         }
         EffectCard eCard = (EffectCard) players[currentPlayerNumber].getCardAt(selectedCardIndex);
-        eCard.takeEffect(this);
-        gameDeck.toDiscard(players[currentPlayerNumber].removeCardAt(selectedCardIndex)); //removes EffectCard from hand and places in discard pile.
-        return 0;
+        
+        //have effect card take effect
+        //a return value of 0 implies the card logic was run without error
+        //if there is an error, don't discard the card
+        if (eCard.takeEffect(this) == 0) {
+            gameDeck.toDiscard(players[currentPlayerNumber].removeCardAt(selectedCardIndex)); //removes EffectCard from hand and places in discard pile.
+            return 0; 
+        }
+        else {
+            return -1;
+        }
     }
 
     /**
