@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class Card implements Serializable {
 
     protected String name;
+    protected String test;
 
 
 
