@@ -78,7 +78,7 @@ public class NetworkHandler {
     }
 
     public String[] listenForNames(){
-        String[] clientNames = new String[]{""};
+        String[] clientNames = new String[]{""}; //TODO: why instantiate here?
         try {
             clientNames = (String[]) input.readObject();
 
@@ -107,7 +107,7 @@ public class NetworkHandler {
 
     //LISTENS FOR A RECIEVED GAMESTATE FROM THE CONNECTION
     public GameState listenForState(){
-        GameState returnState = new GameState(new String[]{"lorem","ipsum"});
+        GameState returnState = new GameState(new String[]{"lorem","ipsum"}); //TODO: why are we instantiating here?
 
         try {
             System.out.println("NET:(CLIENT)WAITING FOR gameState FROM HOST . . .");

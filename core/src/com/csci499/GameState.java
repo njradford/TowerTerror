@@ -11,7 +11,6 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
     //variables for keeping track of card effects
     private final static int DELAY = 0, TIME_STOP = 1;
-    private final static int MAXPLAYERS = 6;
 
     private boolean[] tempBoardEffectFlags = new boolean[2]; //TODO: magic numbers? BTM
     private int[] turretAmmo = new int[7]; //TODO: magic numbers? BTM
@@ -829,12 +828,6 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
 
     public boolean getClearToDiscard() {
         return clearToDiscard;
-    }
-
-    //add to interface
-
-    public static int getMaxPlayers() {
-        return MAXPLAYERS;
     }
 
     @Override

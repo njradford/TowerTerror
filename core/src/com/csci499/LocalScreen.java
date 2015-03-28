@@ -16,14 +16,14 @@ import com.util.NextScreen;
  * @author tmcdaniel
  */
 public class LocalScreen extends AbstractScreen implements Screen {
-
+    private static final int MAXPLAYERS = 6;
     private Table uiTable;
     private ImageButton startButton;
     private TextArea[] nameAreas;
 
     private String[] playerNames;
 
-    public LocalScreen(int maxPlayers) {
+    public LocalScreen() {
 
         super();
 
@@ -46,7 +46,7 @@ public class LocalScreen extends AbstractScreen implements Screen {
         uiTable.add(new Label("Enter Player Names", skin, "default")).left().expandX(); //replace default when assets added
         uiTable.row();
 
-        nameAreas = new TextArea[maxPlayers];
+        nameAreas = new TextArea[MAXPLAYERS];
         for (int i = 0; i < nameAreas.length; i++) {
             nameAreas[i] = new TextArea("default", super.skin); //add to skin
             nameAreas[i].setText("");
