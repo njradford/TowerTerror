@@ -7,7 +7,7 @@ import com.util.Platform;
 public class TerrorGDXGame extends Game {
 
     public static final String TITLE = "Tower Terror";
-    public static final int WIDTH = 1024, HEIGHT = 768; // used later to set window size
+    public static final int WIDTH = 2400, HEIGHT = 1440; // used later to set window size
 
     protected GameType gameType;
 
@@ -19,6 +19,7 @@ public class TerrorGDXGame extends Game {
     private EndScreen winScreen;
     private EndScreen loseScreen;
     private AbstractScreen[] screens;
+
 
     private GameState gameState; //TODO: Make variable of type GameStateInterface after adding required methods to interface
 
@@ -51,10 +52,10 @@ public class TerrorGDXGame extends Game {
     @Override
     public void render() {
 
-       AbstractScreen currentScreen = (AbstractScreen) this.getScreen();
+        AbstractScreen currentScreen = (AbstractScreen) this.getScreen();
 
         if (currentScreen.getChange()) { //current screen has signaled to change screens
-            switch(currentScreen.getChangeScreen()) { //switch on which screen current screen signals to change to
+            switch (currentScreen.getChangeScreen()) { //switch on which screen current screen signals to change to
                 case UNKNOWN:
                     System.err.println("ERROR -- TERRORGDXGAME -- RENDER -- CALLED CHANGE SCREEN WITHOUT SETTING CHANGE FLAG");
                     throw new IllegalArgumentException("ERROR -- TERRORGDXGAME -- RENDER -- CALLED CHANGE SCREEN WITHOUT SETTING CHANGE FLAG");
@@ -103,14 +104,13 @@ public class TerrorGDXGame extends Game {
 
             }
 
+            super.render();
         }
-        super.render();
     }
-
     @Override
     public void dispose() {
-        for (AbstractScreen screen:screens) {
-        screen.dispose();
+        for (AbstractScreen screen : screens) {
+            screen.dispose();
         }
     }
 

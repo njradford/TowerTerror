@@ -24,8 +24,6 @@ public class StartScreen extends AbstractScreen implements Screen {
     private ImageButton clientButton;
 
     private Table uiTable;
-    //enum for player choice, host or client
-
 
     public StartScreen() {
 
@@ -53,6 +51,8 @@ public class StartScreen extends AbstractScreen implements Screen {
         uiTable.add(localButton).fill().padRight(Value.percentWidth(0.33f)); //add buttons
         uiTable.add(clientButton).fill();
         uiTable.add(hostButton).fill();
+
+
 
     }
 

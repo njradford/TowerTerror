@@ -111,6 +111,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         compile "com.kotcrab.vis:vis-ui:0.6.1"
+        compile project(":Overlap2dRuntime")
     }
 }
 
