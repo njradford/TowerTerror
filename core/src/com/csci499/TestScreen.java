@@ -11,7 +11,7 @@ public class TestScreen implements Screen {
     private TestStage stage;
 
     public TestScreen() {
-    this.stage = new TestStage();
+    //this.stage = new TestStage();
     }
     //draw loop function
     @Override

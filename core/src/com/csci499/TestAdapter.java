@@ -17,7 +17,7 @@ public class TestAdapter extends ApplicationAdapter {
 
     private TestStage stage;
     private InputMultiplexer inputMultiplexer;
-
+    private GameResourceManager mgr;
     protected GameType gameType;
     private GameState gameState; //TODO: Make variable of type GameStateInterface after adding required methods to interface
 
@@ -32,7 +32,10 @@ public class TestAdapter extends ApplicationAdapter {
 
     @Override
     public void create() {
-        stage = new TestStage();
+        mgr = new GameResourceManager();
+        mgr.initPlatformerResources();
+
+        stage = new TestStage(mgr);
         inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(stage);
         Gdx.input.setInputProcessor(inputMultiplexer);
