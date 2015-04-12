@@ -1,0 +1,1035 @@
+
+pack.png
+size: 4096,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+active
+  rotate: false
+  xy: 3900, 2015
+  size: 129, 26
+  orig: 129, 26
+  offset: 0, 0
+  index: -1
+activeTurnFlag
+  rotate: false
+  xy: 4031, 2022
+  size: 46, 19
+  orig: 46, 19
+  offset: 0, 0
+  index: -1
+turnSpot
+  rotate: false
+  xy: 4031, 2022
+  size: 46, 19
+  orig: 46, 19
+  offset: 0, 0
+  index: -1
+anyArcherMock
+  rotate: false
+  xy: 2673, 1843
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+anyHeroMock
+  rotate: false
+  xy: 2003, 693
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+anyKnightMock
+  rotate: false
+  xy: 2054, 1260
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+anySwordsMock
+  rotate: false
+  xy: 2312, 1478
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+archerSymbol1030
+  rotate: false
+  xy: 1868, 666
+  size: 8, 24
+  orig: 8, 24
+  offset: 0, 0
+  index: -1
+attackCOMBO
+  rotate: false
+  xy: 1711, 692
+  size: 169, 65
+  orig: 169, 65
+  offset: 0, 0
+  index: -1
+attackCOMBOhighlight
+  rotate: false
+  xy: 2297, 1775
+  size: 169, 65
+  orig: 169, 65
+  offset: 0, 0
+  index: -1
+attackCOMBOrollOver
+  rotate: false
+  xy: 2502, 1842
+  size: 169, 65
+  orig: 169, 65
+  offset: 0, 0
+  index: -1
+attackTurn
+  rotate: false
+  xy: 1028, 692
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+attackTurnhighlight
+  rotate: false
+  xy: 2070, 1909
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+attackTurnhightlight
+  rotate: false
+  xy: 2298, 1842
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+attackTurnrollOver
+  rotate: false
+  xy: 2300, 1976
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+barbarianCard
+  rotate: false
+  xy: 2054, 1194
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+bg
+  rotate: false
+  xy: 2, 1401
+  size: 1040, 640
+  orig: 1040, 640
+  offset: 0, 0
+  index: -1
+blankCard
+  rotate: false
+  xy: 2104, 1260
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+emptyCard
+  rotate: false
+  xy: 2104, 1260
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+blueArcherMock
+  rotate: false
+  xy: 2054, 1128
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+blueButtonTrans55
+  rotate: false
+  xy: 2070, 1693
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+blueButtonTrans55w1
+  rotate: false
+  xy: 2960, 1993
+  size: 136, 48
+  orig: 136, 48
+  offset: 0, 0
+  index: -1
+blueFlag
+  rotate: false
+  xy: 793, 27
+  size: 37, 21
+  orig: 37, 21
+  offset: 0, 0
+  index: -1
+blueHeroCard
+  rotate: false
+  xy: 1232, 434
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+blueHeroMock
+  rotate: false
+  xy: 2104, 1194
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+blueKnightMock
+  rotate: false
+  xy: 2054, 1062
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+blueSwordsMock
+  rotate: false
+  xy: 2104, 1128
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+brownButtonTrans55
+  rotate: false
+  xy: 1028, 409
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+buttonArcherBlue
+  rotate: false
+  xy: 2232, 1701
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonArcherGreen
+  rotate: false
+  xy: 2070, 1537
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonArcherRed
+  rotate: false
+  xy: 1028, 253
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonBeginBattle
+  rotate: false
+  xy: 3236, 2005
+  size: 136, 36
+  orig: 136, 36
+  offset: 0, 0
+  index: -1
+buttonBeginBattleROLLOVER
+  rotate: false
+  xy: 3374, 2005
+  size: 136, 36
+  orig: 136, 36
+  offset: 0, 0
+  index: -1
+buttonClient
+  rotate: false
+  xy: 2868, 1938
+  size: 77, 36
+  orig: 77, 36
+  offset: 0, 0
+  index: -1
+buttonForestBlue
+  rotate: false
+  xy: 2232, 1627
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonForestGreen
+  rotate: false
+  xy: 2070, 1463
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonForestRed
+  rotate: false
+  xy: 1028, 179
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonGameRules
+  rotate: false
+  xy: 3650, 2008
+  size: 123, 33
+  orig: 123, 33
+  offset: 0, 0
+  index: -1
+buttonGameRulesRollOver
+  rotate: false
+  xy: 3775, 2008
+  size: 123, 33
+  orig: 123, 33
+  offset: 0, 0
+  index: -1
+buttonHost
+  rotate: false
+  xy: 2054, 760
+  size: 73, 36
+  orig: 73, 36
+  offset: 0, 0
+  index: -1
+buttonKnightBlue
+  rotate: false
+  xy: 2353, 1701
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonKnightGreen
+  rotate: false
+  xy: 2353, 1627
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonKnightRed
+  rotate: false
+  xy: 891, 43
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonStart
+  rotate: false
+  xy: 3512, 2005
+  size: 136, 36
+  orig: 136, 36
+  offset: 0, 0
+  index: -1
+buttonSwordsmanBlue
+  rotate: false
+  xy: 1232, 484
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonSwordsmanGreen
+  rotate: false
+  xy: 1459, 551
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+buttonSwordsmanRed
+  rotate: false
+  xy: 1687, 618
+  size: 119, 72
+  orig: 119, 72
+  offset: 0, 0
+  index: -1
+cardBack6080
+  rotate: false
+  xy: 2054, 996
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+castleBlue
+  rotate: false
+  xy: 2070, 1398
+  size: 119, 63
+  orig: 119, 63
+  offset: 0, 0
+  index: -1
+castleGreen
+  rotate: false
+  xy: 1028, 114
+  size: 119, 63
+  orig: 119, 63
+  offset: 0, 0
+  index: -1
+castleRed
+  rotate: false
+  xy: 2191, 1546
+  size: 119, 63
+  orig: 119, 63
+  offset: 0, 0
+  index: -1
+centaur
+  rotate: false
+  xy: 2566, 1699
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+cyclops
+  rotate: false
+  xy: 2154, 1233
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+deadKeep
+  rotate: false
+  xy: 2191, 1481
+  size: 119, 63
+  orig: 119, 63
+  offset: 0, 0
+  index: -1
+deadKeepw1
+  rotate: false
+  xy: 2730, 1918
+  size: 136, 56
+  orig: 136, 56
+  offset: 0, 0
+  index: -1
+deadWall
+  rotate: false
+  xy: 3091, 1957
+  size: 119, 34
+  orig: 119, 34
+  offset: 0, 0
+  index: -1
+discardTurn
+  rotate: false
+  xy: 2526, 1909
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+discardTurnhighlight
+  rotate: false
+  xy: 2756, 1976
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+discardTurnrollOver
+  rotate: false
+  xy: 687, 50
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+drawTurn
+  rotate: false
+  xy: 232, 50
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+drawTurnhighlight
+  rotate: false
+  xy: 1028, 625
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+drawTurnrollOver
+  rotate: false
+  xy: 1256, 692
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+endTurn
+  rotate: false
+  xy: 2070, 1842
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+endTurnCOMBO
+  rotate: false
+  xy: 1580, 558
+  size: 58, 65
+  orig: 58, 65
+  offset: 0, 0
+  index: -1
+endTurnCOMBOhighlight
+  rotate: false
+  xy: 1808, 625
+  size: 58, 65
+  orig: 58, 65
+  offset: 0, 0
+  index: -1
+endTurnCOMBOrollOver
+  rotate: false
+  xy: 2312, 1544
+  size: 58, 65
+  orig: 58, 65
+  offset: 0, 0
+  index: -1
+endTurnhightlight
+  rotate: false
+  xy: 2298, 1909
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+endTurnrollOver
+  rotate: false
+  xy: 2528, 1976
+  size: 226, 65
+  orig: 226, 65
+  offset: 0, 0
+  index: -1
+forestRedButton
+  rotate: false
+  xy: 1882, 687
+  size: 119, 70
+  orig: 119, 70
+  offset: 0, 0
+  index: -1
+fortifyWallMock
+  rotate: false
+  xy: 2104, 1062
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+fortifyWallRollOver
+  rotate: false
+  xy: 2054, 930
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+goblin3030
+  rotate: false
+  xy: 1308, 408
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+golem
+  rotate: false
+  xy: 1750, 592
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+greenArcherMock
+  rotate: false
+  xy: 2104, 996
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+greenButtonTrans55
+  rotate: false
+  xy: 2070, 1611
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+greenButtonTrans55w1
+  rotate: false
+  xy: 2468, 1792
+  size: 136, 48
+  orig: 136, 48
+  offset: 0, 0
+  index: -1
+greenFlag
+  rotate: false
+  xy: 1190, 344
+  size: 37, 21
+  orig: 37, 21
+  offset: 0, 0
+  index: -1
+greenHeroCard
+  rotate: false
+  xy: 1266, 434
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+greenHeroMock
+  rotate: false
+  xy: 2054, 864
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+greenKnightMock
+  rotate: false
+  xy: 2104, 930
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+greenSwordsMock
+  rotate: false
+  xy: 2054, 798
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+greenSwordsmanCard
+  rotate: false
+  xy: 1300, 434
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+keep17070
+  rotate: false
+  xy: 2191, 1416
+  size: 119, 63
+  orig: 119, 63
+  offset: 0, 0
+  index: -1
+knightBase
+  rotate: false
+  xy: 2104, 864
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+knightSymbol2030
+  rotate: false
+  xy: 3212, 1967
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: -1
+localGame
+  rotate: false
+  xy: 531, 22
+  size: 129, 26
+  orig: 129, 26
+  offset: 0, 0
+  index: -1
+mainMenuScreen
+  rotate: false
+  xy: 2, 759
+  size: 1024, 640
+  orig: 1024, 640
+  offset: 0, 0
+  index: -1
+missingCard
+  rotate: false
+  xy: 2104, 798
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+missingRollOverCard
+  rotate: false
+  xy: 2312, 1412
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+monsterRemaining
+  rotate: false
+  xy: 232, 29
+  size: 159, 19
+  orig: 159, 19
+  offset: 0, 0
+  index: -1
+monstersRemaining
+  rotate: false
+  xy: 2232, 1611
+  size: 162, 14
+  orig: 162, 14
+  offset: 0, 0
+  index: -1
+networkGame
+  rotate: false
+  xy: 662, 22
+  size: 129, 26
+  orig: 129, 26
+  offset: 0, 0
+  index: -1
+orc3030
+  rotate: false
+  xy: 2154, 1207
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+orderOfTurn
+  rotate: false
+  xy: 2, 2
+  size: 228, 46
+  orig: 228, 46
+  offset: 0, 0
+  index: -1
+orderOfTurnENDTURN
+  rotate: false
+  xy: 2566, 1725
+  size: 24, 65
+  orig: 24, 65
+  offset: 0, 0
+  index: -1
+orderOfTurnENDTURNhighlight
+  rotate: false
+  xy: 2372, 1544
+  size: 24, 65
+  orig: 24, 65
+  offset: 0, 0
+  index: -1
+orderOfTurnSKIP
+  rotate: false
+  xy: 2362, 1477
+  size: 24, 65
+  orig: 24, 65
+  offset: 0, 0
+  index: -1
+orderOfTurnSKIPhighlight
+  rotate: false
+  xy: 2362, 1410
+  size: 24, 65
+  orig: 24, 65
+  offset: 0, 0
+  index: -1
+orderOfTurnSKIProllOver
+  rotate: false
+  xy: 2154, 1259
+  size: 24, 65
+  orig: 24, 65
+  offset: 0, 0
+  index: -1
+progessMock
+  rotate: false
+  xy: 232, 11
+  size: 152, 16
+  orig: 152, 16
+  offset: 0, 0
+  index: -1
+redArcherCard
+  rotate: false
+  xy: 1240, 384
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+redArcherCardLg
+  rotate: false
+  xy: 1190, 433
+  size: 40, 56
+  orig: 40, 56
+  offset: 0, 0
+  index: -1
+redArcherMock
+  rotate: false
+  xy: 1190, 367
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+redButton
+  rotate: false
+  xy: 1353, 500
+  size: 104, 56
+  orig: 104, 56
+  offset: 0, 0
+  index: -1
+redButtonTrans
+  rotate: false
+  xy: 1459, 493
+  size: 112, 56
+  orig: 112, 56
+  offset: 0, 0
+  index: -1
+redButtonTrans55
+  rotate: false
+  xy: 1028, 327
+  size: 160, 80
+  orig: 160, 80
+  offset: 0, 0
+  index: -1
+redButtonTrans55w2
+  rotate: false
+  xy: 3098, 1993
+  size: 136, 48
+  orig: 136, 48
+  offset: 0, 0
+  index: -1
+redFlag
+  rotate: false
+  xy: 2474, 1637
+  size: 37, 21
+  orig: 37, 21
+  offset: 0, 0
+  index: -1
+redHeroCard
+  rotate: false
+  xy: 1274, 384
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+redHeroCardLg
+  rotate: false
+  xy: 1640, 567
+  size: 40, 56
+  orig: 40, 56
+  offset: 0, 0
+  index: -1
+redHeroMock
+  rotate: false
+  xy: 1149, 261
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+redKnightCard
+  rotate: false
+  xy: 1682, 568
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+redKnightCardLg
+  rotate: false
+  xy: 2524, 1734
+  size: 40, 56
+  orig: 40, 56
+  offset: 0, 0
+  index: -1
+redKnightMock
+  rotate: false
+  xy: 1149, 195
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+redSwordCardLg
+  rotate: false
+  xy: 2524, 1676
+  size: 40, 56
+  orig: 40, 56
+  offset: 0, 0
+  index: -1
+redSwordsCard
+  rotate: false
+  xy: 1716, 568
+  size: 32, 48
+  orig: 32, 48
+  offset: 0, 0
+  index: -1
+redSwordsMock
+  rotate: false
+  xy: 1149, 129
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+remainingMonstersBlipGRAY
+  rotate: false
+  xy: 2730, 1910
+  size: 6, 6
+  orig: 6, 6
+  offset: 0, 0
+  index: -1
+remainingMonstersBlipRED
+  rotate: false
+  xy: 232, 3
+  size: 6, 6
+  orig: 6, 6
+  offset: 0, 0
+  index: -1
+rewindCard
+  rotate: false
+  xy: 2606, 1776
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+rollOverAttack
+  rotate: false
+  xy: 460, 50
+  size: 225, 65
+  orig: 225, 65
+  offset: 0, 0
+  index: -1
+rollOverDraw
+  rotate: false
+  xy: 1028, 558
+  size: 225, 65
+  orig: 225, 65
+  offset: 0, 0
+  index: -1
+rollOverEndTurn
+  rotate: false
+  xy: 1256, 625
+  size: 225, 65
+  orig: 225, 65
+  offset: 0, 0
+  index: -1
+rollOverTradeDealer
+  rotate: false
+  xy: 1484, 692
+  size: 225, 65
+  orig: 225, 65
+  offset: 0, 0
+  index: -1
+rollOverTradePlayers
+  rotate: false
+  xy: 2070, 1775
+  size: 225, 65
+  orig: 225, 65
+  offset: 0, 0
+  index: -1
+rubbleKeep
+  rotate: false
+  xy: 1012, 48
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+selected3030
+  rotate: false
+  xy: 1776, 592
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+selectedCard
+  rotate: false
+  xy: 1062, 48
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+spectator
+  rotate: false
+  xy: 2960, 1965
+  size: 129, 26
+  orig: 129, 26
+  offset: 0, 0
+  index: -1
+swordSymbol2030
+  rotate: false
+  xy: 2129, 772
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: -1
+timeSlapCard
+  rotate: false
+  xy: 1112, 48
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+timeStopCard
+  rotate: false
+  xy: 2474, 1726
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+titleScreen
+  rotate: false
+  xy: 1044, 1401
+  size: 1024, 640
+  orig: 1024, 640
+  offset: 0, 0
+  index: -1
+towerTerrorYouLose
+  rotate: false
+  xy: 2, 117
+  size: 1024, 640
+  orig: 1024, 640
+  offset: 0, 0
+  index: -1
+towerTerrorYouWin
+  rotate: false
+  xy: 1028, 759
+  size: 1024, 640
+  orig: 1024, 640
+  offset: 0, 0
+  index: -1
+tradeTurn
+  rotate: false
+  xy: 1028, 491
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+tradeTurnhighlight
+  rotate: false
+  xy: 1255, 558
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+tradeTurnrollOver
+  rotate: false
+  xy: 1483, 625
+  size: 202, 65
+  orig: 202, 65
+  offset: 0, 0
+  index: -1
+tradeWithDealer
+  rotate: false
+  xy: 2070, 1976
+  size: 228, 65
+  orig: 228, 65
+  offset: 0, 0
+  index: -1
+tradeWithPlayers
+  rotate: false
+  xy: 2, 50
+  size: 228, 65
+  orig: 228, 65
+  offset: 0, 0
+  index: -1
+troll3030
+  rotate: false
+  xy: 2154, 1181
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+turnInd
+  rotate: false
+  xy: 3236, 1995
+  size: 8, 8
+  orig: 8, 8
+  offset: 0, 0
+  index: -1
+turnIndLg
+  rotate: false
+  xy: 2592, 1774
+  size: 12, 16
+  orig: 12, 16
+  offset: 0, 0
+  index: -1
+turretCard
+  rotate: false
+  xy: 2474, 1660
+  size: 48, 64
+  orig: 48, 64
+  offset: 0, 0
+  index: -1
+wall17020
+  rotate: false
+  xy: 393, 32
+  size: 136, 16
+  orig: 136, 16
+  offset: 0, 0
+  index: -1
+wall17040
+  rotate: false
+  xy: 2054, 1362
+  size: 119, 34
+  orig: 119, 34
+  offset: 0, 0
+  index: -1
+wallRubbleCleared
+  rotate: false
+  xy: 2054, 1326
+  size: 119, 34
+  orig: 119, 34
+  offset: 0, 0
+  index: -1
