@@ -1,1 +1,1 @@
-{"sceneName":"MainScene","composite":{"sImages":[{"itemIdentifier":"title","layerName":"Default","tint":[1,1,1,1],"imageName":"mainMenuScreen"}],"layers":[{"layerName":"Default"}]},"physicsPropertiesVO":{}}
+{"sceneName":"MainScene","composite":{"layers":[{"layerName":"Default"}]},"physicsPropertiesVO":{}}
