@@ -13,7 +13,7 @@ import com.util.Platform;
 public class TestAdapter extends ApplicationAdapter {
 
     public static final String TITLE = "Tower Terror";
-    public static final int WIDTH = 2400, HEIGHT = 1440; // used later to set window size
+    public static final int WIDTH = 1440, HEIGHT = 900; // used later to set window size
 
     private TestStage stage;
     private InputMultiplexer inputMultiplexer;
@@ -40,16 +40,20 @@ public class TestAdapter extends ApplicationAdapter {
         inputMultiplexer.addProcessor(stage);
         Gdx.input.setInputProcessor(inputMultiplexer);
 
-
     }
 
     @Override
     public void render () {
         Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
-
         stage.act();
         stage.draw();
     }
+    //called on resize - we can experiment with different viewport types
+    @Override
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, false);
+    }
+
 
 }

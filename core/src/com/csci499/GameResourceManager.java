@@ -48,12 +48,11 @@ public class GameResourceManager extends ResourceManager {
         for(int i = 0; i < projctInfoVo.resolutions.size(); i++) {
             float newDeltaSize = Math.abs(projctInfoVo.resolutions.get(i).height - Gdx.graphics.getHeight());
             System.out.println(newDeltaSize);
-            if(deltaSize > newDeltaSize) {
+            if (deltaSize > newDeltaSize) {
                 deltaSize = newDeltaSize;
                 result = projctInfoVo.resolutions.get(i);
             }
         }
-
         return result;
     }
 
