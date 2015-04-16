@@ -6,7 +6,7 @@ filter: Linear,Linear
 repeat: none
 800x480bgTowerTerro
   rotate: false
-  xy: 1286, 741
+  xy: 3421, 1333
   size: 427, 256
   orig: 427, 256
   offset: 0, 0
@@ -20,133 +20,133 @@ anyArcher
   index: -1
 anyArchersmall
   rotate: false
-  xy: 2231, 649
+  xy: 1028, 543
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 anyHero
   rotate: false
-  xy: 3996, 1858
+  xy: 3193, 1380
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 anyHerosmall
   rotate: false
-  xy: 2231, 588
+  xy: 992, 482
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 anyKnight
   rotate: false
-  xy: 1028, 604
+  xy: 3850, 1509
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 anyKnightsmall
   rotate: false
-  xy: 2231, 527
+  xy: 2970, 642
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 anySwords
   rotate: false
-  xy: 2167, 1330
+  xy: 2970, 867
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 anySwordssmall
   rotate: false
-  xy: 2291, 1350
+  xy: 2263, 1041
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 barbarianCard
   rotate: false
-  xy: 1286, 1021
+  xy: 2263, 1266
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 barbarianCardsmall
   rotate: false
-  xy: 2291, 1289
+  xy: 3937, 1683
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 blankCard
   rotate: false
-  xy: 3996, 1776
+  xy: 1028, 604
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 blankCardsmall
   rotate: false
-  xy: 2291, 1228
+  xy: 1286, 796
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 blueArcher
   rotate: false
-  xy: 2167, 1248
+  xy: 3937, 1908
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 blueArchersmall
   rotate: false
-  xy: 2291, 1167
+  xy: 3193, 1085
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 blueHero
   rotate: false
-  xy: 3996, 1694
+  xy: 1286, 1021
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 blueHerosmall
   rotate: false
-  xy: 2291, 1106
+  xy: 992, 421
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 blueKnight
   rotate: false
-  xy: 2167, 1166
+  xy: 3193, 1298
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 blueKnightsmall
   rotate: false
-  xy: 2291, 1045
+  xy: 2970, 581
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 blueSwords
   rotate: false
-  xy: 3996, 1612
+  xy: 3255, 1380
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 blueSwordssmall
   rotate: false
-  xy: 2337, 1350
+  xy: 3937, 1622
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
@@ -161,7 +161,7 @@ buttonAll
   index: -1
 buttonAll2
   rotate: false
-  xy: 1127, 686
+  xy: 4036, 1990
   size: 48, 48
   split: 4, 5, 5, 5
   orig: 48, 48
@@ -169,7 +169,7 @@ buttonAll2
   index: -1
 buttonAllpressed
   rotate: false
-  xy: 2266, 1412
+  xy: 2970, 409
   size: 48, 48
   split: 4, 5, 4, 5
   orig: 48, 48
@@ -185,7 +185,7 @@ buttonClientside2
   index: -1
 buttonClientside2pressed
   rotate: false
-  xy: 2167, 1412
+  xy: 3937, 1990
   size: 97, 48
   split: 0, 5, 5, 5
   orig: 97, 48
@@ -193,7 +193,7 @@ buttonClientside2pressed
   index: -1
 buttonHostside1
   rotate: false
-  xy: 3996, 1990
+  xy: 2970, 949
   size: 98, 48
   split: 4, 0, 5, 6
   orig: 98, 48
@@ -201,7 +201,7 @@ buttonHostside1
   index: -1
 buttonHostside1pressed
   rotate: false
-  xy: 3996, 1940
+  xy: 2263, 1348
   size: 98, 48
   split: 4, 0, 4, 5
   orig: 98, 48
@@ -209,161 +209,161 @@ buttonHostside1pressed
   index: -1
 castleCleareddiag
   rotate: false
-  xy: 2316, 1411
+  xy: 4045, 1939
   size: 47, 49
   orig: 47, 49
   offset: 0, 0
   index: -1
 castleClearedhorizontal
   rotate: false
-  xy: 1177, 683
+  xy: 249, 41
   size: 56, 31
   orig: 56, 31
   offset: 0, 0
   index: -1
 castleRubblediag
   rotate: false
-  xy: 992, 446
+  xy: 4045, 1837
   size: 47, 49
   orig: 47, 49
   offset: 0, 0
   index: -1
 castleRubblehorizontal
   rotate: false
-  xy: 1152, 528
+  xy: 365, 41
   size: 56, 31
   orig: 56, 31
   offset: 0, 0
   index: -1
 castlediag
   rotate: false
-  xy: 2293, 900
+  xy: 4045, 1888
   size: 47, 49
   orig: 47, 49
   offset: 0, 0
   index: -1
 castlehorizontal
   rotate: false
-  xy: 2291, 1012
+  xy: 307, 41
   size: 56, 31
   orig: 56, 31
   offset: 0, 0
   index: -1
 centaur
   rotate: false
-  xy: 2365, 1433
+  xy: 2325, 1319
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
   index: -1
 cyclops
   rotate: false
-  xy: 2349, 1016
+  xy: 1090, 657
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
   index: -1
 fortifyWall
   rotate: false
-  xy: 2167, 1084
+  xy: 3850, 1427
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 fortifyWallsmall
   rotate: false
-  xy: 2337, 1289
+  xy: 3193, 1024
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 gameBoard
   rotate: false
-  xy: 1369, 1462
+  xy: 2395, 1462
   size: 1024, 576
   orig: 1024, 576
   offset: 0, 0
   index: -1
 goblin
   rotate: false
-  xy: 1210, 532
+  xy: 3379, 1433
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
   index: -1
 golem
   rotate: false
-  xy: 4058, 1866
+  xy: 1038, 514
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
   index: -1
 greenArcher
   rotate: false
-  xy: 3996, 1530
+  xy: 2970, 785
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 greenArchersmall
   rotate: false
-  xy: 2337, 1228
+  xy: 992, 360
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 greenHero
   rotate: false
-  xy: 2167, 1002
+  xy: 2263, 1184
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 greenHerosmall
   rotate: false
-  xy: 2337, 1167
+  xy: 2970, 520
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 greenKnight
   rotate: false
-  xy: 3996, 1448
+  xy: 3937, 1826
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 greenKnightsmall
   rotate: false
-  xy: 2337, 1106
+  xy: 992, 299
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 greenSwords
   rotate: false
-  xy: 1028, 522
+  xy: 1286, 939
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 greenSwordssmall
   rotate: false
-  xy: 2337, 1045
+  xy: 2970, 459
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 missingCard
   rotate: false
-  xy: 1090, 604
+  xy: 3193, 1216
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 missingCardsmall
   rotate: false
-  xy: 2293, 951
+  xy: 992, 238
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
@@ -377,35 +377,35 @@ monstersRemain
   index: -1
 nextArrow
   rotate: false
-  xy: 992, 497
+  xy: 2363, 1352
   size: 29, 44
   orig: 29, 44
   offset: 0, 0
   index: -1
 orc
   rotate: false
-  xy: 992, 417
+  xy: 2263, 1012
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
   index: -1
 orderPlayattack
   rotate: false
-  xy: 1028, 736
+  xy: 3421, 1591
   size: 256, 447
   orig: 256, 447
   offset: 0, 0
   index: -1
 orderPlaydiscard
   rotate: false
-  xy: 1715, 550
+  xy: 1028, 736
   size: 256, 447
   orig: 256, 447
   offset: 0, 0
   index: -1
 orderPlaytrade
   rotate: false
-  xy: 1973, 550
+  xy: 3679, 1591
   size: 256, 447
   orig: 256, 447
   offset: 0, 0
@@ -420,84 +420,84 @@ playersNameField
   index: -1
 redArcher
   rotate: false
-  xy: 1090, 522
+  xy: 3255, 1298
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 redArchersmall
   rotate: false
-  xy: 1152, 622
+  xy: 992, 177
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 redHero
   rotate: false
-  xy: 2229, 1330
+  xy: 3317, 1380
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 redHerosmall
   rotate: false
-  xy: 1152, 561
+  xy: 992, 116
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 redKnight
   rotate: false
-  xy: 2229, 1248
+  xy: 3850, 1345
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 redKnightsmall
   rotate: false
-  xy: 1198, 622
+  xy: 1286, 735
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 redSwords
   rotate: false
-  xy: 2229, 1166
+  xy: 2970, 703
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 redSwordsMock
   rotate: false
-  xy: 4058, 1895
+  xy: 3032, 904
   size: 32, 43
   orig: 32, 43
   offset: 0, 0
   index: -1
 redSwordssmall
   rotate: false
-  xy: 1198, 561
+  xy: 3999, 1929
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 rewindCard
   rotate: false
-  xy: 2229, 1084
+  xy: 2263, 1102
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 rewindCardsmall
   rotate: false
-  xy: 2284, 839
+  xy: 3999, 1868
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 screenGameOver
   rotate: false
-  xy: 3289, 1450
+  xy: 2263, 409
   size: 705, 588
   orig: 705, 588
   offset: 0, 0
@@ -511,7 +511,7 @@ screenLose
   index: -1
 screenWin
   rotate: false
-  xy: 1369, 999
+  xy: 2395, 999
   size: 796, 461
   orig: 796, 461
   offset: 0, 0
@@ -523,44 +523,51 @@ startSceneBG
   orig: 1024, 640
   offset: 0, 0
   index: -1
+startSceneBG2
+  rotate: false
+  xy: 1369, 1398
+  size: 1024, 640
+  orig: 1024, 640
+  offset: 0, 0
+  index: -1
 timeSlapCard
   rotate: false
-  xy: 2229, 1002
+  xy: 3937, 1744
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 timeSlapsmall
   rotate: false
-  xy: 2284, 778
+  xy: 3999, 1807
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 timeStopCard
   rotate: false
-  xy: 2231, 920
+  xy: 1286, 857
   size: 60, 80
   orig: 60, 80
   offset: 0, 0
   index: -1
 timeStopCardsmall
   rotate: false
-  xy: 2284, 717
+  xy: 3999, 1746
   size: 44, 59
   orig: 44, 59
   offset: 0, 0
   index: -1
 titleAndLogo
   rotate: false
-  xy: 2395, 1432
+  xy: 1369, 790
   size: 892, 606
   orig: 892, 606
   offset: 0, 0
   index: -1
 troll
   rotate: false
-  xy: 4058, 1837
+  xy: 3937, 1593
   size: 27, 27
   orig: 27, 27
   offset: 0, 0
@@ -574,35 +581,35 @@ ttbgBlue
   index: -1
 wallCleareddiag
   rotate: false
-  xy: 2231, 850
+  xy: 3193, 1146
   size: 51, 68
   orig: 51, 68
   offset: 0, 0
   index: -1
 wallClearedhorizontal
   rotate: false
-  xy: 1177, 716
+  xy: 3070, 979
   size: 79, 18
   orig: 79, 18
   offset: 0, 0
   index: -1
 wallRubblediag
   rotate: false
-  xy: 2231, 710
+  xy: 3317, 1310
   size: 51, 68
   orig: 51, 68
   offset: 0, 0
   index: -1
 wallRubblehorizontal
   rotate: false
-  xy: 249, 54
+  xy: 1127, 716
   size: 79, 18
   orig: 79, 18
   offset: 0, 0
   index: -1
 walldiag
   rotate: false
-  xy: 2231, 780
+  xy: 3255, 1228
   size: 51, 68
   orig: 51, 68
   offset: 0, 0
