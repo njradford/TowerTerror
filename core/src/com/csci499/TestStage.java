@@ -19,7 +19,7 @@ public class TestStage extends Overlap2DStage {
         this.mgr = mgr;
         initSceneLoader(mgr);
         sceneLoader.setResolution(mgr.currentResolution.name);
-        sceneLoader.loadScene("startScene");
+        sceneLoader.loadScene("localScene");
         this.addActor(sceneLoader.getRoot());
 
     }
