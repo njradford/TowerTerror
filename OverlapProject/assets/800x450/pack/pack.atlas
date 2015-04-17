@@ -1,0 +1,623 @@
+
+pack.png
+size: 4096,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+800x480bgTowerTerro
+  rotate: false
+  xy: 608, 151
+  size: 333, 200
+  orig: 333, 200
+  offset: 0, 0
+  index: -1
+anyArcher
+  rotate: false
+  xy: 1022, 288
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+anyArchersmall
+  rotate: false
+  xy: 2593, 137
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+anyHero
+  rotate: false
+  xy: 4030, 957
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+anyHerosmall
+  rotate: false
+  xy: 2635, 262
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+anyKnight
+  rotate: false
+  xy: 2544, 415
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+anyKnightsmall
+  rotate: false
+  xy: 2635, 214
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+anySwords
+  rotate: false
+  xy: 943, 248
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+anySwordssmall
+  rotate: false
+  xy: 2593, 89
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+barbarianCard
+  rotate: false
+  xy: 608, 46
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+barbarianCardsmall
+  rotate: false
+  xy: 2544, 42
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+blankCard
+  rotate: false
+  xy: 3299, 425
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+blankCardsmall
+  rotate: false
+  xy: 657, 63
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+blueArcher
+  rotate: false
+  xy: 4030, 892
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+blueArchersmall
+  rotate: false
+  xy: 694, 70
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+blueHero
+  rotate: false
+  xy: 2544, 350
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+blueHerosmall
+  rotate: false
+  xy: 3348, 442
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+blueKnight
+  rotate: false
+  xy: 943, 183
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+blueKnightsmall
+  rotate: false
+  xy: 3348, 394
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+blueSwords
+  rotate: false
+  xy: 3299, 360
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+blueSwordssmall
+  rotate: false
+  xy: 3348, 346
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+buttonAll
+  rotate: false
+  xy: 3299, 530
+  size: 141, 38
+  split: 3, 4, 3, 5
+  orig: 141, 38
+  offset: 0, 0
+  index: -1
+buttonAll2
+  rotate: false
+  xy: 2623, 480
+  size: 38, 38
+  split: 3, 4, 4, 4
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+buttonAllpressed
+  rotate: false
+  xy: 2635, 310
+  size: 38, 38
+  split: 3, 4, 3, 4
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+buttonClientside2
+  rotate: false
+  xy: 608, 111
+  size: 76, 38
+  split: 0, 5, 4, 4
+  orig: 76, 38
+  offset: 0, 0
+  index: -1
+buttonClientside2pressed
+  rotate: false
+  xy: 3299, 490
+  size: 76, 38
+  split: 0, 4, 4, 4
+  orig: 76, 38
+  offset: 0, 0
+  index: -1
+buttonHostside1
+  rotate: false
+  xy: 2544, 480
+  size: 77, 38
+  split: 3, 0, 4, 5
+  orig: 77, 38
+  offset: 0, 0
+  index: -1
+buttonHostside1pressed
+  rotate: false
+  xy: 943, 313
+  size: 77, 38
+  split: 3, 0, 3, 4
+  orig: 77, 38
+  offset: 0, 0
+  index: -1
+castleCleareddiag
+  rotate: false
+  xy: 608, 6
+  size: 37, 38
+  orig: 37, 38
+  offset: 0, 0
+  index: -1
+castleClearedhorizontal
+  rotate: false
+  xy: 943, 157
+  size: 44, 24
+  orig: 44, 24
+  offset: 0, 0
+  index: -1
+castleRubblediag
+  rotate: false
+  xy: 2630, 86
+  size: 37, 38
+  orig: 37, 38
+  offset: 0, 0
+  index: -1
+castleRubblehorizontal
+  rotate: false
+  xy: 2674, 182
+  size: 44, 24
+  orig: 44, 24
+  offset: 0, 0
+  index: -1
+castlediag
+  rotate: false
+  xy: 2635, 174
+  size: 37, 38
+  orig: 37, 38
+  offset: 0, 0
+  index: -1
+castlehorizontal
+  rotate: false
+  xy: 3299, 204
+  size: 44, 24
+  orig: 44, 24
+  offset: 0, 0
+  index: -1
+centaur
+  rotate: false
+  xy: 2720, 185
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+cyclops
+  rotate: false
+  xy: 992, 255
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+fortifyWall
+  rotate: false
+  xy: 4030, 827
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+fortifyWallsmall
+  rotate: false
+  xy: 3348, 298
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+gameBoard
+  rotate: false
+  xy: 2675, 570
+  size: 800, 450
+  orig: 800, 450
+  offset: 0, 0
+  index: -1
+goblin
+  rotate: false
+  xy: 2743, 185
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+golem
+  rotate: false
+  xy: 992, 232
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+greenArcher
+  rotate: false
+  xy: 2544, 285
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+greenArchersmall
+  rotate: false
+  xy: 3348, 250
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+greenHero
+  rotate: false
+  xy: 3299, 295
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+greenHerosmall
+  rotate: false
+  xy: 3385, 451
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+greenKnight
+  rotate: false
+  xy: 4030, 762
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+greenKnightsmall
+  rotate: false
+  xy: 3385, 403
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+greenSwords
+  rotate: false
+  xy: 2544, 220
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+greenSwordssmall
+  rotate: false
+  xy: 3385, 355
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+missingCard
+  rotate: false
+  xy: 3299, 230
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+missingCardsmall
+  rotate: false
+  xy: 3385, 307
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+monstersRemain
+  rotate: false
+  xy: 3377, 499
+  size: 48, 29
+  orig: 48, 29
+  offset: 0, 0
+  index: -1
+nextArrow
+  rotate: false
+  xy: 3442, 533
+  size: 23, 35
+  orig: 23, 35
+  offset: 0, 0
+  index: -1
+orc
+  rotate: false
+  xy: 2766, 185
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+orderPlayattack
+  rotate: false
+  xy: 2, 2
+  size: 200, 349
+  orig: 200, 349
+  offset: 0, 0
+  index: -1
+orderPlaydiscard
+  rotate: false
+  xy: 204, 2
+  size: 200, 349
+  orig: 200, 349
+  offset: 0, 0
+  index: -1
+orderPlaytrade
+  rotate: false
+  xy: 406, 2
+  size: 200, 349
+  orig: 200, 349
+  offset: 0, 0
+  index: -1
+playersNameField
+  rotate: false
+  xy: 686, 134
+  size: 68, 15
+  split: 5, 7, 6, 7
+  orig: 68, 15
+  offset: 0, 0
+  index: -1
+redArcher
+  rotate: false
+  xy: 4030, 697
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+redArchersmall
+  rotate: false
+  xy: 3385, 259
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+redHero
+  rotate: false
+  xy: 2544, 155
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+redHerosmall
+  rotate: false
+  xy: 2581, 41
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+redKnight
+  rotate: false
+  xy: 4030, 632
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+redKnightsmall
+  rotate: false
+  xy: 731, 70
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+redSwords
+  rotate: false
+  xy: 2544, 90
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+redSwordsMock
+  rotate: false
+  xy: 992, 278
+  size: 25, 33
+  orig: 25, 33
+  offset: 0, 0
+  index: -1
+redSwordssmall
+  rotate: false
+  xy: 768, 87
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+rewindCard
+  rotate: false
+  xy: 4030, 567
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+rewindCardsmall
+  rotate: false
+  xy: 805, 87
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+screenGameOver
+  rotate: false
+  xy: 3477, 561
+  size: 551, 459
+  orig: 551, 459
+  offset: 0, 0
+  index: -1
+screenLose
+  rotate: false
+  xy: 1071, 153
+  size: 772, 365
+  orig: 772, 365
+  offset: 0, 0
+  index: -1
+screenWin
+  rotate: false
+  xy: 2675, 208
+  size: 622, 360
+  orig: 622, 360
+  offset: 0, 0
+  index: -1
+startSceneBG
+  rotate: false
+  xy: 1071, 520
+  size: 800, 500
+  orig: 800, 500
+  offset: 0, 0
+  index: -1
+startSceneBG2
+  rotate: false
+  xy: 1873, 520
+  size: 800, 500
+  orig: 800, 500
+  offset: 0, 0
+  index: -1
+timeSlapCard
+  rotate: false
+  xy: 2593, 415
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+timeSlapsmall
+  rotate: false
+  xy: 842, 87
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+timeStopCard
+  rotate: false
+  xy: 2593, 350
+  size: 47, 63
+  orig: 47, 63
+  offset: 0, 0
+  index: -1
+timeStopCardsmall
+  rotate: false
+  xy: 2630, 126
+  size: 35, 46
+  orig: 35, 46
+  offset: 0, 0
+  index: -1
+titleAndLogo
+  rotate: false
+  xy: 1845, 45
+  size: 697, 473
+  orig: 697, 473
+  offset: 0, 0
+  index: -1
+troll
+  rotate: false
+  xy: 992, 209
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+ttbgBlue
+  rotate: false
+  xy: 2, 353
+  size: 1067, 667
+  orig: 1067, 667
+  offset: 0, 0
+  index: -1
+wallCleareddiag
+  rotate: false
+  xy: 2593, 295
+  size: 40, 53
+  orig: 40, 53
+  offset: 0, 0
+  index: -1
+wallClearedhorizontal
+  rotate: false
+  xy: 686, 118
+  size: 62, 14
+  orig: 62, 14
+  offset: 0, 0
+  index: -1
+wallRubblediag
+  rotate: false
+  xy: 2593, 185
+  size: 40, 53
+  orig: 40, 53
+  offset: 0, 0
+  index: -1
+wallRubblehorizontal
+  rotate: false
+  xy: 820, 135
+  size: 62, 14
+  orig: 62, 14
+  offset: 0, 0
+  index: -1
+walldiag
+  rotate: false
+  xy: 2593, 240
+  size: 40, 53
+  orig: 40, 53
+  offset: 0, 0
+  index: -1
+wallhorizontal
+  rotate: false
+  xy: 756, 135
+  size: 62, 14
+  orig: 62, 14
+  offset: 0, 0
+  index: -1
