@@ -11,15 +11,14 @@ import com.uwsoft.editor.renderer.SceneLoader;
 /**
  * Created by tmcdaniel on 4/7/2015.
  */
-public class TestStage extends Overlap2DStage {
+public class GameStage extends Overlap2DStage {
     GameResourceManager mgr;
-    public TestStage(GameResourceManager mgr) {
-
+    public GameStage(GameResourceManager mgr, String sceneName) {
         super(new ExtendViewport(mgr.stageWidth, mgr.currentResolution.height));
         this.mgr = mgr;
         initSceneLoader(mgr);
         sceneLoader.setResolution(mgr.currentResolution.name);
-        sceneLoader.loadScene("startScene");
+        sceneLoader.loadScene(sceneName);
         this.addActor(sceneLoader.getRoot());
 
     }

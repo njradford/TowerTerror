@@ -22,53 +22,96 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  */
 public class GameScreen extends AbstractScreen implements Screen {
 
+    private final GameStage stage;
 
     public GameScreen() {
     super();
+        stage = new GameStage(mgr, "gameScene");
 
     }
 
-    @Override
-    public void resize(int width, int height) {
+    public void initializeBoard() {
 
-        stage.getViewport().update(width, height, true);
+        /*
+            for (int i = 0; i < cardButtons.length; i++) {
+            java.awt.Component[] comps = handPanels[i].getComponents();
+
+            for (int j = 0; j < cardButtons[i].length; j++) {
+                if (comps[j] instanceof javax.swing.JButton) {
+                    cardButtons[i][j] = (javax.swing.JButton) comps[j];
+                }
+            }
+        }
+        for (int k = 0; k < cardButtons.length; k++) {
+            for (int l = 0; l < cardButtons[k].length; l++) {
+                System.out.println("Card Button:" + " " + cardButtons[k][l]);
+            }
+        }
+
+        for (int m = 0; m < players.length; m++) {
+            handLabels[m].setText(players[m].substring(0, Math.min(8, players[m].length())).trim());
+        }
+        //TODO: OLD PROGBAR - REMOVE?
+        //monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
+
+        this.updateGame();
+
+        if (networkGame) {
+            phaseTitleLabel1.setIcon(p2pGame);
+            if (!isHost) {
+                netProcess();
+            } else {
+                phaseTitleLabel2.setIcon(activeNow);
+            }
+        } else {
+
+        }
+
+         */
     }
 
     //draw loop function
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+        super.render(delta); //clears screen
     }
 
     @Override
     public void dispose() {
-
-
+        super.dispose();
+        stage.dispose();
     }
 
     //note: called on setScreen
     @Override
     public void show() {
-
+        super.show();  //sets change boolean to false
+        super.inputMultiplexer.addProcessor(stage);
+        //   Gdx.input.setInputProcessor(stage); //stage will receive inputs, including clicks, that will be delegated through table to buttons
     }
 
     //note: called on minimize/lose focus
     @Override
     public void pause() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.pause();
+        super.inputMultiplexer.removeProcessor(stage);
     }
 
     //note: called on restore
     @Override
     public void resume() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.resume();
+        super.inputMultiplexer.addProcessor(stage);
     }
 
     @Override
     public void hide() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.inputMultiplexer.removeProcessor(stage);
     }
-
+    //called on resize - we can experiment with different viewport types
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+    }
 
 }

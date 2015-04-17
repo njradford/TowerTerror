@@ -4,34 +4,34 @@ package com.csci499;
  */
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL30;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.SerializationException;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.util.NextScreen;
+import com.util.ScreenType;
+
+import java.util.HashMap;
 
 /**
  * AbstractScreen class - Abstract class to ensure all Screens contain basic members for flow control
  */
 public abstract class AbstractScreen implements Screen {
 
+
     //flow control
     private boolean change;
-    private NextScreen changeScreen;
+    private ScreenType changeScreen;
 
-    //stage for start screen, and table for positioning buttons
-    protected Stage stage;
-    protected Table rootTable; //root table to fill screen
+
+   // protected Table rootTable; //root table to fill screen
 
     private static boolean assetsSet = false;
     //see https://github.com/libgdx/libgdx/wiki/Skin
-    private static TextureAtlas legacyAtlas;
-    protected static Skin skin;
+    //private static TextureAtlas legacyAtlas;
+    //protected static Skin skin;
+    protected static InputMultiplexer inputMultiplexer;
+    protected static GameResourceManager mgr;
 
     /**
      * AbstractScreen constructor: Can't actually be instantiated, sets flow values
@@ -39,8 +39,13 @@ public abstract class AbstractScreen implements Screen {
     AbstractScreen() {
         if (!assetsSet) {
             try{
-                legacyAtlas = new TextureAtlas(Gdx.files.internal("legacy-packed/pack.atlas"));
-                skin = new Skin(Gdx.files.internal("skin/legacy-skin.json"), legacyAtlas);
+
+                //legacyAtlas = new TextureAtlas(Gdx.files.internal("legacy-packed/pack.atlas"));
+                //skin = new Skin(Gdx.files.internal("skin/legacy-skin.json"), legacyAtlas);
+                inputMultiplexer = new InputMultiplexer();
+                Gdx.input.setInputProcessor(inputMultiplexer);
+                mgr = new GameResourceManager();
+                mgr.initPlatformerResources();
             } catch(SerializationException|GdxRuntimeException e) {
                 System.err.println("ERROR -- ABSTRACTSCREEN -- CONSTRUCTOR -- ASSET LOAD FAILURE");
                 e.printStackTrace();
@@ -49,19 +54,20 @@ public abstract class AbstractScreen implements Screen {
         }
 
         change=false; //setting change to true signals to Game to change screen
-        changeScreen = NextScreen.UNKNOWN; //changeScreen signals to Game which screen to change to
+        changeScreen = ScreenType.UNKNOWN; //changeScreen signals to Game which screen to change to
 
         //set up tables
-        rootTable = new Table();
-        rootTable.setFillParent(true);
-        rootTable.setBackground(skin.getDrawable("titleScreen"));
+        //rootTable = new Table();
+        //rootTable.setFillParent(true);
+        //rootTable.setBackground(skin.getDrawable("titleScreen"));
+
 
         //instantiate stage
-        stage = new Stage(new ExtendViewport(TerrorGDXGame.WIDTH, TerrorGDXGame.HEIGHT));
-        stage.addActor(rootTable); //add assets to stage
+        //stage = new Stage(new ExtendViewport(TerrorGDXGame.WIDTH, TerrorGDXGame.HEIGHT));
+        //stage.addActor(rootTable); //add assets to stage
 
         //comment this out to turn off debug
-        stage.setDebugAll(true);
+       // stage.setDebugAll(true);
 
     }
     /**
@@ -74,11 +80,11 @@ public abstract class AbstractScreen implements Screen {
     /**
      * getChangeScreen method - returns the screen the game should move to next
      */
-    public NextScreen getChangeScreen() {
+    public ScreenType getChangeScreen() {
         return changeScreen;
     }
 
-    public void setChangeScreen(NextScreen changeScreen){
+    public void setChangeScreen(ScreenType changeScreen){
         this.changeScreen = changeScreen;
         change = true;
     }
@@ -87,22 +93,20 @@ public abstract class AbstractScreen implements Screen {
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT|GL30.GL_DEPTH_BUFFER_BIT);
-        stage.act(delta);
-        stage.draw();
+
 
     }
 
     @Override
     public void dispose() {
-        stage.dispose();
-        skin.dispose();
+
     }
 
     //note: called on setScreen
     @Override
     public void show() {
         change=false;
-        Gdx.input.setInputProcessor(stage); //stage will receive inputs, including clicks, that will be delegated through table to buttons
+     //   Gdx.input.setInputProcessor(stage); //stage will receive inputs, including clicks, that will be delegated through table to buttons
     }
 
     //note: called on minimize/lose focus
@@ -119,12 +123,12 @@ public abstract class AbstractScreen implements Screen {
 
     @Override
     public void hide() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+               //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     //called on resize - we can experiment with different viewport types
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        //stage.getViewport().update(width, height, true);
     }
 
 }

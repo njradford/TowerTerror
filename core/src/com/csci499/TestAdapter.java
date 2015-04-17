@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL30;
 import com.util.GameType;
-import com.util.Platform;
+import com.util.PlatformType;
 
 /**
  * Created by tmcdaniel on 4/7/2015.
@@ -13,29 +13,32 @@ import com.util.Platform;
 public class TestAdapter extends ApplicationAdapter {
 
     public static final String TITLE = "Tower Terror";
-    public static final int WIDTH = 1440, HEIGHT = 900; // used later to set window size
+    public static final int WIDTH = 1270, HEIGHT = 720; // used later to set window size
 
-    private TestStage stage;
+    private GameStage stage;
     private InputMultiplexer inputMultiplexer;
     private GameResourceManager mgr;
     protected GameType gameType;
     private GameState gameState; //TODO: Make variable of type GameStateInterface after adding required methods to interface
 
-    private final NetworkHandler p2p;
-    private final Platform platform; //we may need this later
+    private final PlatformType platformType; //we may need this later
+    private final String testScene;
 
-    public TestAdapter(Platform platform) {
-        this.platform = platform;
+    public TestAdapter(PlatformType platformType, String testScene) {
+        this.platformType = platformType;
         gameType = GameType.UNKNOWN;
-        p2p = new NetworkHandler();
+        this.testScene = testScene;
     }
 
     @Override
     public void create() {
         mgr = new GameResourceManager();
         mgr.initPlatformerResources();
-
-        stage = new TestStage(mgr);
+        try {
+            stage = new GameStage(mgr, testScene);
+        } catch (NullPointerException e) {
+            System.err.println("ERR -- TESTADAPTER -- CREATE -- SCENE NAME NOT RECOGNIZED");
+        }
         inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(stage);
         Gdx.input.setInputProcessor(inputMultiplexer);
