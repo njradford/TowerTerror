@@ -14,7 +14,7 @@ public class DesktopLauncher {
         config.width= TestAdapter.WIDTH; // sets window width
         config.height=TestAdapter.HEIGHT;  // sets window height
         if (SCENE_TESTING) {
-            new LwjglApplication(new TestAdapter(PlatformType.DESKTOP), config, SCENE_TO_TEST);
+            new LwjglApplication(new TestAdapter(PlatformType.DESKTOP, SCENE_TO_TEST), config);
         } else {
             new LwjglApplication(new TerrorGDXGame(PlatformType.DESKTOP), config);
         }
