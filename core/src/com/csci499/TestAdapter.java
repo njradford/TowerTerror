@@ -15,11 +15,11 @@ public class TestAdapter extends ApplicationAdapter {
     public static final String TITLE = "Tower Terror";
     public static final int WIDTH = 1270, HEIGHT = 720; // used later to set window size
 
-    private GameStage stage;
+    private TestStage stage;
     private InputMultiplexer inputMultiplexer;
-    private GameResourceManager mgr;
+    public static GameResourceManager mgr;
     protected GameType gameType;
-    private GameState gameState; //TODO: Make variable of type GameStateInterface after adding required methods to interface
+    private GameStateInterface gameState;
 
     private final PlatformType platformType; //we may need this later
     private final String testScene;
@@ -35,7 +35,7 @@ public class TestAdapter extends ApplicationAdapter {
         mgr = new GameResourceManager();
         mgr.initPlatformerResources();
         try {
-            stage = new GameStage(mgr, testScene);
+            stage = new TestStage(testScene);
         } catch (NullPointerException e) {
             System.err.println("ERR -- TESTADAPTER -- CREATE -- SCENE NAME NOT RECOGNIZED");
         }

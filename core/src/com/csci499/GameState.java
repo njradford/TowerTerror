@@ -132,6 +132,9 @@ public class GameState implements GameStateInterface, BoardEffectInterface, Seri
     }
 
     //Section of methods found in implemented interfaces
+    public GameState() {
+        this(new String [] {"Test1","Test2", "Test3", "Test4", "Test5", "Test6"});
+    }
     public GameState(String[] listOfNames) {
         gameCastle = new Castle();
         gameTokenPile = new TokenPile();

@@ -6,10 +6,14 @@ package com.csci499;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.SerializationException;
 import com.util.ScreenType;
+import com.uwsoft.editor.renderer.Overlap2DStage;
 
 import java.util.HashMap;
 
@@ -24,50 +28,26 @@ public abstract class AbstractScreen implements Screen {
     private ScreenType changeScreen;
 
 
-   // protected Table rootTable; //root table to fill screen
+  // protected Table fader;
 
-    private static boolean assetsSet = false;
-    //see https://github.com/libgdx/libgdx/wiki/Skin
-    //private static TextureAtlas legacyAtlas;
-    //protected static Skin skin;
-    protected static InputMultiplexer inputMultiplexer;
-    protected static GameResourceManager mgr;
+  private boolean assetsSet = false;
+
 
     /**
      * AbstractScreen constructor: Can't actually be instantiated, sets flow values
      */
     AbstractScreen() {
         if (!assetsSet) {
-            try{
 
-                //legacyAtlas = new TextureAtlas(Gdx.files.internal("legacy-packed/pack.atlas"));
-                //skin = new Skin(Gdx.files.internal("skin/legacy-skin.json"), legacyAtlas);
-                inputMultiplexer = new InputMultiplexer();
-                Gdx.input.setInputProcessor(inputMultiplexer);
-                mgr = new GameResourceManager();
-                mgr.initPlatformerResources();
-            } catch(SerializationException|GdxRuntimeException e) {
-                System.err.println("ERROR -- ABSTRACTSCREEN -- CONSTRUCTOR -- ASSET LOAD FAILURE");
-                e.printStackTrace();
-            }
-            assetsSet = true;
         }
+        assetsSet = true;
+
+      /*  fader = new Table();
+        fader.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        fader.setColor(Color.BLACK);*/
 
         change=false; //setting change to true signals to Game to change screen
         changeScreen = ScreenType.UNKNOWN; //changeScreen signals to Game which screen to change to
-
-        //set up tables
-        //rootTable = new Table();
-        //rootTable.setFillParent(true);
-        //rootTable.setBackground(skin.getDrawable("titleScreen"));
-
-
-        //instantiate stage
-        //stage = new Stage(new ExtendViewport(TerrorGDXGame.WIDTH, TerrorGDXGame.HEIGHT));
-        //stage.addActor(rootTable); //add assets to stage
-
-        //comment this out to turn off debug
-       // stage.setDebugAll(true);
 
     }
     /**
@@ -89,47 +69,49 @@ public abstract class AbstractScreen implements Screen {
         change = true;
     }
 
-    //draw loop function
-    @Override
-    public void render(float delta) {
-        Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT|GL30.GL_DEPTH_BUFFER_BIT);
+    public abstract Overlap2DStage getStage();
 
 
-    }
 
-    @Override
-    public void dispose() {
-
-    }
 
     //note: called on setScreen
     @Override
     public void show() {
-        change=false;
-     //   Gdx.input.setInputProcessor(stage); //stage will receive inputs, including clicks, that will be delegated through table to buttons
+        change = false;
     }
 
+    //WE MAY NEED TO USE THE FOLLOWING LATER, TO APPLY BEHAVIOR TO ALL SCREENS
+
+    //draw loop function
+    @Override
+    public void render(float delta) {
+        Gdx.gl.glClearColor(0,0,0, 1);
+        Gdx.gl.glClear(GL30.GL_COLOR_BUFFER_BIT);
+    }
+    @Override
+    public abstract void dispose();
     //note: called on minimize/lose focus
     @Override
-    public void pause() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    public abstract void pause();
     //note: called on restore
     @Override
-    public void resume() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    public abstract void resume();
     @Override
-    public void hide() {
-               //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract void hide();
     //called on resize - we can experiment with different viewport types
     @Override
-    public void resize(int width, int height) {
-        //stage.getViewport().update(width, height, true);
-    }
+    public abstract void resize(int width, int height);
 
+   /* protected void fadeIn() {
+        fader.addAction(Actions.sequence(Actions.fadeOut(1), Actions.run(new Runnable() {
+            public void run() {
+
+            }
+        })));
+
+    }
+    protected void fadeOut() {
+       fader.addAction(Actions.fadeIn(0.5f));
+    }*/
 }
 

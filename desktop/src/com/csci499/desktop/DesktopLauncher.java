@@ -7,7 +7,7 @@ import com.csci499.TestAdapter;
 import com.util.PlatformType;
 
 public class DesktopLauncher {
-	private static final boolean SCENE_TESTING = true; //switch this boolean to true for testing scenes, false to launch game
+	private static final boolean SCENE_TESTING = false; //switch this boolean to true for testing scenes, false to launch game
     private static final String SCENE_TO_TEST = "startScene"; //put the scene name you want to test here
     public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

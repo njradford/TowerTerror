@@ -7,14 +7,21 @@ package com.csci499;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.uwsoft.editor.renderer.Overlap2DStage;
+import com.uwsoft.editor.renderer.actor.CompositeItem;
+import com.uwsoft.editor.renderer.actor.IBaseItem;
+import com.uwsoft.editor.renderer.actor.ImageItem;
 
 /**
  *
@@ -22,13 +29,43 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  */
 public class GameScreen extends AbstractScreen implements Screen {
 
-    private final GameStage stage;
-
+    private GameStage stage;
+    private CompositeItem root;
+    private GameStateInterface gameState;
+    private CompositeItem[][] cardItems;
+    private ImageItem[] contextItems;
+    private CompositeItem progressItem;
+    private CompositeItem[] monsterItems;
     public GameScreen() {
-    super();
-        stage = new GameStage(mgr, "gameScene");
+        super();
+        try {
+            stage = new GameStage("gameScreen");
+        } catch (NullPointerException e) {
+            System.err.println("ERR -- GAMESCREEN -- () -- SCENE/SCENE ASSETS NOT FOUND");
+        }
 
-    }
+        try {
+            gameState = TerrorGDXGame.gameState;
+        } catch (NullPointerException e) {
+            System.err.println("ERR -- GAMESCREEN -- () -- GAMESTATE NOT INITALIZED");
+        }
+
+        root = stage.sceneLoader.getRoot();
+        contextItems = new ImageItem[] {(ImageItem)root.getItemById("orderDiscard"),
+                (ImageItem) root.getItemById("orderTrade"),
+                (ImageItem) root.getItemById("orderAttack")};
+
+        for (ImageItem context: contextItems) {
+        context.addAction(Actions.moveBy(-context.getWidth(), 0));
+        }
+
+
+
+
+
+
+        }
+
 
     public void initializeBoard() {
 
@@ -51,7 +88,7 @@ public class GameScreen extends AbstractScreen implements Screen {
         for (int m = 0; m < players.length; m++) {
             handLabels[m].setText(players[m].substring(0, Math.min(8, players[m].length())).trim());
         }
-        //TODO: OLD PROGBAR - REMOVE?
+
         //monsterProgBar.setMaximum(gameState.getUnplayedMonsters());
 
         this.updateGame();
@@ -74,11 +111,12 @@ public class GameScreen extends AbstractScreen implements Screen {
     @Override
     public void render(float delta) {
         super.render(delta); //clears screen
+        stage.act();
+        stage.draw();
     }
 
     @Override
     public void dispose() {
-        super.dispose();
         stage.dispose();
     }
 
@@ -86,32 +124,33 @@ public class GameScreen extends AbstractScreen implements Screen {
     @Override
     public void show() {
         super.show();  //sets change boolean to false
-        super.inputMultiplexer.addProcessor(stage);
-        //   Gdx.input.setInputProcessor(stage); //stage will receive inputs, including clicks, that will be delegated through table to buttons
+        TerrorGDXGame.inputMultiplexer.addProcessor(stage);
     }
 
     //note: called on minimize/lose focus
     @Override
     public void pause() {
-        super.pause();
-        super.inputMultiplexer.removeProcessor(stage);
+        TerrorGDXGame.inputMultiplexer.removeProcessor(stage);
     }
 
     //note: called on restore
     @Override
     public void resume() {
-        super.resume();
-        super.inputMultiplexer.addProcessor(stage);
+        TerrorGDXGame.inputMultiplexer.addProcessor(stage);
     }
 
     @Override
     public void hide() {
-        super.inputMultiplexer.removeProcessor(stage);
+        TerrorGDXGame.inputMultiplexer.removeProcessor(stage);
     }
     //called on resize - we can experiment with different viewport types
+
     @Override
     public void resize(int width, int height) {
-        super.resize(width, height);
+        stage.getViewport().update(width, height, false);
     }
-
+    @Override
+    public Overlap2DStage getStage() {
+        return stage;
+    }
 }

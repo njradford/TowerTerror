@@ -1,6 +1,12 @@
 package com.csci499;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.badlogic.gdx.utils.SerializationException;
 import com.util.GameType;
 import com.util.PlatformType;
 
@@ -19,15 +25,14 @@ public class TerrorGDXGame extends Game {
     private EndScreen winScreen;
     private EndScreen loseScreen;
     private AbstractScreen[] screens;
+    private AbstractScreen currentScreen;
 
-
-    private GameState gameState; //TODO: Make variable of type GameStateInterface after adding required methods to interface
-
+    public static GameStateInterface gameState;
+    public static InputMultiplexer inputMultiplexer;
+    public static GameResourceManager mgr;
     private final NetworkHandler p2p;
     private final PlatformType platformType; //we may need this later
 
-
-    //TODO: One sprite batch for all stages for performance
 
     public TerrorGDXGame(PlatformType platformType) {
         gameType = GameType.UNKNOWN;
@@ -37,9 +42,17 @@ public class TerrorGDXGame extends Game {
 
     @Override
     public void create() {
+        try{
+            mgr = new GameResourceManager();
+            mgr.initPlatformerResources();
+        } catch(SerializationException |GdxRuntimeException e) {
+            System.err.println("ERROR -- TERRORGDXGAME -- CONSTRUCTOR -- ASSET LOAD FAILURE");
+            e.printStackTrace();
+        }
+        inputMultiplexer = new InputMultiplexer();
         screens = new AbstractScreen[]{
                 startScreen = new StartScreen(),
-                localScreen = new LocalScreen(),
+                //    localScreen = new LocalScreen(),
                 hostScreen = new MultiScreen(true),
                 clientScreen = new MultiScreen(false),
                 gameScreen = new GameScreen(),
@@ -47,12 +60,14 @@ public class TerrorGDXGame extends Game {
                 loseScreen = new EndScreen(false)
         };
         setScreen(startScreen); //start first screen
+        Gdx.input.setInputProcessor(inputMultiplexer);
     }
 
     @Override
     public void render() {
+        super.render();
 
-        AbstractScreen currentScreen = (AbstractScreen) this.getScreen();
+        currentScreen = (AbstractScreen) this.getScreen();
 
         if (currentScreen.getChange()) { //current screen has signaled to change screens
             switch (currentScreen.getChangeScreen()) { //switch on which screen current screen signals to change to
@@ -60,16 +75,19 @@ public class TerrorGDXGame extends Game {
                     System.err.println("ERROR -- TERRORGDXGAME -- RENDER -- CALLED CHANGE SCREEN WITHOUT SETTING CHANGE FLAG");
                     throw new IllegalArgumentException("ERROR -- TERRORGDXGAME -- RENDER -- CALLED CHANGE SCREEN WITHOUT SETTING CHANGE FLAG");
                 case LOCAL:
-                    setScreen(localScreen);
+                    //TEMP - TEXT AREA ISSUES
+                   // fadeScreens(localScreen);
+                    gameState = new GameState(new String [] {"Adam", "Tim", "Nick", "Tim Again", "Tyler"});
+                    fadeScreens(gameScreen);
                     gameType = GameType.LOCAL;
                     break;
                 case HOSTS:
-                    setScreen(hostScreen);
+                    fadeScreens(hostScreen);
                     gameType = GameType.HOST;
 
                     break;
                 case CLIENTS:
-                    setScreen(clientScreen);
+                    fadeScreens(clientScreen);
                     gameType = GameType.CLIENT;
                     break;
 
@@ -88,7 +106,7 @@ public class TerrorGDXGame extends Game {
                             System.err.println("ERROR -- TERRORGDXGAME -- RENDER -- UKNOWN MULTIPLAYER OPTION");
                             throw new IllegalArgumentException("ERROR -- TERRORGDXGAME -- UNKNOWN MULTIPLAYER OPTION");
                     }
-                    setScreen(gameScreen);
+                    fadeScreens(gameScreen);
                     break;
                 case WIN:
                     setScreen(winScreen);
@@ -98,7 +116,7 @@ public class TerrorGDXGame extends Game {
                     break;
                 case START:
                     gameType = GameType.UNKNOWN;
-                    setScreen(startScreen);
+                    fadeScreens(startScreen);
                     break;
                 default:
                     System.err.println("ERROR -- TERRORGDXGAME -- RENDER -- UKNOWN CHANGE SCREEN");
@@ -106,7 +124,7 @@ public class TerrorGDXGame extends Game {
 
             }
 
-            super.render();
+
         }
     }
 
@@ -180,7 +198,7 @@ public class TerrorGDXGame extends Game {
                 players[0] = players[0] + " (HOST)";
                 gameState = new GameState(players);
                 System.out.println("MSG -- TERRORGDXGAME -- NETLAUNCHER -- ATTEMPTING TO SYNCHRONIZE STATES. . . ");
-                p2p.transmitGameState(gameState);
+                p2p.transmitGameState((GameState) gameState);
 
             case UNKNOWN:
                 System.err.println("ERROR -- TERRORGDXGAME -- NETLAUNCHER -- UNKNOWN GAMETYPE");
@@ -229,6 +247,18 @@ public class TerrorGDXGame extends Game {
         worker.execute();
     }
 */
+
+    }
+   private void fadeScreens(final AbstractScreen nextScreen) {
+       nextScreen.getStage().addAction(Actions.sequence(Actions.fadeOut(.0001f)));
+       nextScreen.getStage().act();
+       currentScreen.getStage().addAction(Actions.sequence(Actions.fadeOut(.5f), Actions.run(new Runnable() {
+           public void run() {
+               nextScreen.getStage().addAction(Actions.sequence(Actions.fadeIn(.5f)));
+               setScreen(nextScreen);
+           }
+       })));
+
     }
 
 }

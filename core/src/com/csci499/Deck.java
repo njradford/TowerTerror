@@ -77,7 +77,7 @@ public class Deck implements Serializable {
    
         deckPile = shuffle(deckPile); 
         
-        System.out.println("DECK SIZE IS " + initialDeckSize); 
+
     }
     
     /**

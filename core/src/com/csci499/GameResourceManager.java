@@ -29,8 +29,11 @@ public class GameResourceManager extends ResourceManager {
         // Sets working resolution, so init all resources will load in to memory resources of that resolution/size only
         setWorkingResolution(currentResolution.name);
 
+        this.loadAtlasPack();
         // loads into memory all needed assets
         initAllResources();
+
+
     }
 
 

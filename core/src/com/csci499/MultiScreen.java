@@ -6,6 +6,7 @@
 package com.csci499;
 
 import com.badlogic.gdx.Screen;
+import com.uwsoft.editor.renderer.Overlap2DStage;
 
 /**
  *
@@ -14,66 +15,75 @@ import com.badlogic.gdx.Screen;
 public class MultiScreen extends AbstractScreen implements Screen {
     private GameStage stage;
 
-
-    public MultiScreen(boolean isHosting) {
+    public MultiScreen( boolean isHosting) {
         super();
-        if (isHosting) {
-            stage = new GameStage(mgr, "hostScene");
-        } else {
-            stage = new GameStage(mgr, "clientScene");
+        try {
+            if (isHosting) {
+                stage = new GameStage("hostScene");
+            } else {
+                stage = new GameStage("clientScene");
+            }
+        } catch (NullPointerException e) {
+            System.err.println("ERR -- MULTISCREEN -- () -- SCENE NAME NOT RECOGNIZED");
         }
+
     }
-        //draw loop function
-        @Override
-        public void render(float delta) {
-            super.render(delta); //clears screen
-        }
 
-        @Override
-        public void dispose() {
-            super.dispose();
-            stage.dispose();
-        }
+    //draw loop function
+    @Override
+    public void render(float delta){
+        super.render(delta); //clears screen
+        stage.act();
+        stage.draw();
+    }
 
-        //note: called on setScreen
-        @Override
-        public void show() {
-            super.show();  //sets change boolean to false
-            super.inputMultiplexer.addProcessor(stage);
-            //   Gdx.input.setInputProcessor(stage); //stage will receive inputs, including clicks, that will be delegated through table to buttons
-        }
+    @Override
+    public void dispose() {
+        stage.dispose();
+    }
 
-        //note: called on minimize/lose focus
-        @Override
-        public void pause() {
-            super.pause();
-            super.inputMultiplexer.removeProcessor(stage);
-        }
+    //note: called on setScreen
+    @Override
+    public void show() {
+        super.show();  //sets change boolean to false
+        TerrorGDXGame.inputMultiplexer.addProcessor(stage);
+    }
 
-        //note: called on restore
-        @Override
-        public void resume() {
-            super.resume();
-            super.inputMultiplexer.addProcessor(stage);
-        }
+    //note: called on minimize/lose focus
+    @Override
+    public void pause() {
+        TerrorGDXGame.inputMultiplexer.removeProcessor(stage);
+    }
 
-        @Override
-        public void hide() {
-            super.inputMultiplexer.removeProcessor(stage);
-        }
-        //called on resize - we can experiment with different viewport types
-        @Override
-        public void resize(int width, int height) {
-            super.resize(width, height);
-        }
+    //note: called on restore
+    @Override
+    public void resume() {
+        TerrorGDXGame.inputMultiplexer.addProcessor(stage);
+    }
 
-    protected String getPlayerName() {
+    @Override
+    public void hide() {
+        TerrorGDXGame.inputMultiplexer.removeProcessor(stage);
+    }
+    //called on resize - we can experiment with different viewport types
+
+    @Override
+    public void resize(int width, int height) {
+        stage.getViewport().update(width, height, false);
+    }
+
+    @Override
+    public Overlap2DStage getStage() {
+        return stage;
+    }
+
+    public String getPlayerName() {
         return null;
     }
-    protected String getIP() {
+    public String getIP() {
         return null;
     }
-    protected String getPort() {
+    public String getPort() {
         return null;
     }
 
