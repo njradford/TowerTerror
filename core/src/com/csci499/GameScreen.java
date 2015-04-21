@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL30;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,11 +19,13 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.util.CardMap;
 import com.uwsoft.editor.renderer.Overlap2DStage;
 import com.uwsoft.editor.renderer.actor.CompositeItem;
 import com.uwsoft.editor.renderer.actor.IBaseItem;
 import com.uwsoft.editor.renderer.actor.ImageItem;
 import com.uwsoft.editor.renderer.actor.LabelItem;
+import com.uwsoft.editor.renderer.resources.ResourceManager;
 import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 
 /**
@@ -32,6 +35,7 @@ import com.uwsoft.editor.renderer.script.SimpleButtonScript;
 public class GameScreen extends AbstractScreen implements Screen {
 
     private GameStage stage;
+    private GameResourceManager rm;
     private CompositeItem root;
     private GameStateInterface gameState;
 
@@ -62,6 +66,7 @@ public class GameScreen extends AbstractScreen implements Screen {
         }
         //access modifiable view layer components
         root = stage.sceneLoader.getRoot();
+        rm = (GameResourceManager) stage.sceneLoader.getRm();
         contextItems = new ImageItem[] {root.getImageById("orderDiscard"),
                 root.getImageById("orderTrade"),
                 root.getImageById("orderAttack")};
@@ -97,14 +102,14 @@ public class GameScreen extends AbstractScreen implements Screen {
 
         otherPlayerLabel = root.getLabelById("playerNumber");
 
-        nextButton = stage.sceneLoader.getRoot().getImageById("nextButton");
+       /* nextButton = stage.sceneLoader.getRoot().getImageById("nextButton");
         nextButton.addListener(new ClickListener() {
             public void clicked(InputEvent event, float x, float y) {
                 nextButton();
             }
-        });
+        });*/
 
-        initializeBoard();
+      //  initializeBoard();
 
         }
 
@@ -117,11 +122,18 @@ public class GameScreen extends AbstractScreen implements Screen {
         }
         monsterCounter.setText(String.valueOf(gameState.getNumMonsterTokens()));
 
-        playerNames[0].setText(gameState.getPlayerName(gameState.getCurrentPlayer()));
+        String currName = gameState.getPlayerName(gameState.getCurrentPlayer());
+        playerNames[0].setText(currName.substring(0, Math.min(8, currName.length())).trim());
         if (gameState.getPlayers() > 1) {
-            playerNames[1].setText(gameState.getPlayerName(gameState.getCurrentPlayer() + 1 % 6));
+            String otherName = gameState.getPlayerName(gameState.getCurrentPlayer() + 1);
+            playerNames[1].setText(otherName.substring(0, Math.min(8, otherName.length())).trim());
         }
 
+  //      for (int i=0; i<cardItems.length; i++) {
+    //        for (int j=0; j<cardItems[i].length; j++) {
+               // =rm.getTextureRegion(CardMap.map.get(gameState.getCardNameFromPlayerHand(i,j)));
+      //      }
+       // }
         
         /*
             for (int i = 0; i < cardButtons.length; i++) {
